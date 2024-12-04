@@ -1,0 +1,43 @@
+% shorthands
+\let\eps\varepsilon
+\newcommand*{\defeq}{:=}
+\newcommand*{\Th}{^{\textrm{th}}}
+\newcommand*{\WLoG}{Without loss of generality}
+\newcommand*{\wLoG}{without loss of generality}
+
+% math
+\newcommand*{\lavec}[1]{\mathbf{#1}}  % linear-algebraic vector
+\newcommand*{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand*{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand*{\smallfloor}[1]{\lfloor #1 \rfloor}
+\newcommand*{\smallceil}[1]{\lceil #1 \rceil}
+\newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand*{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand*{\smallabs}[1]{\lvert #1 \rvert}
+\newcommand*{\smallnorm}[1]{\lVert #1 \rVert}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\Var}{Var}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\newcommand*{\optprog}[3]{
+\begin{array}{*3{>{\displaystyle}l}}
+#1 & \multicolumn{2}{>{\displaystyle}l}{#2}
+#3 \end{array}}
+
+% wrap URLs
+\Urlmuskip=0mu plus 0.1mu
+\makeatletter
+\g@addto@macro{\UrlBreaks}{%
+\do\/%
+\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z%
+\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M%
+\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z%
+\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9%
+}
+\makeatother
+
+% misc
+\allowdisplaybreaks
+%\algnewcommand{\LineComment}[1]{\State \textcolor{gray}{\texttt{//} \textit{#1}}}
+%\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\texttt{//} \textit{#1}}}
