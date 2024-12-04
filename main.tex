@@ -1,0 +1,70 @@
+\documentclass[12pt,fleqn]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{float}
+\usepackage{array}
+\usepackage{comment}
+%\usepackage{tikz}
+%\usetikzlibrary{decorations.pathreplacing,arrows.meta,calc,patterns}
+%\usepackage{enumitem}
+\usepackage[hypertexnames=false,bookmarksnumbered=true,final]{hyperref}
+%\usepackage{algorithm,algpseudocode}
+\usepackage[capitalize,sort]{cleveref}
+
+\colorlet{textColor}{black}
+\colorlet{bgColor}{white}
+\colorlet{textBlue}{blue!50!textColor}
+\colorlet{textRed}{red!50!textColor}
+\hypersetup{colorlinks,linkcolor=textRed,citecolor=textRed,urlcolor=textBlue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+
+\allowdisplaybreaks
+%\algnewcommand{\LineComment}[1]{\State \textcolor{gray}{\texttt{//} \textit{#1}}}
+%\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\texttt{//} \textit{#1}}}
+
+\title{Implications in Fair Division of Indivisible Items}
+\author{\empty}
+\date{\empty}
+
+\let\eps\varepsilon
+\newcommand*{\defeq}{:=}
+\newcommand*{\Th}{^{\textrm{th}}}
+\newcommand*{\lavec}[1]{\mathbf{#1}}  % linear-algebraic vector
+\newcommand*{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand*{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand*{\smallfloor}[1]{\lfloor #1 \rfloor}
+\newcommand*{\smallceil}[1]{\lceil #1 \rceil}
+\newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand*{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand*{\smallabs}[1]{\lvert #1 \rvert}
+\newcommand*{\smallnorm}[1]{\lVert #1 \rVert}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\Var}{Var}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\newcommand*{\WLoG}{Without loss of generality}
+\newcommand*{\wLoG}{without loss of generality}
+\newcommand*{\optprog}[3]{
+\begin{array}{*3{>{\displaystyle}l}}
+#1 & \multicolumn{2}{>{\displaystyle}l}{#2}
+#3 \end{array}}
+
+\begin{document}
+
+\maketitle
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+%\bibliographystyle{plainurl}
+%\bibliography{bibdb}
+
+\end{document}
