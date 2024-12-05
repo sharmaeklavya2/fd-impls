@@ -1,4 +1,35 @@
 \section{Introduction}
 \label{sec:intro}
 
-This paper is about fair division \cite{varian1973equity}!
+This paper is about fair division of indivisible items \cite{varian1973equity}!
+
+\subsection{Our contributions}
+
+We extend fairness notions to one of the most general fair division settings: weighted mixed manna.
+For most notions, there were many ways of extending them, and we picked what we felt
+were the most appropriate definitions based on careful deliberation.
+
+We study implications between fairness notions.
+Formally, a fairness notion $F_1$ implies another notion $F_2$ if every $F_1$-fair allocation is also $F_2$-fair.
+We present several implications and prove non-implications between fairness notions.
+Some of these results are already known, some are non-trivial generalizations of existing results,
+and some are completely new results.
+These implication results help put fairness notions into a hierarchy.
+
+Many different settings of fair division have been considered in the literature:
+goods vs chores vs mixed manna, equal vs unequal entitlements, and different types of valuation functions.
+Special cases have also been studied, like identical valuations or fair division among just two agents.
+We consider all the settings given by the combination of all these aspects of fair division.
+At first, it would seem that this would lead to a combinatorial explosion of different settings.
+However, we get around this by encoding our implication and non-implication results in a machine-readable format
+and implementing an inference engine that uses these results to automatically deduce new results.
+
+E.g., if you ask the inference engine ``Does epistemic envy-freeness (EEF) imply maximin share (MMS) for goods
+with additive valuations?", it would give an affirmative answer based on these two results we show in the paper:
+\begin{enumerate}
+\item EEF implies proportionality (PROP) under subadditive valuations for mixed manna.
+\item PROP implies MMS for superadditive valuations for mixed manna.
+\end{enumerate}
+We implement our inference engine in JavaScript and expose it via a simple web-based interface.
+It can be deployed as a client-side web application on the internet, making it not only very accessible,
+but also easy and cheap to host.

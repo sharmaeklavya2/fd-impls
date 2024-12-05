@@ -1,0 +1,46 @@
+\section{Preliminaries}
+\label{sec:prelims}
+
+In the fair division problem, there is a finite set $M$ of items
+that must be distributed among a finite set $N$ of agents fairly.
+Formally, we are given as input a \emph{fair division instance} $\Ical \defeq (N, M, V, w)$.
+Here $w \defeq (w_i)_{i \in N}$ is a collection of positive numbers that sum to 1,
+and $V \defeq (v_i)_{i \in N}$ is a collection of functions,
+where $v_i: 2^M \to \mathbb{R}$ and $v_i(\emptyset) = 0$ for each $i \in N$.
+$v_i$ is called agent $i$'s \emph{valuation function},
+and $w_i$ is called agent $i$'s \emph{entitlement}.
+
+For any non-negative integer $k$, define $[k] \defeq \{1, 2, \ldots, k\}$.
+We generally assume \wLoG{} that $N = [n]$ and $M = [m]$.
+For an agent $i$ and item $j$, we often write $v_i(j)$ instead of $v_i(\{j\})$ for notational convenience.
+
+Our task is to find a fair allocation. An \emph{allocation} $A \defeq (A_i)_{i \in N}$ is
+a collection of pairwise-disjoint subsets of $M$ such that $\bigcup_{i=1}^n A_i = M$.
+(If we relax the condition $\bigcup_{i=1}^n A_i = M$, we get \emph{partial allocations}.)
+The set $A_i$ is called agent $i$'s \emph{bundle} in $A$.
+
+For any function $u: 2^M \to \mathbb{R}$ and sets $S, T \subseteq M$, the \emph{marginal value}
+of $S$ over $T$ is defined as $u(S \mid T) \defeq u(S \cup T) - u(T)$.
+
+\subsection{Fairness Notions}
+\label{sec:prelims:fairness-notions}
+
+A \emph{fairness notion} $F$ is a function that takes as input a fair division instance $\Ical$,
+a (partial) allocation $A$, and an agent $i$, and outputs either true or false.
+When $F(\Ical, A, i)$ is true, we say that allocation $A$ is $F$\emph{-fair} to agent $i$,
+or that agent $i$ is $F$\emph{-satisfied} by allocation $A$.
+Allocation $A$ is said to be $F$-fair if it is $F$-fair to every agent.
+
+A notion $F$ of fairness is said to be \emph{feasible} if for every fair division instance,
+there exists an $F$-fair allocation.
+We say that a notion $F_1$ of fairness \emph{implies} another notion $F_2$ of fairness if
+every $F_1$-fair allocation is also an $F_2$-fair allocation.
+
+\subsection{Efficiency}
+\label{sec:prelims:efficiency}
+
+In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+an allocation $A$ \emph{Pareto-dominates} an allocation $B$ if
+$v_i(A_i) \ge v_i(B_i)$ for each agent $i \in [n]$,
+and $v_i(A_i) > v_i(B_i)$ for some agent $i \in [n]$.
+An allocation is \emph{Pareto-optimal} if it is not Pareto-dominated by any other allocation.

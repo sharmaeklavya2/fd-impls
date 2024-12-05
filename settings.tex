@@ -1,0 +1,58 @@
+\section{Fair Division Settings}
+\label{sec:settings}
+
+We study many fair division settings in this paper.
+A fair division setting is given by multiple \emph{features}.
+By picking different values of these features, we can get a wide variety of fair division settings.
+We consider 5 features in this paper:
+\begin{enumerate}
+\item Whether entitlements are equal.
+\item Whether there are only two agents.
+\item Whether agents have identical valuations.
+\item Valuation function type.
+\item Marginal values.
+\end{enumerate}
+The first three are self-explanatory. We now give details about the last two.
+
+\subsection{Valuation Function Type}
+
+A function $u: 2^M \to \mathbb{R}$ is
+\begin{enumerate}
+\item \emph{additive} if for any two disjoint sets $S, T \subseteq M$, we have $u(S \cup T) = u(S) + u(T)$.
+    Equivalently, for every set $S \subseteq M$, we have $u(S) = \sum_{j \in S} u(\{j\})$.
+\item \emph{subadditive} if for any two disjoint sets $S, T \subseteq M$, we have $u(S \cup T) \le u(S) + u(T)$.
+\item \emph{superadditive} if for any two disjoint sets $S, T \subseteq M$, we have $u(S \cup T) \ge u(S) + u(T)$.
+\item \emph{submodular} if for any $S, T \subseteq M$, we have $u(S \cup T) + u(S \cap T) \le u(S) + u(T)$.
+\item \emph{supermodular} if for any $S, T \subseteq M$, we have $u(S \cup T) + u(S \cap T) \ge u(S) + u(T)$.
+\item \emph{cancelable} if for any $T \subseteq M$ and $S_1, S_2 \subseteq M \setminus T$,
+    we have $u(S_1 \cup T) > u(S_2 \cup T) \implies u(S_1) > u(S_2)$.
+\item \emph{unit-demand} if $u(\emptyset) = 0$, and for any $\emptyset \neq S \subseteq M$,
+    we have $u(S) \defeq \max_{j \in S} u(\{j\})$.
+\end{enumerate}
+
+We consider fair division settings where all valuation functions belong to one of the above classes.
+
+\subsection{Marginal Values}
+
+We get well-known fair division settings by constraining the marginal values of items.
+For an agent $i \in N$, the marginal value of item $j$ over set $S$
+is given by $v_i(j \mid S) \defeq v_i(S \cup \{j\}) - v_i(S)$.
+
+\begin{enumerate}
+\item \emph{goods}: $v_i(j \mid S) \ge 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\item \emph{chores}: $v_i(j \mid S) \le 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\item \emph{positive}: $v_i(j \mid S) > 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\item \emph{negative}: $v_i(j \mid S) < 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\item \emph{doubly monotone}: The set of items $M$ can be partitioned into a set $G$ of goods and a set $C$ of chores.
+    Then for every agent $i \in N$, we have
+    $v_i(g \mid S) \le 0$ for all $S \subseteq M$ and $g \in G \setminus S$, and
+    $v_i(c \mid S) \le 0$ for all $S \subseteq M$ and $c \in C \setminus S$.
+\item \emph{bivalued}: There exist constants $a, b \in \mathbb{R}$ such that
+    $v_i(j \mid S) \in \{a, b\}$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\item \emph{binary}: $v_i(j \mid S) \in \{0, 1\}$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\item \emph{negative binary}: $v_i(j \mid S) \in \{0, -1\}$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
+\end{enumerate}
+
+We can break up the class of bivalued instances into positive bivalued, negative bivalued,
+binary, negative binary, and mixed bivalued
+(mixed means that exactly one of $a$ and $b$ is positive and the other is negative).
