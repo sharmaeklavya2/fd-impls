@@ -1,0 +1,60 @@
+\section{Fairness Notions}
+\label{sec:notions}
+
+We now describe all the different fairness notions we consider in this paper.
+We consider the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$.
+
+\subsection{Basic Notions}
+
+\begin{enumerate}
+\item Envy-freeness (EF).
+\item Envy-free up to any item (EFX).
+\item Envy-free up to one item (EF1).
+\item Maximin Share (MMS). For unequal entitlements, we consider weighted MMS (WMMS), which generalizes MMS.
+\item AnyPrice Share (APS).
+\item Proportionality (PROP).
+\item Proportional up to one item (PROP1).
+\item Proportional up to any item (PROPX).
+\item Proportional up to maximin item (PROPM).
+\end{enumerate}
+
+\subsection{Derivative Notions}
+
+Let $F$ be any fairness notion.
+\begin{enumerate}
+\item An allocation $A$ is epistemic-$F$-fair to an agent $i$ if
+    there exists another allocation $B$ that is epistemic-$F$-fair to agent $i$ and $B_i = A_i$.
+    $B$ is called agent $i$'s epistemic-$F$-certificate for $A$.
+\item Let $\Acal(F, i)$ be the set of allocations that are $F$-fair to agent $i$.
+    Then $i$'s minimum-$F$-share is given by
+    \[ \min_{A \in \Acal(F, i)} v_i(A_i). \]
+    An allocation $A$ is minimum-$F$-share-fair to agent $i$ if $v_i(A_i)$ is at least $i$'s minimum-$F$-share.
+    Equivalently, $A$ is minimum-$F$-share-fair to agent $i$ if there exists an allocation $B \in \Acal(F, i)$
+    such that $v_i(A_i) \ge v_i(B_i)$.
+    Then $B$ is called agent $i$'s minimum-$F$-share-certificate for $A$.
+\item For a subset $S \subseteq [n]$ of agents, where $|S| \ge 2$,
+    let $\restrict(\Ical, A, S)$ be the pair $(\Icalhat, \Ahat)$, where
+    $\Ahat \defeq (A_j)_{j \in S}$, $\Icalhat \defeq (S, \Mhat, (v_j)_{j \in S}, \what)$,
+    $\Mhat \defeq \bigcup_{j \in S} A_j$, $\what \defeq (\what_j)_{j \in S}$,
+    and $\what_j \defeq w_j / \sum_{j \in S} w_j$.
+
+    An allocation $A$ is said to be pairwise-$F$-fair to agent $i$ if
+    for all $j \in N \setminus \{i\}$, $\Ahat$ is $F$-fair to $i$ in the instance $\Icalhat$,
+    where $(\Icalhat, \Ahat) \defeq \restrict(\Ical, A, \{i, j\})$.
+
+    An allocation $A$ is said to be groupwise-$F$-fair to agent $i$ if
+    for all $S \subseteq N \setminus \{i\}$, $\Ahat$ is $F$-fair to $i$ in the instance $\Icalhat$,
+    where $(\Icalhat, \Ahat) \defeq \restrict(\Ical, A, \{i\} \cup S)$.
+\end{enumerate}
+
+In this paper, we consider the following derivative notions:
+\begin{enumerate}
+\item Epistemic envy-freeness (EEF).
+\item Epistemic EFX (EEFX).
+\item Epistemic EF1 (EEF1).
+\item Minimum EFX share (MXS).
+\item Minimum EF1 share (M1S).
+\item Pairwise proportionality (PPROP) and groupwise proportionality (GPROP).
+\item Pairwise MMS (PMMS) and groupwise MMS (GMMS).
+\item Pairwise APS (PAPS) and groupwise APS (GAPS).
+\end{enumerate}
