@@ -1,9 +1,7 @@
 \section{Introduction}
 \label{sec:intro}
 
-This paper is about fair division of indivisible items \cite{varian1973equity}!
-
-\subsection{Our contributions}
+\subsection{Our Contributions}
 
 We extend fairness notions to one of the most general fair division settings: weighted mixed manna.
 For most notions, there were many ways of extending them, and we picked what we felt
@@ -47,3 +45,15 @@ with additive valuations?", it would give an affirmative answer based on these t
 We implement our inference engine in JavaScript and expose it via a simple web-based interface.
 It can be deployed as a client-side web application on the internet, making it not only very accessible,
 but also easy and cheap to host.
+
+\subsection{Structure of the Paper}
+
+In \cref{sec:prelims}, we formally define the fair division problem and introduce associated notation.
+In \cref{sec:settings}, we describe the different fair division settings we consider.
+In \cref{sec:notions}, we describe all the fairness notions that we consider.
+In \cref{sec:old-impls,sec:new-impls}, we present several implictions (and non-implications) between
+fairness notions. \Cref{sec:old-impls} contains known results and their simple extensions.
+\Cref{sec:new-impls} contains novel results.
+In \cref{sec:cpig}, we describe our inference engine.
+\Cref{sec:dags} contains a collection of inference DAGs, similar to \cref{fig:additive-goods},
+for many different fair division settings.
