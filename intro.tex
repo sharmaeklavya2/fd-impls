@@ -15,6 +15,20 @@ We present several implications and prove non-implications between fairness noti
 Some of these results are already known, some are non-trivial generalizations of existing results,
 and some are completely new results.
 These implication results help put fairness notions into a hierarchy.
+See \cref{fig:additive-goods} for the implications we show among fairness notions
+for additive goods when agents have equal entitlements.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=26em]{dags/additive-nonneg-nny.pdf}
+\caption{Implications between fairness notions for additive valuations over goods
+when agents have equal entitlements. There is a vertex for each fairness notion.
+Notion $F_1$ implies notion $F_2$ iff there is a path from $F_1$ to $F_2$ in the graph
+(except that it is not known whether MXS implies EEF1).
+Red vertices are infeasible notions, green vertices are feasible notions,
+and the feasibility of uncolored vertices are open problems.}
+\label{fig:additive-goods}
+\end{figure}
 
 Many different settings of fair division have been considered in the literature:
 goods vs chores vs mixed manna, equal vs unequal entitlements, and different types of valuation functions.
