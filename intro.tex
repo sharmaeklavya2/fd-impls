@@ -3,10 +3,6 @@
 
 \subsection{Our Contributions}
 
-We extend fairness notions to one of the most general fair division settings: weighted mixed manna.
-For most notions, there were many ways of extending them, and we picked what we felt
-were the most appropriate definitions based on careful deliberation.
-
 We study implications between fairness notions.
 Formally, a fairness notion $F_1$ implies another notion $F_2$ if every $F_1$-fair allocation is also $F_2$-fair.
 We present several implications and prove non-implications between fairness notions.
@@ -42,9 +38,17 @@ with additive valuations?", it would give an affirmative answer based on these t
 \item EEF implies proportionality (PROP) under subadditive valuations for mixed manna.
 \item PROP implies MMS for superadditive valuations for mixed manna.
 \end{enumerate}
-We implement our inference engine in JavaScript and expose it via a simple web-based interface.
-It can be deployed as a client-side web application on the internet, making it not only very accessible,
-but also easy and cheap to host.
+We implement our inference engine in JavaScript and expose it via a simple client-side web application.
+The inference engine is not tied to the specifics of fair division, and can therefore be used for other purposes too.
+
+Some fairness notions were originally defined only for very specific fair division settings.
+E.g., EFX was defined in \cite{caragiannis2019unreasonable} for additive goods.
+%(Although EFX was also defined for mixed manna by many subsequent works,
+%there are now several competing definitions, and their relative merits are unclear.)
+We extend all fairness notions to the most general fair division setting we consider:
+mixed manna with unequal entitlements.
+In some cases, picking an appropriate definition was non-trivial,
+and we present several observations to motivate the definitions we propose.
 
 \subsection{Structure of the Paper}
 
