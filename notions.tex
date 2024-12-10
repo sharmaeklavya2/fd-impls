@@ -151,8 +151,8 @@ Here we show how we arrived at these extensions and why they make sense.
 \label{sec:notions:efx}
 
 Defining EFX in the fully general setting (non-additive valuations, mixed manna) is tricky.
-So, we start with the definitions of EFX for additive goods,
-and gradually build up to the definition of EFX from there.
+So, we start with the definition of EFX for additive goods,
+and gradually build up to the general definition of EFX from there.
 (TODO: Some of this is part of the EEFX journal paper. How to cite that?)
 
 There are actually two competing defintions of EFX for additive goods.
@@ -182,8 +182,7 @@ where $v_1$ and $v_2$ are additive, and
 
 For \cref{ex:efx-po}, for any Pareto-optimal allocation $A$, we have $g_1 \in A_1$ and $g_2 \in A_2$
 (otherwise we can transfer $g_1$ to agent 1 or $g_2$ to agent 2 to obtain a Pareto-dominator of $A$).
-Let us assume \wLoG{} that $g_3 \in A_2$.
-Then agent 1 is not \EFXZero-satisfied, but she is EFX-satisfied.
+Then the agent who did not get $g_3$ in $A$ is not \EFXZero-satisfied, although she is EFX-satisfied.
 
 \begin{comment}
 For two agents having additive valuations, when the items are goods,
@@ -197,9 +196,8 @@ is MMS, but we have already seen that it is not \EFXZero-fair.
 
 While \EFXZero{} is trivial to extend to non-additive valuations, EFX is not.
 This is because every good in $j$'s bundle can have zero value to agent $i$.
-Even $j$'s marginal value over $A_j$ or $A_i$ may be zero.
-Before we try to address this issue, let's instead jump to the setting of
-additive mixed manna.
+(Additionally, $j$'s marginal value over $A_j$ and $A_i$ may also be zero.)
+Before we try to address this issue, let's instead jump to the setting of additive mixed manna.
 
 One way to define EFX for mixed manna is this:
 agent $i$ is EFX-satisfied by allocation $A$ if for every other agent $j$,
