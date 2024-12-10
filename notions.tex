@@ -259,3 +259,87 @@ and the other agent gets all the red goods.
 If we want EFX and PO to be compatible for this instance,
 we must define EFX such that the allocation obtained by giving
 all blue goods to one agent and all red goods to the other agent must be EFX.
+
+We now identify special cases where our definition of EFX (\cref{defn:efx})
+is equivalent to well-known definitions of EFX under special cases.
+
+\begin{lemma}
+\label{thm:efx-equiv-positive}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if all marginals are positive for agent $i$
+(i.e., $v_i(g \mid R) > 0$ for all $R \subseteq M$ and $g \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i) > 0$.
+Since marginals are positive, $v_i(S \mid A_i) > 0$ for any $|S| \ge 1$.
+Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
+\end{proof}
+
+\begin{lemma}
+\label{thm:efx-equiv-negative}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if all marginals are negative for agent $i$
+(i.e., $v_i(c \mid R) < 0$ for all $R \subseteq M$ and $c \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \max_{c \in A_i} \frac{|v_i(A_i \setminus \{c\})|}{w_i} \le \frac{|v_i(A_j)|}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i \setminus S) < 0$.
+Since marginals are negative, $v_i(S \mid A_i \setminus S) < 0$ for any $|S| \ge 1$.
+Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
+\end{proof}
+
+\begin{lemma}
+\label{thm:efx-equiv-submod-goods}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if $v_i$ is submodular and all marginals are non-negative for agent $i$
+(i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq M$ and $g \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus \{g\})
+        \mid g \in A_j \textrm{ and } v_i(g \mid A_i) > 0\})}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i) > 0$.
+We will show that $v_i(S \mid A_i) > 0$ implies $\exists g \in S$
+such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
+
+Let $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
+Let $S \defeq \{g_1, \ldots, g_k\}$. Then by submodularity of $v_i$, we get
+\[ 0 < v_i(S \mid A_i) = \sum_{t=1}^k v_i(g_t \mid A_i \cup \{g_1, \ldots, g_{t-1}\})
+    \le \sum_{t=1}^k v_i(g_t \mid A_i). \]
+Hence, $v_i(g \mid A_i) > 0$ for some $g \in S$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:efx-equiv-submod-chores}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if $v_i$ is submodular and all marginals are non-positive for agent $i$
+(i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq M$ and $c \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \frac{\max(\{|v_i(A_i \setminus \{c\})| \mid c \in A_i
+    \textrm{ and } |v_i(c \mid A_i \setminus \{c\})| > 0\})}{w_i} \le \frac{|v_i(A_j)|}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i \setminus S) < 0$.
+We will show that $v_i(S \mid A_i \setminus S) < 0$ implies $\exists c \in S$
+such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
+
+Let $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
+Let $S \defeq \{c_1, \ldots, c_k\}$.
+For any $t \in \{0\} \cup [k]$, let $S_t \defeq \{c_1, \ldots, c_t\}$. Then
+\begin{align*}
+v_i(S \mid A_i \setminus S) &= v_i(A_i \setminus S_0) - v_i(A_i \setminus S_k)
+\\ &= \sum_{t=1}^k (v_i(A_i \setminus S_{t-1}) - v_i(A_i \setminus S_t))
+\\ &= \sum_{t=1}^k v_i(c_t \mid A_i \setminus S_t)
+\end{align*}
+By submodularity of $v_i$, we get
+\[ 0 > v_i(S \mid A_i \setminus S) = \sum_{t=1}^k v_i(c_t \mid A_i \setminus S_t)
+    \ge \sum_{t=1}^k v_i(c_t \mid A_i \setminus \{c_t\}). \]
+Hence, for some $c \in S$, we have $v_i(c \mid A_i \setminus \{c\}) < 0$.
+\end{proof}
