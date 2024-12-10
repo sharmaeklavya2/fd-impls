@@ -1,0 +1,204 @@
+\section{Details on Fairness Notions}
+\label{sec:notions-extra}
+
+Although we do not define any new fairness notions in this paper,
+we extend some of them to more general settings than they were originally defined for.
+For some notions, this extension is not obvious and is based on careful deliberation.
+Here we show how we arrived at these extensions and why they make sense.
+
+\subsection{EFX}
+\label{sec:notions:efx}
+
+Defining EFX in the fully general setting (non-additive valuations, mixed manna) is tricky.
+So, we start with the definition of EFX for additive goods,
+and gradually build up to the general definition of EFX from there.
+(TODO: Some of this is part of the EEFX journal paper. How to cite that?)
+
+There are actually two competing defintions of EFX for additive goods.
+According to the original definition by \cite{caragiannis2019unreasonable},
+an allocation $A$ is EFX-fair to agent $i$ if for every other agent $j$,
+removing any positively-valued good from $j$'s bundle eliminates $i$'s envy. Formally,
+\[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j: v_i(g) > 0} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+
+A different definition, often called \EFXZero{},
+doesn't require the good $j$ to have a positive value to $i$ \cite{plaut2020almost}.
+An allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$,
+\[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+
+\EFXZero{} is known to be incompatible with PO
+based on the following simple example (TODO: cite),
+whereas it is not known whether EFX is compatible with PO.
+
+\begin{example}
+\label{ex:efx-po}
+Consider the fair division instance $([2], \{g_1, g_2, g_3\}, (v_i)_{i=1}^2, (1/2, 1/2))$,
+where $v_1$ and $v_2$ are additive, and
+\begin{align*}
+   v_1(g_1) &= 1, & v_1(g_2) &= 0, & v_1(g_3) &= 10,
+\\ v_2(g_1) &= 0, & v_2(g_2) &= 1, & v_2(g_3) &= 10.
+\end{align*}
+\end{example}
+
+For \cref{ex:efx-po}, for any Pareto-optimal allocation $A$, we have $g_1 \in A_1$ and $g_2 \in A_2$
+(otherwise we can transfer $g_1$ to agent 1 or $g_2$ to agent 2 to obtain a Pareto-dominator of $A$).
+Then the agent who did not get $g_3$ in $A$ is not \EFXZero-satisfied, although she is EFX-satisfied.
+
+\begin{comment}
+For two agents having additive valuations, when the items are goods,
+every MMS-fair allocation is EFX (Theorem 4.6 in \cite{caragiannis2019unreasonable}).
+(For more than two agents, PMMS implies EFX \cite{caragiannis2019unreasonable}
+and MMS implies EEFX \cite{caragiannis2023new}.)
+However, this is not true for \EFXZero.
+For \cref{ex:efx-po}, each agent's maximin share is 1, so allocation $(\{1\}, \{2, 3\})$
+is MMS, but we have already seen that it is not \EFXZero-fair.
+\end{comment}
+
+While \EFXZero{} is trivial to extend to non-additive valuations, EFX is not.
+This is because every good in $j$'s bundle can have zero value to agent $i$.
+(Additionally, $j$'s marginal value over $A_j$ and $A_i$ may also be zero.)
+Before we try to address this issue, let's instead jump to the setting of additive mixed manna.
+
+One way to define EFX for mixed manna is this:
+agent $i$ is EFX-satisfied by allocation $A$ if for every other agent $j$,
+either agent $i$ doesn't envy $j$, or $i$'s envy towards $j$ vanishes after
+either removing the least valuable positively-valued item from $j$
+or after removing the most valuable negatively-valued item from $i$.
+However, we argue that this is not sufficient.
+
+\begin{example}
+\label{ex:efx-mixed-manna}
+Consier a fair division instance $\Ical$ having 2 agents with equal entitlements,
+identical additive valuations, two goods of values $10$ each,
+and two chores of values $-9$ each.
+Consider an allocation $A$ where all the 4 items are allocated to agent 2.
+Then agent 1 would be EFX-satisfied by $A$, even though allocation $B$,
+where each agent gets one good and one chore, is fairer.
+\end{example}
+
+For goods, EFX is considered one of the strongest notions of fairness,
+so we would like it to be a very strong notion for mixed manna too.
+The key observation in \cref{ex:efx-mixed-manna} is that in allocation $A$,
+we can transfer a set of items (containing one good and one chore) from agent 2 to agent 1
+and get a fairer allocation.
+This suggests that instead of (hypothetically) removing a single good from $j$
+or a single chore from $i$ in the definition of EFX,
+we should remove a positively-valued subset of $A_j$
+or a negatively-valued subset of $A_i$.
+
+Hence, for additive mixed manna, an allocation $A$ is EFX-fair to agent $i$
+if for every other agent $j$, $i$ doesn't envy $j$, or both of the following hold:
+\begin{enumerate}
+\item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S) \mid S \subseteq A_j
+    \textrm{ and } v_i(S) > 0\})}{w_j}$.
+\item $\displaystyle \frac{\min(\{v_i(A_i \setminus S) \mid S \subseteq A_i
+    \textrm{ and } v_i(S) < 0 \})}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\end{enumerate}
+
+This definition also hints towards how to handle goods with non-additive valuations.
+Even if every good in $j$'s bundle has (marginal) value zero to agent $i$,
+some subset of $j$'s bundle must have positive (marginal) value.
+We replace $v(S) > 0$ by $v_i(S \mid A_i) > 0$ to ensure that
+transferring $S$ from $j$ to $i$ leads to an increase in $i$'s valuation,
+otherwise we lose compatibility with PO, as the following example demonstrates.
+
+\begin{example}
+\label{ex:efx-two-colors}
+Consider a fair division instance with 2 agents having equal entitlements and identical valuations.
+There are 2 red goods and 4 blue goods. The value of any bundle is $\max(k_r, k_b)$,
+where $k_r$ and $k_b$ are the numbers of red and blue goods in the bundle, respectively.
+(The valuation function is the rank function of a partition matroid,
+and hence, is submodular. (TODO: prove or cite or remove))
+\end{example}
+
+For \cref{ex:efx-two-colors}, in any allocation, some agent gets at most 2 blue goods,
+and that agent's value for her own bundle can be at most 2.
+Also, the maximum value that any bundle can have is 4.
+Hence, an allocation is PO iff one agent gets all the blue goods
+and the other agent gets all the red goods.
+If we want EFX and PO to be compatible for this instance,
+we must define EFX such that the allocation obtained by giving
+all blue goods to one agent and all red goods to the other agent must be EFX.
+
+We now identify special cases where our definition of EFX (\cref{defn:efx})
+is equivalent to well-known definitions of EFX under special cases.
+
+\begin{lemma}
+\label{thm:efx-equiv-positive}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if all marginals are positive for agent $i$
+(i.e., $v_i(g \mid R) > 0$ for all $R \subseteq M$ and $g \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i) > 0$.
+Since marginals are positive, $v_i(S \mid A_i) > 0$ for any $|S| \ge 1$.
+Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
+\end{proof}
+
+\begin{lemma}
+\label{thm:efx-equiv-negative}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if all marginals are negative for agent $i$
+(i.e., $v_i(c \mid R) < 0$ for all $R \subseteq M$ and $c \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \max_{c \in A_i} \frac{|v_i(A_i \setminus \{c\})|}{w_i} \le \frac{|v_i(A_j)|}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i \setminus S) < 0$.
+Since marginals are negative, $v_i(S \mid A_i \setminus S) < 0$ for any $|S| \ge 1$.
+Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
+\end{proof}
+
+\begin{lemma}
+\label{thm:efx-equiv-submod-goods}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if $v_i$ is submodular and all marginals are non-negative for agent $i$
+(i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq M$ and $g \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus \{g\})
+        \mid g \in A_j \textrm{ and } v_i(g \mid A_i) > 0\})}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i) > 0$.
+We will show that $v_i(S \mid A_i) > 0$ implies $\exists g \in S$
+such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
+
+Let $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
+Let $S \defeq \{g_1, \ldots, g_k\}$. Then by submodularity of $v_i$, we get
+\[ 0 < v_i(S \mid A_i) = \sum_{t=1}^k v_i(g_t \mid A_i \cup \{g_1, \ldots, g_{t-1}\})
+    \le \sum_{t=1}^k v_i(g_t \mid A_i). \]
+Hence, $v_i(g \mid A_i) > 0$ for some $g \in S$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:efx-equiv-submod-chores}
+In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+if $v_i$ is submodular and all marginals are non-positive for agent $i$
+(i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq M$ and $c \in M \setminus R$),
+then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
+\[ \frac{\max(\{|v_i(A_i \setminus \{c\})| \mid c \in A_i
+    \textrm{ and } |v_i(c \mid A_i \setminus \{c\})| > 0\})}{w_i} \le \frac{|v_i(A_j)|}{w_j}. \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
+the minimal $S$ such that $v_i(S \mid A_i \setminus S) < 0$.
+We will show that $v_i(S \mid A_i \setminus S) < 0$ implies $\exists c \in S$
+such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
+
+Let $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
+Let $S \defeq \{c_1, \ldots, c_k\}$.
+For any $t \in \{0\} \cup [k]$, let $S_t \defeq \{c_1, \ldots, c_t\}$. Then
+\begin{align*}
+v_i(S \mid A_i \setminus S) &= v_i(A_i \setminus S_0) - v_i(A_i \setminus S_k)
+\\ &= \sum_{t=1}^k (v_i(A_i \setminus S_{t-1}) - v_i(A_i \setminus S_t))
+\\ &= \sum_{t=1}^k v_i(c_t \mid A_i \setminus S_t).
+\end{align*}
+By submodularity of $v_i$, we get
+\[ 0 > v_i(S \mid A_i \setminus S) = \sum_{t=1}^k v_i(c_t \mid A_i \setminus S_t)
+    \ge \sum_{t=1}^k v_i(c_t \mid A_i \setminus \{c_t\}). \]
+Hence, for some $c \in S$, we have $v_i(c \mid A_i \setminus \{c\}) < 0$.
+\end{proof}
