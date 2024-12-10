@@ -46,7 +46,7 @@ an allocation $A$ is EFX-fair to agent $i$ if for every other agent $j$,
 $i$ doesn't envy $j$, or both of the following hold:
 \begin{enumerate}
 \item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S) \mid S \subseteq A_j
-    \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}$.
+    \textrm{ and } v_i(S \mid A_i) > 0 \textrm{ and } v_i(S \mid A_j \setminus S) \ge 0\})}{w_j}$.
 \item $\displaystyle \frac{\min(\{v_i(A_i \setminus S) \mid S \subseteq A_i
     \textrm{ and } v_i(S \mid A_i \setminus S) < 0 \})}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
 \end{enumerate}
