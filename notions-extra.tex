@@ -202,3 +202,115 @@ By submodularity of $v_i$, we get
     \ge \sum_{t=1}^k v_i(c_t \mid A_i \setminus \{c_t\}). \]
 Hence, for some $c \in S$, we have $v_i(c \mid A_i \setminus \{c\}) < 0$.
 \end{proof}
+
+\subsection{MMS}
+\label{sec:notions:mms}
+
+\begin{lemma}
+\label{thm:pess-is-mms}
+For any fair division instance with equal entitlements,
+the pessShare of any agent is the same as her maximin share.
+\end{lemma}
+\begin{proof}
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance,
+where $w_i = 1/n$ for all $i \in [n]$.
+Any agent $i$'s $1$-out-of-$n$ share is the same as $\MMS_i$, so $\pessShare_i \ge \MMS_i$.
+
+Let $\ell/d \le n$ and let $X \in \Pi_d(M)$ such that $v_i(X_j) \le v_i(X_{j+1})$ for all $j \in [d-1]$.
+Now let $Y_1$ be the union of the first $\ell$ bundles of $X$,
+let $Y_2$ be the union of the next $\ell$ bundles of $X$, and so on.
+Add any remaining bundles of $X$ to $Y_n$.
+Formally, $Y \in \Pi_n(M)$ where $Y_k \defeq \bigcup_{j=(k-1)\ell+1}^{k\ell} X_j$ for $k \in [n-1]$
+and $Y_n \defeq M \setminus \bigcup_{j=1}^{n-1} Y_j$.
+Then $Y_n$ contains at least $\ell$ bundles of $X$, since $d \ge \ell n$.
+Hence, $v_i(Y_1) \le v_i(Y_2) \le \ldots \le v_i(Y_n)$,
+and $v_i(Y_1)$ is agent $i$'s $\ell$-out-of-$d$ share.
+
+By definition of MMS, $v_i(Y_1) \le \MMS_i$.
+Hence, for any $\ell$ and $d$ such that $\ell/d \le n$,
+agent $i$'s $\ell$-out-of-$d$ share is at most her MMS.
+Hence, $\pessShare \le \MMS_i$.
+\end{proof}
+
+\subsection{APS}
+\label{sec:notions:aps}
+
+\begin{lemma}
+\label{thm:aps-optimal-price}
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+For agent $i$, let $G$ be the set of goods and $C$ be the set of chores,
+i.e., $G \defeq \{g \in [m]: v_i(g \mid R) \ge 0 \forall R \subseteq [m] \setminus \{g\}\}$
+and $C \defeq \{c \in [m]: v_i(c \mid R) \le 0 \forall R \subseteq [m] \setminus \{g\}\}$
+Then for some optimal price vector $\phat \in \mathbb{R}^m$, we have
+$\phat_g \ge 0$ for all $g \in G$ and $\phat_c \le 0$ for all $c \in C$.
+\end{lemma}
+\begin{proof}
+Let $p^* \in \mathbb{R}^m$ be an optimal price vector.
+Let $\Ghat \defeq \{g \in G: p^*_g < 0\}$ and $\Chat \defeq \{c \in C: p^*_c > 0\}$.
+%
+The high-level idea is that if we change the price of $\Ghat \cup \Chat$ to 0,
+we get potentially better prices.
+%
+Define $\phat \in \mathbb{R}^m$ as
+\[ \phat_j \defeq \begin{cases}
+0 & \textrm{ if } j \in \Ghat \cup \Chat
+\\ p^*_j & \textrm{ otherwise}
+\end{cases}, \]
+and let
+\[ \Shat \in \argmax_{S \subseteq [m]: \phat(S) \le w_i\phat([m])} v_i(S) .\]
+Since $\phat(\Shat \cup \Ghat \setminus \Chat) = \phat(\Shat)$
+and $v_i(\Shat \cup \Ghat \setminus \Chat) \ge v_i(\Shat)$,
+we can assume without loss of generality that
+$\Ghat \subseteq \Shat$ and $\Chat \cap \Shat = \emptyset$.
+\[ p^*(\Shat) - w_ip^*([m])
+= (\phat(\Shat) - w_i\phat([m])) - (1-w_i)(-p^*(\Ghat)) - w_ip^*(\Chat) \le 0. \]
+Hence,
+\[ \max_{S \subseteq [m]: p^*(S) \le w_ip^*([m])} v_i(S)
+\ge v_i(\Shat) = \max_{S \subseteq [m]: \phat(S) \le w_i\phat([m])} v_i(S), \]
+so $\phat$ is also an optimal price vector.
+\end{proof}
+
+When all items are goods, by \cref{thm:aps-optimal-price}, we can assume \wLoG{} that
+$p$ is non-negative and $p([m]) = 1$. Hence,
+\[ \APS_i = \min_{p \in \Delta_m}\;\max_{S \subseteq [m]: p(S) \le w_i} v_i(S). \]
+
+When all items are chores, by \cref{thm:aps-optimal-price}, we can assume \wLoG{} that
+$p$ is non-positive and $p([m]) = -1$. Hence,
+\[ -\APS_i = \max_{q \in \Delta_m}\;\min_{S \subseteq [m]: q(S) \ge w_i} d_i(S). \]
+
+\begin{lemma}
+\label{thm:aps-primal-dual-equiv}
+\Cref{defn:aps,defn:aps-dual} are equivalent.
+\end{lemma}
+\begin{proof}
+Let $\pAPS_i$ and $\dAPS_i$ be agent $i$'s AnyPrice shares given by
+the primal and dual definitions, respectively.
+We will show that for any $z \in \mathbb{R}$, $\pAPS_i \ge z$ iff $\dAPS_i \ge z$.
+This would prove that $\pAPS_i = \dAPS_i$.
+
+$\dAPS_i \ge z$ iff the following linear program has a feasible solution:
+\[ \min_{x \in \mathbb{R}_{\ge 0}^{\Scal_z}} 0
+\textrm{ where } \sum_{S \in \Scal_z} x_S = 1
+    \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
+Its dual is
+\[ \max_{p \in \mathbb{R}^m, r \in \mathbb{R}} r - w_ip([m])
+\textrm{ where } p(S) \ge r \textrm{ for all } S \in \Scal_z. \]
+The dual LP is feasible since $(0, 0)$ is a solution.
+Furthermore, if $(p, r)$ is feasible for the dual LP,
+then $(\alpha p, \alpha r)$ is also feasible, for any $\alpha \ge 0$.
+Hence, by strong duality of LPs, the primal LP is feasible iff
+all feasible solutions to the dual have objective value at most 0.
+
+For a given $p$, the optimal $r$ is $\min_{S \in \Scal_z} p(S)$.
+Hence, the dual LP is bounded iff for all $p \in \mathbb{R}^m$,
+\[ \min_{S \in \Scal_z} p(S) \le w_ip([m]). \]
+Furthermore,
+\begin{align*}
+& \forall p \in \mathbb{R}^m, \min_{S \in \Scal_z} p(S) \le w_ip([m])
+\\ &\iff \forall p \in \mathbb{R}^m, \exists S \subseteq [m] \textrm{ such that }
+    p(S) \le w_ip([m]) \textrm{ and } v_i(S) \ge z
+\\ &\iff \left(\min_{p \in \mathbb{R}^m} \max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S)\right) \ge z
+\\ &\iff \pAPS_i \ge z.
+\end{align*}
+Hence, $\dAPS_i \ge z \iff \pAPS_i \ge z$.
+\end{proof}
