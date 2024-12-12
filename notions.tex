@@ -93,11 +93,11 @@ binary (or negative binary) valuations.
 \label{defn:propx}
 For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
 an allocation $A$ is said to be PROPx-fair to agent $i$ iff
-either $v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
+either $v_i(A_i) \ge w_iv_i(M)$ or both of these conditions hold:
 \begin{tightenum}
-\item $v_i(A_i \cup S) > w_iv_i([m])$ for every $S \subseteq [m] \setminus A_i$
+\item $v_i(A_i \cup S) > w_iv_i(M)$ for every $S \subseteq M \setminus A_i$
     such that $v_i(S \mid A_i) > 0$.
-\item $v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
+\item $v_i(A_i \setminus S) > w_iv_i(M)$ for every $S \subseteq A_i$
     such that $v_i(S \mid A_i \setminus S) < 0$.
 \end{tightenum}
 \end{definition}
@@ -166,7 +166,7 @@ For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=
 \begin{definition}[APS (primal)]
 \label{defn:aps}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-agent $i$'s AnyPrice Share is defined as
+agent $i$'s AnyPrice Share (APS) is defined as
 \[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
 Here $p$ is called the \emph{price vector}.
 A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector if
@@ -180,8 +180,9 @@ This follows from \cref{thm:aps-optimal-price} (c.f.~\cref{sec:notions:aps}).
 
 \begin{definition}[APS (dual)]
 \label{defn:aps-dual}
-For any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
-Then $\APS_i$ is the largest value $z$ such that
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+For an agent $i$ and any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
+Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ such that
 \[ \exists x \in \mathbb{R}_{\ge 0}^{\Scal_z}, \sum_{S \in \Scal_z} x_S = 1
     \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
 \end{definition}
