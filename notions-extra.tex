@@ -392,3 +392,49 @@ some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
 By \cref{thm:submod-negative-elem}, $v_i(S \mid A_i \setminus S) < 0$ implies $\exists c \in S$
 such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
+
+\subsection{PROPm}
+\label{sec:notions:propm}
+
+PROPm was first defined in \cite{baklanov2021achieving}
+for equal entitlements and goods with additive valuations.
+%For this case, \cite{baklanov2021propm} shows that PROPm allocations always exist.
+Moreover, they claimed that PROPx implies PROPm and PROPm implies PROP1.
+
+According to \cite{baklanov2021achieving}, when dividing a set $M$ of goods among a set $N$ of agents,
+$A$ is PROPm-fair to agent $i$ if $v_i(A_i) + \max_{j \neq i} m_i(A_j) \ge v_i(M)/|N|$,
+where $m_i(S) \defeq \min_{g \in S} v_i(g)$.
+However, \cite{baklanov2021achieving} doesn't explicitly state what $m_i(\emptyset)$ is.
+The well-known convension of $\min(\emptyset) = \infty$ leads to the strange phenomenon
+where every agent is PROPm-satisfied if two agents receive no goods
+(whereas PROP1 is not guaranteed).
+One way to fix this is to only consider agents with non-empty bundles,
+i.e., we say that $i$ is PROPm-satisfied by $A$ if
+$v_i(A_i) + \max_{j \in N \setminus \{i\}: A_j \neq \emptyset} m_i(A_j) \ge v_i(M)/|N|$.
+This doesn't give a satisfactory definition when $A_j = \emptyset$
+for all $j \in N \setminus \{i\}$ (assuming $\max(\emptyset) = -\infty$),
+so we define $A$ to be PROPm-fair to $i$ for that edge case.
+
+The above idea, along with extending the definition to mixed manna
+in the same way as PROPx (\cref{defn:propx}),
+gives us our definition of PROPm (\cref{defn:propm}).
+Moreover, the following two example instances
+(having 3 agents with equal entitlements and identical additive valuations)
+guided our definition of PROPm.
+
+\begin{enumerate}
+\item Consider three goods of values 100, 10, and 1.
+    Intuitively, each agent should get 1 good each, and that should be considered fair.
+\item Consider 5 items of values $-1000$, $-1000$, $-1000$, $10$, $1$.
+    Intuitively, the allocation ($\{-1000, 10, 1\}$, $\{-1000\}$, $\{-1000\}$) should not be fair,
+    and the allocation ($\{-1000, 10\}$, $\{-1000, 1\}$, $\{-1000\}$) should be fair.
+    In both allocations, removing a chore makes an agent PROP-satisfied, so just
+    satisfying this condition is not enough. We also need to look at the goods.
+\end{enumerate}
+
+For mixed manna, \cite{livanos2022almost} defines a notion called PropMX,
+but that definition is too weak: when all items are goods, every allocation is trivially PropMX.
+
+\cite{baklanov2021propm} showed that for equal entitlements and goods with additive valuations,
+a PROPm allocation always exists and can be computed in polynomial time.
+It can be verified that their result also works for our definition of PROPm (\cref{defn:propm}).

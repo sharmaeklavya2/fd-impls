@@ -67,12 +67,6 @@ agent $i$'s \emph{proportional share} is $w_iv_i(M)$.
 Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_iv_i(M)$.
 \end{definition}
 
-\begin{tightenum}
-\item Proportional up to one item (PROP1).
-\item Proportional up to any item (PROPX).
-\item Proportional up to maximin item (PROPM).
-\end{tightenum}
-
 \begin{definition}[PROP1 \cite{conitzer2017fair}]
 \label{defn:prop1}
 For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
@@ -107,6 +101,28 @@ either $v_i(A_i) \ge w_iv_i(M)$ or both of these conditions hold:
 However, this is because those definitions were for more restricted settings,
 and for those settings, we show that our definition is equivalent to theirs
 (\cref{sec:notions:propx}).
+
+\begin{definition}[PROPm]
+\label{defn:propm}
+Let $(N, M, (v_i)_{i \in N}, w)$ be a fair division instance for indivisible items.
+An allocation $A$ is said to be PROPm-fair to agent $i$ iff
+$v_i(A_i) \ge w_iv_i(M)$ or both of these conditions hold:
+\begin{tightenum}
+\item $v_i(A_i \setminus S) > w_iv_i(M)$ for every $S \subseteq A_i$
+    such that $v_i(S \mid A_i \setminus S) < 0$.
+\item For every $j \in N \setminus \{i\}$, define
+    \[ \tau_j \defeq \begin{cases}
+    0 & \textrm{ if } v_i(S \mid A_i) \le 0 \textrm{ for all } S \subseteq A_j
+    \\ \min(\{v_i(S \mid A_i) \mid S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\}) & \textrm{ otherwise}
+    \end{cases}. \]
+    Define $T \defeq \{\tau_j \mid j \in N \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
+    Then either $T = \emptyset$, or $v_i(A_i) + \max(T) > w_iv_i(M)$.
+\end{tightenum}
+\end{definition}
+
+PROPm was originally defined in \cite{baklanov2021achieving} for additive goods.
+However, that definition has a minor error, which we explain in \cref{sec:notions:propm}.
+\Cref{defn:propm} fixes the error.
 
 \subsection{Maximin Share and AnyPrice Share}
 
