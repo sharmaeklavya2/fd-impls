@@ -132,7 +132,7 @@ then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
-the minimal $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
+some minimal $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
 Since marginals are positive, $v_i(S \mid A_i) > 0$ for any $|S| \ge 1$.
 Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
 \end{proof}
@@ -147,7 +147,7 @@ then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
-the minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
+some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
 Since marginals are negative, $v_i(S \mid A_i \setminus S) < 0$ for any $|S| \ge 1$.
 Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
 \end{proof}
@@ -175,7 +175,7 @@ then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
-the minimal $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
+some minimal $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
 By \cref{thm:submod-positive-elem}, $v_i(S \mid A_i) > 0$ implies $\exists g \in S$
 such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
@@ -209,7 +209,7 @@ then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
-the minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
+some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
 By \cref{thm:submod-negative-elem}, $v_i(S \mid A_i \setminus S) < 0$ implies $\exists c \in S$
 such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
