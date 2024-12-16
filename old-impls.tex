@@ -46,8 +46,8 @@ $\phi(F_1, F_2) \implies \phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)
 \begin{proof}
 Suppose $\phi(F_1, F_2)$.
 Pick any $(\Ical, A) \in \Omega$.
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$.
-Pick any $i \in N$.
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$.
+Pick any $i \in [n]$.
 
 Suppose $A$ is epistemic-$F_1$-fair to $i$.
 Let $B$ be $i$'s epistemic-$F_1$-certificate for $A$.
@@ -109,9 +109,8 @@ or when all items are chores.
 
 \begin{lemma}
 \label{thm:impl:mefs-to-prop}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
-where some agent $i$ has a subadditive valuation function.
-If an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is subadditive and an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.
 \end{lemma}
 \begin{proof}
 Let $B$ be agent $i$'s MEFS-certificate for $A$.
@@ -125,9 +124,9 @@ Hence,
 
 \begin{lemma}
 \label{thm:impl:ef-to-gprop}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$
-where some agent $i$ has a subadditive valuation function.
-If agent $i$ is env-free in $A$, then $A$ is also groupwise-PROP-fair to $i$.
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is subadditive and agent $i$ is envy-free in $A$,
+then $A$ is groupwise-PROP-fair to $i$.
 \end{lemma}
 \begin{proof}
 Let $S$ be a subset of agents containing $i$.
@@ -171,7 +170,7 @@ Hence, agent 1 does not envy agent 2.
 \begin{lemma}
 \label{thm:impl:pprop-to-ef}
 In the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$, for some agent $i$,
-if $v_i$ is superdditive and agent $i$ is PPROP-satisfied by allocation $A$,
+if $v_i$ is superdditive and agent $i$ is pairwise-PROP-satisfied by allocation $A$,
 then she is also envy-free in $A$.
 \end{lemma}
 \begin{proof}[Proof sketch]
@@ -179,12 +178,12 @@ Follows from \cref{thm:impl:prop-to-ef-n2} and \cref{defn:pairwise}.
 \end{proof}
 
 Because of how we define EFX (\cref{defn:efx}),
-it's now always true that EFX implies EF1.
+it's not always true that EFX implies EF1.
 However, it's true for many common settings, as the following lemma shows.
 
 \begin{lemma}
 \label{thm:impl:efx-to-ef1}
-In a fair division instance $(N, M, (v_i)_{i \in N}, w)$ of indivisible items,
+For the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 let $A$ be an allocation where agent $i$ is EFX-satisfied.
 Then agent $i$ is EF1-satisfied in these scenarios:
 \begin{tightenum}
@@ -239,7 +238,7 @@ EFX-satisfied but not EF1-satisfied.
 
 \begin{lemma}[Theorem 3 of \cite{caragiannis2023new}]
 \label{thm:impl:mxs-to-prop1}
-In a fair division instance where entitlements are equal,
-the items are goods, and $v_i$ is additive for some agent $i$,
-if an allocation $A$ is MXS-fair to agent $i$, then it is also PROP1-fair to agent $i$.
+In a fair division instance with equal entitlements,
+if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
+and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to agent $i$.
 \end{lemma}
