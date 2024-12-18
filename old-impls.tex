@@ -363,3 +363,91 @@ By <a href="../misc/mms-and-all-envy.html">mms-and-all-envy.html</a>,
 $|E_B| = n-1$ implies $S_B = \emptyset$.
 Hence, $B$ is agent $i$'s EEFX-certificate for $A$.
 \end{proof}
+
+\begin{lemma}
+\label{thm:submod-marginal-is-submod}
+For any $X \subseteq \Omega$ and any submodular function $f: 2^{\Omega} \to \mathbb{R}$,
+$f(\cdot \mid X)$ is submodular.
+\end{lemma}
+\begin{proof}
+Let $P, Q \subseteq \Omega \setminus S$. Let $g(Y) \defeq f(Y \mid X)$. Then
+\begin{align*}
+& g(P) + g(Q)
+\\ &= f(P \cup S) + f(Q \cup S) - 2f(S)
+\\ &\ge f((P \cup S) \cup (Q \cup S)) + f((P \cup S) \cap (Q \cap S)) - 2f(S)
+\\ &= f((P \cup Q) \cup S) + f((P \cap Q) \cup S) - 2f(S)
+    \tag{by De Morgan's law}
+\\ &= g(P \cup Q) + g(P \cap Q).
+\end{align*}
+Hence, $g$ is submodular.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:propm-to-prop1}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if an allocation $A$ is PROPm-fair to agent $i$, then it is also PROP1-fair to agent $i$
+if at least one of these conditions holds:
+\begin{tightenum}
+\item $v_i$ is submodular.
+\item $v_i$ is doubly strictly monotone, i.e., $[m] = G \cup C$, $v_i(g \mid \cdot) > 0$
+    for every $g \in G$, and $v_i(c \mid \cdot) < 0$ for every $c \in C$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Suppose allocation $A$ is PROPm-fair to $i$ but not PROP1-fair to $i$. Then
+\begin{tightenum}
+\item\label{item:impl:propm-to-prop1:unprop}$v_i(A_i) < w_iv_i([m])$ (by PROP1 unfairness).
+\item\label{item:impl:propm-to-prop1:unprop1-chores}$v_i(A_i \setminus \{c\}) \le w_iv_i([m])$
+    for all $c \in A_i$ (by PROP1 unfairness).
+\item\label{item:impl:propm-to-prop1:unprop1-goods}$v_i(A_i \cup \{g\}) \le w_iv_i([m])$
+    for all $g \in [m] \setminus A_i$ (by PROP1 unfairness).
+\item\label{item:impl:propm-to-prop1:propm-chores}$v_i(A_i \setminus \{c\}) > w_iv_i([m])$
+    for all $c \in A_i$ such that $v_i(c \mid A_i \setminus \{c\}) < 0$ (by PROPm fairness).
+\item\label{item:impl:propm-to-prop1:propm-goods}$T = \emptyset$ or $v_i(A_i) + \max(T) > w_iv_i([m])$
+    (by PROPm fairness; c.f.~\cref{defn:propm} for the definition of $T$).
+\end{tightenum}
+
+By \ref{item:impl:propm-to-prop1:unprop1-chores} and \ref{item:impl:propm-to-prop1:propm-chores},
+we get $v_i(c \mid A_i \setminus \{c\}) \ge 0$ for all $c \in A_i$.
+We now show that $v_i(A_i) \ge 0$.
+If $v_i$ is doubly strictly monotone, then $A_i$ only contains goods, so $v_i(A_i) \ge 0$.
+Now suppose $v_i$ is submodular. Let $A_i = \{g_1, \ldots, g_k\}$. Then
+\[ v_i(A_i) = \sum_{j=1}^k v_i(g_j \mid \{g_1, \ldots, g_{j-1}\})
+    \ge v_i(g_j \mid A_i \setminus \{g_j\}) \ge 0. \]
+
+Suppose $T = \emptyset$. Then $\tau_j = 0$ for all $j \in [n] \setminus \{i\}$.
+Hence, for all $j \in [n] \setminus \{i\}$, we have $v_i(A_j \mid A_i) \le 0$.
+If $v_i$ is doubly strictly monotone, then $[m] \setminus A_i$ contains only chores,
+so $v_i([m] \setminus A_i \mid A_i) \le 0$. If $v_i$ is submodular, then
+$v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-marginal-is-submod}, so
+\[ v_i([m] \setminus A_i \mid A_i)
+    \le \sum_{j \in [n] \setminus \{i\}} v_i(A_j \mid A_i) \le 0. \]
+Hence, $v_i(A_i) \ge v_i([m])$.
+If $v_i([m]) \le 0$, then $v_i(A_i) \ge 0 \ge w_iv_i([m])$,
+and if $v_i([m]) \ge 0$, then $v_i(A_i) \ge v_i([m]) \ge w_iv_i([m])$.
+This contradicts \ref{item:impl:propm-to-prop1:unprop}, so $T \neq \emptyset$.
+
+Let $\max(T) = \tau_{\jhat} > 0$. By definition of $\tau_{\jhat}$, we get
+\begin{align*}
+0 < \tau_{\jhat} &= \min(\{v_i(S \mid A_i) \mid S \subseteq A_{\jhat} \textrm{ and } v_i(S \mid A_i) > 0\})
+\\ &\le \min(\{v_i(g \mid A_i) \mid g \in A_{\jhat} \textrm{ and } v_i(g \mid A_i) > 0\}).
+\end{align*}
+
+\textbf{Case 1}: $v_i(g \mid A_i) \le 0$ for all $g \in A_{\jhat}$.
+\\ If $v_i$ is doubly strictly monotone, then $A_{\jhat}$ only has chores,
+and so $v_i(S \mid A_i) \le 0$ for all $S \subseteq A_{\jhat}$.
+This contradicts the fact that $\tau_{\jhat} > 0$.
+Now let $v_i$ be submodular.
+Since $v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-marginal-is-submod},
+for any $S \subseteq A_{\jhat}$, we get
+$v_i(S \mid A_i) \le \sum_{c \in S} v_i(c \mid A_i) \le 0$.
+This contradicts the fact that $\tau_{\jhat} > 0$.
+
+\textbf{Case 2}: $v_i(\ghat \mid A_i) > 0$ for some $\ghat \in A_{\jhat}$.
+\\ Then $\max(T) = \tau_{\jhat} \le v_i(\ghat \mid A_i)$.
+By \ref{item:impl:propm-to-prop1:propm-goods}, we get
+$w_iv_i([m]) < v_i(A_i) + \max(T) \le v_i(A_i \cup \{\ghat\})$.
+But this contradicts \ref{item:impl:propm-to-prop1:unprop1-goods}.
+
+Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfied.
+\end{proof}

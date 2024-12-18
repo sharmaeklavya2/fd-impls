@@ -91,7 +91,7 @@ First, we show that this case doesn't occur if all items in $A_j$ are chores.
 Since $i$ envies $j$ but not EF1-envies $j$, we get
 \begin{equation}
 \label{eq:impl:eef1-to-prop1:gpos}
-\[ \frac{v_i(g \mid A_j \setminus \{g\})}{w_j}
+\frac{v_i(g \mid A_j \setminus \{g\})}{w_j}
 = \frac{v_i(A_j) - v_i(A_j \setminus \{g\})}{w_j}
 \ge \frac{v_i(A_j)}{w_j} - \frac{v_i(A_i)}{w_i} > 0.
 \end{equation}
@@ -153,4 +153,90 @@ by \cref{thm:impl:mms-to-efx-n2}, agent 1 is EFX-satisfied by $(P_1, P_j)$ in $\
 
 On considering all values of $j$, we get that agent 1 is EFX-satisfied by $P$ in $\Ical$.
 Hence, $P$ is agent 1's MXS-certificate for $A$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:eefx-to-propx}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+the items are chores to agent $i$ and $v_i$ is subadditive.
+If an allocation $A$ is epistemic-EFX-fair to agent $i$,
+then it is also PROPx-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Suppose $A$ is epistemic-EFX-fair to agent $i$ but not PROPx-fair to $i$.
+Let $B$ be agent $i$'s epistemic-EFX-certificate for $A$.
+Then $B$ is also PROPx-unfair to $i$.
+
+Since $i$ is EFX-satisfied with $B$, we get that for all $j \in [n] \setminus \{i\}$,
+\[ \min_{S \in \Scal} \frac{v_i(B_i \setminus S)}{w_i} \ge \frac{v_i(B_j)}{w_j}, \]
+where $\Scal \defeq \{S \subseteq B_i: v_i(S \mid B_i \setminus S) < 0\}$.
+Add these inequalities for all $j$, weighting each by $w_j$, to get
+\[ \min_{S \in \Scal} \frac{v_i(B_i \setminus \{c\})}{w_i} > \sum_{j=1}^n v_i(B_j) \ge v_i([m]), \]
+which implies that $B$ is PROPx-fair, a contradiction.
+Hence, there can't be an allocation $A$ that is epistemic-EFX-fair to $i$
+but not PROPx-fair to $i$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:efx-to-propm}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
+where $v_i$ is additive for some agent $i$.
+If an allocation $A$ is EFX-fair to agent $i$, then it is also PROPm-fair to agent $i$
+if at least one of these conditions holds:
+\begin{tightenum}
+\item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
+\item $n=2$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Suppose agent $i$ is EFX-satisfied but not PROPm-satisfied by allocation $A$.
+Then for some agent $\jhat \in [n] \setminus \{i\}$, we have
+\[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_{\jhat})}{w_{\jhat}}. \]
+
+Since $i$ doesn't EFX-envy $\jhat$, for all $S \subseteq A_i$ such that
+$v_i(S \mid A_i \setminus S) < 0$, we get
+\[ \frac{v_i(A_i \setminus S)}{w_i} \ge \frac{v_i(A_{\jhat})}{w_{\jhat}} > v_i([m]). \]
+Hence, condition \ref{item:propm:chores} (chores condition) of PROPm is satisfied.
+Since condition \ref{item:propm:goods} (goods condition) of PROPm is not satisfied, we get that
+$T \neq \emptyset$ and $v_i(A_i) + \max(T) \le w_iv_i([m])$.
+%
+For all $j \in T$, we get
+\begin{align}
+\frac{v_i(A_i)}{w_i} &\ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}
+    \tag{$i$ doesn't EFX-envy $j$}
+\\ &= \frac{v_i(A_j)}{w_j} - \frac{\min(\{v_i(S): S \subseteq A_j \textrm{ and } v_i(S) > 0\})}{w_j}
+    \notag
+\\ &= \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j} \ge \frac{v_i(A_j)}{w_j} - \frac{\max(T)}{w_j}.
+    \label{eqn:impl:efx-to-propm:1}
+\end{align}
+
+\textbf{Special case 1}: $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
+
+Let $J \defeq \{j \in [n] \setminus \{i\}: \tau_j > 0\}$.
+For all $j \in J$, using \eqref{eqn:impl:efx-to-propm:1}, we get
+\[ \frac{v_i(A_i) + \max(T)}{w_i}
+\ge \frac{v_i(A_j)}{w_j} - \frac{\max(T)}{w_j} + \frac{\max(T)}{w_i}
+\ge \frac{v_i(A_j)}{w_j}. \]
+
+For all $j \in [n] \setminus (J \cup \{i\})$, we have $\tau_j = 0$, so $v_i(A_j) \le 0$. Hence,
+\[ \frac{v_i(A_i)}{w_i} \ge 0 \ge \frac{v_i(A_j)}{w_j}. \]
+Therefore,
+\[ v([m]) = \sum_{j=1}^n w_j\left(\frac{v_i(A_j)}{w_j}\right)
+    < \sum_{j=1}^n w_j\left(\frac{v_i(A_i) + \max(T)}{w_i}\right)
+    = \frac{v_i(A_i) + \max(T)}{w_i}. \]
+Hence, condition 1 of PROPm is satisfied, which is a contradiction.
+Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
+
+\textbf{Special case 2}: $n=2$
+
+Let the two agents be $i$ and $j$. Since $T \neq \emptyset$, we have $\max(T) = \tau_j > 0$.
+Since $i$ is not PROPm-satisfied by $A$, we get
+\begin{align}
+& v_i(A_i) + \tau_j \le w_iv_i([m]) = w_iv_i(A_i) + w_iv_i(A_j)
+\\ &\implies w_jv_i(A_i) + \tau_j \le w_iv_i(A_j)
+\\ &\implies \frac{v_i(A_i)}{w_i} \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_iw_j}
+    \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j}.
+\end{align}
+Combining this with equation \eqref{eqn:impl:efx-to-propm:1} gives us $\tau_j = 0$, which is a contradiction.
+Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
 \end{proof}

@@ -108,9 +108,9 @@ Let $(N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
 An allocation $A$ is said to be PROPm-fair to agent $i$ iff
 $v_i(A_i) \ge w_iv_i(M)$ or both of these conditions hold:
 \begin{tightenum}
-\item $v_i(A_i \setminus S) > w_iv_i(M)$ for every $S \subseteq A_i$
+\item\label{item:propm:chores}$v_i(A_i \setminus S) > w_iv_i(M)$ for every $S \subseteq A_i$
     such that $v_i(S \mid A_i \setminus S) < 0$.
-\item For every $j \in N \setminus \{i\}$, define
+\item\label{item:propm:goods}For every $j \in N \setminus \{i\}$, define
     \[ \tau_j \defeq \begin{cases}
     0 & \textrm{ if } v_i(S \mid A_i) \le 0 \textrm{ for all } S \subseteq A_j
     \\ \min(\{v_i(S \mid A_i) \mid S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\}) & \textrm{ otherwise}
