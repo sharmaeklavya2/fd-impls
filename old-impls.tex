@@ -236,9 +236,130 @@ A contradiction implies that it's impossible for agent $i$ to be
 EFX-satisfied but not EF1-satisfied.
 \end{proof}
 
+\subsection{Other Implications}
+
 \begin{lemma}[Theorem 3 of \cite{caragiannis2023new}]
 \label{thm:impl:mxs-to-prop1}
 In a fair division instance with equal entitlements,
 if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
 and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to agent $i$.
 \end{lemma}
+
+We now prove some results connecting MMS, EFX, and related notions,
+using techniques from \cite{plaut2020almost,caragiannis2023new}.
+
+\begin{lemma}
+\label{thm:mms-and-all-envy}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+suppose an allocation $A$ is WMMS-fair to agent $i$
+and $i$ envies every other agent.
+Then $A$ is also EFX-fair to agent $i$ if at least one of these conditions hold:
+\begin{tightenum}
+\item The items are goods to agent $i$ (i.e., $v_i(g \mid R) \ge 0$
+    for all $R \subseteq [m]$ and $g \in [m] \setminus R$).
+\item $v_i$ is additive and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Suppose agent $i$ is not EFX-satisfied by $A$, i.e., she EFX-envies some agent $j$.
+Then $\exists S \subseteq A_i \cup A_j$ where either
+
+\begin{tightenum}
+\item $S \subseteq A_j$, $v_i(S \mid A_i) > 0$, and
+    $\displaystyle \frac{v_i(A_i)}{w_i} < \frac{v_i(A_j \setminus S)}{w_j}$.
+\item $S \subseteq A_i$, $v_i(S \mid A_i \setminus S) < 0$, and
+    $\displaystyle \frac{v_i(A_i \setminus S)}{w_i} < \frac{v_i(A_j)}{w_j}$.
+\end{tightenum}
+
+If all items are goods, case 2 doesn't occur.
+
+\textbf{Case 1}: $S \subseteq A_j$
+
+Let $B$ be the allocation obtained by transferring $S$ from $A_j$ to $A_i$.
+Formally, let $B_i \defeq A_i \cup S$, $B_j \defeq A_j \setminus S$,
+and $B_k \defeq A_k$ for all $k \in [n] \setminus \{i, j\}$. Then
+\[ \frac{v_i(B_i)}{w_i} = \frac{v_i(A_i) + v_i(S \mid A_i)}{w_i} > \frac{v_i(A_i)}{w_i}, \]
+\[ \frac{v_i(B_j)}{w_j} = \frac{v_i(A_j \setminus S)}{w_j} > \frac{v_i(A_i)}{w_i}, \]
+and for any $k \in [n] \setminus \{i, j\}$, we get
+\[ \frac{v_i(B_k)}{w_k} = \frac{v_i(A_k)}{w_k} > \frac{v_i(A_i)}{w_i}. \]
+Hence,
+\[ \min_{k=1}^n \frac{v_i(B_k)}{w_k} > \frac{v_i(A_i)}{w_i} \ge \frac{\WMMS_i}{w_i}, \]
+which is a contradiction.
+
+\textbf{Case 2}: $S \subseteq A_i$
+
+Let $v_i$ be additive and $w_i \le w_j$.
+Let $B$ be the allocation obtained by transferring $S$ from $A_i$ to $A_j$. Formally,
+let $B_i \defeq A_i \setminus S$, $B_j \defeq A_j \cup S$,
+and $B_k \defeq A_k$ for all $k \in [n] \setminus \{i, j\}$. Then
+\[ \frac{v_i(B_i)}{w_i} = \frac{v_i(A_i) - v_i(S)}{w_i} > \frac{v_i(A_i)}{w_i}, \]
+\[ \frac{v_i(B_j)}{w_j} = \frac{v_i(A_j) + v_i(S)}{w_j} > \frac{v_i(A_i \setminus S)}{w_i} - \frac{d_i(S)}{w_j} \ge \frac{v_i(A_i)}{w_i}, \]
+and for any $k \in [n] \setminus \{i, j\}$, we get
+\[ \frac{v_i(B_k)}{w_k} = \frac{v_i(A_k)}{w_k} > \frac{v_i(A_i)}{w_i}. \]
+Hence,
+\[ \min_{k=1}^n \frac{v_i(B_k)}{w_k} > \frac{v_i(A_i)}{w_i} \ge \frac{\WMMS_i}{w_i}, \]
+which is a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:mms-to-efx-n2}
+For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
+suppose an allocation $A$ is WMMS-fair to agent 1.
+Then $A$ is also EFX-fair to agent 1 if at least one of these conditions hold:
+\begin{tightenum}
+\item The items are goods to agent 1.
+\item $v_1$ is additive and $w_1 \le w_2$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+If agent 1 doesn't envy agent 2, she is EFX-satisfied.
+Otherwise, she is EFX-satisfied because of \cref{thm:mms-and-all-envy}.
+\end{proof}
+
+Theorem 2 in \cite{caragiannis2023new} states that an MMS allocation is also an EEFX allocation
+(for additive valuations over goods and equal entitlements).
+The proof can be easily adapted to non-additive valuations over goods and unequal entitlements.
+For the sake of completeness, we give a proof below.
+
+\begin{lemma}
+\label{thm:impl:mms-to-eefx}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if all items are goods to agent $i$ and allocation $A$ is WMMS-fair to agent $i$,
+then $A$ is also epistemic-EFX-fair to $i$.
+\end{lemma}
+\begin{proof}
+In any allocation $X$, let
+$E_X$ be the set of agents envied by $i$,
+$S_X$ be the set of agents EFX-envied by $i$,
+$W_X$ be the total number of items among the agents in $S_X$.
+
+$E_X \defeq \{t \in [n] \setminus \{i\}: i \textrm{ envies } t \textrm{ in } X\}$,
+$S_X \defeq \{t \in [n] \setminus \{i\}: i \textrm{ EFX-envies } t \textrm{ in } X\}$,
+$W_X \defeq \sum_{t \in S_X} |X_t|$, and $\phi(X) \defeq (-|E_X|, W_X)$.
+
+First, we show that for any allocation $X$ where $|E_X| \le n-2$ and $S_X \neq \emptyset$,
+there exists a \emph{better} allocation $Y$, i.e, $Y_i = X_i$ and $\phi(Y) < \phi(X)$
+(tuples are compared lexicographically).
+
+Let $j \in S_X$ and $k \in [n] \setminus \{i\} \setminus E_X$.
+Since $i$ EFX-envies $j$, $\exists S \subseteq X_j$ such that $v_i(S \mid X_i) > 0$ and
+\[ \frac{v_1(X_1)}{w_1} < \frac{v_1(X_j \setminus S)}{w_j}. \]
+Let $Y_k \defeq X_k \cup S$, $Y_j \defeq X_j \setminus S$,
+and $Y_t \defeq X_t$ for all $t \in [n] \setminus \{j, k\}$.
+
+Then $i$ envies $j$ in $Y$. Hence, $E_X \subseteq E_Y$.
+If $k \in E_Y$, then $|E_Y| > |E_X|$, so $\phi(Y) < \phi(X)$.
+If $k \not\in E_Y$, then $W_Y < W_X$, so $\phi(Y) < \phi(X)$.
+Hence, $Y$ is better than $X$.
+
+Set $X = A$. As long as $|E_X| < n-1$ and $S_X \neq \emptyset$,
+keep modifying $X$ as per Lemma 1.
+This process will eventually end, since $\phi(X)$ keeps reducing,
+and there are a finite number of different values $\phi(X)$ can take.
+Let $B$ be the final allocation thus obtained.
+Then $B_i = A_i$, and $|E_B| = n-1$ or $S_B = \emptyset$.
+
+By <a href="../misc/mms-and-all-envy.html">mms-and-all-envy.html</a>,
+$|E_B| = n-1$ implies $S_B = \emptyset$.
+Hence, $B$ is agent $i$'s EEFX-certificate for $A$.
+\end{proof}

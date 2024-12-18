@@ -217,6 +217,24 @@ $nx_S \in \mathbb{Z}_{\ge 0}$ for all $S \in \Scal_z$ gives us an alternate defi
 They prove this only for goods, but their proof can be easily adapted to the case of mixed manna.
 For completeness sake, we prove this in \cref{thm:aps-primal-dual-equiv} (\cref{sec:notions:aps}).
 
+Closely related to maximin share is the notion of \emph{leximin partition}.
+
+\begin{definition}
+\label{defn:leximin}
+For any set $S \subseteq M$, let $\Pi_n(S)$ denote the set of all $n$-partitions of $S$.
+For any sequence $X = (x_i)_{i=1}^n$ of real numbers, define $\sorted(X)$ to be a permutation of $X$
+where entries occur in non-decreasing order.
+For any two sequences $X = (x_i)_{i=1}^n$ and $Y = (y_i)_{i=1}^n$, we say that $X \le Y$ if
+$\exists i \in [n]$ such that $x_i \le y_i$ and $x_j = y_j$ for all $j \in [i-1]$.
+(Note that this relation $\le$ over sequences is a total ordering.)
+
+We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[m]} \to \mathbb{R}$ if
+\[ P \in \argmax_{X \in \Pi_n([m])} \sorted\left((f(X_j))_{j=1}^n\right). \]
+\end{definition}
+
+It is easy to see that if $P$ is a leximin $n$-partition of $f: 2^{[m]} \to \mathbb{R}$,
+then $\min_{j=1}^n f(P_j) = \MMS_f^n([m])$.
+
 \subsection{Derived Notions}
 
 New fairness notions can be obtained by systematically modifying existing notions.

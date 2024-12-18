@@ -125,3 +125,32 @@ Since $\ghat$ is the most-valuable item in $A_j$ to $i$, we get that $v_i(g) \le
 which contradicts \eqref{eq:impl:eef1-to-prop1:gpos}.
 Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
 \end{proof}
+
+\begin{lemma}
+\label{thm:mms-implies-mxs}
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance with equal entitlements.
+Let allocation $A$ be MMS-fair to agent $i$.
+Then $A$ is also MXS-fair to $i$ if at least one of these conditions hold:
+\begin{tightenum}
+\item All items are goods to agent $i$.
+\item $v_i$ is additive.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+We will show that agent $i$'s leximin $n$-partition is her MXS-certificate for $A$,
+which would prove that $A$ is MXS-fair to agent $i$.
+
+Without loss of generality, assume $i = 1$.
+Let $P$ be a leximin $n$-partition of $v_1$ (c.f.~\cref{defn:leximin})
+such that $v_1(P_1) \le v_1(P_2) \le \ldots \le v_1(P_n)$.
+Then $v_1(P_1) = \MMS_{v_1}^n([m]) \le v_1(A_1)$.
+
+For any agent $j \ge 2$, the allocation $(P_1, P_j)$ is leximin for
+the instance $\Icalhat \defeq (\{i, j\}, P_1 \cup P_j, (v_1, v_j), (1/2, 1/2))$.
+Hence, agent 1 is MMS-satisfied by $(P_1, P_j)$ in $\Icalhat$.
+Since either all items are goods to agent 1 or $v_1$ is additive,
+by \cref{thm:impl:mms-to-efx-n2}, agent 1 is EFX-satisfied by $(P_1, P_j)$ in $\Icalhat$.
+
+On considering all values of $j$, we get that agent 1 is EFX-satisfied by $P$ in $\Ical$.
+Hence, $P$ is agent 1's MXS-certificate for $A$.
+\end{proof}
