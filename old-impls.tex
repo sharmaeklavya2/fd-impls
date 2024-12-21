@@ -451,3 +451,58 @@ But this contradicts \ref{item:impl:propm-to-prop1:unprop1-goods}.
 
 Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfied.
 \end{proof}
+
+We now look at implications among share-based notions like PROP, APS, and MMS.
+
+\begin{lemma}[Proposition 4 of \cite{babaioff2023fair}]
+\label{thm:impl:prop-to-aps}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+$\APS_i \le w_iv_i([m])$ for agent $i$ if $v_i$ is additive.
+\end{lemma}
+\begin{proof}
+Set the price $p(g)$ of each item $g$ to $v_i(g)$. Then
+\[ \APS_i \le \max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S)
+= \max_{S \subseteq [m]: v_i(S) \le w_iv_i([m])} v_i(S) \le w_iv_i([m]). \]
+\end{proof}
+
+\begin{lemma}
+\label{thm:prefix-sum-bound}
+Let $a_1 \le a_2 \le \ldots \le a_n$ be $n$ real numbers.
+Let $s_k \defeq \sum_{i=1}^k a_i$ for any $0 \le k \le n$.
+Then $s_k \le (k/n)s_n$.
+\end{lemma}
+\begin{proof}
+\[ s_n = s_k + \sum_{i=k+1}^n a_i \ge s_k + (n-k)a_k \ge s_k + (n-k)\frac{s_k}{k} = \frac{n}{k}s_k.
+\qedhere \]
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:prop-to-mms}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$ and $\pessShare_i \le w_iv_i([m])$.
+\end{lemma}
+\begin{proof}
+Let $P$ be agent $i$'s WMMS partition. Then
+\[ \frac{\WMMS_i}{w_i} = \min_{j=1}^n \frac{v_i(P_j)}{w_j}
+    \le \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right) \le v_i([m]). \]
+
+Let $P$ be agent $i$'s $\ell$-out-of-$d$-partition.
+Assume \wLoG{} that $v_i(P_1) \le v_i(P_2) \le \ldots \le v_i(P_d)$.
+Then by \cref{thm:prefix-sum-bound} and superadditivity of $v_i$, we get
+\[ \loodM_i = \sum_{j=1}^{\ell} v_i(P_j)
+    \le \frac{\ell}{d}\sum_{j=1}^d v_i(P_j) \le \frac{\ell}{d}v_i([m]). \]
+Hence,
+\[ \pessShare_i \defeq \sup_{1 \le \ell \le d: \ell/d \le w_i} \loodM_i
+    \le \sup_{1 \le \ell \le d: \ell/d \le w_i} (\ell/d)v_i([m]) \le w_iv_i([m]).
+    \qedhere \]
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:aps-to-pess}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+$\APS_i \ge \pessShare_i$ for every agent $i$.
+\end{lemma}
+\begin{proof}
+Proposition 2 in \cite{babaioff2023fair} proves this for goods,
+but their proof works for mixed manna too.
+\end{proof}

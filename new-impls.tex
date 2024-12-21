@@ -127,7 +127,7 @@ Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied
 \end{proof}
 
 \begin{lemma}
-\label{thm:mms-implies-mxs}
+\label{thm:mms-to-mxs}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance with equal entitlements.
 Let allocation $A$ be MMS-fair to agent $i$.
 Then $A$ is also MXS-fair to $i$ if at least one of these conditions hold:
@@ -239,4 +239,22 @@ Since $i$ is not PROPm-satisfied by $A$, we get
 \end{align}
 Combining this with equation \eqref{eqn:impl:efx-to-propm:1} gives us $\tau_j = 0$, which is a contradiction.
 Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:mms-to-aps-n2}
+Let $([2], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+If $v_k$ is additive for some agent $k$, then $\APS_k \le \WMMS_k$.
+If entitlements are equal, then $\APS_k = \MMS_k$.
+\end{lemma}
+\begin{proof}
+Let
+\[ \beta_k \defeq \max(\{v_k(S)/w_i: S \subseteq [m], i \in [2], v_k(S) \le w_iv_k([m])\}). \]
+Then $\WMMS_k = w_k\beta_k$, since there are only two agents and $v_k$ is additive.
+Let $p^*$ be the optimal APS price vector. Let
+\[ S^* \defeq \argmax_{S \subseteq [m]: p^*(S) \le w_kp^*([m])} v_k(S). \]
+Then $\APS_k = v_k(S^*)$. Since $\APS_k \le w_kv_k([m])$, we get
+$\APS_k/w_k \le \beta_k = \WMMS_k/w_k$. Hence, $\APS_k \le \WMMS_k$.
+
+When entitlements are equal, $\APS_k \ge \pessShare_k = \MMS_k$ by \cref{thm:impl:aps-to-pess}.
 \end{proof}
