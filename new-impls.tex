@@ -298,3 +298,36 @@ On setting $p = v_i$ in the primal definition of APS (\cref{defn:aps}), we get
 When entitlements are equal, $\APS_i \ge \pessShare_i \ge \MMS_i$
 by \cref{thm:impl:aps-to-pess}.
 \end{proof}
+
+\subsection{Additive Binary Valuations}
+
+\begin{lemma}
+\label{thm:impl:binary:prop}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $i$.
+\end{lemma}
+\begin{proof}
+Since $A$ is PROP-fair to $i$, and $v_i(S) \in \mathbb{Z}$ for all $S \subseteq [m]$,
+we get $v_i(A_i) \ge \ceil{v_i([m])/n}$.
+
+We will construct agent $i$'s epistemic-EF-certificate for $A$ by
+fusing an equal number of goods and chores outside her bundle into a single item of value 0
+and distributing the remaining items as evenly as possible.
+
+Let $M_+ \defeq \{g \in [m] \setminus A_i: v_i(g) = 1\}$
+and $M_- \defeq \{c \in [m] \setminus A_i: v_i(c) = -1\}$.
+Pick $\min(|M_+|, |M_-|)$ items each from $M_+$ and $M_-$,
+and fuse them together into a single item $t$ of value 0.
+Construct an allocation $B$ where $B_i = A_i$,
+$t$ is allocated to an arbitrary agent in $[n] \setminus \{i\}$,
+and the remaining items (which are either all from $M_+$ or all from $M_-$)
+are allocated among $[n] \setminus \{i\}$ by round-robin.
+
+In $B$, for each agent $j \in [n] \setminus \{i\}$, we have
+\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+    \le \bigceil{\frac{v_i([m]) - v_i([m])/n}{n-1}}
+    \le \bigceil{v_i([m])}{n}} \le v_i(A_i). \]
+Hence, $i$ doesn't envy anyone in $B$.
+Hence, $B$ is agent $i$'s epistemic-EF-certificate for $A$.
+\end{proof}
