@@ -302,7 +302,27 @@ by \cref{thm:impl:aps-to-pess}.
 \subsection{Additive Binary Valuations}
 
 \begin{lemma}
-\label{thm:impl:binary:prop}
+\label{thm:tribool-rr}
+For an additive function $f: 2^{[m]} \to \{-1, 0, 1\}$,
+there exists an $n$-partition $P$ such that $|f(P_i) - f(P_j)| \le 1$
+for all $i, j \in [n]$ and
+and $\floor{f([m])/n} \le f(P_i) \le \ceil{f([m])/n}$ for all $i \in [n]$.
+\end{lemma}
+\begin{proof}
+Partition $[m]$ into
+goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
+chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$,
+and neutral items $M_0 \defeq \{t \in [m]: v_i(t) = 0\}$.
+Fuse items $M_0$, $\min(|M_+|, |M_-|)$ goods, and $\min(|M_+|, |M_-|)$ chores
+into a single item $h$.
+Then we are left with only goods and a neutral item,
+or only chores and a neutral item.
+Using round-robin, one can allocate items such that
+any two bundles differ by at most one item.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:tribool:prop}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $i$.
@@ -311,23 +331,154 @@ If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $
 Since $A$ is PROP-fair to $i$, and $v_i(S) \in \mathbb{Z}$ for all $S \subseteq [m]$,
 we get $v_i(A_i) \ge \ceil{v_i([m])/n}$.
 
-We will construct agent $i$'s epistemic-EF-certificate for $A$ by
-fusing an equal number of goods and chores outside her bundle into a single item of value 0
-and distributing the remaining items as evenly as possible.
-
-Let $M_+ \defeq \{g \in [m] \setminus A_i: v_i(g) = 1\}$
-and $M_- \defeq \{c \in [m] \setminus A_i: v_i(c) = -1\}$.
-Pick $\min(|M_+|, |M_-|)$ items each from $M_+$ and $M_-$,
-and fuse them together into a single item $t$ of value 0.
-Construct an allocation $B$ where $B_i = A_i$,
-$t$ is allocated to an arbitrary agent in $[n] \setminus \{i\}$,
-and the remaining items (which are either all from $M_+$ or all from $M_-$)
-are allocated among $[n] \setminus \{i\}$ by round-robin.
+Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
+are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
+We will show that $B$ is agent $i$'s epistemic-EF-certificate for $A$.
 
 In $B$, for each agent $j \in [n] \setminus \{i\}$, we have
 \[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
     \le \bigceil{\frac{v_i([m]) - v_i([m])/n}{n-1}}
-    \le \bigceil{v_i([m])}{n}} \le v_i(A_i). \]
+    \le \bigceil{\frac{v_i([m])}{n}} \le v_i(A_i). \]
 Hence, $i$ doesn't envy anyone in $B$.
 Hence, $B$ is agent $i$'s epistemic-EF-certificate for $A$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:tribool:prop1}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then the following statements are equivalent:
+\begin{tightenum}
+\item Allocation $A$ is PROP1-fair to $i$.
+\item Allocation $A$ is PROPx-fair to $i$.
+\item $v_i(A_i) \ge \floor{w_iv_i([m])}$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Partition $[m]$ into
+goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
+chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$,
+and neutral items $M_0 \defeq \{t \in [m]: v_i(t) = 0\}$.
+
+\textbf{Case 1}: $A_i$ has all goods and no chores.
+\\ Then $v_i(A_i) \ge \max(0, v_i([m]))$.
+If $v_i([m]) \ge 0$, then $v_i(A_i) \ge v_i([m]) \ge w_iv_i([m])$,
+else $v_i(A_i) \ge 0 \ge w_iv_i([m])$.
+Hence, $v_i(A_i) \ge w_iv_i([m])$ and $A$ is PROPx+PROP1.
+
+\textbf{Case 2}: $A_i$ has a chore or some good is outside $A_i$.
+\\ Then adding a good to $A_i$ or removing a chore from $A_i$
+makes it's value more than $w_iv_i([m])$ iff $v_i(A_i) \ge \floor{w_iv_i([m])}$.
+Hence, $A$ is PROP1 iff $A$ is PROPx iff $v_i(A_i) \ge \floor{w_iv_i([m])}$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:tribool:aps}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then $\APS_i = \floor{w_iv_i([m])}$.
+\end{lemma}
+\begin{proof}
+Partition $[m]$ into goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
+chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$, and
+neutral items $M_0 \defeq \{t \in [m]: v_i(t) = 0\}$.
+
+First, set $p(t) = v_i(t)$ for each $t \in [m]$ to get $\APS_i \le w_im_i$.
+Since the APS is the value of some bundle, and bundle values can only be integers,
+we get $\APS_i \le \floor{w_im_i}$.
+
+Pick an arbitrary price vector $p \in \Delta_m$.
+We will construct a set $S$ such that $p(S) \le w_ip([m])$ and $v_i(S) \ge w_iv_i([m])$.
+Fuse items $M_0$, $\min(|M_+|, |M_-|)$ goods, and $\min(|M_+|, |M_-|)$ chores
+into a single item $h$.
+Let $M'_+$ and $M'_-$ be the remaining goods and chores, respectively.
+Then $M'_+ = \emptyset$ or $M'_- = \emptyset$.
+Using techniques from \cref{thm:aps-optimal-price},
+we can assume \wLoG{} that $p_g \ge 0$ for all $g \in M'_+$,
+$p_c \le 0$ for all $c \in M'_-$, and $p_h = 0$.
+
+\textbf{Case 1}: $M'_- = \emptyset$.
+\\ Let $m_i \defeq |M'_+| = v_i([m])$.
+Let $S$ be the cheapest $\floor{w_im_i}$ items in $M'_+$.
+Then using \cref{thm:prefix-sum-bound}, we get
+\[ p(S) \le \frac{\floor{w_im_i}}{m_i}p(M_+) \le w_ip([m]). \]
+Then $S$ is affordable and $v_i(S) = \floor{w_im_i}$.
+Hence, $\APS_i \ge \floor{w_im_i}$.
+
+\textbf{Case 2}: $M'_+ = \emptyset$.
+\\ Let $m_i \defeq |M'_-| = -v_i([m])$.
+Let $S$ be the cheapest $\ceil{w_im_i}$ items in $M'_- \cup \{h\}$.
+Then using \cref{thm:prefix-sum-bound}, we get
+\[ -p(S) \ge \frac{\ceil{w_im_i}}{m_i}(-p([m])) \ge w_i(-p([m])). \]
+Then $S$ is affordable and $-v_i(S) \le \ceil{w_im_i} = -\floor{w_iv_i([m])}$.
+Hence, $\APS_i \ge \floor{w_iv_i([m])}$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:tribool:m1s}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then $\MMS_i = \mathrm{M1S}_i = \floor{v_i([m])/n}$.
+\end{lemma}
+\begin{proof}
+Allocate items $[m]$ among agents $[n]$ using \cref{thm:tribool-rr} with $f = v_i$.
+Then any two bundles differ by a value of at most one.
+Hence, $\MMS_i = \floor{m'/n}$ and $\mathrm{M1S}_i \le \floor{m'/n}$,
+where $m' \defeq v_i([m])$.
+
+Let $X$ be an allocation where agent $i$ is EF1-satisfied.
+Then any two bundles can differ by a value of at most one.
+Hence, the smallest value $v_i(X_i)$ can have is $\floor{m'/n}$.
+Hence, $\mathrm{M1S}_i \ge \floor{m'/n}$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:tribool:ef1-gaps}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+If an allocation $A$ is EF1-fair to $i$, then it is also groupwise-APS-fair to $i$
+if at least one of these conditions hold:
+\begin{tightenum}
+\item $n=2$
+\item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
+\item $v_i(c) \in \{0, -1\}$ for all $c \in [m]$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Consider any subset $S$ of agents.
+On restricting $A$ to $S$, we get an allocation $B$ that is EF1-fair to $i$.
+$B$ is also PROP1-fair to $i$ by \cref{thm:impl:eef1-to-prop1},
+and APS-fair to $i$ by \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps}.
+Hence, $A$ is groupwise-APS-fair to $i$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:ceil-floor}
+For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
+\[ \bigfloor{\frac{m}{n}} = \bigceil{\frac{m+1}{n}} - 1. \]
+\end{lemma}
+
+\begin{lemma}
+\label{thm:impl:tribool:mms-to-eefx}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+If $v_i(A_i) \ge \floor{v_i([m])/n}$ for some allocation $A$,
+then $A$ is epistemic-EFX-fair to $i$.
+\end{lemma}
+\begin{proof}
+Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
+are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
+We will show that $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+
+Let $k \defeq v_i([m])$.
+Suppose $v_i(A_i) \ge \floor{k/n} = \ceil{(k+1)/n} - 1$ (c.f.~\cref{thm:ceil-floor}).
+Then for any other agent $j \in [n] \setminus \{i\}$, we get
+\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+    \le \bigceil{\frac{k - (k+1)/n + 1}{n-1}} = \bigceil{\frac{k+1}{n}}
+    \le v_i(B_i) + 1. \]
+If $B_j$ contains no goods and $B_i$ contains no chores,
+then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
+Otherwise, transferring a good from $j$ to $i$ or a chore from $i$ to $j$ in $B$
+eliminates $i$'s envy towards $j$.
+Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
 \end{proof}
