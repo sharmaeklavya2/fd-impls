@@ -242,19 +242,59 @@ Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfie
 \end{proof}
 
 \begin{lemma}
-\label{thm:impl:mms-to-aps-n2}
-Let $([2], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
-If $v_k$ is additive for some agent $k$, then $\APS_k \le \WMMS_k$.
-If entitlements are equal, then $\APS_k = \MMS_k$.
+\label{thm:wmms-vs-knappsack}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ and any agent $i$, define
+\[ \beta_i \defeq \max_{j=1}^n \max_{\substack{S \subseteq [m]:\\v_i(S) \le w_jv_i([m])}} \frac{v_i(S)}{w_j}. \]
+If $v_i$ is superadditive, then $\WMMS_i \le w_i\beta_i$.
+If $v_i$ is additive and $n = 2$, then $\WMMS_i = w_i\beta_i$.
 \end{lemma}
 \begin{proof}
-Let
-\[ \beta_k \defeq \max(\{v_k(S)/w_i: S \subseteq [m], i \in [2], v_k(S) \le w_iv_k([m])\}). \]
-Then $\WMMS_k = w_k\beta_k$, since there are only two agents and $v_k$ is additive.
-Let $p^*$ be the optimal APS price vector. Let
-\[ S^* \defeq \argmax_{S \subseteq [m]: p^*(S) \le w_kp^*([m])} v_k(S). \]
-Then $\APS_k = v_k(S^*)$. Since $\APS_k \le w_kv_k([m])$, we get
-$\APS_k/w_k \le \beta_k = \WMMS_k/w_k$. Hence, $\APS_k \le \WMMS_k$.
+For any $j \in [n]$, define
+\[ S_j \defeq \argmax_{\substack{S \subseteq [m]:\\v_i(S) \le w_jv_i([m])}} \frac{v_i(S)}{w_j}. \]
+Then $\beta_i \defeq \max_{j=1}^n v_i(S_j)/w_j$.
 
-When entitlements are equal, $\APS_k \ge \pessShare_k = \MMS_k$ by \cref{thm:impl:aps-to-pess}.
+Let $\Pi_n([m])$ be the set of all $n$-partitions of $[m]$. Let
+\begin{align*}
+P &\defeq \argmax_{P \in \Pi_n([m])} \min_{j=1}^n \frac{v_i(P_j)}{w_j},
+& k &\defeq \argmin_{j=1}^n \frac{v_i(P_j)}{w_j}.
+\end{align*}
+Then $\WMMS_i/w_i \defeq v_i(P_k)/w_k$.
+
+By \cref{thm:impl:prop-to-wmms}, we get $v_i(P_k)/w_k \le v_i([m])$. Hence,
+\[ \frac{\WMMS_i}{w_i} = \frac{v_i(P_k)}{w_k} \le \frac{v_i(S_k)}{w_k}
+    \le \max_{j=1}^n \frac{v_i(S_j)}{w_j} = \beta_i. \]
+
+Now let $v_i$ be additive and $n = 2$.
+For any $j \in [2]$, let $Q^{(j)}$ be an allocation where $Q^{(j)}_j \defeq S_j$
+and $Q^{(j)}_{3-j} \defeq [m] \setminus S_j$.
+Then $v_i(Q^{(j)}_j) = v_i(S_j) \le w_jv_i([m])$ and
+\[ v_i(Q^{(j)}_{3-j}) = v_i([m]) - v_i(S_j) \ge v_i([m]) - w_jv_i([m]) = w_{3-j}v_i([m]). \]
+Hence,
+\[ \frac{v_i(Q^{(j)}_j)}{w_j} \le v_i([m]) \le \frac{v_i(Q^{(j)}_{3-j})}{w_{3-j}}. \]
+Therefore,
+\begin{align*}
+\frac{\WMMS_i}{w_i} &= \min\left(\frac{v_i(P_1)}{w_1}, \frac{v_i(P_2)}{w_2}\right)
+\\ &\ge \max_{j=1}^n \min\left(\frac{v_i(Q^{(j)}_j)}{w_j}, \frac{v_i(Q^{(j)}_{3-j})}{w_{3-j}}\right)
+    \tag{by definition of $P$}
+\\ &= \max_{j=1}^n \frac{v_i(S_j)}{w_j} = \beta_i.
+\end{align*}
+Hence, $\WMMS_i/w_i \ge \beta_i$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:impl:mms-to-aps-n2}
+For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
+Moreover, when entitlements are equal, we get $\APS_i = \MMS_i$.
+\end{lemma}
+\begin{proof}
+By \cref{thm:wmms-vs-knappsack}, we get
+\[ \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^n \frac{v_i(S_j)}{w_j},
+\quad\textrm{where}\quad
+S_j \defeq \argmax_{\substack{S \subseteq [m]:\\ v_i(S) \le w_jv_i([m])}} v_i(S). \]
+On setting $p = v_i$ in the primal definition of APS (\cref{defn:aps}), we get
+\[ \APS_i \le \max_{\substack{S \subseteq [m]:\\ p(S) \le w_ip([m])}} v_i(S)
+    = v_i(S_i) \le w_i\beta_i = \WMMS_i. \]
+When entitlements are equal, $\APS_i \ge \pessShare_i \ge \MMS_i$
+by \cref{thm:impl:aps-to-pess}.
 \end{proof}

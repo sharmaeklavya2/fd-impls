@@ -477,15 +477,22 @@ Then $s_k \le (k/n)s_n$.
 \end{proof}
 
 \begin{lemma}
-\label{thm:impl:prop-to-mms}
+\label{thm:impl:prop-to-wmms}
 For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
-if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$ and $\pessShare_i \le w_iv_i([m])$.
+if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$.
 \end{lemma}
 \begin{proof}
 Let $P$ be agent $i$'s WMMS partition. Then
-\[ \frac{\WMMS_i}{w_i} = \min_{j=1}^n \frac{v_i(P_j)}{w_j}
-    \le \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right) \le v_i([m]). \]
+\[ v_i([m]) \ge \sum_{j=1}^n v_i(P_j) = \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right)
+    \ge \sum_{j=1}^n w_j\frac{\WMMS_i}{w_i} = \frac{\WMMS_i}{w_i}. \]
+\end{proof}
 
+\begin{lemma}
+\label{thm:impl:prop-to-pessShare}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is superadditive, then $\pessShare_i \le w_iv_i([m])$.
+\end{lemma}
+\begin{proof}
 Let $P$ be agent $i$'s $\ell$-out-of-$d$-partition.
 Assume \wLoG{} that $v_i(P_1) \le v_i(P_2) \le \ldots \le v_i(P_d)$.
 Then by \cref{thm:prefix-sum-bound} and superadditivity of $v_i$, we get
