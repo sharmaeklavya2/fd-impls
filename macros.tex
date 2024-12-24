@@ -76,3 +76,15 @@
 \allowdisplaybreaks
 %\algnewcommand{\LineComment}[1]{\State \textcolor{gray}{\texttt{//} \textit{#1}}}
 %\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\texttt{//} \textit{#1}}}
+
+%\newcommand*{\thmRecall}[1]{\texttt{#1}}
+%\newcommand*{\thmRecall}[1]{\csname #1\endcsname*}
+\makeatletter
+\newcommand*{\thmRecall}[1]{%
+\ifcsname #1\endcsname
+    \csname #1\endcsname*
+\else
+    \@latex@error{Undefined restatable: \noexpand#1}\@ehc
+\fi
+}
+\makeatother
