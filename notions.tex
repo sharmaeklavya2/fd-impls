@@ -11,7 +11,7 @@ We begin with the most well-known notion of fairness: envy-freeness (EF).
 \label{defn:ef}
 Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
 In an allocation $A$, an agent $i \in N$ \emph{envies} another agent $j \in N \setminus \{i\}$ if
-\[ \frac{v_i(A_i)}{w_i} < \frac{v_i(A_j)}{w_j}. \]
+$\frac{v_i(A_i)}{w_i} < \frac{v_i(A_j)}{w_j}$.
 Agent $i$ is \emph{envy-free} in $A$ (or $A$ is EF-fair to $i$) if
 she doesn't envy any other agent in $A$.
 \end{definition}
@@ -30,13 +30,13 @@ and EFX was proposed by \cite{caragiannis2019unreasonable}.
 For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
 an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
 at least one of the following hold:
-\begin{enumerate}
+\begin{tightenum}
 \item $i$ does not envy $j$.
 \item $\exists g \in A_j$ such that
-    \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+    $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}$.
 \item $\exists c \in A_i$ such that
-    \[ \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
-\end{enumerate}
+    $\displaystyle \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\end{tightenum}
 \end{definition}
 
 \begin{definition}
@@ -164,7 +164,7 @@ is called agent $i$'s \emph{WMMS partition}.
 
 \begin{definition}[pessShare \cite{babaioff2023fair}]
 \label{defn:pessShare}
-Let $1 \le \ell \le d$. Let $\Pi^d(M)$ be the set of all $d$-partitions of $M$.
+Let $1 \le \ell \le d$. Let $\Pi_d(M)$ be the set of all $d$-partitions of $M$.
 Then agent $i$'s $\ell$-out-of-$d$ share is defined as
 \[ \loodM_i := \max_{\substack{X \in \Pi_d(M):\\v_i(X_j) \le v_i(X_{j+1}) \forall j \in [d-1]}} \sum_{j=1}^{\ell} v_i(X_j). \]
 Then agent $i$'s pessimistic share is defined as

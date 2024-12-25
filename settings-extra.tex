@@ -1,18 +1,5 @@
-\section{Fair Division Settings}
-\label{sec:settings}
-
-We study many fair division settings in this paper.
-A fair division setting is given by multiple \emph{features}.
-By picking different values of these features, we can get a wide variety of fair division settings.
-We consider 5 features in this paper:
-\begin{tightenum}
-\item Whether entitlements are equal.
-\item Whether there are only two agents.
-\item Whether agents have identical valuations.
-\item Valuation function type.
-\item Marginal values.
-\end{tightenum}
-The first three are self-explanatory. We now give details about the last two.
+\section{Details on Fair Division Settings}
+\label{sec:settings-extra}
 
 \subsection{Valuation Function Type}
 
@@ -32,23 +19,13 @@ A function $u: 2^M \to \mathbb{R}$ is
 
 Note that when $|M|=1$, $u$ belongs to all of these classes simultaneously.
 
-We consider fair division settings where all valuation functions belong to one of the above classes.
-
 \subsection{Marginal Values}
-
-We get well-known fair division settings by constraining the marginal values of items.
-For an agent $i \in N$, the marginal value of item $j$ over set $S$
-is given by $v_i(j \mid S) \defeq v_i(S \cup \{j\}) - v_i(S)$.
 
 \begin{tightenum}
 \item \emph{goods}: $v_i(j \mid S) \ge 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
 \item \emph{chores}: $v_i(j \mid S) \le 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
 \item \emph{positive}: $v_i(j \mid S) > 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
 \item \emph{negative}: $v_i(j \mid S) < 0$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
-\item \emph{doubly monotone}: The set of items $M$ can be partitioned into a set $G$ of goods and a set $C$ of chores.
-    Then for every agent $i \in N$, we have
-    $v_i(g \mid S) \le 0$ for all $S \subseteq M$ and $g \in G \setminus S$, and
-    $v_i(c \mid S) \le 0$ for all $S \subseteq M$ and $c \in C \setminus S$.
 \item \emph{bivalued}: There exist constants $a, b \in \mathbb{R}$ such that
     $v_i(j \mid S) \in \{a, b\}$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
 \item \emph{binary}: $v_i(j \mid S) \in \{0, 1\}$ for all $S \subseteq M$, $j \in M \setminus S$, and $i \in N$.
