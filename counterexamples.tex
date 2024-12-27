@@ -156,4 +156,87 @@ Then the allocation $A \defeq (\{4, 5, 6\}, \{1\}, \{2, 3\})$ is MEFS
 Agent 1 is not epistemic-EF-satisfied by $A$.
 \end{example}
 
+\begin{lemma}
+\label{cex:ef-not-prop-submod}
+Consider a fair division instance with 2 agents and 4 goods.
+The agents have identical valuations and equal entitlements.
+Let $a, b \in \mathbb{R}_{\ge 0}$ such that $3a < b$.
+The valuation function $v$ is given by
+\[ v(S) \defeq \begin{cases}
+|S|a & \textrm{ if } |S| \le 3
+\\ 3a + b & \textrm{ if } |S| = 4
+\end{cases}. \]
+Then $v$ is supermodular, no PROP1 allocation exists,
+and if $a > 0$, then no PROPm allocation exists.
+However, an allocation where each agent gets 2 goods is EF+APS+MMS.
+\end{lemma}
+\begin{proof}
+For any $g \in [4]$ and $S \subseteq [4] \setminus \{g\}$, we have
+\[ v(g \mid S) = \begin{cases}
+a & \textrm{ if } |S| \le 2
+\\ b & \textrm{ if } |S| = 3
+\end{cases}. \]
+Hence, $v$ is supermodular.
+
+The proportional share is $(3a + b)/2$.
+In any allocation, some agent gets at most 2 goods,
+and even if she is given an additional good, her valuation is $3a < (3a+b)/2$.
+Hence, no allocation is PROP1, and no allocation is PROPm if $a > 0$.
+(When $a = 0$, every allocation is PROPm.)
+
+$v(A_1) = v(A_2) = 2a$, so $A$ is EF.
+It is easy to check that the MMS is $2a$.
+
+If we set the price of each good to 1, then at most 2 goods are affordable.
+Hence, APS is at most $2a$.
+Moreover, for any price vector, the cheapest 2 goods are affordable, and their total valuation is $2a$.
+Hence, APS is at least $2a$.
+\end{proof}
+
+\begin{lemma}
+\label{cex:m1s-not-prop1}
+Consider a fair division instance with 2 equally-entitled agents
+having an identical additive valuation function $v$ over 9 items.
+Let $t \in \{-1, 1\}$ and $v(9) = 4t$ and $v(j) = t$ for $j \in [8]$.
+Then allocation $A \defeq (\{9\}, [8])$ is M1S but not PROP1.
+\end{lemma}
+\begin{proof}
+$v([9])/2 = 6t$. Let $B \defeq ([4], [9] \setminus [4])$.
+%
+For $t = 1$ (goods), $B$ is agent 1's M1S-certificate for $A$,
+but agent 1 is not PROP1-satisfied by $A$.
+%
+For $t = -1$ (chores), $B$ is agent 2's M1S-certificate for $A$,
+but agent 2 is not PROP1-satisfied by $A$.
+\end{proof}
+
+\begin{lemma}
+\label{cex:propx-not-m1s}
+Let $t \in \{-1, 1\}$ and $0 < \eps < 1/2$.
+Consider a fair division instance with 2 equally-entitled agents having
+an identical additive valuation function $v$ over 4 items.
+Let $v(4) = (1+2\eps)t$ and $v(j) = t$ for $j \in [3]$.
+Then allocation $A \defeq (\{4\}, [3])$ is PROPx but not M1S.
+\end{lemma}
+\begin{proof}
+$v([m])/2 = (2+\eps)t$, so $A$ is PROPx.
+%
+For $t = 1$, in any allocation $B$ where agent 1 doesn't EF1-envy agent 2, she must have at least 2 goods.
+But $v(A_1) = 1+2\eps$, so agent 1 doesn't have an M1S-certificate for $A$. Hence, $A$ is not M1S.
+%
+For $t = -1$, in any allocation $B$ where agent 2 doesn't EF1-envy agent 1, she must have at most 2 chores.
+But $v(A_2) = -3$, so agent 1 doesn't have an M1S-certificate for $A$. Hence, $A$ is not M1S.
+\end{proof}
+
+\begin{example}
+\label{cex:efx-not-mms}
+Let $t \in \{-1, 1\}$.
+Consider a fair division instance with 2 equally-entitled agents having
+an identical additive valuation function $v$ over 5 items.
+$v(1) = v(2) = 3t$ and $v(3) = v(4) = v(5) = 2t$.
+Then allocation $A \defeq (\{1, 3\}, \{2, 4, 5\})$ is EFX.
+The MMS is $6t$, since $P = (\{3t, 3t\}, \{2t, 2t, 2t\})$ is an MMS partition.
+But in $A$, some agent doesn't get her MMS.
+\end{example}
+
 \subsection{New}
