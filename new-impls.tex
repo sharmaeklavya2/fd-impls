@@ -22,7 +22,7 @@ if one of these conditions hold:
 
 \begin{restatable}{lemma}{rthm:impl:mms-to-mxs}
 \label{thm:mms-to-mxs}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance with equal entitlements.
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
 Let allocation $A$ be MMS-fair to agent $i$.
 Then $A$ is also MXS-fair to $i$ if at least one of these conditions hold:
 \begin{tightenum}
@@ -78,7 +78,7 @@ and $\floor{f([m])/n} \le f(P_i) \le \ceil{f([m])/n}$ for all $i \in [n]$.
 
 \begin{restatable}{lemma}{rthm:impl:tribool:prop}
 \label{thm:impl:tribool:prop}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $i$.
 \end{restatable}
@@ -104,7 +104,7 @@ Then $\APS_i = \floor{w_iv_i([m])}$.
 
 \begin{restatable}{lemma}{rthm:impl:tribool:m1s}
 \label{thm:impl:tribool:m1s}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 Then $\MMS_i = \mathrm{M1S}_i = \floor{v_i([m])/n}$.
 \end{restatable}
@@ -130,7 +130,7 @@ For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
 
 \begin{restatable}{lemma}{rthm:impl:tribool:mms-to-eefx}
 \label{thm:impl:tribool:mms-to-eefx}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with equal entitlements
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 If $v_i(A_i) \ge \floor{v_i([m])/n}$ for some allocation $A$,
 then $A$ is epistemic-EFX-fair to $i$.
