@@ -239,4 +239,116 @@ The MMS is $6t$, since $P = (\{3t, 3t\}, \{2t, 2t, 2t\})$ is an MMS partition.
 But in $A$, some agent doesn't get her MMS.
 \end{example}
 
-\subsection{New}
+\begin{example}
+\label{cex:ef1-not-propx-mxs}
+Let $t \in \{-1, 1\}$.
+Consider a fair division instance with 2 equally-entitled agents
+having an identical additive valuation function $v$ over 5 items,
+where $v(1) = v(2) = 4t$ and $v(3) = v(4) = v(5) = t$.
+Then allocation $A \defeq (\{1\}, [5] \setminus \{1\})$ is EF1 but not PROPx and not MXS.
+\end{example}
+
+\begin{example}
+\label{cex:gaps-not-propx}
+Consider a fair division instance with 3 equally-entitled agents
+having identical additive valuations. There are 2 goods of values 50 and 10.
+In every allocation, some agent doesn't get any good, and that agent is not PROPx-satisfied.
+The allocation where the first agent gets the good of value 5
+and the second agent gets the good of value 1 is a groupwise APS allocation
+(set the price of the goods to $1.1$ and $0.9$).
+\end{example}
+
+\begin{example}[Example 4.4 of \cite{caragiannis2019unreasonable}]
+\label{cex:pmms-not-mms}
+Let $t \in \{-1, 1\}$.
+Consider a fair division instance with 3 equally-entitled agents
+having an identical valuation function $v$ over 7 items where
+$v(1) = 6t$, $v(2) = 4t$, $v(3) = v(4) = 3t$, $v(5) = v(6) = 2t$, $v(7) = t$.
+Each agent's maximin share is $7t$ ($(\{1, 7\}, \{2, 3\}, \{4, 5, 6\})$ is a maximin partition).
+Allocation $(\{1\}, \{3, 4, 5\}, \{2, 6, 7\})$ is PMMS but not MMS.
+\end{example}
+
+\begin{example}
+\label{cex:mxs-not-propx-n2}
+Let $t \in \{-1, 1\}$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical additive valuations over 7 items:
+the first 2 items of value $4t$ and the last 5 items of value $t$.
+Then the allocation $A = (\{1, 3\}, \{2, 4, 5, 6, 7\})$ is not PROPx or EFX,
+but it is MXS because the agents have $([7] \setminus [2], [2])$
+and $([2], [7] \setminus [2])$ as their MXS-certificates for $A$.
+\end{example}
+
+\begin{example}
+\label{cex:aps-not-prop1-chores}
+Consider a fair division instance with 3 equally-entitled agents
+having an identical additive valuation function $v$ over 6 chores:
+the first chore has disutility 18 (large chore) and the remaining chores have disutility 3 each (small chores).
+Then $X \defeq ([6] \setminus \{1\}, \{1\}, \emptyset)$ is MMS+APS,
+since the MMS is $-18$, and the APS is at most $-18$ due to the price vector $(1, 0, 0, 0, 0, 0)$.
+$X$ is not PROP1-fair to agent 1, since the proportional share is $-11$,
+and agent 1's disutility in $X$ after removing any chore is $12$.
+$X$ is not EEF1-fair to agent 1 because even after redistributing chores among the remaining agents,
+someone will always have no chores.
+\end{example}
+
+\begin{example}
+\label{cex:aps-not-propm}
+Consider a fair division instance with 3 equally-entitled agents
+having an identical additive valuation function $v$ over 6 goods:
+$v(1) = 60$, $v(2) = 30$, and $v(3) = v(4) = v(5) = v(6) = 10$.
+The allocation $A \defeq (\{2\}, \{3, 4, 5\}, \{1, 6\})$ is APS+MMS, since the MMS is 30,
+and the APS is at most 30 because of the price vector $(4, 3, 1, 1, 1, 1)$.
+However, $A$ is not PROPm-fair to agent 1, because the proportional share is $130/4 > 40$.
+\end{example}
+
+\begin{lemma}
+\label{cex:mefs-not-eef1-chores}
+Consider a fair division instance with 3 equally-entitled agents
+having additive disutilities over 12 chores.
+$v_1(1) = v(2) = v(3) = 70$ and $v(c) = 10$ for all $c \in [12] \setminus [3]$.
+Agents 2 and 3 have disutility 10 for each chore.
+Then $A \defeq ([12] \setminus [3], [2], \{3\})$ is a MEFS+PROP allocation
+where agent 1 is not EEF1-satisfied.
+\end{lemma}
+\begin{proof}
+$\PROP_1 = -100$ and $\PROP_2 = \PROP_3 = -40$.
+$\MEFS_1 \le -100$ because of the allocation $(\{1, 4, 5, 6\}, \{2, 7, 8, 9\}, \{3, 10, 11, 12\})$.
+$\MEFS_i \le -40$ for $i \in \{2, 3\}$ because of the allocation
+$([4], [8] \setminus [4], [12] \setminus [8])$.
+Agent 1 has disutility $90$ in $A$, so $A$ is MEFS-fair and PROP-fair to agent 1.
+Agents 2 and 3 have disutility at most $20$ in $A$, so $A$ is MEFS-fair and PROP-fair to them.
+
+Agent 1 is not EEF1-satisfied by $A$, since in any EEF1-certificate $B$,
+some agent $j \in \{2, 3\}$ receives at most one chore of value $70$,
+and agent 1 would EF1-envy $j$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:aps-gt-mms}
+Let $t \in \{-1, 1\}$.
+Consider a fair division instance with 3 equally-entitled agents
+having identical additive valuations over 15 items. The items' values are
+$65t$, $31t$, $31t$, $31t$, $23t$, $23t$, $23t$, $17t$, $11t$, $7t$, $7t$, $7t$, $5t$, $5t$, $5t$.
+
+Then the AnyPrice share is at least $97t$, the proportional share is $97t$,
+and the maximin share is less than $97t$.
+\end{lemma}
+\begin{proof}
+For $t = 1$, this follows from Lemma C.1 of \cite{babaioff2023fair}.
+
+For $t = -1$, a similar argument tells us that the AnyPrice share is at least $-97$.
+If the maximin share is at least $-97$, then there must exist a partition $P$ of the chores
+where each bundle has disutility 97. But then $P$ would prove that the maximin share
+in the corresponding goods instance is at least 97, which is a contradiction.
+Hence, for $t = -1$, the maximin share is less than $-97$.
+\end{proof}
+
+\begin{example}
+\label{cex:gmms-not-aps}
+For the fair division instance in \cref{thm:aps-gt-mms},
+the leximin allocation is GMMS (since on restricting to any subset of agents,
+the resulting allocation is still leximin, and is therefore MMS).
+However, no APS allocation exists, because APS $>$ MMS,
+and the minimum value across all bundles is at most the MMS.
+\end{example}
