@@ -352,3 +352,169 @@ the resulting allocation is still leximin, and is therefore MMS).
 However, no APS allocation exists, because APS $>$ MMS,
 and the minimum value across all bundles is at most the MMS.
 \end{example}
+
+\begin{lemma}
+\label{cex:prop1-plus-m1s-ue}
+Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
+where the entitlement vector is $w \defeq (7/12, 5/24, 5/24)$,
+the agents have identical additive valuations, and each good has value 1. Then
+\begin{tightenum}
+\item $\APS_1 = 4$ and $\APS_2 = \APS_3 = 1$.
+\item $X$ is APS $\iff$ $X$ is groupwise-APS (GAPS) $\iff$ $X$ is PROP1.
+\item $\WMMS_1 = 3$ and $\WMMS_2 = \WMMS_3 = 15/14$.
+\item $X$ is WMMS $\iff$ $X$ is groupwise-WMMS (GWMMS) $\iff$ $X$ is EFX $\iff$ $X$ is M1S.
+\end{tightenum}
+Therefore,
+\begin{tightenum}
+\item M1S+PROP1 is infeasible for this instance.
+\item GWMMS+EFX doesn't imply PROP1.
+\item GAPS doesn't imply M1S.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+By \cref{thm:impl:tribool:aps}, $\APS_1 = \floor{\frac{7 \times 7}{12}} = 4$
+and $\APS_2 = \APS_3 = \floor{\frac{5 \times 7}{24}} = 1$.
+By \cref{thm:impl:tribool:aps,thm:impl:tribool:prop1},
+an allocation is APS iff it is PROP1.
+
+Any GAPS allocation is also APS by definition.
+We will now show that any APS allocation is also GAPS.
+Formally, let $A$ be an APS allocation for $\Ical$.
+The cardinality vector of $A$, i.e., $c \defeq (|A_1|, |A_2|, |A_3|)$,
+can have three possible values: $(5, 1, 1)$, $(4, 2, 1)$, $(4, 1, 2)$.
+For every possible value of $c$ and $S \subseteq [3]$,
+we show that $(\Icalhat, \Ahat) \defeq \restrict(\Ical, A, S)$ is APS
+(c.f.~\cref{defn:restricting}).
+\begin{tightenum}
+\item $c = (5, 1, 1)$ and $S = \{1, 2\}$:
+    $\Icalhat$ has 6 goods and entitlement vector $(14/19, 5/19)$.
+    $\APS_1 = \floor{\frac{14 \times 6}{19}} = 4$ and $\APS_2 = \floor{\frac{5 \times 6}{19}} = 1$.
+    Hence, $\Ahat$ is APS for $\Icalhat$.
+\item $c = (5, 1, 1)$ and $S = \{1, 3\}$:
+    Similar to the $S = \{1, 2\}$ case.
+\item $c = (5, 1, 1)$ and $S = \{2, 3\}$:
+    $\Icalhat$ has 2 goods and entitlement vector $(1/2, 1/2)$.
+    $\APS_3 = \APS_3 = 1$, so $\Ahat$ is APS for $\Icalhat$.
+\item $c = (4, 2, 1)$ and $S = \{1, 2\}$:
+    $\Icalhat$ has 6 goods and entitlement vector $(14/19, 5/19)$.
+    $\APS_1 = \floor{\frac{14 \times 6}{19}} = 4$ and $\APS_2 = \floor{\frac{5 \times 6}{19}} = 1$.
+    Hence, $\Ahat$ is APS for $\Icalhat$.
+\item $c = (4, 2, 1)$ and $S = \{1, 3\}$:
+    $\Icalhat$ has 5 goods and entitlement vector $(14/19, 5/19)$.
+    $\APS_1 = \floor{\frac{14 \times 5}{19}} = 3$ and $\APS_2 = \floor{\frac{5 \times 5}{19}} = 1$.
+    Hence, $\Ahat$ is APS for $\Icalhat$.
+\item $c = (4, 2, 1)$ and $S = \{2, 3\}$:
+    $\Icalhat$ has 3 goods and entitlement vector $(1/2, 1/2)$.
+    $\APS_2 = \APS_3 = \floor{\frac{1 \times 3}{2}} = 1$.
+    Hence, $\Ahat$ is APS for $\Icalhat$.
+\item $c = (4, 1, 2)$:
+    Similar to the $c = (4, 2, 1)$ case.
+\end{tightenum}
+Hence, any APS allocation for $\Ical$ is also GAPS.
+
+For any allocation $X$, define
+\[ f(X) \defeq \min_{j=1}^3 \frac{|X_j|}{w_j}. \]
+Then $\WMMS_i = w_i\max_X f(X)$ for all $i \in [3]$.
+If $|X_1| \le 2$, then $f(X) \le |X_1|/w_1 \le 24/7 = 3 + 3/7$.
+If $|X_2| \le 1$ or $|X_3| \le 1$, $f(X) \le 24/5 = 4 + 4/5$.
+Otherwise, $|X_1| = 3$ and $|X_2| = |X_3| = 2$,
+so $f(X) = \min(3 \times 12/7, 2 \times 24/5) = 36/7 = 5 + 1/6$.
+Hence, $\max_X f(X) = 36/7$, so $\WMMS_1 = 3$ and $\WMMS_2 = \WMMS_3 = 15/14$.
+So, an allocation is WMMS iff it has cardinality vector $(3, 2, 2)$.
+
+Any GWMMS allocation is also WMMS by definition. We now prove the converse.
+For every possible value of $S \subseteq [3]$,
+we show that $(\Icalhat, \Ahat) \defeq \restrict(\Ical, A, S)$ is WMMS
+(c.f.~\cref{defn:restricting}).
+\begin{tightenum}
+\item $S = \{1, 2\}$:
+    $\Icalhat$ has 5 goods and entitlement vector $(14/19, 5/19)$.
+    If $|X_1| \le 2$, then $f(X) \le |X_1|/w_1 \le 38/14 = 2 + 10/14$.
+    If $|X_2| \le 1$, then $f(X) \le |X_2|/w_2 \le 19/5 = 3 + 10/14$.
+    Otherwise, $|X_1| = 3$ and $|X_2| = 2$, so $f(X) = \min(3/w_1, 2/w_2) = \min(57/14, 38/5) = 57/14 = 4 + 1/14$.
+    Hence, $\WMMS_1 = 3$ and $\WMMS_2 = \WMMS_3 = 57/14 \times 5/19 = 1 + 19/266$.
+    Hence, $\Ahat$ is WMMS for $\Icalhat$.
+\item $S = \{1, 3\}$:
+    Similar to the $S = \{1, 2\}$ case.
+\item $S = \{2, 3\}$:
+    $\Icalhat$ has 4 goods and entitlement vector $(1/2, 1/2)$.
+    Then $\WMMS_1 = \WMMS_2 = 2$.
+    Hence, $\Ahat$ is WMMS for $\Icalhat$.
+\end{tightenum}
+Hence, any WMMS allocation for $\Ical$ is also GWMMS.
+
+Any GWMMS allocation is EFX by \cref{thm:impl:mms-to-efx-n2},
+and any EFX allocation is M1S by \cref{thm:impl:efx-to-ef1}.
+We will now show that any M1S allocation is WMMS.
+
+Let $X$ be an M1S allocation.
+Let $A$ be agent 1's M1S certificate.
+If $|A_1| \le 2$, then $|A_j| \ge 3$ for some $j \in \{2, 3\}$.
+Since agent 1 has higher entitlement, she would EF1-envy agent $j$,
+which is a contradiction. Hence, $|X_1| \ge |A_1| \ge 3$.
+
+Let $B$ be agent 2's M1S certificate.
+Suppose $|B_2| \le 1$. Since $2$ doesn't EF1-envy $3$, we get $|B_3| \le 2$.
+Since $2$ doesn't EF1-envy $1$, we get
+\[ \frac{|B_1|-1}{w_1} \le \frac{|B_2|}{w_2} \iff |B_1| \le 1 + \frac{w_1}{w_2} = 3 + \frac{4}{5}. \]
+Hence, $|B_1| + |B_2| + |B_3| \le 3 + 1 + 2 = 6$, which is a contradiction.
+Hence, $|X_2| \ge |B_2| \ge 2$.
+Similarly, we can prove that $|X_3| \ge 2$.
+
+Hence, $|X_i| \ge \WMMS_i$ for all $i$, so $X$ is WMMS.
+This proves that any M1S allocation is WMMS.
+\end{proof}
+
+\cite{chakraborty2021weighted} also proves that EF1+PROP1 allocations may not exist for unequal entitlements,
+We use a different counterexample in \cref{cex:prop1-plus-m1s-ue},
+which allows us to also prove other non-implications.
+
+\begin{example}
+\label{cex:prop1-not-m1s-n2}
+Consider a fair division instance with 2 agents having identical additive valuations.
+Let $t \in \{-1, 1\}$. Let there be 2 items, each of value $t$.
+Let the entitlement vector be $(2/3, 1/3)$.
+Let $A$ be an allocation where the first agent gets both items.
+Then $A$ is PROP1 but not M1S.
+\end{example}
+
+We first define a function in \cref{cex:ud-submod-canc} by perturbing a unit-demand function.
+We then use it to show that a PROP allocation may not be M1S.
+
+\begin{lemma}
+\label{cex:ud-submod-canc}
+Let $0 \le \eps < 1/6$ and $v: 2^{[3]} \to \mathbb{R}_{\ge 0}$, where
+\[ v(S) := \begin{cases}
+4 + 2\eps|S| & \textrm{ if } 1 \in S \textrm{ or } 2 \in S
+\\ 3 + 2\eps|S| & \textrm{ if } S = \{3\}
+\\ 0 & \textrm{ otherwise}
+\end{cases}. \]
+Then $v$ is submodular and cancelable.
+\end{lemma}
+\begin{proof}
+\[ v(g \mid S) = 2\eps + \begin{cases}
+0 & \textrm{ if } 1 \in S \textrm{ or } 2 \in S
+\\ 1 & \textrm{ if } S = \{3\}
+\\ v(\{g\}) & \textrm{ if } S = \emptyset
+\end{cases}. \]
+We can see that adding elements to $S$ never increases $v(g \mid S)$.
+Hence, $v$ is submodular.
+
+One can confirm that $v$ is cancelable by painstakingly applying the definition of cancelable valuations
+(c.f.~\cref{sec:settings-extra}).
+\end{proof}
+
+\begin{lemma}
+\label{cex:prop-not-m1s-submod}
+Consider a fair division instance with 2 equally-entitled agents
+having an identical valuation function $v$ over 3 goods as defined in \cref{cex:ud-submod-canc}.
+Then the allocation $A = (\{1, 2\}, \{3\})$ is PROP but not M1S.
+\end{lemma}
+\begin{proof}
+$A$ is PROP since $v(A_1) = 4+6\eps$, $v(A_2) = 3+2\eps$, and the PROP share is $2+3\eps$.
+Suppose $A$ is M1S and agent 2's M1S certificate for $A$ is $B$.
+Then $v(B_2) \le v(A_2) = 3 + 2\eps$, so $B_2 = \{3\}$. Hence, $B_1 = \{1, 2\}$.
+However, $\min_{g \in B_1} v(B_1 \setminus \{g\}) = 4 + 6\eps > 3 + 2\eps = v(B_2)$.
+Hence, agent 2 is not EF1-satisfied by $B$, which contradicts the fact that $B$
+is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
+\end{proof}
