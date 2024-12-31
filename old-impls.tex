@@ -3,33 +3,33 @@
 
 \subsection{Generic Implications}
 
-\begin{observation}
+\begin{remark}
 \label{thm:impl:epistemic}
 For any fairness notion $F$, if an allocation is $F$-fair to an agent $i$,
 then it is also epistemic-$F$-fair to agent $i$.
 If an allocation is epistemic-$F$-fair to an agent $i$,
 then it is also minimum-$F$-share-fair to agent $i$.
-\end{observation}
+\end{remark}
 
-\begin{observation}
+\begin{remark}
 \label{thm:impl:epistemic-n2}
 If there are only two agents, then for any fairness notion $F$,
-an allocation is epistemic-$F$-fair to an agent $i$,
+an allocation is epistemic-$F$-fair to an agent $i$
 iff it is $F$-fair to agent $i$.
-\end{observation}
+\end{remark}
 
-\begin{observation}
+\begin{remark}
 \label{thm:impl:groupwise}
 For any fairness notion $F$, if an allocation is groupwise-$F$-fair to an agent $i$,
 then it is also pairwise-$F$-fair to agent $i$ and $F$-fair to agent $i$.
-\end{observation}
+\end{remark}
 
-\begin{observation}
+\begin{remark}
 \label{thm:impl:groupwise-n2}
 If there are only two agents, then for any fairness notion $F$,
 an allocation $A$ is $F$-fair to an agent $i$
 iff $A$ is pairwise-$F$-fair to $i$ iff $A$ is groupwise-$F$-fair to $i$.
-\end{observation}
+\end{remark}
 
 \begin{restatable}{lemma}{rthm:impl:ext-to-epistemic}
 \label{thm:impl:ext-to-epistemic}
@@ -44,10 +44,10 @@ $\phi(F_1, F_2) \implies \phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)
 
 \subsection{Trivial Implications}
 
-\begin{observation}[EF$\implies$EFX+EF1]
+\begin{remark}[EF$\implies$EFX+EF1]
 \label{thm:impl:ef-to-efx+ef1}
 If an allocation is EF-fair to agent $i$, then it is also EFX-fair to $i$ and EF1-fair to $i$.
-\end{observation}
+\end{remark}
 
 \begin{restatable}[PROPx$\implies$PROPm]{lemma}{rthm:impl:propx-to-propm}
 \label{thm:impl:propx-to-propm}
@@ -55,13 +55,13 @@ In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation is PROPx-fair to agent $i$, then it is also PROPm-fair to agent $i$.
 \end{restatable}
 
-\begin{observation}[PROPm$\implies$PROPx for $n=2$ or chores]
+\begin{remark}[PROPm$\implies$PROPx for $n=2$ or chores]
 \label{thm:impl:propm-to-propx}
 A PROPx allocation is also a PROPm allocation when there are only two agents
 or when all items are chores.
-\end{observation}
+\end{remark}
 
-\begin{restatable}[MEFS$\implies$PROP]{lemma}{rthm:impl:mefs-to-prop}
+\begin{restatable}[MEFS$\implies$PROP, \cite{bouveret2016characterizing}]{lemma}{rthm:impl:mefs-to-prop}
 \label{thm:impl:mefs-to-prop}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is subadditive and an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.

@@ -21,6 +21,8 @@
 \DeclareMathOperator*{\argmax}{argmax}
 % \newcommand*{\nimplies}{\;\,\not\nobreak\!\!\Longrightarrow}  % https://tex.stackexchange.com/a/509385
 % \newcommand*{\nimplies}{\mathrel{{\ooalign{\hidewidth$\not{\phantom{=}}$\hidewidth\cr$\implies$}}}}  % https://tex.stackexchange.com/a/509385
+\newcommand*{\fimplies}{\Longrightarrow}  % https://tex.stackexchange.com/a/509385
+\newcommand*{\nfimplies}{\centernot{\Longrightarrow}}  % https://tex.stackexchange.com/a/509385
 \newcommand*{\nimplies}{\centernot{\implies}}  % https://tex.stackexchange.com/a/509385
 \newcommand*{\optprog}[3]{
 \begin{array}{*3{>{\displaystyle}l}}
@@ -82,6 +84,7 @@
 \allowdisplaybreaks
 %\algnewcommand{\LineComment}[1]{\State \textcolor{gray}{\texttt{//} \textit{#1}}}
 %\renewcommand{\algorithmiccomment}[1]{\hfill\textcolor{gray}{\texttt{//} \textit{#1}}}
+\defaultaddspace=0.0em
 
 %\newcommand*{\thmRecall}[1]{\texttt{#1}}
 %\newcommand*{\thmRecall}[1]{\csname #1\endcsname*}

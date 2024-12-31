@@ -1,0 +1,106 @@
+\section{Implications Among Fairness Notions}
+\label{sec:impls}
+
+For conciseness, we write ep-$F$ instead of epistemic-$F$,
+min-$F$-sh instead of minimum-$F$-share,
+$g$-$F$ instead of groupise-$F$,
+and $p$-$F$ instead of pairwise-$F$.
+
+\footnotesize
+\begin{longtable}{cccccccc}
+\caption{Implications among fairness notions.}
+%\label{table:impls1}
+\\ \toprule & valuation & \tiny marginals & \tiny identical & $n$ & \tiny entitlements & &
+\\ \midrule $F$ $\Rightarrow$ ep-$F$ $\Rightarrow$ min-$F$-sh
+    & -- & -- & -- & -- & -- & \cref{thm:impl:epistemic} & trivial
+\\[\defaultaddspace] g-$F$ $\fimplies$ $F$ + p-$F$
+    & -- & -- & -- & -- & -- & \cref{thm:impl:groupwise} & trivial
+\\[\defaultaddspace] ep-$F$ $\fimplies$ $F$
+    & -- & -- & -- & $n=2$ & -- & \cref{thm:impl:epistemic-n2} & trivial
+\\[\defaultaddspace] ($F$ or p-$F$) $\fimplies$ g-$F$
+    & -- & -- & -- & $n=2$ & -- & -- & trivial
+%
+\\ \midrule EF $\fimplies$ EFX+EF1
+    & -- & -- & -- & -- & -- & \cref{thm:impl:ef-to-efx+ef1} & trivial
+\\[\defaultaddspace] EEF $\fimplies$ EEFX+EEF1
+    & -- & -- & -- & -- & -- & \cref{thm:impl:ef-to-efx+ef1} & trivial
+\\[\defaultaddspace] MEFS $\fimplies$ MXS+M1S
+    & -- & -- & -- & -- & -- & \cref{thm:impl:ef-to-efx+ef1} & trivial
+\\[\defaultaddspace] EFX $\fimplies$ EF1
+    & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
+\\[\defaultaddspace] EEFX $\fimplies$ EEF1
+    & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
+\\[\defaultaddspace] MXS $\fimplies$ M1S
+    & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
+\\[\defaultaddspace] MXS $\fimplies$ EF1
+    & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:mxs-to-ef1-n2} & \textbf{new}
+%
+\\[\defaultaddspace] PROP $\fimplies$ PROPx
+    & -- & -- & -- & -- & -- & -- & trivial
+\\[\defaultaddspace] PROP $\fimplies$ PROP1
+    & -- & -- & -- & -- & -- & -- & trivial
+\\[\defaultaddspace] PROPx $\fimplies$ PROPm
+    & -- & -- & -- & -- & -- & \cref{thm:impl:propx-to-propm} & folklore
+\\[\defaultaddspace] PROPm $\fimplies$ PROP1
+    & submodular & -- & -- & -- & -- & \cref{thm:impl:propm-to-prop1} & folklore
+\\[\defaultaddspace] PROPm $\fimplies$ PROP1
+    & -- & $> 0$, $< 0$ & -- & -- & -- & \cref{thm:impl:propm-to-prop1} & folklore
+\\[\defaultaddspace] PROPm $\fimplies$ PROPx
+    & -- & -- & -- & $n=2$ & -- & -- & trivial
+\\[\defaultaddspace] PROPm $\fimplies$ PROPx
+    & -- & chores & -- & -- & -- & -- & trivial
+%
+\\ \midrule MEFS $\fimplies$ PROP
+    & subadditive & -- & -- & -- & -- & \cref{thm:impl:mefs-to-prop} & \cite{bouveret2016characterizing}
+\\[\defaultaddspace] EF $\fimplies$ GPROP
+    & subadditive & -- & -- & -- & -- & \cref{thm:impl:ef-to-gprop} & \cite{bouveret2016characterizing}
+\\[\defaultaddspace] PROP $\fimplies$ EF
+    & superadditive & -- & yes & -- & -- & \cref{thm:impl:prop-to-ef-superadd-id} & folklore
+\\[\defaultaddspace] PROP $\fimplies$ EF
+    & superadditive & -- & -- & $n=2$ & -- & \cref{thm:impl:prop-to-ef-n2} & folklore
+\\[\defaultaddspace] PPROP $\fimplies$ EF
+    & superadditive & -- & -- & -- & -- & \cref{thm:impl:pprop-to-ef} & folklore
+%
+\\\midrule EEF1 $\fimplies$ PROP1
+    & additive & -- & -- & -- & equal & \cref{thm:impl:eef1-to-prop1} & folklore
+\\[\defaultaddspace] EEF1 $\fimplies$ PROP1
+    & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:eef1-to-prop1} & \textbf{new}
+\\[\defaultaddspace] EEF1 $\fimplies$ PROP1
+    & subadditive & chores & -- & -- & -- & \cref{thm:impl:eef1-to-prop1} & \textbf{new}
+\\[\defaultaddspace] EEFX $\fimplies$ PROPx
+    & subadditive & chores & -- & -- & -- & \cref{thm:impl:eefx-to-propx} & \cite{caragiannis2022existence}
+\\[\defaultaddspace] EFX $\fimplies$ PROPm
+    & additive & goods & -- & -- & equal & \cref{thm:impl:efx-to-propm} & folklore
+\\[\defaultaddspace] EFX $\fimplies$ PROPm
+    & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:efx-to-propm} & folklore
+\\[\defaultaddspace] MXS $\fimplies$ PROP1
+    & additive & goods & -- & -- & equal & \cref{thm:impl:mxs-to-prop1} & \cite{caragiannis2023new}
+%
+\\\midrule MMS $\fimplies$ EFX
+    & additive & -- & -- & $n=2$ & equal & \cref{thm:impl:mms-to-efx-n2} & folklore
+\\[\defaultaddspace] PMMS $\fimplies$ EFX
+    & additive & -- & -- & -- & equal & \cref{thm:impl:mms-to-efx-n2} & folklore
+\\[\defaultaddspace] PWMMS $\fimplies$ EFX
+    & -- & goods & -- & -- & -- & \cref{thm:impl:mms-to-efx-n2} & folklore
+\\[\defaultaddspace] WMMS $\fimplies$ EEFX
+    & -- & goods & -- & -- & -- & \cref{thm:impl:mms-to-eefx} & \cite{caragiannis2023new}
+\\[\defaultaddspace] MMS $\fimplies$ MXS
+    & additive & -- & -- & -- & equal & \cref{thm:impl:mms-to-mxs} & \textbf{new}
+%
+\\\midrule PROP $\fimplies$ APS\footnote{\label{foot:pg}In addition to $F_1 \implies F_2$,
+    we also get p-$F_1$ $\fimplies$ p-$F_2$ and g-$F_1$ $\fimplies$ g-$F_2$.}
+    & additive & -- & -- & -- & -- & \cref{thm:impl:prop-to-aps} & \cite{babaioff2023fair}
+\\[\defaultaddspace] PROP $\fimplies$ WMMS\textsuperscript{\ref{foot:pg}}
+    & superadditive & -- & -- & -- & -- & \cref{thm:impl:prop-to-wmms} & folklore
+\\[\defaultaddspace] APS $\fimplies$ MMS\textsuperscript{\ref{foot:pg}}
+    & -- & -- & -- & -- & equal & \cref{thm:impl:aps-to-pess} & \cite{babaioff2023fair}
+\\[\defaultaddspace] WMMS $\fimplies$ APS
+    & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:mms-to-aps-n2} & \cite{babaioff2023fair}
+\\[\defaultaddspace] PWMMS $\fimplies$ PAPS
+    & additive & -- & -- & -- & -- & \cref{thm:impl:mms-to-aps-n2} & \cite{babaioff2023fair}
+\\ \bottomrule
+\end{longtable}
+\normalsize
+
+EFX $\fimplies$ EF1, EEFX $\fimplies$ EEF1, and MXS $\fimplies$ M1S
+hold under additional conditions. See \cref{thm:impl:efx-to-ef1} for details.
