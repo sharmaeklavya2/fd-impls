@@ -164,7 +164,7 @@ Let $B$ be the allocation obtained by transferring $S$ from $A_i$ to $A_j$. Form
 let $B_i \defeq A_i \setminus S$, $B_j \defeq A_j \cup S$,
 and $B_k \defeq A_k$ for all $k \in [n] \setminus \{i, j\}$. Then
 \[ \frac{v_i(B_i)}{w_i} = \frac{v_i(A_i) - v_i(S)}{w_i} > \frac{v_i(A_i)}{w_i}, \]
-\[ \frac{v_i(B_j)}{w_j} = \frac{v_i(A_j) + v_i(S)}{w_j} > \frac{v_i(A_i \setminus S)}{w_i} - \frac{d_i(S)}{w_j} \ge \frac{v_i(A_i)}{w_i}, \]
+\[ \frac{v_i(B_j)}{w_j} = \frac{v_i(A_j) + v_i(S)}{w_j} > \frac{v_i(A_i \setminus S)}{w_i} - \frac{(-v_i(S))}{w_j} \ge \frac{v_i(A_i)}{w_i}, \]
 and for any $k \in [n] \setminus \{i, j\}$, we get
 \[ \frac{v_i(B_k)}{w_k} = \frac{v_i(A_k)}{w_k} > \frac{v_i(A_i)}{w_i}. \]
 Hence,
