@@ -9,19 +9,30 @@ We present several implications and prove non-implications between fairness noti
 Some of these results are already known, some are non-trivial generalizations of existing results,
 and some are completely new results.
 These implication results help put fairness notions into a hierarchy.
-See \cref{fig:additive-goods} for the implications we show among fairness notions
-for additive goods when agents have equal entitlements.
+See \cref{fig:additive-nny} for the implications we show among fairness notions
+for additive goods and additive chores when agents have equal entitlements.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=26em]{dags/additive-nonneg-nny.pdf}
-\caption{Implications between fairness notions for additive valuations over goods
+\begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[scale=0.8]{dags/additive-nonneg-nny.pdf}
+    \caption{Goods}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.8]{dags/additive-nonpos-nny.pdf}
+    \caption{Chores}
+\end{subfigure}
+\caption[Additive goods and chores with equal entitlements]{%
+Implications between fairness notions for additive valuations over goods and over chores
 when agents have equal entitlements. There is a vertex for each fairness notion.
 Notion $F_1$ implies notion $F_2$ iff there is a path from $F_1$ to $F_2$ in the graph
-(except that it is not known whether MXS implies EEF1).
+(except that it is not known whether MXS implies EEF1 for goods).
 Red vertices are infeasible notions, green vertices are feasible notions,
 and the feasibility of uncolored vertices are open problems.}
-\label{fig:additive-goods}
+\label{fig:additive-nny}
 \end{figure}
 
 Many different settings of fair division have been considered in the literature:
@@ -60,5 +71,5 @@ In \cref{sec:old-impls,sec:new-impls}, we present several implictions (and non-i
 fairness notions. \Cref{sec:old-impls} contains known results and their simple extensions.
 \Cref{sec:new-impls} contains novel results.
 In \cref{sec:cpig}, we describe our inference engine.
-\Cref{sec:dags} contains a collection of inference DAGs, similar to \cref{fig:additive-goods},
+\Cref{sec:dags} contains a collection of inference DAGs, similar to \cref{fig:additive-nny},
 for many different fair division settings.
