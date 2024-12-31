@@ -1,14 +1,14 @@
 \section{New Implications}
 \label{sec:new-impls}
 
-\begin{restatable}{lemma}{rthm:impl:mxs-to-ef1-n2}
+\begin{restatable}[MXS$\implies$EF1 for $n=2$]{lemma}{rthm:impl:mxs-to-ef1-n2}
 \label{thm:impl:mxs-to-ef1-n2}
 Let $([2], [m], (v_1, v_2), w)$ be a fair division instance with indivisible items.
 If $v_1$ is additive and agent 1 is MXS-satisfied by allocation $A$,
 then agent 1 is also EF1-satisfied by $A$.
 \end{restatable}
 
-\begin{restatable}{lemma}{rthm:impl:eef1-to-prop1}
+\begin{restatable}[EEF1$\implies$PROP1]{lemma}{rthm:impl:eef1-to-prop1}
 \label{thm:impl:eef1-to-prop1}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation $X$ is epistemic-EF1-fair to agent $i$, then $X$ is also PROP1-fair to $i$
@@ -20,7 +20,7 @@ if one of these conditions hold:
 \end{tightenum}
 \end{restatable}
 
-\begin{restatable}{lemma}{rthm:impl:mms-to-mxs}
+\begin{restatable}[MMS$\implies$MXS]{lemma}{rthm:impl:mms-to-mxs}
 \label{thm:mms-to-mxs}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
 Let allocation $A$ be MMS-fair to agent $i$.
@@ -31,7 +31,7 @@ Then $A$ is also MXS-fair to $i$ if at least one of these conditions hold:
 \end{tightenum}
 \end{restatable}
 
-\begin{restatable}{lemma}{rthm:impl:eefx-to-propx}
+\begin{restatable}[EEFX$\implies$PROPx]{lemma}{rthm:impl:eefx-to-propx}
 \label{thm:impl:eefx-to-propx}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 the items are chores to agent $i$ and $v_i$ is subadditive.
@@ -39,7 +39,7 @@ If an allocation $A$ is epistemic-EFX-fair to agent $i$,
 then it is also PROPx-fair to agent $i$.
 \end{restatable}
 
-\begin{restatable}{lemma}{rthm:impl:efx-to-propm}
+\begin{restatable}[EFX$\implies$PROPm]{lemma}{rthm:impl:efx-to-propm}
 \label{thm:impl:efx-to-propm}
 Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
 where $v_i$ is additive for some agent $i$.
@@ -59,7 +59,7 @@ If $v_i$ is superadditive, then $\WMMS_i \le w_i\beta_i$.
 If $v_i$ is additive and $n = 2$, then $\WMMS_i = w_i\beta_i$.
 \end{restatable}
 
-\begin{restatable}{lemma}{rthm:impl:mms-to-aps-n2}
+\begin{restatable}[WMMS$\implies$APS for $n=2$]{lemma}{rthm:impl:mms-to-aps-n2}
 \label{thm:impl:mms-to-aps-n2}
 For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
@@ -67,6 +67,8 @@ Moreover, when entitlements are equal, we get $\APS_i = \MMS_i$.
 \end{restatable}
 
 \subsection{Additive Binary Valuations}
+
+We study the case where marginals are triboolean, i.e, they belong to the set $\{-1, 0, 1\}$.
 
 \begin{restatable}{lemma}{rthm:tribool-rr}
 \label{thm:tribool-rr}

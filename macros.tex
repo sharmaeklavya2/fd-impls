@@ -19,6 +19,9 @@
 \DeclareMathOperator*{\Var}{Var}
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
+% \newcommand*{\nimplies}{\;\,\not\nobreak\!\!\Longrightarrow}  % https://tex.stackexchange.com/a/509385
+% \newcommand*{\nimplies}{\mathrel{{\ooalign{\hidewidth$\not{\phantom{=}}$\hidewidth\cr$\implies$}}}}  % https://tex.stackexchange.com/a/509385
+\newcommand*{\nimplies}{\centernot{\implies}}  % https://tex.stackexchange.com/a/509385
 \newcommand*{\optprog}[3]{
 \begin{array}{*3{>{\displaystyle}l}}
 #1 & \multicolumn{2}{>{\displaystyle}l}{#2}
