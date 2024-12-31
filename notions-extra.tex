@@ -289,6 +289,22 @@ When all items are chores, by \cref{thm:aps-optimal-price}, we can assume \wLoG{
 $p$ is non-positive and $p([m]) = -1$. Hence,
 \[ -\APS_i = \max_{q \in \Delta_m}\;\min_{S \subseteq [m]: q(S) \ge w_i} |v_i(S)|. \]
 
+\begin{definition}[APS (dual)]
+\label{defn:aps-dual}
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+For an agent $i$ and any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
+Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ such that
+\[ \exists x \in \mathbb{R}_{\ge 0}^{\Scal_z}, \sum_{S \in \Scal_z} x_S = 1
+    \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
+\end{definition}
+
+\Cref{defn:aps-dual} can be interpreted as a linear programmming relaxation of MMS.
+Formally, when entitlements are equal, adding the integrality constraints
+$nx_S \in \mathbb{Z}_{\ge 0}$ for all $S \in \Scal_z$ gives us an alternate definition of MMS.
+
+\cite{babaioff2023fair} show that the primal and dual definitions of APS are equivalent.
+They prove this only for goods, but their proof can be easily adapted to the case of mixed manna.
+
 \begin{lemma}
 \label{thm:aps-primal-dual-equiv}
 \Cref{defn:aps,defn:aps-dual} are equivalent.

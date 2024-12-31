@@ -9,8 +9,8 @@ We begin with the most well-known notion of fairness: envy-freeness (EF).
 
 \begin{definition}[EF]
 \label{defn:ef}
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
-In an allocation $A$, an agent $i \in N$ \emph{envies} another agent $j \in N \setminus \{i\}$ if
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+In an allocation $A$, an agent $i \in [n]$ \emph{envies} another agent $j \in [n] \setminus \{i\}$ if
 $\frac{v_i(A_i)}{w_i} < \frac{v_i(A_j)}{w_j}$.
 Agent $i$ is \emph{envy-free} in $A$ (or $A$ is EF-fair to $i$) if
 she doesn't envy any other agent in $A$.
@@ -21,13 +21,13 @@ But we use the term EF in this paper to emphasize that unequal entitlements
 is a property of the fair division setting, not the fairness notion.
 
 It is easy to see that EF allocations may not exist, so several relaxtions have been studied.
-Two of the most popular relaxations of EF are EF1 and EFX.
-EF1 was proposed by \cite{budish2011combinatorial,lipton2004approximately},
-and EFX was proposed by \cite{caragiannis2019unreasonable}.
+Two of the most popular relaxations of EF are
+EF1 \cite{budish2011combinatorial,lipton2004approximately},
+and EFX \cite{caragiannis2019unreasonable}.
 
 \begin{definition}
 \label{defn:ef1}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
 at least one of the following hold:
 \begin{tightenum}
@@ -41,7 +41,7 @@ at least one of the following hold:
 
 \begin{definition}
 \label{defn:efx}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is EFX-fair to agent $i$ if for every other agent $j$,
 $i$ doesn't envy $j$, or both of the following hold:
 \begin{enumerate}
@@ -56,25 +56,25 @@ $i$ doesn't envy $j$, or both of the following hold:
 given by \cite{caragiannis2019unreasonable}.
 However, in \cref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense,
 and we show that it's equivalent to the original definition when
-valuations are submodular and the items are goods.
+valuations are submodular and either all items are goods or all items are chores.
 
 \subsection{Proportionality-Based Notions}
 
 \begin{definition}[PROP]
 \label{defn:prop}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
-agent $i$'s \emph{proportional share} is $w_iv_i(M)$.
-Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_iv_i(M)$.
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+agent $i$'s \emph{proportional share} is $w_iv_i([m])$.
+Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_iv_i([m])$.
 \end{definition}
 
 \begin{definition}[PROP1 \cite{conitzer2017fair}]
 \label{defn:prop1}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is PROP1-fair to agent $i$ if at least one of the following hold:
 \begin{tightenum}
-\item $v_i(A_i) \ge w_iv_i(M)$.
-\item $v_i(A_i \cup \{g\}) > w_iv_i(M)$ for some $g \in M \setminus A_i$.
-\item $v_i(A_i \setminus \{c\}) > w_iv_i(M)$ for some $c \in A_i$.
+\item $v_i(A_i) \ge w_iv_i([m])$.
+\item $v_i(A_i \cup \{g\}) > w_iv_i([m])$ for some $g \in [m] \setminus A_i$.
+\item $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ for some $c \in A_i$.
 \end{tightenum}
 \end{definition}
 
@@ -85,13 +85,13 @@ binary (or negative binary) valuations.
 
 \begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
 \label{defn:propx}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is said to be PROPx-fair to agent $i$ iff
-either $v_i(A_i) \ge w_iv_i(M)$ or both of these conditions hold:
+either $v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
 \begin{tightenum}
-\item $v_i(A_i \cup S) > w_iv_i(M)$ for every $S \subseteq M \setminus A_i$
+\item $v_i(A_i \cup S) > w_iv_i([m])$ for every $S \subseteq [m] \setminus A_i$
     such that $v_i(S \mid A_i) > 0$.
-\item $v_i(A_i \setminus S) > w_iv_i(M)$ for every $S \subseteq A_i$
+\item $v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
     such that $v_i(S \mid A_i \setminus S) < 0$.
 \end{tightenum}
 \end{definition}
@@ -104,34 +104,32 @@ and for those settings, we show that our definition is equivalent to theirs
 
 \begin{definition}[PROPm]
 \label{defn:propm}
-Let $(N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
 An allocation $A$ is said to be PROPm-fair to agent $i$ iff
-$v_i(A_i) \ge w_iv_i(M)$ or both of these conditions hold:
+$v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
 \begin{tightenum}
-\item\label{item:propm:chores}$v_i(A_i \setminus S) > w_iv_i(M)$ for every $S \subseteq A_i$
+\item\label{item:propm:chores}$v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
     such that $v_i(S \mid A_i \setminus S) < 0$.
-\item\label{item:propm:goods}For every $j \in N \setminus \{i\}$, define
-    \[ \tau_j \defeq \begin{cases}
-    0 & \textrm{ if } v_i(S \mid A_i) \le 0 \textrm{ for all } S \subseteq A_j
-    \\ \min(\{v_i(S \mid A_i) \mid S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\}) & \textrm{ otherwise}
-    \end{cases}. \]
-    Define $T \defeq \{\tau_j \mid j \in N \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
-    Then either $T = \emptyset$, or $v_i(A_i) + \max(T) > w_iv_i(M)$.
+\item\label{item:propm:goods}For every $j \in [n] \setminus \{i\}$, define
+    $\tau_j$ to be 0 if $v_i(S \mid A_i) \le 0$ for all $S \subseteq A_j$,
+    and $\min(\{v_i(S \mid A_i) \mid S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\})$ otherwise.
+    Define $T \defeq \{\tau_j \mid j \in [n] \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
+    Then either $T = \emptyset$, or $v_i(A_i) + \max(T) > w_iv_i([m])$.
 \end{tightenum}
 \end{definition}
 
 PROPm was originally defined in \cite{baklanov2021achieving} for additive goods.
 However, that definition has a minor error, which we explain in \cref{sec:notions:propm}.
-\Cref{defn:propm} fixes the error.
+\Cref{defn:propm} fixes the error. Note that PROPm and PROPx are equivalent for chores.
 
 \subsection{Maximin Share and AnyPrice Share}
 
 Share-based notions are those where each agent $i$ has a threshold $\mu_i$,
 and an allocation $A$ is fair to agent $i$ if $v_i(A_i) \ge \mu_i$.
-We get different fairness notions depending on how we define $\mu_i$,
-e.g., we get proportionality with $\mu_i \defeq v_i(M)/|N|$.
+We get different fairness notions depending on how we define $\mu_i$.
+E.g., PROP is a share-based notion.
 (A more precise definition of share-based notions is given in \cite{babaioff2022fair}).
-Here we describe two share-based notions, maximin share (MMS) and AnyPrice share (APS).
+We now describe two more share-based notions, maximin share (MMS) and AnyPrice share (APS).
 
 \begin{definition}[MMS \cite{budish2011combinatorial}]
 \label{defn:mms}
@@ -139,8 +137,7 @@ For a finite set $M$, let $\Pi_n(M)$ be the set of all $n$-partitions of $M$.
 For a function $f: 2^M \to \mathbb{R}$, define
 \[ \MMS_f^n(M) \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n f(P_j). \]
 %
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance
-with equal entitlements (i.e., $w_i = 1/|N|$ for all $i \in N$).
+Let $\Ical \defeq (N, M, (v_i)_{i \in N}, \eqEnt)$ be a fair division instance.
 Agent $i$'s \emph{maximin share} (MMS) is given by $\MMS_{v_i}^{|N|}(M)$.
 When the instance $\Ical$ is clear from context, we write $\MMS_i$ instead of $\MMS_{v_i}^{|N|}(M)$.
 An allocation $A$ is MMS-fair to agent $i$ if $v_i(A_i) \ge \MMS_{v_i}^{|N|}(M)$.
@@ -179,13 +176,12 @@ we show that $\pessShare_i = \MMS_i$ for equal entitlements.
 Unless stated otherwise, in settings with potentially unequal entitlements,
 by MMS we mean weighted MMS.
 
-The notion AnyPrice Share (APS) \cite{babaioff2023fair} has two equivalent definitions: primal and dual.
-
+Next, we define AnyPrice Share (APS) \cite{babaioff2023fair}.
 For any non-negative integer $m$, define
 $\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
 For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=1}^m x_j$.
 
-\begin{definition}[APS (primal)]
+\begin{definition}[APS]
 \label{defn:aps}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 agent $i$'s AnyPrice Share (APS) is defined as
@@ -196,49 +192,18 @@ A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector if
 \end{definition}
 
 \Cref{defn:aps} is slightly different from the original definition given in \cite{babaioff2023fair}.
-However, they assume that either all items are goods or all items are chores,
-and for those special cases, their definition is equivalent to \cref{defn:aps}.
+However, they assume that all items are goods, and for that special cases,
+their definition is equivalent to \cref{defn:aps}.
 This follows from \cref{thm:aps-optimal-price} (c.f.~\cref{sec:notions:aps}).
 
-\begin{definition}[APS (dual)]
-\label{defn:aps-dual}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
-For an agent $i$ and any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
-Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ such that
-\[ \exists x \in \mathbb{R}_{\ge 0}^{\Scal_z}, \sum_{S \in \Scal_z} x_S = 1
-    \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
-\end{definition}
-
-\Cref{defn:aps-dual} can be interpreted as a linear programmming relaxation of MMS.
-Formally, when entitlements are equal, adding the integrality constraints
-$nx_S \in \mathbb{Z}_{\ge 0}$ for all $S \in \Scal_z$ gives us an alternate definition of MMS.
-
-\cite{babaioff2023fair} show that the primal and dual definitions of APS are equivalent.
-They prove this only for goods, but their proof can be easily adapted to the case of mixed manna.
-For completeness sake, we prove this in \cref{thm:aps-primal-dual-equiv} (\cref{sec:notions:aps}).
-
-Closely related to maximin share is the notion of \emph{leximin partition}.
-
-\begin{definition}
-\label{defn:leximin}
-For any set $S \subseteq M$, let $\Pi_n(S)$ denote the set of all $n$-partitions of $S$.
-For any sequence $X = (x_i)_{i=1}^n$ of real numbers, define $\sorted(X)$ to be a permutation of $X$
-where entries occur in non-decreasing order.
-For any two sequences $X = (x_i)_{i=1}^n$ and $Y = (y_i)_{i=1}^n$, we say that $X \le Y$ if
-$\exists i \in [n]$ such that $x_i \le y_i$ and $x_j = y_j$ for all $j \in [i-1]$.
-(Note that this relation $\le$ over sequences is a total ordering.)
-
-We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[m]} \to \mathbb{R}$ if
-\[ P \in \argmax_{X \in \Pi_n([m])} \sorted\left((f(X_j))_{j=1}^n\right). \]
-\end{definition}
-
-It is easy to see that if $P$ is a leximin $n$-partition of $f: 2^{[m]} \to \mathbb{R}$,
-then $\min_{j=1}^n f(P_j) = \MMS_f^n([m])$.
+\cite{babaioff2023fair} give another equivalent definition of APS,
+called the \emph{dual} definition, which works for mixed manna too.
+See \cref{sec:notions:aps} for details.
 
 \subsection{Derived Notions}
 
 New fairness notions can be obtained by systematically modifying existing notions.
-
+%
 We start with two related concepts, epitemic fairness \cite{aziz2018knowledge,caragiannis2023new}
 and minimum fair share \cite{caragiannis2023new}.
 
@@ -252,17 +217,17 @@ $B$ is called agent $i$'s \emph{epistemic-$F$-certificate} for $A$.
 
 \begin{definition}[minimum fair share]
 \label{defn:minfs}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$
 and fairness notion $F$, let $\Acal(\Ical, F, i)$ be the set of allocations
 that are $F$-fair to agent $i$.
-Then $i$'s \emph{minimum $F$ share} is given by
-\[ \minFS(\Ical, F, i) \defeq \min_{A \in \Acal(\Ical, F, i)} v_i(A_i). \]
-An allocation $A$ is \emph{minimum-$F$-share-fair} to agent $i$ if
-$v_i(A_i) \ge \minFS(\Ical, F, i)$.
-
-Equivalently, $A$ is minimum-$F$-share-fair to agent $i$ if there exists
+%
+Then $A$ is minimum-$F$-share-fair to agent $i$ if there exists
 an allocation $B \in \Acal(\Ical, F, i)$ such that $v_i(A_i) \ge v_i(B_i)$.
 Then $B$ is called agent $i$'s \emph{minimum-$F$-share-certificate} for $A$.
+%
+Equivalently, an allocation $A$ is \emph{minimum-$F$-share-fair} to agent $i$ if
+$v_i(A_i)$ is at least her minimum-$F$-share, defined as
+\[ \minFS(\Ical, F, i) \defeq \min_{A \in \Acal(\Ical, F, i)} v_i(A_i). \]
 \end{definition}
 
 We now describe pairwise fairness \cite{caragiannis2019unreasonable}
@@ -295,13 +260,8 @@ where $(\Ical^{(S)}, A^{(S)}) \defeq \restrict(\Ical, A, \{i\} \cup S)$.
 
 In this paper, we consider the following derivative notions:
 \begin{tightenum}
-\item Epistemic envy-freeness (EEF).
-\item Epistemic EFX (EEFX).
-\item Epistemic EF1 (EEF1).
-\item Minimum EF share (MEFS).
-\item Minimum EFX share (MXS).
-\item Minimum EF1 share (M1S).
-\item Pairwise proportionality (PPROP) and groupwise proportionality (GPROP).
-\item Pairwise MMS (PMMS) and groupwise MMS (GMMS).
-\item Pairwise APS (PAPS) and groupwise APS (GAPS).
+\item Epistemic envy-freeness (EEF), epistemic EFX (EEFX), epistemic EF1 (EEF1).
+\item Minimum EF share (MEFS), minimum EFX share (MXS), minimum EF1 share (M1S).
+\item Pairwise proportionality (PPROP), pairwise MMS (PMMS), pairwise APS (PAPS).
+\item Groupwise proportionality (GPROP), groupwise MMS (GMMS), groupwise APS (GAPS).
 \end{tightenum}
