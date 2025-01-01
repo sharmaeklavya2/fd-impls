@@ -819,8 +819,43 @@ by \cref{thm:impl:aps-to-pess}.
 \subsection{Additive Triboolean Valuations}
 \label{sec:impls-extra:tribool}
 
-We study the case where valuations are additive and marginals are triboolean,
-i.e, they belong to the set $\{-1, 0, 1\}$.
+\begin{table}[htb]
+\centering
+\caption[Tribool implications]{Implications among fairness notions when
+valuations are additive and marginals are triboolean,
+i.e, they belong to the set $\{-1, 0, 1\}$.}
+\label{table:impls-tribool}
+\begin{tabular}{cccccccc}
+\toprule & \small marginals & \small $n=2$ & \small entitlements & &
+\\\midrule EF1 $\fimplies$ EFX & $\{-1, 0, 1\}$
+    & -- & -- & -- & trivial
+\\[\defaultaddspace] EEF1 $\fimplies$ EEFX & $\{-1, 0, 1\}$
+    & -- & -- & -- & trivial
+\\[\defaultaddspace] M1S $\fimplies$ MXS & $\{-1, 0, 1\}$
+    & -- & -- & -- & trivial
+\\[\defaultaddspace] PROP1 $\fimplies$ PROPx & $\{-1, 0, 1\}$
+    & -- & -- & -- & trivial
+%
+\\\midrule PROP $\fimplies$ EEF & $\{-1, 0, 1\}$
+    & -- & equal & \cref{thm:impl:tribool:prop} & \textbf{new}
+\\[\defaultaddspace] APS $\fimplies$ PROPx & $\{-1, 0, 1\}$
+    & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
+\\[\defaultaddspace] PROP1 $\fimplies$ APS & $\{-1, 0, 1\}$
+    & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ APS & $\{-1, 0, 1\}$
+    & -- & equal & \cref{thm:impl:tribool:aps,thm:impl:tribool:m1s} & \textbf{new}
+\\[\defaultaddspace] MMS $\fimplies$ EEFX & $\{-1, 0, 1\}$
+    & -- & equal & \cref{thm:impl:tribool:mms-to-eefx} & \textbf{new}
+%
+\\\midrule EF1 $\fimplies$ GAPS & $\{-1, 0, 1\}$
+    & -- & equal & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+\\[\defaultaddspace] EF1 $\fimplies$ GAPS & $\{-1, 0, 1\}$
+    & $n=2$ & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+\\[\defaultaddspace] EF1 $\fimplies$ GAPS & $\{-1, 0\}$
+    & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+\\ \bottomrule
+\end{tabular}
+\end{table}
 
 \begin{restatable}{lemma}{rthm:tribool-rr}
 \label{thm:tribool-rr}
