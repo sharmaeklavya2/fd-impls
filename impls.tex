@@ -1,16 +1,18 @@
 \section{Implications Among Fairness Notions}
 \label{sec:impls}
 
-For conciseness, we write ep-$F$ instead of epistemic-$F$,
+We summarize implications among fairness notions in \cref{table:impls1},
+and defer the details and proofs to \cref{sec:impls-extra}.
+%
+For conciseness in the table, we write ep-$F$ instead of epistemic-$F$,
 min-$F$-sh instead of minimum-$F$-share,
-$g$-$F$ instead of groupise-$F$,
-and $p$-$F$ instead of pairwise-$F$.
+g-$F$ instead of groupise-$F$, and p-$F$ instead of pairwise-$F$.
 
 \footnotesize
 \begin{longtable}{cccccccc}
 \caption{Implications among fairness notions.}
-%\label{table:impls1}
-\\ \toprule & valuation & \tiny marginals & \tiny identical & $n$ & \tiny entitlements & &
+\label{table:impls1}
+\\ \toprule & \tiny valuation & \tiny marginals & \tiny identical & \tiny $n$ & \tiny entitlements & &
 \\ \midrule $F$ $\Rightarrow$ ep-$F$ $\Rightarrow$ min-$F$-sh
     & -- & -- & -- & -- & -- & \cref{thm:impl:epistemic} & trivial
 \\[\defaultaddspace] g-$F$ $\fimplies$ $F$ + p-$F$
@@ -102,5 +104,6 @@ and $p$-$F$ instead of pairwise-$F$.
 \end{longtable}
 \normalsize
 
-EFX $\fimplies$ EF1, EEFX $\fimplies$ EEF1, and MXS $\fimplies$ M1S
-hold under additional conditions. See \cref{thm:impl:efx-to-ef1} for details.
+EFX $\fimplies$ EF1, EEFX $\fimplies$ EEF1, and MXS $\fimplies$ M1S hold for additional settings.
+See \cref{thm:impl:efx-to-ef1} in \cref{sec:impls-extra:among-ef-efx-ef1} for details.
+In \cref{sec:impls-extra:tribool}, we prove additional implications when marginals are in $\{-1, 0, 1\}$.
