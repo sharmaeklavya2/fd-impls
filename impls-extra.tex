@@ -1,0 +1,1005 @@
+\section{Proofs of Implications Among Fairness Notions}
+\label{sec:impls-extra}
+
+\subsection{Among Derived Notions}
+\label{sec:impls-extra:among-derived}
+
+\begin{remark}
+\label{thm:impl:epistemic}
+For any fairness notion $F$, if an allocation is $F$-fair to an agent $i$,
+then it is also epistemic-$F$-fair to agent $i$.
+If an allocation is epistemic-$F$-fair to an agent $i$,
+then it is also minimum-$F$-share-fair to agent $i$.
+If there are only two agents, then an allocation is epistemic-$F$-fair to an agent $i$
+iff it is $F$-fair to agent $i$.
+\end{remark}
+
+\begin{remark}
+\label{thm:impl:groupwise}
+For any fairness notion $F$, if an allocation is groupwise-$F$-fair to an agent $i$,
+then it is also pairwise-$F$-fair to agent $i$ and $F$-fair to agent $i$.
+When there are only two agents, all three of these notions are equivalent.
+\end{remark}
+
+\begin{restatable}{lemma}{rthm:impl:ext-to-epistemic}
+\label{thm:impl:ext-to-epistemic}
+Let $\Omega$ be a set containing pairs of the form $(\Ical, A)$,
+where $\Ical$ is a fair division instance and $A$ is an allocation for $\Ical$.
+For any two fairness notions $F_1$ and $F_2$, let $\phi(F_1, F_2)$ be the proposition
+``\,$\forall (\Ical, A) \in \Omega$, for every agent $i$ in $\Ical$,
+$A$ is $F_2$-fair to $i$ whenever $A$ is $F_1$-fair to $i$". Then
+$\phi(F_1, F_2) \implies \phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)
+\textrm{ and } \phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$.
+\end{restatable}
+\begin{proof}
+Suppose $\phi(F_1, F_2)$.
+Pick any $(\Ical, A) \in \Omega$.
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$.
+Pick any $i \in [n]$.
+
+Suppose $A$ is epistemic-$F_1$-fair to $i$.
+Let $B$ be $i$'s epistemic-$F_1$-certificate for $A$.
+Then $B$ is $F_1$-fair to $i$ and $A_i = B_i$.
+By $\phi(F_1, F_2)$, $B$ is also $F_2$-fair to $i$.
+Hence, $B$ is $i$'s epistemic-$F_2$-certificate for $A$.
+Therefore, $\phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)$ holds.
+
+Suppose $A$ is min-$F_1$-share-fair to $i$.
+Let $B$ be $i$'s min-$F_1$-share-certificate for $A$.
+Then $B$ is $F_1$-fair to $i$ and $v_i(A_i) \ge v_i(B_i)$.
+By $\phi(F_1, F_2)$, $B$ is also $F_2$-fair to $i$.
+Hence, $B$ is $i$'s min-$F_2$-share-certificate for $A$.
+Therefore, $\phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$ holds.
+\end{proof}
+
+\subsection{Among EF, EFX, EF1}
+\label{sec:impls-extra:among-ef-efx-ef1}
+
+Here we look at implications among EF, EFX, EF1, and their epistemic variants.
+
+\begin{remark}[EF$\implies$EFX+EF1]
+\label{thm:impl:ef-to-efx+ef1}
+If an allocation is EF-fair to agent $i$, then it is also EFX-fair to $i$ and EF1-fair to $i$.
+\end{remark}
+
+Because of how we define EFX (\cref{defn:efx}),
+it's not always true that EFX implies EF1.
+However, it's true for many common settings, as the following lemma shows.
+
+\begin{restatable}[EFX$\implies$EF1]{lemma}{rthm:impl:efx-to-ef1}
+\label{thm:impl:efx-to-ef1}
+For the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+let $A$ be an allocation where agent $i$ is EFX-satisfied.
+Then agent $i$ is EF1-satisfied in these scenarios:
+\begin{tightenum}
+\item $v_i$ is additive.
+\item $v_i$ is doubly strictly monotone, i.e., $[m] = G \cup C$, $v_i(g \mid \cdot) > 0$
+    for every $g \in G$, and $v_i(c \mid \cdot) < 0$ for every $c \in C$.
+\item Agents have equal entitlements, $v_i$ is submodular, and all items are goods for agent $i$.
+\item $v_i$ is submodular and all items are chores for agent $i$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Suppose $i$ is EFX-satisfied but not EF1-satisfied.
+Suppose $i$ EF1-envies $j$.
+
+Since $i$ EF1-envies $j$, we get that for all $t \in A_j$, we have
+\[ \frac{v_i(A_i)}{w_i} < \frac{v_i(A_j \setminus \{t\})}{w_j}. \]
+Since $i$ is EFX-saisfied, we get that
+for all $t \in A_j$ such that $v_i(t \mid A_i) > 0$, we have
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{t\})}{w_j}. \]
+Hence, for all $t \in A_j$, we get $v_i(t \mid A_i) \le 0$.
+
+Since $i$ EF1-envies $j$, we get that for all $t \in A_i$, we have
+\[ \frac{v_i(A_i \setminus \{t\})}{w_i} < \frac{v_i(A_j)}{w_j}. \]
+Since $i$ is EFX-saisfied, we get that
+for all $t \in A_i$ such that $v_i(t \mid A_i \setminus \{t\}) < 0$, we have
+\[ \frac{v_i(A_i \setminus \{t\})}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
+Hence, for all $t \in A_i$, we get $v_i(t \mid A_i \setminus \{t\}) \ge 0$.
+
+If $v_i$ is additive, we get $v_i(A_i) \ge 0 \ge v_i(A_j)$, which is a contradiction.
+
+If $v_i$ is doubly-monotone and $v_i(g \mid S) > 0$ for every good $g$
+and $v_i(c \mid S) < 0$ for every chore $c$, then
+all items in $A_j$ are chores and all items in $A_i$ are goods.
+Hence, $v_i(A_i) \ge 0 \ge v_i(A_j)$, which is a contradiction.
+
+Suppose all agents have equal entitlements, all items are goods for $i$, and $v_i$ is submodular.
+Let $A_j \defeq \{g_1, \ldots, g_k\}$. Then
+\[ v_i(A_j \mid A_i) = \sum_{t=1}^k v_i(g_t \mid A_i \cup \{g_1, \ldots, g_{t-1}\})
+\le \sum_{t=1}^k v_i(g_t \mid A_i) \le 0. \]
+Hence, $v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i) + v_i(A_j \mid A_i) \le v_i(A_i)$.
+This is a contradiction.
+
+Suppose all items are chores for $i$ and $v_i$ is submodular.
+Let $A_i = \{c_1, \ldots, c_k\}$. Then
+\[ v_i(A_i) = \sum_{t=1}^k v_i(c_t \mid \{c_1, \ldots, c_{t-1}\})
+\ge \sum_{t=1}^k v_i(c_t \mid A_i \setminus \{c_t\}) \ge 0. \]
+Hence, $v_i(A_i) \ge 0 \ge v_i(A_j)$, which is a contradiction.
+
+A contradiction implies that it's impossible for agent $i$ to be
+EFX-satisfied but not EF1-satisfied.
+\end{proof}
+
+\begin{restatable}[MXS$\implies$EF1 for $n=2$]{lemma}{rthm:impl:mxs-to-ef1-n2}
+\label{thm:impl:mxs-to-ef1-n2}
+Let $([2], [m], (v_1, v_2), w)$ be a fair division instance with indivisible items.
+If $v_1$ is additive and agent 1 is MXS-satisfied by allocation $A$,
+then agent 1 is also EF1-satisfied by $A$.
+\end{restatable}
+\begin{proof}
+Suppose $A$ is MXS-fair to agent 1 but not EF1-fair to her.
+Then agent 1 envies agent 2 in $A$, so $v_1(A_1) < v_1(A_2)$.
+Let $B$ be agent 1's MXS-certificate for $A$. Then $v_1(B_1) \le v_1(A_1)$.
+Moreover, $v_1(A_2) = v_1([m]) - v_1(A_1) \le v_1([m]) - v_1(B_1) = v_1(B_2)$.
+Hence, we get $v_1(B_1) \le v_1(A_1) < v_1(A_2) \le v_1(B_2)$.
+
+Let $G \defeq \{g \in [m]: v_1(g) > 0\}$ and $C \defeq \{c \in [m]: v_1(c) < 0\}$.
+Let $\max(\emptyset) \defeq -\infty$ and $\min(\emptyset) \defeq \infty$.
+
+Since agent 1 is EFX-satisfied by $B$ and not EF1-satisfied by $A$,
+for every $\ghat \in A_2$, we get
+\begin{align*}
+& \frac{v_1(A_2) - v_1(\ghat)}{w_2} > \frac{v_1(A_1)}{w_1}
+\ge \frac{v_1(B_1)}{w_1}
+\\ &\ge \frac{1}{w_2}\left(v_1(B_2) - \min_{g \in B_2 \cap G} v_1(g)\right)
+\\ &\ge \frac{1}{w_2}\left(v_1(A_2) - \min_{g \in B_2 \cap G} v_1(g)\right).
+\end{align*}
+Hence, for every $\ghat \in A_2$, we get $v_1(\ghat) < \min_{g \in B_2 \cap G} v_1(g)$.
+Hence, $A_2 \cap G$ and $B_2 \cap G$ are disjoint, so $A_2 \cap G \subseteq B_1 \cap G$.
+Let $d_i \defeq -v_i$ for all $i$. Then for every $\chat \in A_1$, we get
+\begin{align*}
+& \frac{d_1(A_1) - d_1(\chat)}{w_1} > \frac{d_1(A_2)}{w_2}
+\ge \frac{d_2(B_2)}{w_2}
+\\ &\ge \frac{1}{w_1}\left(d_1(B_1) - \min_{c \in B_1 \cap C} d_1(c)\right)
+\\ &\ge \frac{1}{w_1}\left(d_1(A_1) - \min_{c \in B_1 \cap C} d_1(c)\right).
+\end{align*}
+Hence, for every $\chat \in A_1$, we have $d_1(\chat) < \min_{c \in B_1 \cap C} d_1(c)$.
+Hence, $A_1 \cap C$ and $B_1 \cap C$ are disjoint, so $B_1 \cap C \subseteq A_2 \cap C$.
+Hence,
+\begin{align*}
+v_1(A_2) &= v_1(A_2 \cap G) - d_1(A_2 \cap C)
+\\ &\le v_1(B_1 \cap G) - d_1(B_1 \cap C) = v_1(B_1),
+\end{align*}
+which is a contradiction.
+Hence, it's not possible for $A$ to be MXS-fair to agent 1 but not EF1-fair to her.
+\end{proof}
+
+\subsection{Among PROP-Based Notions}
+\label{sec:impls-extra:among-prop-based}
+
+\begin{restatable}[PROPx$\implies$PROPm]{lemma}{rthm:impl:propx-to-propm}
+\label{thm:impl:propx-to-propm}
+In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if an allocation is PROPx-fair to agent $i$, then it is also PROPm-fair to agent $i$.
+\end{restatable}
+\begin{proof}
+Assume (for the sake of contradiction) that there is an allocation $A$ where
+agent $i$ is PROPx-satisfied but not PROPm-satisfied.
+%
+Since $i$ is not PROPm-satisfied, we get $v_i(A_i) \le w_iv_i([m])$.
+Since $i$ is PROPx-satisfied, we get
+
+\begin{itemize}
+\item $v_i(A_i \setminus S) > w_iv_i([m])$ for all $S \subseteq A_i$ such that
+    $v_i(S \mid A_i \setminus S) < 0$.
+\item $v_i(A_i \cup S) > w_iv_i([m])$ for all $S \subseteq [m] \setminus A_i$
+    such that $v_i(S \mid A_i) > 0$.
+\end{itemize}
+
+Since $i$ is not PROPm-satisfied, we get that $T \neq \emptyset$ and $v_i(A_i) + \max(T) \le w_iv_i([m])$.
+Let $\max(T) = \tau_{\jhat} = v_i(\Shat \mid A_i) > 0$.
+Then $v_i(A_i \cup \Shat) \le w_iv_i([m])$, which contradicts the fact that
+$i$ is PROPx-satisfied by $A$.
+Hence, if $i$ is PROPx-satisfied by $A$, then she is also PROPm-satisfied by $A$.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:submod-marginal-is-submod}
+\label{thm:submod-marginal-is-submod}
+For any $X \subseteq \Omega$ and any submodular function $f: 2^{\Omega} \to \mathbb{R}$,
+$f(\cdot \mid X)$ is submodular.
+\end{restatable}
+\begin{proof}
+Let $P, Q \subseteq \Omega \setminus X$. Let $g(Y) \defeq f(Y \mid X)$. Then
+\begin{align*}
+& g(P) + g(Q)
+\\ &= f(P \cup X) + f(Q \cup X) - 2f(X)
+\\ &\ge f((P \cup X) \cup (Q \cup X)) + f((P \cup X) \cap (Q \cap X)) - 2f(X)
+    \tag{by $f$'s submodularity}
+\\ &= f((P \cup Q) \cup X) + f((P \cap Q) \cup X) - 2f(X)
+    \tag{by De Morgan's law}
+\\ &= g(P \cup Q) + g(P \cap Q).
+\end{align*}
+Hence, $g$ is submodular.
+\end{proof}
+
+\begin{restatable}[PROPm$\implies$PROP1]{lemma}{rthm:impl:propm-to-prop1}
+\label{thm:impl:propm-to-prop1}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if an allocation $A$ is PROPm-fair to agent $i$, then it is also PROP1-fair to agent $i$
+if at least one of these conditions holds:
+\begin{tightenum}
+\item $v_i$ is submodular.
+\item $v_i$ is doubly strictly monotone, i.e., $[m] = G \cup C$, $v_i(g \mid \cdot) > 0$
+    for every $g \in G$, and $v_i(c \mid \cdot) < 0$ for every $c \in C$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Suppose allocation $A$ is PROPm-fair to $i$ but not PROP1-fair to $i$. Then
+\begin{tightenum}
+\item\label{item:impl:propm-to-prop1:unprop}$v_i(A_i) < w_iv_i([m])$ (by PROP1 unfairness).
+\item\label{item:impl:propm-to-prop1:unprop1-chores}$v_i(A_i \setminus \{c\}) \le w_iv_i([m])$
+    for all $c \in A_i$ (by PROP1 unfairness).
+\item\label{item:impl:propm-to-prop1:unprop1-goods}$v_i(A_i \cup \{g\}) \le w_iv_i([m])$
+    for all $g \in [m] \setminus A_i$ (by PROP1 unfairness).
+\item\label{item:impl:propm-to-prop1:propm-chores}$v_i(A_i \setminus \{c\}) > w_iv_i([m])$
+    for all $c \in A_i$ such that $v_i(c \mid A_i \setminus \{c\}) < 0$ (by PROPm fairness).
+\item\label{item:impl:propm-to-prop1:propm-goods}$T = \emptyset$ or $v_i(A_i) + \max(T) > w_iv_i([m])$
+    (by PROPm fairness; c.f.~\cref{defn:propm} for the definition of $T$).
+\end{tightenum}
+
+By \ref{item:impl:propm-to-prop1:unprop1-chores} and \ref{item:impl:propm-to-prop1:propm-chores},
+we get $v_i(c \mid A_i \setminus \{c\}) \ge 0$ for all $c \in A_i$.
+We now show that $v_i(A_i) \ge 0$.
+If $v_i$ is doubly strictly monotone, then $A_i$ only contains goods, so $v_i(A_i) \ge 0$.
+Now suppose $v_i$ is submodular. Let $A_i = \{g_1, \ldots, g_k\}$. Then
+\[ v_i(A_i) = \sum_{j=1}^k v_i(g_j \mid \{g_1, \ldots, g_{j-1}\})
+    \ge v_i(g_j \mid A_i \setminus \{g_j\}) \ge 0. \]
+
+Suppose $T = \emptyset$. Then $\tau_j = 0$ for all $j \in [n] \setminus \{i\}$.
+Hence, for all $j \in [n] \setminus \{i\}$, we have $v_i(A_j \mid A_i) \le 0$.
+If $v_i$ is doubly strictly monotone, then $[m] \setminus A_i$ contains only chores,
+so $v_i([m] \setminus A_i \mid A_i) \le 0$. If $v_i$ is submodular, then
+$v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-marginal-is-submod}, so
+\[ v_i([m] \setminus A_i \mid A_i)
+    \le \sum_{j \in [n] \setminus \{i\}} v_i(A_j \mid A_i) \le 0. \]
+Hence, $v_i(A_i) \ge v_i([m])$.
+If $v_i([m]) \le 0$, then $v_i(A_i) \ge 0 \ge w_iv_i([m])$,
+and if $v_i([m]) \ge 0$, then $v_i(A_i) \ge v_i([m]) \ge w_iv_i([m])$.
+This contradicts \ref{item:impl:propm-to-prop1:unprop}, so $T \neq \emptyset$.
+
+Let $\max(T) = \tau_{\jhat} > 0$. By definition of $\tau_{\jhat}$, we get
+\begin{align*}
+0 < \tau_{\jhat} &= \min(\{v_i(S \mid A_i) \mid S \subseteq A_{\jhat} \textrm{ and } v_i(S \mid A_i) > 0\})
+\\ &\le \min(\{v_i(g \mid A_i) \mid g \in A_{\jhat} \textrm{ and } v_i(g \mid A_i) > 0\}).
+\end{align*}
+
+\textbf{Case 1}: $v_i(g \mid A_i) \le 0$ for all $g \in A_{\jhat}$.
+\\ If $v_i$ is doubly strictly monotone, then $A_{\jhat}$ only has chores,
+and so $v_i(S \mid A_i) \le 0$ for all $S \subseteq A_{\jhat}$.
+This contradicts the fact that $\tau_{\jhat} > 0$.
+Now let $v_i$ be submodular.
+Since $v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-marginal-is-submod},
+for any $S \subseteq A_{\jhat}$, we get
+$v_i(S \mid A_i) \le \sum_{c \in S} v_i(c \mid A_i) \le 0$.
+This contradicts the fact that $\tau_{\jhat} > 0$.
+
+\textbf{Case 2}: $v_i(\ghat \mid A_i) > 0$ for some $\ghat \in A_{\jhat}$.
+\\ Then $\max(T) = \tau_{\jhat} \le v_i(\ghat \mid A_i)$.
+By \ref{item:impl:propm-to-prop1:propm-goods}, we get
+$w_iv_i([m]) < v_i(A_i) + \max(T) \le v_i(A_i \cup \{\ghat\})$.
+But this contradicts \ref{item:impl:propm-to-prop1:unprop1-goods}.
+
+Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfied.
+\end{proof}
+
+\subsection{EF vs PROP}
+\label{sec:impls-extra:ef-vs-prop}
+
+Here we look at implications between EF (and its epistemic variants) and PROP (and its epistemic variants).
+
+\begin{restatable}[MEFS$\implies$PROP, \cite{bouveret2016characterizing}]{lemma}{rthm:impl:mefs-to-prop}
+\label{thm:impl:mefs-to-prop}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is subadditive and an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.
+\end{restatable}
+\begin{proof}
+Let $B$ be agent $i$'s MEFS-certificate for $A$.
+Then for all $j \in [n]$, we have $v_i(B_i)/w_i \ge v_i(B_j)/w_j$.
+Sum these inequalities over all $j \in [n]$, weighting each by $w_j$,
+to get $v_i(B_i)/w_i \ge \sum_{j=1}^n v_i(B_j)$.
+Since $v_i$ is subadditive, we get $v_i([m]) \le \sum_{j=1}^n v_i(B_j)$.
+Hence,
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(B_i)}{w_i} \ge \sum_{j=1}^n v_i(B_j) \ge v_i([m]). \]
+\end{proof}
+
+\begin{restatable}[EF$\implies$GPROP]{lemma}{rthm:impl:ef-to-gprop}
+\label{thm:impl:ef-to-gprop}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is subadditive and agent $i$ is envy-free in $A$,
+then $A$ is groupwise-PROP-fair to $i$.
+\end{restatable}
+\begin{proof}
+Let $S$ be a subset of agents containing $i$.
+Let $\Ahat$ be the allocation obtained by restricting $A$ to $S$ (c.f.~\cref{defn:restricting}).
+Then $i$ is also envy-free in $\Ahat$.
+$i$ is also MEFS-satisfied by $\Ahat$, since $\Ahat$ is its own MEFS-certificate for agent $i$.
+By \cref{thm:impl:mefs-to-prop}, agent $i$ is PROP-satisfied by $\Ahat$.
+Since this is true for all $S$ containing $i$,
+we get that $A$ is groupwise-PROP-fair to agent $i$.
+\end{proof}
+
+\begin{restatable}[PROP$\implies$EF for idval]{lemma}{rthm:impl:prop-to-ef-superadd-id}
+\label{thm:impl:prop-to-ef-superadd-id}
+In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with identical superadditive valuations,
+a PROP allocation is also an EF allocation.
+\end{restatable}
+\begin{proof}
+Let $v$ be the common valuation function. Let $A$ be a PROP allocation.
+Then for each agent $i$, we have $v(A_i) \ge w_iv([m])$.
+Suppose $v(A_k) > w_kv([m])$ for some agent $k$.
+Sum these inequalities to get $\sum_{i=1}^n v(A_i) > v([m])$.
+This contradicts superadditivity of $v$, so $v(A_i) = w_iv([m])$ for each agent $i$.
+Hence, $v(A_i)/w_i = v([m])$ for all $i$, so $A$ is EF.
+\end{proof}
+
+\begin{restatable}[PROP$\implies$EF for $n=2$]{lemma}{rthm:impl:prop-to-ef-n2}
+\label{thm:impl:prop-to-ef-n2}
+In the fair division instance $([2], [m], (v_1, v_2), w)$, for some agent $i$,
+if $v_i$ is superdditive and agent $i$ is PROP-satisfied by allocation $A$,
+then she is also envy-free in $A$.
+\end{restatable}
+\begin{proof}
+Assume $i=1$ \wLoG. Then
+\begin{align*}
+& \frac{v_1(A_1)}{w_1} \ge v_1([m]) \ge v_1(A_1) + v_1(A_2)
+\\ &\implies v_1(A_2) \le v_1(A_1)\left(\frac{1}{w_1} - 1\right) = w_2 \frac{v_1(A_1)}{w_1}.
+\end{align*}
+Hence, agent 1 does not envy agent 2.
+\end{proof}
+
+\subsection{EFX, EF1 vs PROPx, PROPm, PROP1}
+\label{sec:impls-extra:efx-ef1-vs-propx-propm-prop1}
+
+\begin{lemma}[MXS$\implies$PROP1, Theorem 3 of \cite{caragiannis2023new}]
+\label{thm:impl:mxs-to-prop1}
+In a fair division instance with equal entitlements,
+if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
+and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to agent $i$.
+\end{lemma}
+
+\begin{restatable}[EEF1$\implies$PROP1]{lemma}{rthm:impl:eef1-to-prop1}
+\label{thm:impl:eef1-to-prop1}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if an allocation $X$ is epistemic-EF1-fair to agent $i$, then $X$ is also PROP1-fair to $i$
+if one of these conditions hold:
+\begin{tightenum}
+\item $v_i$ is subadditive and the items are chores to agent $i$.
+\item $v_i$ is additive and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
+\item $v_i$ is additive and $n=2$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Suppose agent $i$ is epistemic-EF1-satisfied but not PROP1-satisfied by allocation $X$.
+Let $A$ be agent $i$'s epistemic-EF1-certificate for $X$.
+Then $A$ is EF1-fair to agent $i$.
+If $A$ is PROP1-fair to $i$, then $X$ would also be PROP1-fair to agent $i$,
+which is a contradiction. Hence, $A$ is not PROP1-fair to $i$.
+Therefore, all of these hold:
+\begin{tightenum}
+\item $v_i(A_i) < w_iv_i([m])$.
+\item $v_i(A_i \cup \{g\}) \le w_iv_i([m])$ for all $g \in [m] \setminus A_i$.
+\item $v_i(A_i \setminus \{c\}) \le w_iv_i([m])$ for all $c \in A_i$.
+\end{tightenum}
+
+Since $v_i$ is subadditive, there exists $j \in [n] \setminus \{i\}$ such that $v_i(A_j) > w_jv_i([m])$
+(otherwise $v_i([m]) \le \sum_{j=1}^n v_i(A_j) < \sum_{j=1}^n w_jv_j([m]) = v_i([m])$). Hence,
+\[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_j)}{w_j}. \]
+Hence, $i$ envies $j$. But $i$ is EF1-satisfied. Hence,
+\\ $\exists c \in A_i$ such that
+    $\displaystyle \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}$,
+\\ or $\exists g \in A_j$ such that
+    $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}$.
+
+\textbf{Case 1}: $\exists c \in A_i$ such that $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$.
+
+Since $i$ is PROP1-unsatisfied and $v_i(A_j) > w_jv_i([m])$, we get
+\[ \frac{v_i(A_j)}{w_j} \le \frac{v_i(A_i \setminus \{c\})}{w_i} \le v_i([m]) < \frac{v_i(A_j)}{w_j}, \]
+which is a contradiction.
+Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
+
+\textbf{Case 2}: $\exists g \in A_j$ such that $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$.
+
+First, we show that this case doesn't occur if all items in $A_j$ are chores.
+Since $i$ envies $j$ but not EF1-envies $j$, we get
+\begin{equation}
+\label{eq:impl:eef1-to-prop1:gpos}
+\frac{v_i(g \mid A_j \setminus \{g\})}{w_j}
+= \frac{v_i(A_j) - v_i(A_j \setminus \{g\})}{w_j}
+\ge \frac{v_i(A_j)}{w_j} - \frac{v_i(A_i)}{w_i} > 0.
+\end{equation}
+Hence, this case doesn't occur if all items in $A_j$ are chores.
+
+Since $i$ is not PROP1-satisfied, we get
+\begin{align*}
+& \frac{v_i(A_i) + v_i(g \mid A_i)}{w_i} \le w_i([m]) < \frac{v_i(A_j)}{w_j}
+\\ &\implies \frac{v_i(g \mid A_i)}{w_i} < \frac{v_i(A_j)}{w_j} - \frac{v_i(A_i)}{w_i}
+    \le \frac{v_i(g \mid A_j \setminus \{g\})}{w_j}.
+\end{align*}
+
+Let $v_i$ be additive. Then we get
+\[ \frac{v_i(g)}{w_i} < \frac{v_i(g)}{w_j} \implies w_j < w_i. \]
+If $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, we get a contradiction.
+
+Now suppose $v_i$ is additive and $n=2$.
+Then the agents are $i$ and $j$. Note that $w_i + w_j = 1$.
+Let $\ghat \in \argmax_{t \in A_j} v_i(t)$.
+Since $i$ is not PROP1-satisfied, we get
+\begin{align*}
+& v_i(A_i \cup \{\ghat\}) \le w_iv_i([m]) = w_iv_i(A_i \cup \{\ghat\}) + w_iv_i(A_j \setminus \{\ghat\})
+\\ &\implies \frac{v_i(A_i \cup \{\ghat\})}{w_i} \le \frac{v_i(A_j \setminus \{\ghat\})}{w_j}.
+\end{align*}
+Based on the assumption of Case 2, we get
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j} \ge \frac{v_i(A_j \setminus \{\ghat\})}{w_j}. \]
+Hence,
+\[ v_i(A_i \cup \{\ghat\}) \le \frac{w_i}{w_j}v_i(A_j \setminus \{\ghat\}) \le v_i(A_i). \]
+Therefore, $v_i(\ghat) \le 0$.
+Since $\ghat$ is the most-valuable item in $A_j$ to $i$, we get that $v_i(g) \le 0$,
+which contradicts \eqref{eq:impl:eef1-to-prop1:gpos}.
+Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
+\end{proof}
+
+\begin{restatable}[EEFX$\implies$PROPx]{lemma}{rthm:impl:eefx-to-propx}
+\label{thm:impl:eefx-to-propx}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+the items are chores to agent $i$ and $v_i$ is subadditive.
+If an allocation $A$ is epistemic-EFX-fair to agent $i$,
+then it is also PROPx-fair to agent $i$.
+\end{restatable}
+\begin{proof}
+Suppose $A$ is epistemic-EFX-fair to agent $i$ but not PROPx-fair to $i$.
+Let $B$ be agent $i$'s epistemic-EFX-certificate for $A$.
+Then $B$ is also PROPx-unfair to $i$.
+
+Since $i$ is EFX-satisfied with $B$, we get that for all $j \in [n] \setminus \{i\}$,
+\[ \min_{S \in \Scal} \frac{v_i(B_i \setminus S)}{w_i} \ge \frac{v_i(B_j)}{w_j}, \]
+where $\Scal \defeq \{S \subseteq B_i: v_i(S \mid B_i \setminus S) < 0\}$.
+Add these inequalities for all $j$, weighting each by $w_j$, to get
+\[ \min_{S \in \Scal} \frac{v_i(B_i \setminus \{c\})}{w_i} > \sum_{j=1}^n v_i(B_j) \ge v_i([m]), \]
+which implies that $B$ is PROPx-fair, a contradiction.
+Hence, there can't be an allocation $A$ that is epistemic-EFX-fair to $i$
+but not PROPx-fair to $i$.
+\end{proof}
+
+\begin{restatable}[EFX$\implies$PROPm]{lemma}{rthm:impl:efx-to-propm}
+\label{thm:impl:efx-to-propm}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
+where $v_i$ is additive for some agent $i$.
+If an allocation $A$ is EFX-fair to agent $i$, then it is also PROPm-fair to agent $i$
+if at least one of these conditions holds:
+\begin{tightenum}
+\item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
+\item $n=2$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Suppose agent $i$ is EFX-satisfied but not PROPm-satisfied by allocation $A$.
+Then for some agent $\jhat \in [n] \setminus \{i\}$, we have
+\[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_{\jhat})}{w_{\jhat}}. \]
+
+Since $i$ doesn't EFX-envy $\jhat$, for all $S \subseteq A_i$ such that
+$v_i(S \mid A_i \setminus S) < 0$, we get
+\[ \frac{v_i(A_i \setminus S)}{w_i} \ge \frac{v_i(A_{\jhat})}{w_{\jhat}} > v_i([m]). \]
+Hence, condition \ref{item:propm:chores} (chores condition) of PROPm is satisfied.
+Since condition \ref{item:propm:goods} (goods condition) of PROPm is not satisfied, we get that
+$T \neq \emptyset$ and $v_i(A_i) + \max(T) \le w_iv_i([m])$.
+%
+For all $j \in T$, we get
+\begin{align}
+\frac{v_i(A_i)}{w_i} &\ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}
+    \tag{$i$ doesn't EFX-envy $j$}
+\\ &= \frac{v_i(A_j)}{w_j} - \frac{\min(\{v_i(S): S \subseteq A_j \textrm{ and } v_i(S) > 0\})}{w_j}
+    \notag
+\\ &= \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j} \ge \frac{v_i(A_j)}{w_j} - \frac{\max(T)}{w_j}.
+    \label{eqn:impl:efx-to-propm:1}
+\end{align}
+
+\textbf{Special case 1}: $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
+
+Let $J \defeq \{j \in [n] \setminus \{i\}: \tau_j > 0\}$.
+For all $j \in J$, using \eqref{eqn:impl:efx-to-propm:1}, we get
+\[ \frac{v_i(A_i) + \max(T)}{w_i}
+\ge \frac{v_i(A_j)}{w_j} - \frac{\max(T)}{w_j} + \frac{\max(T)}{w_i}
+\ge \frac{v_i(A_j)}{w_j}. \]
+
+For all $j \in [n] \setminus (J \cup \{i\})$, we have $\tau_j = 0$, so $v_i(A_j) \le 0$. Hence,
+\[ \frac{v_i(A_i)}{w_i} \ge 0 \ge \frac{v_i(A_j)}{w_j}. \]
+Therefore,
+\[ v([m]) = \sum_{j=1}^n w_j\left(\frac{v_i(A_j)}{w_j}\right)
+    < \sum_{j=1}^n w_j\left(\frac{v_i(A_i) + \max(T)}{w_i}\right)
+    = \frac{v_i(A_i) + \max(T)}{w_i}. \]
+Hence, condition 1 of PROPm is satisfied, which is a contradiction.
+Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
+
+\textbf{Special case 2}: $n=2$
+
+Let the two agents be $i$ and $j$. Since $T \neq \emptyset$, we have $\max(T) = \tau_j > 0$.
+Since $i$ is not PROPm-satisfied by $A$, we get
+\begin{align}
+& v_i(A_i) + \tau_j \le w_iv_i([m]) = w_iv_i(A_i) + w_iv_i(A_j)
+\\ &\implies w_jv_i(A_i) + \tau_j \le w_iv_i(A_j)
+\\ &\implies \frac{v_i(A_i)}{w_i} \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_iw_j}
+    \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j}.
+\end{align}
+Combining this with equation \eqref{eqn:impl:efx-to-propm:1} gives us $\tau_j = 0$, which is a contradiction.
+Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
+\end{proof}
+
+\subsection{MMS vs EFX}
+\label{sec:impls-extra:mms-vs-efx}
+
+We prove some results connecting MMS, EFX, and related notions,
+using techniques from \cite{plaut2020almost,caragiannis2023new}.
+
+\begin{restatable}{lemma}{rthm:mms-and-all-envy}
+\label{thm:mms-and-all-envy}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+suppose an allocation $A$ is WMMS-fair to agent $i$
+and $i$ envies every other agent.
+Then $A$ is also EFX-fair to agent $i$ if at least one of these conditions hold:
+\begin{tightenum}
+\item The items are goods to agent $i$ (i.e., $v_i(g \mid R) \ge 0$
+    for all $R \subseteq [m]$ and $g \in [m] \setminus R$).
+\item $v_i$ is additive and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Suppose agent $i$ is not EFX-satisfied by $A$, i.e., she EFX-envies some agent $j$.
+Then $\exists S \subseteq A_i \cup A_j$ where either
+
+\begin{tightenum}
+\item $S \subseteq A_j$, $v_i(S \mid A_i) > 0$, and
+    $\displaystyle \frac{v_i(A_i)}{w_i} < \frac{v_i(A_j \setminus S)}{w_j}$.
+\item $S \subseteq A_i$, $v_i(S \mid A_i \setminus S) < 0$, and
+    $\displaystyle \frac{v_i(A_i \setminus S)}{w_i} < \frac{v_i(A_j)}{w_j}$.
+\end{tightenum}
+
+If all items are goods, case 2 doesn't occur.
+
+\textbf{Case 1}: $S \subseteq A_j$
+
+Let $B$ be the allocation obtained by transferring $S$ from $A_j$ to $A_i$.
+Formally, let $B_i \defeq A_i \cup S$, $B_j \defeq A_j \setminus S$,
+and $B_k \defeq A_k$ for all $k \in [n] \setminus \{i, j\}$. Then
+\[ \frac{v_i(B_i)}{w_i} = \frac{v_i(A_i) + v_i(S \mid A_i)}{w_i} > \frac{v_i(A_i)}{w_i}, \]
+\[ \frac{v_i(B_j)}{w_j} = \frac{v_i(A_j \setminus S)}{w_j} > \frac{v_i(A_i)}{w_i}, \]
+and for any $k \in [n] \setminus \{i, j\}$, we get
+\[ \frac{v_i(B_k)}{w_k} = \frac{v_i(A_k)}{w_k} > \frac{v_i(A_i)}{w_i}. \]
+Hence,
+\[ \min_{k=1}^n \frac{v_i(B_k)}{w_k} > \frac{v_i(A_i)}{w_i} \ge \frac{\WMMS_i}{w_i}, \]
+which is a contradiction.
+
+\textbf{Case 2}: $S \subseteq A_i$
+
+Let $v_i$ be additive and $w_i \le w_j$.
+Let $B$ be the allocation obtained by transferring $S$ from $A_i$ to $A_j$. Formally,
+let $B_i \defeq A_i \setminus S$, $B_j \defeq A_j \cup S$,
+and $B_k \defeq A_k$ for all $k \in [n] \setminus \{i, j\}$. Then
+\[ \frac{v_i(B_i)}{w_i} = \frac{v_i(A_i) - v_i(S)}{w_i} > \frac{v_i(A_i)}{w_i}, \]
+\[ \frac{v_i(B_j)}{w_j} = \frac{v_i(A_j) + v_i(S)}{w_j} > \frac{v_i(A_i \setminus S)}{w_i} - \frac{(-v_i(S))}{w_j} \ge \frac{v_i(A_i)}{w_i}, \]
+and for any $k \in [n] \setminus \{i, j\}$, we get
+\[ \frac{v_i(B_k)}{w_k} = \frac{v_i(A_k)}{w_k} > \frac{v_i(A_i)}{w_i}. \]
+Hence,
+\[ \min_{k=1}^n \frac{v_i(B_k)}{w_k} > \frac{v_i(A_i)}{w_i} \ge \frac{\WMMS_i}{w_i}, \]
+which is a contradiction.
+\end{proof}
+
+\begin{lemma}[MMS$\implies$EFX for $n=2$]
+\label{thm:impl:mms-to-efx-n2}
+For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
+suppose an allocation $A$ is WMMS-fair to agent 1.
+Then $A$ is also EFX-fair to agent 1 if at least one of these conditions hold:
+\begin{tightenum}
+\item The items are goods to agent 1.
+\item $v_1$ is additive and $w_1 \le w_2$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+If agent 1 doesn't envy agent 2, she is EFX-satisfied.
+Otherwise, she is EFX-satisfied because of \cref{thm:mms-and-all-envy}.
+\end{proof}
+
+Theorem 2 in \cite{caragiannis2023new} states that an MMS allocation is also an EEFX allocation
+(for additive valuations over goods and equal entitlements).
+The proof can be easily adapted to non-additive valuations over goods and unequal entitlements.
+For the sake of completeness, we give a proof below.
+
+\begin{restatable}[MMS$\implies$EEFX, \cite{caragiannis2023new}]{lemma}{rthm:impl:mms-to-eefx}
+\label{thm:impl:mms-to-eefx}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if all items are goods to agent $i$ and allocation $A$ is WMMS-fair to agent $i$,
+then $A$ is also epistemic-EFX-fair to $i$.
+\end{restatable}
+\begin{proof}
+In any allocation $X$, let
+$E_X$ be the set of agents envied by $i$,
+$S_X$ be the set of agents EFX-envied by $i$,
+$W_X$ be the total number of items among the agents in $S_X$.
+
+$E_X \defeq \{t \in [n] \setminus \{i\}: i \textrm{ envies } t \textrm{ in } X\}$,
+$S_X \defeq \{t \in [n] \setminus \{i\}: i \textrm{ EFX-envies } t \textrm{ in } X\}$,
+$W_X \defeq \sum_{t \in S_X} |X_t|$, and $\phi(X) \defeq (-|E_X|, W_X)$.
+
+First, we show that for any allocation $X$ where $|E_X| \le n-2$ and $S_X \neq \emptyset$,
+there exists a \emph{better} allocation $Y$, i.e, $Y_i = X_i$ and $\phi(Y) < \phi(X)$
+(tuples are compared lexicographically).
+
+Let $j \in S_X$ and $k \in [n] \setminus \{i\} \setminus E_X$.
+Since $i$ EFX-envies $j$, $\exists S \subseteq X_j$ such that $v_i(S \mid X_i) > 0$ and
+\[ \frac{v_1(X_1)}{w_1} < \frac{v_1(X_j \setminus S)}{w_j}. \]
+Let $Y_k \defeq X_k \cup S$, $Y_j \defeq X_j \setminus S$,
+and $Y_t \defeq X_t$ for all $t \in [n] \setminus \{j, k\}$.
+
+Then $i$ envies $j$ in $Y$. Hence, $E_X \subseteq E_Y$.
+If $k \in E_Y$, then $|E_Y| > |E_X|$, so $\phi(Y) < \phi(X)$.
+If $k \not\in E_Y$, then $W_Y < W_X$, so $\phi(Y) < \phi(X)$.
+Hence, $Y$ is better than $X$.
+
+Set $X = A$. As long as $|E_X| < n-1$ and $S_X \neq \emptyset$,
+keep modifying $X$ as per Lemma 1.
+This process will eventually end, since $\phi(X)$ keeps reducing,
+and there are a finite number of different values $\phi(X)$ can take.
+Let $B$ be the final allocation thus obtained.
+Then $B_i = A_i$, and $|E_B| = n-1$ or $S_B = \emptyset$.
+
+By <a href="../misc/mms-and-all-envy.html">mms-and-all-envy.html</a>,
+$|E_B| = n-1$ implies $S_B = \emptyset$.
+Hence, $B$ is agent $i$'s EEFX-certificate for $A$.
+\end{proof}
+
+\begin{definition}
+\label{defn:leximin}
+For any set $S \subseteq M$, let $\Pi_n(S)$ denote the set of all $n$-partitions of $S$.
+For any sequence $X = (x_i)_{i=1}^n$ of real numbers, define $\sorted(X)$ to be a permutation of $X$
+where entries occur in non-decreasing order.
+For any two sequences $X = (x_i)_{i=1}^n$ and $Y = (y_i)_{i=1}^n$, we say that $X \le Y$ if
+$\exists i \in [n]$ such that $x_i \le y_i$ and $x_j = y_j$ for all $j \in [i-1]$.
+(Note that this relation $\le$ over sequences is a total ordering.)
+
+We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[m]} \to \mathbb{R}$ if
+\[ P \in \argmax_{X \in \Pi_n([m])} \sorted\left((f(X_j))_{j=1}^n\right). \]
+\end{definition}
+
+It is easy to see that if $P$ is a leximin $n$-partition of $f: 2^{[m]} \to \mathbb{R}$,
+then $\min_{j=1}^n f(P_j) = \MMS_f^n([m])$.
+
+\begin{restatable}[MMS$\implies$MXS]{lemma}{rthm:impl:mms-to-mxs}
+\label{thm:impl:mms-to-mxs}
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
+Let allocation $A$ be MMS-fair to agent $i$.
+Then $A$ is also MXS-fair to $i$ if at least one of these conditions hold:
+\begin{tightenum}
+\item All items are goods to agent $i$.
+\item $v_i$ is additive.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+We will show that agent $i$'s leximin $n$-partition is her MXS-certificate for $A$,
+which would prove that $A$ is MXS-fair to agent $i$.
+
+Without loss of generality, assume $i = 1$.
+Let $P$ be a leximin $n$-partition of $v_1$ (c.f.~\cref{defn:leximin})
+such that $v_1(P_1) \le v_1(P_2) \le \ldots \le v_1(P_n)$.
+Then $v_1(P_1) = \MMS_{v_1}^n([m]) \le v_1(A_1)$.
+
+For any agent $j \ge 2$, the allocation $(P_1, P_j)$ is leximin for
+the instance $\Icalhat \defeq (\{i, j\}, P_1 \cup P_j, (v_1, v_j), (1/2, 1/2))$.
+Hence, agent 1 is MMS-satisfied by $(P_1, P_j)$ in $\Icalhat$.
+Since either all items are goods to agent 1 or $v_1$ is additive,
+by \cref{thm:impl:mms-to-efx-n2}, agent 1 is EFX-satisfied by $(P_1, P_j)$ in $\Icalhat$.
+
+On considering all values of $j$, we get that agent 1 is EFX-satisfied by $P$ in $\Ical$.
+Hence, $P$ is agent 1's MXS-certificate for $A$.
+\end{proof}
+
+\subsection{Among PROP, APS, MMS}
+
+We prove implications among share-based notions like PROP, APS, and MMS.
+
+\begin{lemma}[PROP$\implies$APS, Proposition 4 of \cite{babaioff2023fair}]
+\label{thm:impl:prop-to-aps}
+For any fair division instance
+\\ $([n], [m], (v_i)_{i=1}^n, w)$,
+$\APS_i \le w_iv_i([m])$ for agent $i$ if $v_i$ is additive.
+\end{lemma}
+\begin{proof}
+Set the price $p(g)$ of each item $g$ to $v_i(g)$. Then
+\[ \APS_i \le \max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S)
+= \max_{S \subseteq [m]: v_i(S) \le w_iv_i([m])} v_i(S) \le w_iv_i([m]).
+\qedhere \]
+\end{proof}
+
+\begin{restatable}[PROP$\implies$WMMS]{lemma}{rthm:impl:prop-to-wmms}
+\label{thm:impl:prop-to-wmms}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$.
+\end{restatable}
+\begin{proof}
+Let $P$ be agent $i$'s WMMS partition. Then
+\[ v_i([m]) \ge \sum_{j=1}^n v_i(P_j) = \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right)
+    \ge \sum_{j=1}^n w_j\frac{\WMMS_i}{w_i} = \frac{\WMMS_i}{w_i}. \qedhere \]
+\end{proof}
+
+\begin{lemma}
+\label{thm:prefix-sum-bound}
+Let $a_1 \le a_2 \le \ldots \le a_n$ be $n$ real numbers.
+Let $s_k \defeq \sum_{i=1}^k a_i$ for any $0 \le k \le n$.
+Then $s_k \le (k/n)s_n$.
+\end{lemma}
+\begin{proof}
+$\displaystyle s_n = s_k + \sum_{i=k+1}^n a_i \ge s_k + (n-k)a_k \ge s_k + (n-k)\frac{s_k}{k}
+= \frac{n}{k}s_k$.
+\end{proof}
+
+\begin{restatable}[PROP$\implies$pessShare]{lemma}{rthm:impl:prop-to-pessShare}
+\label{thm:impl:prop-to-pessShare}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is superadditive, then $\pessShare_i \le w_iv_i([m])$.
+\end{restatable}
+\begin{proof}
+Let $P$ be agent $i$'s $\ell$-out-of-$d$-partition.
+Assume \wLoG{} that $v_i(P_1) \le v_i(P_2) \le \ldots \le v_i(P_d)$.
+Then by \cref{thm:prefix-sum-bound} and superadditivity of $v_i$, we get
+\[ \loodM_i = \sum_{j=1}^{\ell} v_i(P_j)
+    \le \frac{\ell}{d}\sum_{j=1}^d v_i(P_j) \le \frac{\ell}{d}v_i([m]). \]
+Hence,
+\[ \pessShare_i \defeq \sup_{1 \le \ell \le d: \ell/d \le w_i} \loodM_i
+    \le \sup_{1 \le \ell \le d: \ell/d \le w_i} (\ell/d)v_i([m]) \le w_iv_i([m]).
+    \qedhere \]
+\end{proof}
+
+\begin{lemma}[APS$\implies$pessShare]
+\label{thm:impl:aps-to-pess}
+For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+$\APS_i \ge \pessShare_i$ for every agent $i$.
+\end{lemma}
+\begin{proof}
+Proposition 2 in \cite{babaioff2023fair} proves this for goods,
+but their proof works for mixed manna too.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:wmms-vs-knapsack}
+\label{thm:wmms-vs-knapsack}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ and any agent $i$, define
+\[ \beta_i \defeq \max_{j=1}^n \max_{\substack{S \subseteq [m]:\\v_i(S) \le w_jv_i([m])}} \frac{v_i(S)}{w_j}. \]
+If $v_i$ is superadditive, then $\WMMS_i \le w_i\beta_i$.
+If $v_i$ is additive and $n = 2$, then $\WMMS_i = w_i\beta_i$.
+\end{restatable}
+\begin{proof}
+For any $j \in [n]$, define
+\[ S_j \defeq \argmax_{\substack{S \subseteq [m]:\\v_i(S) \le w_jv_i([m])}} \frac{v_i(S)}{w_j}. \]
+Then $\beta_i \defeq \max_{j=1}^n v_i(S_j)/w_j$.
+
+Let $\Pi_n([m])$ be the set of all $n$-partitions of $[m]$. Let
+\begin{align*}
+P &\defeq \argmax_{P \in \Pi_n([m])} \min_{j=1}^n \frac{v_i(P_j)}{w_j},
+& k &\defeq \argmin_{j=1}^n \frac{v_i(P_j)}{w_j}.
+\end{align*}
+Then $\WMMS_i/w_i \defeq v_i(P_k)/w_k$.
+
+By \cref{thm:impl:prop-to-wmms}, we get $v_i(P_k)/w_k \le v_i([m])$. Hence,
+\[ \frac{\WMMS_i}{w_i} = \frac{v_i(P_k)}{w_k} \le \frac{v_i(S_k)}{w_k}
+    \le \max_{j=1}^n \frac{v_i(S_j)}{w_j} = \beta_i. \]
+
+Now let $v_i$ be additive and $n = 2$.
+For any $j \in [2]$, let $Q^{(j)}$ be an allocation where $Q^{(j)}_j \defeq S_j$
+and $Q^{(j)}_{3-j} \defeq [m] \setminus S_j$.
+Then $v_i(Q^{(j)}_j) = v_i(S_j) \le w_jv_i([m])$ and
+\[ v_i(Q^{(j)}_{3-j}) = v_i([m]) - v_i(S_j) \ge v_i([m]) - w_jv_i([m]) = w_{3-j}v_i([m]). \]
+Hence,
+\[ \frac{v_i(Q^{(j)}_j)}{w_j} \le v_i([m]) \le \frac{v_i(Q^{(j)}_{3-j})}{w_{3-j}}. \]
+Therefore,
+\begin{align*}
+\frac{\WMMS_i}{w_i} &= \min\left(\frac{v_i(P_1)}{w_1}, \frac{v_i(P_2)}{w_2}\right)
+\\ &\ge \max_{j=1}^n \min\left(\frac{v_i(Q^{(j)}_j)}{w_j}, \frac{v_i(Q^{(j)}_{3-j})}{w_{3-j}}\right)
+    \tag{by definition of $P$}
+\\ &= \max_{j=1}^n \frac{v_i(S_j)}{w_j} = \beta_i.
+\end{align*}
+Hence, $\WMMS_i/w_i \ge \beta_i$.
+\end{proof}
+
+\begin{restatable}[WMMS$\implies$APS for $n=2$]{lemma}{rthm:impl:mms-to-aps-n2}
+\label{thm:impl:mms-to-aps-n2}
+For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
+Moreover, when entitlements are equal, we get $\APS_i = \MMS_i$.
+\end{restatable}
+\begin{proof}
+By \cref{thm:wmms-vs-knapsack}, we get
+\[ \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^n \frac{v_i(S_j)}{w_j},
+\quad\textrm{where}\quad
+S_j \defeq \argmax_{\substack{S \subseteq [m]:\\ v_i(S) \le w_jv_i([m])}} v_i(S). \]
+On setting $p = v_i$ in the primal definition of APS (\cref{defn:aps}), we get
+\[ \APS_i \le \max_{\substack{S \subseteq [m]:\\ p(S) \le w_ip([m])}} v_i(S)
+    = v_i(S_i) \le w_i\beta_i = \WMMS_i. \]
+When entitlements are equal, $\APS_i \ge \pessShare_i \ge \MMS_i$
+by \cref{thm:impl:aps-to-pess}.
+\end{proof}
+
+\subsection{Additive Triboolean Valuations}
+\label{sec:impls-extra:tribool}
+
+We study the case where valuations are additive and marginals are triboolean,
+i.e, they belong to the set $\{-1, 0, 1\}$.
+
+\begin{restatable}{lemma}{rthm:tribool-rr}
+\label{thm:tribool-rr}
+For an additive function $f: 2^{[m]} \to \{-1, 0, 1\}$,
+there exists an $n$-partition $P$ such that $|f(P_i) - f(P_j)| \le 1$
+for all $i, j \in [n]$ and
+and $\floor{f([m])/n} \le f(P_i) \le \ceil{f([m])/n}$ for all $i \in [n]$.
+\end{restatable}
+\begin{proof}
+Partition $[m]$ into
+goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
+chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$,
+and neutral items $M_0 \defeq \{t \in [m]: v_i(t) = 0\}$.
+Fuse items $M_0$, $\min(|M_+|, |M_-|)$ goods, and $\min(|M_+|, |M_-|)$ chores
+into a single item $h$.
+Then we are left with only goods and a neutral item,
+or only chores and a neutral item.
+Using round-robin, one can allocate items such that
+any two bundles differ by at most one item.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:impl:tribool:prop}
+\label{thm:impl:tribool:prop}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $i$.
+\end{restatable}
+\begin{proof}
+Since $A$ is PROP-fair to $i$, and $v_i(S) \in \mathbb{Z}$ for all $S \subseteq [m]$,
+we get $v_i(A_i) \ge \ceil{v_i([m])/n}$.
+
+Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
+are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
+We will show that $B$ is agent $i$'s epistemic-EF-certificate for $A$.
+
+In $B$, for each agent $j \in [n] \setminus \{i\}$, we have
+\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+    \le \bigceil{\frac{v_i([m]) - v_i([m])/n}{n-1}}
+    \le \bigceil{\frac{v_i([m])}{n}} \le v_i(A_i). \]
+Hence, $i$ doesn't envy anyone in $B$.
+Hence, $B$ is agent $i$'s epistemic-EF-certificate for $A$.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:impl:tribool:prop1}
+\label{thm:impl:tribool:prop1}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then the following statements are equivalent:
+\begin{tightenum}
+\item Allocation $A$ is PROP1-fair to $i$.
+\item Allocation $A$ is PROPx-fair to $i$.
+\item $v_i(A_i) \ge \floor{w_iv_i([m])}$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Partition $[m]$ into
+goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
+chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$,
+and neutral items $M_0 \defeq \{t \in [m]: v_i(t) = 0\}$.
+
+\textbf{Case 1}: $A_i$ has all goods and no chores.
+\\ Then $v_i(A_i) \ge \max(0, v_i([m]))$.
+If $v_i([m]) \ge 0$, then $v_i(A_i) \ge v_i([m]) \ge w_iv_i([m])$,
+else $v_i(A_i) \ge 0 \ge w_iv_i([m])$.
+Hence, $v_i(A_i) \ge w_iv_i([m])$ and $A$ is PROPx+PROP1.
+
+\textbf{Case 2}: $A_i$ has a chore or some good is outside $A_i$.
+\\ Then adding a good to $A_i$ or removing a chore from $A_i$
+makes it's value more than $w_iv_i([m])$ iff $v_i(A_i) \ge \floor{w_iv_i([m])}$.
+Hence, $A$ is PROP1 iff $A$ is PROPx iff $v_i(A_i) \ge \floor{w_iv_i([m])}$.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:impl:tribool:aps}
+\label{thm:impl:tribool:aps}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then $\APS_i = \floor{w_iv_i([m])}$.
+\end{restatable}
+\begin{proof}
+Partition $[m]$ into goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
+chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$, and
+neutral items $M_0 \defeq \{t \in [m]: v_i(t) = 0\}$.
+
+First, set $p(t) = v_i(t)$ for each $t \in [m]$ to get $\APS_i \le w_im_i$.
+Since the APS is the value of some bundle, and bundle values can only be integers,
+we get $\APS_i \le \floor{w_im_i}$.
+
+Pick an arbitrary price vector $p \in \Delta_m$.
+We will construct a set $S$ such that $p(S) \le w_ip([m])$ and $v_i(S) \ge w_iv_i([m])$.
+Fuse items $M_0$, $\min(|M_+|, |M_-|)$ goods, and $\min(|M_+|, |M_-|)$ chores
+into a single item $h$.
+Let $M'_+$ and $M'_-$ be the remaining goods and chores, respectively.
+Then $M'_+ = \emptyset$ or $M'_- = \emptyset$.
+Using techniques from \cref{thm:aps-optimal-price},
+we can assume \wLoG{} that $p_g \ge 0$ for all $g \in M'_+$,
+$p_c \le 0$ for all $c \in M'_-$, and $p_h = 0$.
+
+\textbf{Case 1}: $M'_- = \emptyset$.
+\\ Let $m_i \defeq |M'_+| = v_i([m])$.
+Let $S$ be the cheapest $\floor{w_im_i}$ items in $M'_+$.
+Then using \cref{thm:prefix-sum-bound}, we get
+\[ p(S) \le \frac{\floor{w_im_i}}{m_i}p(M_+) \le w_ip([m]). \]
+Then $S$ is affordable and $v_i(S) = \floor{w_im_i}$.
+Hence, $\APS_i \ge \floor{w_im_i}$.
+
+\textbf{Case 2}: $M'_+ = \emptyset$.
+\\ Let $m_i \defeq |M'_-| = -v_i([m])$.
+Let $S$ be the cheapest $\ceil{w_im_i}$ items in $M'_- \cup \{h\}$.
+Then using \cref{thm:prefix-sum-bound}, we get
+\[ -p(S) \ge \frac{\ceil{w_im_i}}{m_i}(-p([m])) \ge w_i(-p([m])). \]
+Then $S$ is affordable and $-v_i(S) \le \ceil{w_im_i} = -\floor{w_iv_i([m])}$.
+Hence, $\APS_i \ge \floor{w_iv_i([m])}$.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:impl:tribool:m1s}
+\label{thm:impl:tribool:m1s}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then $\MMS_i = \mathrm{M1S}_i = \floor{v_i([m])/n}$.
+\end{restatable}
+\begin{proof}
+Allocate items $[m]$ among agents $[n]$ using \cref{thm:tribool-rr} with $f = v_i$.
+Then any two bundles differ by a value of at most one.
+Hence, $\MMS_i = \floor{m'/n}$ and $\mathrm{M1S}_i \le \floor{m'/n}$,
+where $m' \defeq v_i([m])$.
+
+Let $X$ be an allocation where agent $i$ is EF1-satisfied.
+Then any two bundles can differ by a value of at most one.
+Hence, the smallest value $v_i(X_i)$ can have is $\floor{m'/n}$.
+Hence, $\mathrm{M1S}_i \ge \floor{m'/n}$.
+\end{proof}
+
+\begin{restatable}{lemma}{rthm:impl:tribool:ef1-gaps}
+\label{thm:impl:tribool:ef1-gaps}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+If an allocation $A$ is EF1-fair to $i$, then it is also groupwise-APS-fair to $i$
+if at least one of these conditions hold:
+\begin{tightenum}
+\item $n=2$
+\item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
+\item $v_i(c) \in \{0, -1\}$ for all $c \in [m]$.
+\end{tightenum}
+\end{restatable}
+\begin{proof}
+Consider any subset $S$ of agents.
+On restricting $A$ to $S$, we get an allocation $B$ that is EF1-fair to $i$.
+$B$ is also PROP1-fair to $i$ by \cref{thm:impl:eef1-to-prop1},
+and APS-fair to $i$ by \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps}.
+Hence, $A$ is groupwise-APS-fair to $i$.
+\end{proof}
+
+\begin{remark}
+\label{thm:ceil-floor}
+For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
+\[ \bigfloor{\frac{m}{n}} = \bigceil{\frac{m+1}{n}} - 1. \]
+\end{remark}
+
+\begin{restatable}{lemma}{rthm:impl:tribool:mms-to-eefx}
+\label{thm:impl:tribool:mms-to-eefx}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+If $v_i(A_i) \ge \floor{v_i([m])/n}$ for some allocation $A$,
+then $A$ is epistemic-EFX-fair to $i$.
+\end{restatable}
+\begin{proof}
+Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
+are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
+We will show that $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+
+Let $k \defeq v_i([m])$.
+Suppose $v_i(A_i) \ge \floor{k/n} = \ceil{(k+1)/n} - 1$ (c.f.~\cref{thm:ceil-floor}).
+Then for any other agent $j \in [n] \setminus \{i\}$, we get
+\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+    \le \bigceil{\frac{k - (k+1)/n + 1}{n-1}} = \bigceil{\frac{k+1}{n}}
+    \le v_i(B_i) + 1. \]
+If $B_j$ contains no goods and $B_i$ contains no chores,
+then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
+Otherwise, transferring a good from $j$ to $i$ or a chore from $i$ to $j$ in $B$
+eliminates $i$'s envy towards $j$.
+Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+\end{proof}
