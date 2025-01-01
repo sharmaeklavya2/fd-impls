@@ -57,7 +57,7 @@ Therefore, $\phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share
 
 Here we look at implications among EF, EFX, EF1, and their epistemic variants.
 
-\begin{remark}[EF$\implies$EFX+EF1]
+\begin{remark}[EF $\fimplies$ EFX+EF1]
 \label{thm:impl:ef-to-efx+ef1}
 If an allocation is EF-fair to agent $i$, then it is also EFX-fair to $i$ and EF1-fair to $i$.
 \end{remark}
@@ -66,7 +66,7 @@ Because of how we define EFX (\cref{defn:efx}),
 it's not always true that EFX implies EF1.
 However, it's true for many common settings, as the following lemma shows.
 
-\begin{restatable}[EFX$\implies$EF1]{lemma}{rthm:impl:efx-to-ef1}
+\begin{restatable}[EFX $\fimplies$ EF1]{lemma}{rthm:impl:efx-to-ef1}
 \label{thm:impl:efx-to-ef1}
 For the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 let $A$ be an allocation where agent $i$ is EFX-satisfied.
@@ -121,7 +121,7 @@ A contradiction implies that it's impossible for agent $i$ to be
 EFX-satisfied but not EF1-satisfied.
 \end{proof}
 
-\begin{restatable}[MXS$\implies$EF1 for $n=2$]{lemma}{rthm:impl:mxs-to-ef1-n2}
+\begin{restatable}[MXS $\fimplies$ EF1 for $n=2$]{lemma}{rthm:impl:mxs-to-ef1-n2}
 \label{thm:impl:mxs-to-ef1-n2}
 Let $([2], [m], (v_1, v_2), w)$ be a fair division instance with indivisible items.
 If $v_1$ is additive and agent 1 is MXS-satisfied by allocation $A$,
@@ -168,7 +168,7 @@ Hence, it's not possible for $A$ to be MXS-fair to agent 1 but not EF1-fair to h
 \subsection{Among PROP-Based Notions}
 \label{sec:impls-extra:among-prop-based}
 
-\begin{restatable}[PROPx$\implies$PROPm]{lemma}{rthm:impl:propx-to-propm}
+\begin{restatable}[PROPx $\fimplies$ PROPm]{lemma}{rthm:impl:propx-to-propm}
 \label{thm:impl:propx-to-propm}
 In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation is PROPx-fair to agent $i$, then it is also PROPm-fair to agent $i$.
@@ -213,7 +213,7 @@ Let $P, Q \subseteq \Omega \setminus X$. Let $g(Y) \defeq f(Y \mid X)$. Then
 Hence, $g$ is submodular.
 \end{proof}
 
-\begin{restatable}[PROPm$\implies$PROP1]{lemma}{rthm:impl:propm-to-prop1}
+\begin{restatable}[PROPm $\fimplies$ PROP1]{lemma}{rthm:impl:propm-to-prop1}
 \label{thm:impl:propm-to-prop1}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation $A$ is PROPm-fair to agent $i$, then it is also PROP1-fair to agent $i$
@@ -288,7 +288,7 @@ Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfi
 
 Here we look at implications between EF (and its epistemic variants) and PROP (and its epistemic variants).
 
-\begin{restatable}[MEFS$\implies$PROP, \cite{bouveret2016characterizing}]{lemma}{rthm:impl:mefs-to-prop}
+\begin{restatable}[MEFS $\fimplies$ PROP, \cite{bouveret2016characterizing}]{lemma}{rthm:impl:mefs-to-prop}
 \label{thm:impl:mefs-to-prop}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is subadditive and an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.
@@ -303,7 +303,7 @@ Hence,
 \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(B_i)}{w_i} \ge \sum_{j=1}^n v_i(B_j) \ge v_i([m]). \]
 \end{proof}
 
-\begin{restatable}[EF$\implies$GPROP]{lemma}{rthm:impl:ef-to-gprop}
+\begin{restatable}[EF $\fimplies$ GPROP]{lemma}{rthm:impl:ef-to-gprop}
 \label{thm:impl:ef-to-gprop}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is subadditive and agent $i$ is envy-free in $A$,
@@ -319,7 +319,7 @@ Since this is true for all $S$ containing $i$,
 we get that $A$ is groupwise-PROP-fair to agent $i$.
 \end{proof}
 
-\begin{restatable}[PROP$\implies$EF for idval]{lemma}{rthm:impl:prop-to-ef-superadd-id}
+\begin{restatable}[PROP $\fimplies$ EF for idval]{lemma}{rthm:impl:prop-to-ef-superadd-id}
 \label{thm:impl:prop-to-ef-superadd-id}
 In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with identical superadditive valuations,
 a PROP allocation is also an EF allocation.
@@ -333,7 +333,7 @@ This contradicts superadditivity of $v$, so $v(A_i) = w_iv([m])$ for each agent 
 Hence, $v(A_i)/w_i = v([m])$ for all $i$, so $A$ is EF.
 \end{proof}
 
-\begin{restatable}[PROP$\implies$EF for $n=2$]{lemma}{rthm:impl:prop-to-ef-n2}
+\begin{restatable}[PROP $\fimplies$ EF for $n=2$]{lemma}{rthm:impl:prop-to-ef-n2}
 \label{thm:impl:prop-to-ef-n2}
 In the fair division instance $([2], [m], (v_1, v_2), w)$, for some agent $i$,
 if $v_i$ is superdditive and agent $i$ is PROP-satisfied by allocation $A$,
@@ -351,14 +351,14 @@ Hence, agent 1 does not envy agent 2.
 \subsection{EFX, EF1 vs PROPx, PROPm, PROP1}
 \label{sec:impls-extra:efx-ef1-vs-propx-propm-prop1}
 
-\begin{lemma}[MXS$\implies$PROP1, Theorem 3 of \cite{caragiannis2023new}]
+\begin{lemma}[MXS $\fimplies$ PROP1, Theorem 3 of \cite{caragiannis2023new}]
 \label{thm:impl:mxs-to-prop1}
 In a fair division instance with equal entitlements,
 if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
 and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to agent $i$.
 \end{lemma}
 
-\begin{restatable}[EEF1$\implies$PROP1]{lemma}{rthm:impl:eef1-to-prop1}
+\begin{restatable}[EEF1 $\fimplies$ PROP1]{lemma}{rthm:impl:eef1-to-prop1}
 \label{thm:impl:eef1-to-prop1}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation $X$ is epistemic-EF1-fair to agent $i$, then $X$ is also PROP1-fair to $i$
@@ -439,7 +439,7 @@ which contradicts \eqref{eq:impl:eef1-to-prop1:gpos}.
 Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
 \end{proof}
 
-\begin{restatable}[EEFX$\implies$PROPx]{lemma}{rthm:impl:eefx-to-propx}
+\begin{restatable}[EEFX $\fimplies$ PROPx]{lemma}{rthm:impl:eefx-to-propx}
 \label{thm:impl:eefx-to-propx}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 the items are chores to agent $i$ and $v_i$ is subadditive.
@@ -461,7 +461,7 @@ Hence, there can't be an allocation $A$ that is epistemic-EFX-fair to $i$
 but not PROPx-fair to $i$.
 \end{proof}
 
-\begin{restatable}[EFX$\implies$PROPm]{lemma}{rthm:impl:efx-to-propm}
+\begin{restatable}[EFX $\fimplies$ PROPm]{lemma}{rthm:impl:efx-to-propm}
 \label{thm:impl:efx-to-propm}
 Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
 where $v_i$ is additive for some agent $i$.
@@ -584,7 +584,7 @@ Hence,
 which is a contradiction.
 \end{proof}
 
-\begin{lemma}[MMS$\implies$EFX for $n=2$]
+\begin{lemma}[MMS $\fimplies$ EFX for $n=2$]
 \label{thm:impl:mms-to-efx-n2}
 For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
 suppose an allocation $A$ is WMMS-fair to agent 1.
@@ -604,7 +604,7 @@ Theorem 2 in \cite{caragiannis2023new} states that an MMS allocation is also an 
 The proof can be easily adapted to non-additive valuations over goods and unequal entitlements.
 For the sake of completeness, we give a proof below.
 
-\begin{restatable}[MMS$\implies$EEFX, \cite{caragiannis2023new}]{lemma}{rthm:impl:mms-to-eefx}
+\begin{restatable}[MMS $\fimplies$ EEFX, \cite{caragiannis2023new}]{lemma}{rthm:impl:mms-to-eefx}
 \label{thm:impl:mms-to-eefx}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if all items are goods to agent $i$ and allocation $A$ is WMMS-fair to agent $i$,
@@ -663,7 +663,7 @@ We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[
 It is easy to see that if $P$ is a leximin $n$-partition of $f: 2^{[m]} \to \mathbb{R}$,
 then $\min_{j=1}^n f(P_j) = \MMS_f^n([m])$.
 
-\begin{restatable}[MMS$\implies$MXS]{lemma}{rthm:impl:mms-to-mxs}
+\begin{restatable}[MMS $\fimplies$ MXS]{lemma}{rthm:impl:mms-to-mxs}
 \label{thm:impl:mms-to-mxs}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
 Let allocation $A$ be MMS-fair to agent $i$.
@@ -696,7 +696,7 @@ Hence, $P$ is agent 1's MXS-certificate for $A$.
 
 We prove implications among share-based notions like PROP, APS, and MMS.
 
-\begin{lemma}[PROP$\implies$APS, Proposition 4 of \cite{babaioff2023fair}]
+\begin{lemma}[PROP $\fimplies$ APS, Proposition 4 of \cite{babaioff2023fair}]
 \label{thm:impl:prop-to-aps}
 For any fair division instance
 \\ $([n], [m], (v_i)_{i=1}^n, w)$,
@@ -709,7 +709,7 @@ Set the price $p(g)$ of each item $g$ to $v_i(g)$. Then
 \qedhere \]
 \end{proof}
 
-\begin{restatable}[PROP$\implies$WMMS]{lemma}{rthm:impl:prop-to-wmms}
+\begin{restatable}[PROP $\fimplies$ WMMS]{lemma}{rthm:impl:prop-to-wmms}
 \label{thm:impl:prop-to-wmms}
 For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$.
@@ -731,7 +731,7 @@ $\displaystyle s_n = s_k + \sum_{i=k+1}^n a_i \ge s_k + (n-k)a_k \ge s_k + (n-k)
 = \frac{n}{k}s_k$.
 \end{proof}
 
-\begin{restatable}[PROP$\implies$pessShare]{lemma}{rthm:impl:prop-to-pessShare}
+\begin{restatable}[PROP $\fimplies$ pessShare]{lemma}{rthm:impl:prop-to-pessShare}
 \label{thm:impl:prop-to-pessShare}
 For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is superadditive, then $\pessShare_i \le w_iv_i([m])$.
@@ -748,7 +748,7 @@ Hence,
     \qedhere \]
 \end{proof}
 
-\begin{lemma}[APS$\implies$pessShare]
+\begin{lemma}[APS $\fimplies$ pessShare]
 \label{thm:impl:aps-to-pess}
 For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 $\APS_i \ge \pessShare_i$ for every agent $i$.
@@ -798,7 +798,7 @@ Therefore,
 Hence, $\WMMS_i/w_i \ge \beta_i$.
 \end{proof}
 
-\begin{restatable}[WMMS$\implies$APS for $n=2$]{lemma}{rthm:impl:mms-to-aps-n2}
+\begin{restatable}[WMMS $\fimplies$ APS for $n=2$]{lemma}{rthm:impl:mms-to-aps-n2}
 \label{thm:impl:mms-to-aps-n2}
 For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
