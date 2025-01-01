@@ -217,6 +217,16 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \subsection{MMS}
 \label{sec:notions:mms}
 
+\begin{definition}[pessShare \cite{babaioff2023fair}]
+\label{defn:pessShare}
+Let $1 \le \ell \le d$. Let $\Pi_d(M)$ be the set of all $d$-partitions of $M$.
+Then agent $i$'s $\ell$-out-of-$d$ share is defined as
+\[ \loodM_i := \max_{\substack{X \in \Pi_d(M):\\v_i(X_j) \le v_i(X_{j+1}) \forall j \in [d-1]}} \sum_{j=1}^{\ell} v_i(X_j). \]
+Then agent $i$'s pessimistic share is defined as
+\[ \pessShare_i := \sup_{1 \le \ell \le d:\;\ell / d \le w_i} \loodM_i. \]
+Allocation $A$ is pessShare-fair to agent $i$ if $v_i(A_i) \ge \pessShare_i$.
+\end{definition}
+
 \begin{lemma}
 \label{thm:pess-is-mms}
 For any fair division instance with equal entitlements,

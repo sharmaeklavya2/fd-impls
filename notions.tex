@@ -147,6 +147,8 @@ is called agent $i$'s \emph{MMS partition}.
 
 For unequal entitlements, there are two extensions of MMS:
 weighted MMS (WMMS) and pessimistic share (pessShare).
+We focus on WMMS in this paper.
+See \cref{sec:notions:mms} for the defintion of pessShare.
 
 \begin{definition}[WMMS \cite{farhadi2019fair}]
 \label{defn:wmms}
@@ -159,22 +161,7 @@ An allocation $X$ that maximizes $w_i \min_{j \in N} \frac{v_i(X_j)}{w_j}$
 is called agent $i$'s \emph{WMMS partition}.
 \end{definition}
 
-\begin{definition}[pessShare \cite{babaioff2023fair}]
-\label{defn:pessShare}
-Let $1 \le \ell \le d$. Let $\Pi_d(M)$ be the set of all $d$-partitions of $M$.
-Then agent $i$'s $\ell$-out-of-$d$ share is defined as
-\[ \loodM_i := \max_{\substack{X \in \Pi_d(M):\\v_i(X_j) \le v_i(X_{j+1}) \forall j \in [d-1]}} \sum_{j=1}^{\ell} v_i(X_j). \]
-Then agent $i$'s pessimistic share is defined as
-\[ \pessShare_i := \sup_{1 \le \ell \le d:\;\ell / d \le w_i} \loodM_i. \]
-Allocation $A$ is pessShare-fair to agent $i$ if $v_i(A_i) \ge \pessShare_i$.
-\end{definition}
-
 For equal entitlements, it's trivial to show that $\WMMS_i = \MMS_i$.
-In \cref{thm:pess-is-mms} (\cref{sec:notions:mms}),
-we show that $\pessShare_i = \MMS_i$ for equal entitlements.
-
-Unless stated otherwise, in settings with potentially unequal entitlements,
-by MMS we mean weighted MMS.
 
 Next, we define AnyPrice Share (APS) \cite{babaioff2023fair}.
 For any non-negative integer $m$, define
