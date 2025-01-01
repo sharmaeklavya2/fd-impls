@@ -1,51 +1,83 @@
 \section{Feasibility of Fairness Notions}
 \label{sec:feasibility}
 
-Feasible notions:
+We list results regarding the feasibility and infeasibility of fairness notions
+in \cref{table:feas,table:infeas}, respectively.
 
-\begin{enumerate}
-\item EF1 is polynomial-time feasible for equal entitlements when for each agent $i$,
-    $v_i$ is doubly-monotone, i.e., the items $M$ can be partitioned into sets $G_i$ and $C_i$
-    such that $v_i(g \mid S) \ge 0$ for all $S \subseteq M$ and $g \in G_i \setminus S$
-    and $v_i(c \mid S) \le 0$ for all $S \subseteq M$ and $c \in C_i \setminus S$
-    \cite[Theorem~4]{bhaskar2021approximate}.
-\item EF1 is polynomial-time feasible for additive valuations over goods
-    \cite[Theorem~3.3]{chakraborty2021weighted}.
-\item EF1 is polynomial-time feasible for additive disutilities over chores
-    \cite[Theorem~19]{springer2024almost}.
-\item MMS is feasible for two agents and equal entitlements (using the cut-and-choose protocol).
-\item WMMS is feasible for identical valuations.
-\item PROPm is feasible for equal entitlements and additive valuations over goods
-    \cite{baklanov2021propm}.
-\item A PROP1+PO allocation always exists for additive valuations (over mixed manna)
-    \cite{aziz2020polynomial}.
-\item EFX is polynomial-time feasible for identical additive valuations over goods
-    or over chores \cite[Theorem 5]{springer2024almost}.
-\item EEFX is feasible for equal entitlements and cancelable valuations over goods
-    or over chores \cite{caragiannis2022existence}.
-\item EFX is feasible for equal entitlements and additive bivalued valuations over goods
-    \cite[Theorem~4.1]{amanatidis2021maximum}.
-\item MMS is feasible for equal entitlements and additive bivalued valuations over goods
-    or over chores \cite{feige2022maximin}.
-\item For equal entitlements and identical valuations, any leximin allocation is also GMMS
-    (based on Theorem 3 of \cite{barman2018groupwise}).
-\end{enumerate}
+\begin{table}[htb]
+\centering
+\caption{Feasibility of fairness notions}
+\label{table:feas}
+\begin{tabular}{lcccccr}
+\toprule \scriptsize notion & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements &
+\\ \midrule EF1 & -- & dbl-mono\textsuperscript{\ref{foot:dbl-mono}} & -- & -- & equal
+    & Theorem 4 of \cite{bhaskar2021approximate}
+\\[\defaultaddspace] EF1 & additive & goods & -- & -- & --
+    & Theorem 3.3 of \cite{chakraborty2021weighted}
+\\[\defaultaddspace] EF1 & additive & chores & -- & -- & --
+    & Theorem 19 of \cite{springer2024almost}
+\\[\defaultaddspace] MMS & -- & -- & -- & $n=2$ & equal
+    & Cut-and-choose
+\\[\defaultaddspace] WMMS & -- & -- & yes & -- & --
+    & Trivial
+\\[\defaultaddspace] PROPm & additive & goods & -- & -- & equal
+    & \cite{baklanov2021propm}
+\\[\defaultaddspace] PROP1 & additive & -- & -- & -- & --
+    & \cite{aziz2020polynomial}
+\\[\defaultaddspace] EFX & additive & $\ge 0$, $\le 0$ & yes & -- & --
+    & Theorem 5 of \cite{springer2024almost}
+\\[\defaultaddspace] EEFX & cancelable & $\ge 0$, $\le 0$ & -- & -- & equal
+    & \cite{caragiannis2023new,caragiannis2022existence}
+\\[\defaultaddspace] EFX & additive & bival goods & -- & -- & equal
+    & Theorem 4.1 of \cite{amanatidis2021maximum}
+\\[\defaultaddspace] MMS & additive & bival goods & -- & -- & equal
+    & \cite{feige2022maximin}
+\\[\defaultaddspace] MMS & additive & bival chores & -- & -- & equal
+    & \cite{feige2022maximin}
+\\[\defaultaddspace] GMMS & -- & -- & yes & -- & equal
+    & Leximin is GMMS
+\\ \bottomrule
+\end{tabular}
 
-Infeasible notions:
+\footnotesize
+\begin{tightenum}
+\item \label{foot:dbl-mono}A function $v: 2^M \to \mathbb{R}$ is \emph{doubly monotone}
+    if $M = G \cup C$, and $\forall\,R \subseteq M$,
+    we have $v(g \mid R) \ge 0$ for all $g \in G \setminus R$
+    and $v(c \mid R) \le 0$ for all $c \in C \setminus R$.
+\end{tightenum}
+\end{table}
 
-\begin{enumerate}
-\item PROP is infeasible for the instance in \cref{cex:single-item}.
-\item PROP1 is infeasible for the instance in \cref{cex:ef-not-prop-submod}.
-\item Remark 2 of \cite{babaioff2023fair} gives an example instance with two equally-entitled agents
-    having identical submodular valuations with non-negative marginals for which no APS allocation exists.
-    The instance can be converted to additionally have positive marginals.
-\item Lemma C.1 of \cite{babaioff2023fair} gives an example instance with 3 equally-entitled agents
-    having identical additive valuations with positive marginals for which no APS allocation exists.
-\item An example with 3 equally-entitled agents having identical valuations with positive marginals
-    for which no MMS allocation exists \cite{feige2022tight}.
-    Same result also holds for negative marginals instead.
-\item Consider an instance with 3 equally-entitled agents having identical additive valuations over 2 goods
-    with values 10 and 1, respectively. Then no PROPx allocation exists.
-\item For two agents having additive valuations over goods or over chores, an EFX allocation
-    doesn't exist (Theorems 8 and 17 of \cite{springer2024almost}).
-\end{enumerate}
+\begin{example}
+\label{cex:propx}
+Consider an instance with 3 equally-entitled agents having identical additive valuations over 2 goods
+with values 10 and 1, respectively. Then no PROPx allocation exists.
+\end{example}
+
+\begin{table}[htb]
+\centering
+\caption{Infeasibility of fairness notions}
+\label{table:infeas}
+\begin{tabular}{lcccccr}
+\toprule \scriptsize notion & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements &
+\\ \midrule PROP & $m=1$ & $1$, $-1$ & yes & any & equal
+    & \cref{cex:single-item}
+\\[\defaultaddspace] PROP1 & supermod & $\ge 0$ bival & yes & $n=2$ & equal
+    & \cref{cex:ef-not-prop-supmod}
+\\[\defaultaddspace] APS & submod & $\ge 0$ & yes & $n=2$ & equal
+    & Remark 2 of \cite{babaioff2023fair}
+\\[\defaultaddspace] APS & additive & $> 0$, $< 0$ & yes & $n=3$ & equal
+    & Lemma C.1 of \cite{babaioff2023fair}
+\\[\defaultaddspace] MMS & additive & $> 0$, $< 0$ & no & $n=3$ & equal
+    & \cite{feige2022tight}
+\\[\defaultaddspace] PROPx & additive & $> 0$ & yes & $n=3$ & equal
+    & \cref{cex:propx}
+\\[\defaultaddspace] EFX & additive & $> 0$ & no & $n=2$ & unequal
+    & Theorem 8 of \cite{springer2024almost}
+\\[\defaultaddspace] EFX & additive & $< 0$ & no & $n=2$ & unequal
+    & Theorem 17 of \cite{springer2024almost}
+\\[\defaultaddspace] PROP1+M1S & additive & $1$ & yes & $n=3$ & unequal
+    & \cref{cex:prop1-plus-m1s-ue}
+\\ \bottomrule
+\end{tabular}
+\end{table}
