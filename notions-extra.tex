@@ -12,7 +12,7 @@ Here we show how we arrived at these extensions and why they make sense.
 Defining EFX in the fully general setting (non-additive valuations, mixed manna) is tricky.
 So, we start with the definition of EFX for additive goods,
 and gradually build up to the general definition of EFX from there.
-(TODO: Some of this is part of the EEFX journal paper. How to cite that?)
+Some of these ideas also appear in \cite{caragiannis2022existence}.
 
 There are actually two competing defintions of EFX for additive goods.
 According to the original definition by \cite{caragiannis2019unreasonable},
@@ -26,7 +26,7 @@ An allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$,
 \[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
 
 \EFXZero{} is known to be incompatible with PO
-based on the following simple example (TODO: cite),
+based on the following simple example,
 whereas it is not known whether EFX is compatible with PO.
 
 \begin{example}
@@ -103,11 +103,9 @@ otherwise we lose compatibility with PO, as the following example demonstrates.
 
 \begin{example}
 \label{ex:efx-two-colors}
-Consider a fair division instance with 2 agents having equal entitlements and identical valuations.
+Consider a fair division instance with two equally-entitled agents having identical valuations.
 There are 2 red goods and 4 blue goods. The value of any bundle is $\max(k_r, k_b)$,
 where $k_r$ and $k_b$ are the numbers of red and blue goods in the bundle, respectively.
-(The valuation function is the rank function of a partition matroid,
-and hence, is submodular. (TODO: prove or cite or remove))
 \end{example}
 
 For \cref{ex:efx-two-colors}, in any allocation, some agent gets at most 2 blue goods,
