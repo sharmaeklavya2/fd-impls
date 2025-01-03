@@ -1,8 +1,9 @@
 \section{Feasibility}
-\label{sec:feasibility}
+\label{sec:feas}
 
 We list results regarding the feasibility and infeasibility of fairness notions
-in \cref{table:feas,table:infeas}, respectively.
+in \cref{table:feas,table:infeas}, respectively,
+and defer some of the proofs to \cref{sec:cex-extra,sec:feas-extra}.
 
 \begin{table}[htb]
 \centering
@@ -53,12 +54,6 @@ in \cref{table:feas,table:infeas}, respectively.
 \end{tightenum}
 \end{table}
 
-\begin{example}
-\label{cex:propx}
-Consider an instance with 3 equally-entitled agents having identical additive valuations over 2 goods
-with values 10 and 1, respectively. Then no PROPx allocation exists.
-\end{example}
-
 \begin{table}[htb]
 \centering
 \caption{Infeasibility of fairness notions}
@@ -79,10 +74,10 @@ with values 10 and 1, respectively. Then no PROPx allocation exists.
     & \cref{cex:propx}
 \\[\defaultaddspace] PROPm & additive & mixed bival & yes & $n=3$ & equal
     & \cref{cex:propm-mixed-manna}
-\\[\defaultaddspace] EFX & additive & $> 0$ & no & $n=2$ & unequal
-    & Theorem 8 of \cite{springer2024almost}
-\\[\defaultaddspace] EFX & additive & $< 0$ & no & $n=2$ & unequal
-    & Theorem 17 of \cite{springer2024almost}
+\\[\defaultaddspace] MXS & additive & $> 0$ & no & $n=2$ & unequal
+    & \cref{cex:wmxs-goods}
+\\[\defaultaddspace] MXS & additive & $< 0$ & no & $n=2$ & unequal
+    & \cref{cex:wmxs-chores}
 \\[\defaultaddspace] PROP1+M1S & additive & $1$ & yes & $n=3$ & unequal
     & \cref{cex:prop1-plus-m1s-ue}
 \\ \bottomrule

@@ -1,0 +1,62 @@
+\section{Details on Feasibility}
+\label{sec:feas-extra}
+
+\begin{example}[PROPx is infeasible]
+\label{cex:propx}
+An instance with 3 equally-entitled agents having identical additive valuations over 2 goods
+with values 10 and 1, respectively.
+\end{example}
+
+\begin{lemma}[WMXS is infeasible for goods, Theorem 8 of \cite{springer2024almost}]
+\label{cex:wmxs-goods}
+Let $0 < \eps \le 1/4$, and $\phi \defeq (\sqrt{5}+1)/2$.
+No MXS allocation exists for the fair division instance $([2], [4], (v_i)_{i=1}^2, w)$,
+where $w_1 = 1/(\sqrt{\phi}+1)$, $w_2 = \sqrt{\phi}/(\sqrt{\phi}+1)$,
+and agents have additive valuations given by the following table:
+
+\centering
+\begin{tabular}{c|cccc}
+$g$ & 1 & 2 & 3 & 4
+\\ \hline $v_1(g)$ & $\eps$ & $1$ & $\phi$ & $\phi$
+\\ $v_2(g)$ & $\eps$ & $\eps$ & $1$ & $1$
+\end{tabular}
+\end{lemma}
+\begin{proof}[Proof sketch.]
+Note that $1 + \eps < \sqrt{\phi} = w_2/w_1$.
+The only bundles agent $2$ is EFX-satisfied with are
+$\{1, 2, 3\}$, $\{1, 2, 4\}$, $\{3, 4\}$, and their supersets.
+Hence, $\MXS_2 = 1 + 2\eps$.
+%
+The only bundles agent $1$ is EFX-satisfied with are
+$\{1, 3\}$, $\{1, 4\}$, $\{2, 3\}$, $\{2, 4\}$, $\{3, 4\}$, and their supersets.
+Hence, $\MXS_1 = \phi + \eps$.
+%
+One can check that no allocation is MXS.
+\end{proof}
+
+\begin{lemma}[WMXS is infeasible for chores, Theorem 17 of \cite{springer2024almost}]
+\label{cex:wmxs-chores}
+Let $0 < \eps \le 1/4$, and $\phi \defeq (\sqrt{5}+1)/2$.
+No MXS allocation exists for the fair division instance $([2], [4], (v_i)_{i=1}^2, w)$,
+where $w_1 = \sqrt{\phi}/(\sqrt{\phi}+1)$, $w_2 = 1/(\sqrt{\phi}+1)$,
+and agents have additive disutilities given by the following table:
+
+\centering
+\begin{tabular}{c|cccc}
+$c$ & 1 & 2 & 3 & 4
+\\ \hline $-v_1(c)$ & $\eps$ & $1$ & $\phi$ & $\phi$
+\\ $-v_2(c)$ & $\eps$ & $\eps$ & $1$ & $1$
+\end{tabular}
+\end{lemma}
+\begin{proof}[Proof sketch.]
+Note that $1 + \eps < \sqrt{\phi} = w_1/w_2$.
+The only bundles agent $2$ is EFX-satisfied with are
+$\{1, 2\}$, $\{3\}$, $\{4\}$, and their subsets.
+Hence, $\MXS_2 = -1$.
+%
+The only bundles agent $1$ is EFX-satisfied with are
+$\{2, 3\}$, $\{2, 4\}$, $\{1, 3\}$, $\{1, 4\}$, $\{1, 2\}$, and their subsets.
+Hence, $\MXS_1 = -\phi^2$.
+%
+One can check that no allocation is MXS.
+\end{proof}
