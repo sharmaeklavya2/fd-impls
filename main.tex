@@ -33,8 +33,8 @@
 \begin{document}
 
 \maketitle
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5em}
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0.5em}
 
 \input{abstract.tex}
 
@@ -47,6 +47,9 @@
 \input{feas.tex}
 \input{cpig.tex}
 
+\bibliographystyle{plainurl}
+\bibliography{bibdb}
+
 \appendix
 
 \input{dags.tex}
@@ -55,8 +58,5 @@
 \input{impls-extra.tex}
 \input{cex-extra.tex}
 \input{feas-extra.tex}
-
-\bibliographystyle{plainurl}
-\bibliography{bibdb}
 
 \end{document}
