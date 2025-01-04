@@ -65,7 +65,7 @@ Formally, a fairness notion $F_1$ \emph{implies} another notion $F_2$
 if every $F_1$-fair allocation is also $F_2$-fair.
 On the other hand, if we can find an allocation that is $F_1$-fair but not $F_2$-fair,
 we get a \emph{counterexample}, i.e., a proof that $F_1$ does not imply $F_2$.
-We give a near-complete picture of implications among fairness notions:
+We give a near-complete picture of implications among fairness notions for additive valuations:
 for almost every pair of notions, we either prove that one notion implies the other, or we give a counterexample.
 These results help put fairness notions into a hierarchy,
 and the counterexamples shed light on the pros and cons of different notions.
@@ -90,7 +90,10 @@ when agents have equal entitlements. There is a vertex for each fairness notion.
 Notion $F_1$ implies notion $F_2$ iff there is a path from $F_1$ to $F_2$ in the graph
 (except that it is not known whether MXS implies EEF1 for goods).
 Red vertices are infeasible notions, green vertices are feasible notions,
-and the feasibility of uncolored vertices are open problems.}
+and the feasibility of uncolored vertices are open problems.
+Note that goods and chores have some key differences.
+For goods, PROP $\fimplies$ MMS $\fimplies$ EEF1 $\fimplies$ PROP1,
+but for chores, MMS $\nfimplies$ PROP1, and PROP $\nfimplies$ EEF1.}
 \label{fig:additive-nny}
 \end{figure}
 
