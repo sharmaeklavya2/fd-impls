@@ -1,0 +1,38 @@
+\section{Conclusion and Open Problems}
+\label{sec:conclusion}
+
+We prove several implications and non-implications between fairness notions,
+and for additive valuations, we give an almost complete picture of implications.
+We believe this would help inform further research in fair division.
+This would be especially useful if one wants to extend a fair division result
+to a stronger notion or a more general setting,
+or study a weaker notion or a simpler setting for a hard problem.
+
+From \cref{fig:additive-nny}, we can see that the only notions whose feasibility is unknown are EFX and PMMS,
+and resolving their feasibility is one of fair division's most important problems.
+For mixed manna, even the existence of MXS allocations is open.
+
+For equally-entitled agents having additive valuations over goods,
+EF1+PO allocations are known to exist \cite{caragiannis2019unreasonable,barman2018finding},
+but their efficient computation remains open.
+For chores, even existence is open.
+Relaxing the problem to EEF1+PO can be a helpful first step.
+
+Here are two interesting open problems regarding implications that we could not resolve:
+\begin{tightenum}
+\item For additive goods (equal entitlements), does MXS imply EEF1?
+    Note that the implication holds for the special case of two agents (\cref{thm:impl:mxs-to-ef1-n2}).
+\item For additive goods with unequal entitlements, does APS imply PROP1?
+    This is open even for two agents.
+\end{tightenum}
+For less-studied settings like submodular goods with equal entitlements,
+or additive chores with unequal entitlements, many implications are still open.
+
+Another interesting direction is to study implications of the form $F_1$+PO $\fimplies$ $F_2$+PO.
+For additive valuations and equal entitlements, most questions of this form are already resolved.
+This is because if $F_1 \implies F_2$, then $F_1$+PO $\fimplies$ $F_2$+PO.
+On the other hand, most of our counterexamples use identical valuations, where every allocation is trivially PO.
+
+In our work, we didn't consider constrained fair division \cite{bouveret2017fair,biswas2018fair,equbal2024fair}
+or relations between approximations of fairness notions \cite{amanatidis2018comparing}.
+It would be interesting to extend \cref{sec:cpig} for these.
