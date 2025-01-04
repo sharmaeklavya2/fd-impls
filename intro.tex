@@ -122,12 +122,31 @@ mixed manna with unequal entitlements.
 In some cases, picking an appropriate definition was non-trivial,
 and we present several observations to motivate the definitions we propose.
 
+\subsection{Related Work}
+
+The most common setting in fair division is equally-entitled agents
+having additive valuations over goods. For this setting, \cite{bouveret2016characterizing}
+studied implications among 5 fairness notions (CEEI, EF, PROP, MMS, min-max-share).
+\cite{aziz2021fair} consider implications between EF, PROP, EF1, and PROP1 for mixed manna instead.
+Over time, as new fairness notions were proposed
+\cite{caragiannis2023new,babaioff2023fair,barman2018groupwise,aziz2018knowledge},
+their connections with other well-established notions were studied.
+However, the above works only consider a limited number of fairness notions and fair division settings.
+Our work, on the other hand, aims to be exhaustive, and thus, have broader applicability.
+
+For the popular setting of equally-entitled agents having additive valuations over goods,
+many implications were already known. However, it wasn't clear if this was the final picture,
+since many of the counterexamples were not known, a gap that we have now filled.
+For less common settings, like when items are chores or mixed manna,
+or when agents have unequal entitlements, much less was known,
+so our work makes a significant advancement to understanding the fair division landscape.
+
 \subsection{Structure of the Paper}
 
 In \cref{sec:prelims}, we formally define the fair division problem and introduce associated notation.
 In \cref{sec:settings}, we describe the different fair division settings we consider.
 In \cref{sec:notions}, we describe all the fairness notions that we consider.
-In \cref{sec:impls,sec:cex}, we present several implictions and non-implications, respectively, between fairness notions.
+In \cref{sec:impls,sec:cex}, we present implictions and non-implications, respectively, between fairness notions.
 In \cref{sec:feas}, we present results on the feasibility and infeasibility of fairness notions.
 In \cref{sec:cpig}, we describe our inference engine.
 \Cref{sec:dags} contains a collection of inference DAGs, similar to \cref{fig:additive-nny},
