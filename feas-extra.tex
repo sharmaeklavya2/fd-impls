@@ -60,3 +60,35 @@ Hence, $\MXS_1 = -\phi^2$.
 %
 One can check that no allocation is MXS.
 \end{proof}
+
+\begin{lemma}[MMS is infeasible]
+\label{cex:mms-supmod-goods}
+Let $0 \le a < b$. Let $([2], [4], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance
+where $v_1(S) = |S|a + (b-a)(\boolone(S \supseteq \{1, 2\}) + \boolone(S \supseteq \{3, 4\}))$
+and $v_2(S) = |S|a + (b-a)(\boolone(S \supseteq \{1, 3\}) + \boolone(S \supseteq \{2, 4\}))$.
+Then $v_1$ and $v_2$ are supermodular, and no MMS allocation exists.
+In fact, the best multiplicative approximation to the MMS one can achieve is $2a/(a+b)$.
+\end{lemma}
+\begin{proof}
+Each agent has MMS $a+b$.
+The only way agent 1 can receive her MMS is if she receives a superset of $\{1, 2\}$ or $\{3, 4\}$.
+The only way agent 2 can receive her MMS is if she receives a superset of $\{1, 3\}$ or $\{2, 4\}$.
+Hence, some agent doesn't get her MMS. In fact, some agent gets a bundle of value at most $2a$.
+One can check that $v_1$ and $v_2$ are supermodular by painstakingly comparing all marginal values.
+\end{proof}
+
+\begin{lemma}[MMS is infeasible]
+\label{cex:mms-supmod-chores}
+Let $0 \le a < b$. Let $([2], [4], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance
+where $-v_1(S) = |S|b - (b-a)(\boolone(S \supseteq \{1, 2\}) + \boolone(S \supseteq \{3, 4\}))$
+and $-v_2(S) = |S|b - (b-a)(\boolone(S \supseteq \{1, 3\}) + \boolone(S \supseteq \{2, 4\}))$.
+Then $v_1$ and $v_2$ are supermodular, and no MMS allocation exists.
+In fact, the best multiplicative approximation to the MMS one can achieve is $2b/(a+b)$.
+\end{lemma}
+\begin{proof}
+Each agent has MMS $-(a+b)$.
+The only way agent 1 can receive her MMS is if she receives a subset of $\{1, 2\}$ or $\{3, 4\}$.
+The only way agent 2 can receive her MMS is if she receives a subset of $\{1, 3\}$ or $\{2, 4\}$.
+Hence, some agent doesn't get her MMS. In fact, some agent gets a bundle of disutility at least $2b$.
+One can check that $v_1$ and $v_2$ are supermodular by painstakingly comparing all marginal values.
+\end{proof}
