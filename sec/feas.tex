@@ -5,10 +5,12 @@ We list results regarding the feasibility and infeasibility of fairness notions
 in \cref{table:feas,table:infeas}, respectively,
 and defer some of the proofs to \cref{sec:cex-extra,sec:feas-extra}.
 
-\begin{longtable}{lcccccr}
+\begin{table}[!htb]
+\centering
 \caption{Feasibility of fairness notions}
 \label{table:feas}
-\\ \toprule \scriptsize notion & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements &
+\begin{tabular}{lcccccr}
+\toprule \scriptsize notion & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements &
 \\ \midrule EF1 & -- & dbl-mono\textsuperscript{\ref{foot:dbl-mono}} & -- & -- & equal
     & Theorem 4 of \cite{bhaskar2021approximate}
 \\[\defaultaddspace] EF1 & additive & goods & -- & -- & --
@@ -46,7 +48,7 @@ and defer some of the proofs to \cref{sec:cex-extra,sec:feas-extra}.
 \\[\defaultaddspace] GMMS & -- & -- & yes & -- & equal
     & Leximin is GMMS
 \\ \bottomrule
-\end{longtable}
+\end{tabular}
 
 \footnotesize
 \begin{tightenum}
@@ -58,12 +60,14 @@ and defer some of the proofs to \cref{sec:cex-extra,sec:feas-extra}.
     to meet our slightly stricter definition of PROPx.
     Change line 5 from `if $|v_i(X_i)| > w_i$' to `if $|v_i(X_i)| \ge w_i$'.
 \end{tightenum}
-\normalsize
+\end{table}
 
-\begin{longtable}{lcccccr}
+\begin{table}[!htb]
+\centering
 \caption{Infeasibility of fairness notions}
 \label{table:infeas}
-\\ \toprule \scriptsize notion & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements &
+\begin{tabular}{lcccccr}
+\toprule \scriptsize notion & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements &
 \\ \midrule PROP & $m=1$ & $1$, $-1$ & yes & any & equal
     & \cref{cex:single-item}
 \\[\defaultaddspace] APS & submod & $\ge 0$ & yes & $n=2$ & equal
@@ -91,4 +95,5 @@ and defer some of the proofs to \cref{sec:cex-extra,sec:feas-extra}.
 \\[\defaultaddspace] MMS & supermod & $\le 0$ bival & no & $n=2$ & equal
     & \cref{cex:mms-supmod-chores}
 \\ \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
