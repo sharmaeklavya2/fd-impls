@@ -825,37 +825,54 @@ by \cref{thm:impl:aps-to-pess}.
 valuations are additive and marginals are triboolean,
 i.e, they belong to the set $\{-1, 0, 1\}$.}
 \label{table:impls-tribool}
+\small
 \begin{tabular}{cccccccc}
-\toprule & \small marginals & \small $n=2$ & \small entitlements & &
-\\\midrule EF1 $\fimplies$ EFX & $\{-1, 0, 1\}$
+\toprule & \footnotesize valuations & \footnotesize marginals & \footnotesize $n=2$ & \footnotesize entitlements & &
+\\\midrule EF1 $\fimplies$ EFX & additive & $\{-1, 0, 1\}$
     & -- & -- & -- & trivial
-\\[\defaultaddspace] EEF1 $\fimplies$ EEFX & $\{-1, 0, 1\}$
+\\[\defaultaddspace] EEF1 $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
     & -- & -- & -- & trivial
-\\[\defaultaddspace] M1S $\fimplies$ MXS & $\{-1, 0, 1\}$
+\\[\defaultaddspace] M1S $\fimplies$ MXS & additive & $\{-1, 0, 1\}$
     & -- & -- & -- & trivial
-\\[\defaultaddspace] PROP1 $\fimplies$ PROPx & $\{-1, 0, 1\}$
-    & -- & -- & -- & trivial
+\\[\defaultaddspace] PROP1 $\fimplies$ PROPx & -- & $\{-1, 0, 1\}$
+    & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & \textbf{new}
 %
-\\\midrule PROP $\fimplies$ EEF & $\{-1, 0, 1\}$
+\\\midrule PROP $\fimplies$ EEF & additive & $\{-1, 0, 1\}$
     & -- & equal & \cref{thm:impl:tribool:prop} & \textbf{new}
-\\[\defaultaddspace] APS $\fimplies$ PROPx & $\{-1, 0, 1\}$
+\\[\defaultaddspace] APS $\fimplies$ PROPx & additive & $\{-1, 0, 1\}$
     & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
-\\[\defaultaddspace] PROP1 $\fimplies$ APS & $\{-1, 0, 1\}$
+\\[\defaultaddspace] PROP1 $\fimplies$ APS & additive & $\{-1, 0, 1\}$
     & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
-\\[\defaultaddspace] M1S $\fimplies$ APS & $\{-1, 0, 1\}$
+\\[\defaultaddspace] M1S $\fimplies$ APS & additive & $\{-1, 0, 1\}$
     & -- & equal & \cref{thm:impl:tribool:aps,thm:impl:tribool:m1s} & \textbf{new}
-\\[\defaultaddspace] MMS $\fimplies$ EEFX & $\{-1, 0, 1\}$
+\\[\defaultaddspace] MMS $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
     & -- & equal & \cref{thm:impl:tribool:mms-to-eefx} & \textbf{new}
 %
-\\\midrule EF1 $\fimplies$ GAPS & $\{-1, 0, 1\}$
+\\\midrule EF1 $\fimplies$ GAPS & additive & $\{-1, 0, 1\}$
     & -- & equal & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
-\\[\defaultaddspace] EF1 $\fimplies$ GAPS & $\{-1, 0, 1\}$
+\\[\defaultaddspace] EF1 $\fimplies$ GAPS & additive & $\{-1, 0, 1\}$
     & $n=2$ & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
-\\[\defaultaddspace] EF1 $\fimplies$ GAPS & $\{-1, 0\}$
+\\[\defaultaddspace] EF1 $\fimplies$ GAPS & additive & $\{-1, 0\}$
     & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
 \\ \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{lemma}[PROP1 $\fimplies$ PROPx]
+\label{thm:impl:prop1-to-propx-tribool}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where for some agent $i$,
+marginals are triboolean, i.e., $v_i(t \mid S) \in \{-1, 0, 1\}$
+for all $S \subseteq [m]$ and $t \in [m] \setminus S$ for some agent $i$.
+Then if an allocation $A$ is PROP1-fair to agent $i$, then it is also PROPx-fair to $i$.
+\end{lemma}
+\begin{proof}
+If $v_i(A_i) \ge w_iv_i([m])$, then $A$ is PROPx.
+Otherwise, we get $v_i(A_i) + 1 > w_iv_i([m])$ since $A$ is PROP1
+and marginals are triboolean.
+Removing any positive-disutility subset from $A_i$
+or adding any positive-utility subset to $A_i$ will increase its value by at least 1.
+Hence, $A$ is PROPx.
+\end{proof}
 
 \begin{restatable}{lemma}{rthm:tribool-rr}
 \label{thm:tribool-rr}

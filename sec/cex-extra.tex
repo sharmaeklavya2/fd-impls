@@ -560,3 +560,23 @@ However, $\min_{g \in B_1} v(B_1 \setminus \{g\}) = 4 + 6\eps > 3 + 2\eps = v(B_
 Hence, agent 2 is not EF1-satisfied by $B$, which contradicts the fact that $B$
 is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
 \end{proof}
+
+\begin{lemma}
+\label{cex:part-matroid-rank}
+Let $M \defeq \{r_1, r_2, g_1, g_2, b\}$ and define $v: 2^M \to \mathbb{R}$ as
+$v(S) \defeq \boolone(r_1 \in S \textrm{ or } r_2 \in S)
+    + \boolone(g_1 \in S \textrm{ or } g_2 \in S) + \boolone(b \in S)$.
+Then $v$ is submodular and has binary marginals, i.e.,
+$v(g \mid S) \in \{0, 1\}$ for all $S \subseteq M$ and $g \in M \setminus S$.
+\end{lemma}
+\begin{proof}[Proof sketch]
+$v$ is the rank function of a partition matroid.
+\end{proof}
+
+\begin{example}[EF1 $\nfimplies$ MXS]
+\label{cex:ef1-not-mxs-submod-binary}
+Consider a fair division instance with 2 equally-entitled agents
+having an identical valuation function $v$ over 5 goods as defined in \cref{cex:part-matroid-rank}.
+Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
+but agent 1 is not MXS-satisfied by $A$.
+\end{example}
