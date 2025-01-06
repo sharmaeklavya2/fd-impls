@@ -25,7 +25,7 @@ Two of the most popular relaxations of EF are
 EF1 \cite{budish2011combinatorial,lipton2004approximately},
 and EFX \cite{caragiannis2019unreasonable}.
 
-\begin{definition}
+\begin{definition}[EF1]
 \label{defn:ef1}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
@@ -39,7 +39,7 @@ at least one of the following hold:
 \end{tightenum}
 \end{definition}
 
-\begin{definition}
+\begin{definition}[EFX]
 \label{defn:efx}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is EFX-fair to agent $i$ if for every other agent $j$,
@@ -57,6 +57,7 @@ given by \cite{caragiannis2019unreasonable}.
 However, in \cref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense,
 and we show that it's equivalent to the original definition when
 valuations are submodular and either all items are goods or all items are chores.
+\Cref{sec:notions:efx} also describes an alternate definition of EFX, called \EFXZero.
 
 \subsection{Proportionality-Based Notions}
 

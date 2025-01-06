@@ -22,8 +22,22 @@ removing any positively-valued good from $j$'s bundle eliminates $i$'s envy. For
 
 A different definition, often called \EFXZero{},
 doesn't require the good $j$ to have a positive value to $i$ \cite{plaut2020almost}.
-An allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$,
-\[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+See \cref{defn:efx0-goods} for a formal definition,
+and \cref{defn:efx0-chores} for the chores analogue.
+
+\begin{definition}[\EFXZero{} for goods]
+\label{defn:efx0-goods}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ over goods,
+an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, and every $g \in A_j$,
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+\end{definition}
+
+\begin{definition}[\EFXZero{} for chores]
+\label{defn:efx0-chores}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ over chores,
+an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, and every $c \in A_i$,
+\[ \frac{-v_i(A_i \setminus \{c\})}{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
+\end{definition}
 
 \EFXZero{} is known to be incompatible with PO
 based on the following simple example,
@@ -55,7 +69,7 @@ is MMS, but we have already seen that it is not \EFXZero-fair.
 
 While \EFXZero{} is trivial to extend to non-additive valuations, EFX is not.
 This is because every good in $j$'s bundle can have zero value to agent $i$.
-(Additionally, $j$'s marginal value over $A_j$ and $A_i$ may also be zero.)
+(Additionally, the good's marginal value over $A_j$ and $A_i$ may also be zero.)
 Before we try to address this issue, let's instead jump to the setting of additive mixed manna.
 
 One way to define EFX for mixed manna is this:
@@ -202,8 +216,8 @@ In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
 if $v_i$ is submodular and all marginals are non-positive for agent $i$
 (i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq M$ and $c \in M \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
-\[ \frac{\max(\{|v_i(A_i \setminus \{c\})| \mid c \in A_i
-    \textrm{ and } |v_i(c \mid A_i \setminus \{c\})| > 0\})}{w_i} \le \frac{|v_i(A_j)|}{w_j}. \]
+\[ \frac{\max(\{-v_i(A_i \setminus \{c\}) \mid c \in A_i
+    \textrm{ and } v_i(c \mid A_i \setminus \{c\}) < 0\})}{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
