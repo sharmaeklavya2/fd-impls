@@ -586,7 +586,7 @@ which is a contradiction.
 
 \begin{lemma}[MMS $\fimplies$ EFX for $n=2$]
 \label{thm:impl:mms-to-efx-n2}
-For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
+For a fair division instance $([2], [m], (v_i)_{i=1}^2, w)$,
 suppose an allocation $A$ is WMMS-fair to agent 1.
 Then $A$ is also EFX-fair to agent 1 if at least one of these conditions hold:
 \begin{tightenum}
@@ -800,13 +800,13 @@ Hence, $\WMMS_i/w_i \ge \beta_i$.
 
 \begin{restatable}[WMMS $\fimplies$ APS for $n=2$]{lemma}{rthm:impl:mms-to-aps-n2}
 \label{thm:impl:mms-to-aps-n2}
-For a fair division instance $([2], [m], (v_i)_{i=1}^n, w)$,
+For a fair division instance $([2], [m], (v_i)_{i=1}^2, w)$,
 if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
 Moreover, when entitlements are equal, we get $\APS_i = \MMS_i$.
 \end{restatable}
 \begin{proof}
 By \cref{thm:wmms-vs-knapsack}, we get
-\[ \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^n \frac{v_i(S_j)}{w_j},
+\[ \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^2 \frac{v_i(S_j)}{w_j},
 \quad\textrm{where}\quad
 S_j \defeq \argmax_{\substack{S \subseteq [m]:\\ v_i(S) \le w_jv_i([m])}} v_i(S). \]
 On setting $p = v_i$ in the primal definition of APS (\cref{defn:aps}), we get
