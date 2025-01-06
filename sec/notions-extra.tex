@@ -136,11 +136,10 @@ is equivalent to well-known definitions of EFX under those special cases.
 
 \begin{lemma}
 \label{thm:efx-equiv-positive}
-In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if all marginals are positive for agent $i$
 (i.e., $v_i(g \mid R) > 0$ for all $R \subseteq M$ and $g \in M \setminus R$),
-then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
-\[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
+then $A$ is EFX-fair to agent $i$ iff $A$ is \EFXZero-fair to $i$.
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
@@ -151,11 +150,10 @@ Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
 
 \begin{lemma}
 \label{thm:efx-equiv-negative}
-In the fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if all marginals are negative for agent $i$
 (i.e., $v_i(c \mid R) < 0$ for all $R \subseteq M$ and $c \in M \setminus R$),
-then $A$ is EFX-fair to agent $i$ iff for all $j \in N \setminus \{i\}$, we have
-\[ \max_{c \in A_i} \frac{|v_i(A_i \setminus \{c\})|}{w_i} \le \frac{|v_i(A_j)|}{w_j}. \]
+then $A$ is EFX-fair to agent $i$ iff $A$ is \EFXZero-fair to agent $i$.
 \end{lemma}
 \begin{proof}[Proof sketch]
 In \cref{defn:efx}, $|v_i(A_i \setminus S)|$ is maximized by picking
