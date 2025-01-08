@@ -21,7 +21,7 @@ then it is also pairwise-$F$-fair to agent $i$ and $F$-fair to agent $i$.
 When there are only two agents, all three of these notions are equivalent.
 \end{remark}
 
-\begin{restatable}{lemma}{rthm:impl:ext-to-epistemic}
+\begin{lemma}
 \label{thm:impl:ext-to-epistemic}
 Let $\Omega$ be a set containing pairs of the form $(\Ical, A)$,
 where $\Ical$ is a fair division instance and $A$ is an allocation for $\Ical$.
@@ -30,7 +30,7 @@ For any two fairness notions $F_1$ and $F_2$, let $\phi(F_1, F_2)$ be the propos
 $A$ is $F_2$-fair to $i$ whenever $A$ is $F_1$-fair to $i$". Then
 $\phi(F_1, F_2) \implies \phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)
 \textrm{ and } \phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose $\phi(F_1, F_2)$.
 Pick any $(\Ical, A) \in \Omega$.
@@ -66,7 +66,7 @@ Because of how we define EFX (\cref{defn:efx}),
 it's not always true that EFX implies EF1.
 However, it's true for many common settings, as the following lemma shows.
 
-\begin{restatable}[EFX $\fimplies$ EF1]{lemma}{rthm:impl:efx-to-ef1}
+\begin{lemma}[EFX $\fimplies$ EF1]{lemma}{rthm:impl:efx-to-ef1}
 \label{thm:impl:efx-to-ef1}
 For the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 let $A$ be an allocation where agent $i$ is EFX-satisfied.
@@ -78,7 +78,7 @@ Then agent $i$ is EF1-satisfied in these scenarios:
 \item Agents have equal entitlements, $v_i$ is submodular, and all items are goods for agent $i$.
 \item $v_i$ is submodular and all items are chores for agent $i$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose $i$ is EFX-satisfied but not EF1-satisfied.
 Suppose $i$ EF1-envies $j$.
@@ -121,12 +121,12 @@ A contradiction implies that it's impossible for agent $i$ to be
 EFX-satisfied but not EF1-satisfied.
 \end{proof}
 
-\begin{restatable}[MXS $\fimplies$ EF1 for $n=2$]{lemma}{rthm:impl:mxs-to-ef1-n2}
+\begin{lemma}[MXS $\fimplies$ EF1 for $n=2$]
 \label{thm:impl:mxs-to-ef1-n2}
 Let $([2], [m], (v_1, v_2), w)$ be a fair division instance with indivisible items.
 If $v_1$ is additive and agent 1 is MXS-satisfied by allocation $A$,
 then agent 1 is also EF1-satisfied by $A$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose $A$ is MXS-fair to agent 1 but not EF1-fair to her.
 Then agent 1 envies agent 2 in $A$, so $v_1(A_1) < v_1(A_2)$.
@@ -168,11 +168,11 @@ Hence, it's not possible for $A$ to be MXS-fair to agent 1 but not EF1-fair to h
 \subsection{Among PROP-Based Notions}
 \label{sec:impls-extra:among-prop-based}
 
-\begin{restatable}[PROPx $\fimplies$ PROPm]{lemma}{rthm:impl:propx-to-propm}
+\begin{lemma}[PROPx $\fimplies$ PROPm]
 \label{thm:impl:propx-to-propm}
 In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation is PROPx-fair to agent $i$, then it is also PROPm-fair to agent $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Assume (for the sake of contradiction) that there is an allocation $A$ where
 agent $i$ is PROPx-satisfied but not PROPm-satisfied.
@@ -194,11 +194,11 @@ $i$ is PROPx-satisfied by $A$.
 Hence, if $i$ is PROPx-satisfied by $A$, then she is also PROPm-satisfied by $A$.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:submod-marginal-is-submod}
+\begin{lemma}
 \label{thm:submod-marginal-is-submod}
 For any $X \subseteq \Omega$ and any submodular function $f: 2^{\Omega} \to \mathbb{R}$,
 $f(\cdot \mid X)$ is submodular.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Let $P, Q \subseteq \Omega \setminus X$. Let $g(Y) \defeq f(Y \mid X)$. Then
 \begin{align*}
@@ -213,7 +213,7 @@ Let $P, Q \subseteq \Omega \setminus X$. Let $g(Y) \defeq f(Y \mid X)$. Then
 Hence, $g$ is submodular.
 \end{proof}
 
-\begin{restatable}[PROPm $\fimplies$ PROP1]{lemma}{rthm:impl:propm-to-prop1}
+\begin{lemma}[PROPm $\fimplies$ PROP1]
 \label{thm:impl:propm-to-prop1}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation $A$ is PROPm-fair to agent $i$, then it is also PROP1-fair to agent $i$
@@ -223,7 +223,7 @@ if at least one of these conditions holds:
 \item $v_i$ is doubly strictly monotone, i.e., $[m] = G \cup C$, $v_i(g \mid \cdot) > 0$
     for every $g \in G$, and $v_i(c \mid \cdot) < 0$ for every $c \in C$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose allocation $A$ is PROPm-fair to $i$ but not PROP1-fair to $i$. Then
 \begin{tightenum}
@@ -288,11 +288,11 @@ Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfi
 
 Here we look at implications between EF (and its epistemic variants) and PROP (and its epistemic variants).
 
-\begin{restatable}[MEFS $\fimplies$ PROP, \cite{bouveret2016characterizing}]{lemma}{rthm:impl:mefs-to-prop}
+\begin{lemma}[MEFS $\fimplies$ PROP, \cite{bouveret2016characterizing}]
 \label{thm:impl:mefs-to-prop}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is subadditive and an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Let $B$ be agent $i$'s MEFS-certificate for $A$.
 Then for all $j \in [n]$, we have $v_i(B_i)/w_i \ge v_i(B_j)/w_j$.
@@ -303,12 +303,12 @@ Hence,
 \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(B_i)}{w_i} \ge \sum_{j=1}^n v_i(B_j) \ge v_i([m]). \]
 \end{proof}
 
-\begin{restatable}[EF $\fimplies$ GPROP]{lemma}{rthm:impl:ef-to-gprop}
+\begin{lemma}[EF $\fimplies$ GPROP]
 \label{thm:impl:ef-to-gprop}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is subadditive and agent $i$ is envy-free in $A$,
 then $A$ is groupwise-PROP-fair to $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Let $S$ be a subset of agents containing $i$.
 Let $\Ahat$ be the allocation obtained by restricting $A$ to $S$ (c.f.~\cref{defn:restricting}).
@@ -319,11 +319,11 @@ Since this is true for all $S$ containing $i$,
 we get that $A$ is groupwise-PROP-fair to agent $i$.
 \end{proof}
 
-\begin{restatable}[PROP $\fimplies$ EF for idval]{lemma}{rthm:impl:prop-to-ef-superadd-id}
+\begin{lemma}[PROP $\fimplies$ EF for idval]
 \label{thm:impl:prop-to-ef-superadd-id}
 In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ with identical superadditive valuations,
 a PROP allocation is also an EF allocation.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Let $v$ be the common valuation function. Let $A$ be a PROP allocation.
 Then for each agent $i$, we have $v(A_i) \ge w_iv([m])$.
@@ -333,12 +333,12 @@ This contradicts superadditivity of $v$, so $v(A_i) = w_iv([m])$ for each agent 
 Hence, $v(A_i)/w_i = v([m])$ for all $i$, so $A$ is EF.
 \end{proof}
 
-\begin{restatable}[PROP $\fimplies$ EF for $n=2$]{lemma}{rthm:impl:prop-to-ef-n2}
+\begin{lemma}[PROP $\fimplies$ EF for $n=2$]
 \label{thm:impl:prop-to-ef-n2}
 In the fair division instance $([2], [m], (v_1, v_2), w)$, for some agent $i$,
 if $v_i$ is superdditive and agent $i$ is PROP-satisfied by allocation $A$,
 then she is also envy-free in $A$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Assume $i=1$ \wLoG. Then
 \begin{align*}
@@ -358,7 +358,7 @@ if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
 and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to agent $i$.
 \end{lemma}
 
-\begin{restatable}[EEF1 $\fimplies$ PROP1, Proposition 2 of \cite{aziz2021fair}]{lemma}{rthm:impl:eef1-to-prop1}
+\begin{lemma}[EEF1 $\fimplies$ PROP1, Proposition 2 of \cite{aziz2021fair}]
 \label{thm:impl:eef1-to-prop1}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if an allocation $X$ is epistemic-EF1-fair to agent $i$, then $X$ is also PROP1-fair to $i$
@@ -368,7 +368,7 @@ if one of these conditions hold:
 \item $v_i$ is additive and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
 \item $v_i$ is additive and $n=2$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose agent $i$ is epistemic-EF1-satisfied but not PROP1-satisfied by allocation $X$.
 Let $A$ be agent $i$'s epistemic-EF1-certificate for $X$.
@@ -439,13 +439,13 @@ which contradicts \eqref{eq:impl:eef1-to-prop1:gpos}.
 Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
 \end{proof}
 
-\begin{restatable}[EEFX $\fimplies$ PROPx, Lemma 2.1 of \cite{li2022almost}]{lemma}{rthm:impl:eefx-to-propx}
+\begin{lemma}[EEFX $\fimplies$ PROPx, Lemma 2.1 of \cite{li2022almost}]
 \label{thm:impl:eefx-to-propx}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 the items are chores to agent $i$ and $v_i$ is subadditive.
 If an allocation $A$ is epistemic-EFX-fair to agent $i$,
 then it is also PROPx-fair to agent $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose $A$ is epistemic-EFX-fair to agent $i$ but not PROPx-fair to $i$.
 Let $B$ be agent $i$'s epistemic-EFX-certificate for $A$.
@@ -461,7 +461,7 @@ Hence, there can't be an allocation $A$ that is epistemic-EFX-fair to $i$
 but not PROPx-fair to $i$.
 \end{proof}
 
-\begin{restatable}[EFX $\fimplies$ PROPm]{lemma}{rthm:impl:efx-to-propm}
+\begin{lemma}[EFX $\fimplies$ PROPm]
 \label{thm:impl:efx-to-propm}
 Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
 where $v_i$ is additive for some agent $i$.
@@ -471,7 +471,7 @@ if at least one of these conditions holds:
 \item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
 \item $n=2$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose agent $i$ is EFX-satisfied but not PROPm-satisfied by allocation $A$.
 Then for some agent $\jhat \in [n] \setminus \{i\}$, we have
@@ -531,7 +531,7 @@ Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfie
 We prove some results connecting MMS, EFX, and related notions,
 using techniques from \cite{plaut2020almost,caragiannis2023new}.
 
-\begin{restatable}{lemma}{rthm:mms-and-all-envy}
+\begin{lemma}
 \label{thm:mms-and-all-envy}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 suppose an allocation $A$ is WMMS-fair to agent $i$
@@ -542,7 +542,7 @@ Then $A$ is also EFX-fair to agent $i$ if at least one of these conditions hold:
     for all $R \subseteq [m]$ and $g \in [m] \setminus R$).
 \item $v_i$ is additive and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Suppose agent $i$ is not EFX-satisfied by $A$, i.e., she EFX-envies some agent $j$.
 Then $\exists S \subseteq A_i \cup A_j$ where either
@@ -604,12 +604,12 @@ Theorem 2 in \cite{caragiannis2023new} states that an MMS allocation is also an 
 The proof can be easily adapted to non-additive valuations over goods and unequal entitlements.
 For the sake of completeness, we give a proof below.
 
-\begin{restatable}[MMS $\fimplies$ EEFX, \cite{caragiannis2023new}]{lemma}{rthm:impl:mms-to-eefx}
+\begin{lemma}[MMS $\fimplies$ EEFX, \cite{caragiannis2023new}]
 \label{thm:impl:mms-to-eefx}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if all items are goods to agent $i$ and allocation $A$ is WMMS-fair to agent $i$,
 then $A$ is also epistemic-EFX-fair to $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 In any allocation $X$, let
 $E_X$ be the set of agents envied by $i$,
@@ -663,7 +663,7 @@ We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[
 It is easy to see that if $P$ is a leximin $n$-partition of $f: 2^{[m]} \to \mathbb{R}$,
 then $\min_{j=1}^n f(P_j) = \MMS_f^n([m])$.
 
-\begin{restatable}[MMS $\fimplies$ MXS]{lemma}{rthm:impl:mms-to-mxs}
+\begin{lemma}[MMS $\fimplies$ MXS]
 \label{thm:impl:mms-to-mxs}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
 Let allocation $A$ be MMS-fair to agent $i$.
@@ -672,7 +672,7 @@ Then $A$ is also MXS-fair to $i$ if at least one of these conditions hold:
 \item All items are goods to agent $i$.
 \item $v_i$ is additive.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 We will show that agent $i$'s leximin $n$-partition is her MXS-certificate for $A$,
 which would prove that $A$ is MXS-fair to agent $i$.
@@ -709,11 +709,11 @@ Set the price $p(g)$ of each item $g$ to $v_i(g)$. Then
 \qedhere \]
 \end{proof}
 
-\begin{restatable}[PROP $\fimplies$ WMMS]{lemma}{rthm:impl:prop-to-wmms}
+\begin{lemma}[PROP $\fimplies$ WMMS]
 \label{thm:impl:prop-to-wmms}
 For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Let $P$ be agent $i$'s WMMS partition. Then
 \[ v_i([m]) \ge \sum_{j=1}^n v_i(P_j) = \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right)
@@ -731,11 +731,11 @@ $\displaystyle s_n = s_k + \sum_{i=k+1}^n a_i \ge s_k + (n-k)a_k \ge s_k + (n-k)
 = \frac{n}{k}s_k$.
 \end{proof}
 
-\begin{restatable}[PROP $\fimplies$ pessShare]{lemma}{rthm:impl:prop-to-pessShare}
+\begin{lemma}[PROP $\fimplies$ pessShare]
 \label{thm:impl:prop-to-pessShare}
 For any fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is superadditive, then $\pessShare_i \le w_iv_i([m])$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Let $P$ be agent $i$'s $\ell$-out-of-$d$-partition.
 Assume \wLoG{} that $v_i(P_1) \le v_i(P_2) \le \ldots \le v_i(P_d)$.
@@ -758,13 +758,13 @@ Proposition 2 in \cite{babaioff2023fair} proves this for goods,
 but their proof works for mixed manna too.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:wmms-vs-knapsack}
+\begin{lemma}
 \label{thm:wmms-vs-knapsack}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ and any agent $i$, define
 \[ \beta_i \defeq \max_{j=1}^n \max_{\substack{S \subseteq [m]:\\v_i(S) \le w_jv_i([m])}} \frac{v_i(S)}{w_j}. \]
 If $v_i$ is superadditive, then $\WMMS_i \le w_i\beta_i$.
 If $v_i$ is additive and $n = 2$, then $\WMMS_i = w_i\beta_i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 For any $j \in [n]$, define
 \[ S_j \defeq \argmax_{\substack{S \subseteq [m]:\\v_i(S) \le w_jv_i([m])}} \frac{v_i(S)}{w_j}. \]
@@ -798,12 +798,12 @@ Therefore,
 Hence, $\WMMS_i/w_i \ge \beta_i$.
 \end{proof}
 
-\begin{restatable}[WMMS $\fimplies$ APS for $n=2$]{lemma}{rthm:impl:mms-to-aps-n2}
+\begin{lemma}[WMMS $\fimplies$ APS for $n=2$]
 \label{thm:impl:mms-to-aps-n2}
 For a fair division instance $([2], [m], (v_i)_{i=1}^2, w)$,
 if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
 Moreover, when entitlements are equal, we get $\APS_i = \MMS_i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 By \cref{thm:wmms-vs-knapsack}, we get
 \[ \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^2 \frac{v_i(S_j)}{w_j},
@@ -874,13 +874,13 @@ or adding any positive-utility subset to $A_i$ will increase its value by at lea
 Hence, $A$ is PROPx.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:tribool-rr}
+\begin{lemma}
 \label{thm:tribool-rr}
 For an additive function $f: 2^{[m]} \to \{-1, 0, 1\}$,
 there exists an $n$-partition $P$ such that $|f(P_i) - f(P_j)| \le 1$
 for all $i, j \in [n]$ and
 and $\floor{f([m])/n} \le f(P_i) \le \ceil{f([m])/n}$ for all $i \in [n]$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Partition $[m]$ into
 goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
@@ -894,12 +894,12 @@ Using round-robin, one can allocate items such that
 any two bundles differ by at most one item.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:impl:tribool:prop}
+\begin{lemma}
 \label{thm:impl:tribool:prop}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Since $A$ is PROP-fair to $i$, and $v_i(S) \in \mathbb{Z}$ for all $S \subseteq [m]$,
 we get $v_i(A_i) \ge \ceil{v_i([m])/n}$.
@@ -916,7 +916,7 @@ Hence, $i$ doesn't envy anyone in $B$.
 Hence, $B$ is agent $i$'s epistemic-EF-certificate for $A$.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:impl:tribool:prop1}
+\begin{lemma}
 \label{thm:impl:tribool:prop1}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
@@ -926,7 +926,7 @@ Then the following statements are equivalent:
 \item Allocation $A$ is PROPx-fair to $i$.
 \item $v_i(A_i) \ge \floor{w_iv_i([m])}$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Partition $[m]$ into
 goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
@@ -945,12 +945,12 @@ makes it's value more than $w_iv_i([m])$ iff $v_i(A_i) \ge \floor{w_iv_i([m])}$.
 Hence, $A$ is PROP1 iff $A$ is PROPx iff $v_i(A_i) \ge \floor{w_iv_i([m])}$.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:impl:tribool:aps}
+\begin{lemma}
 \label{thm:impl:tribool:aps}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 Then $\APS_i = \floor{w_iv_i([m])}$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Partition $[m]$ into goods $M_+ \defeq \{g \in [m]: v_i(g) > 0\}$,
 chores $M_- \defeq \{c \in [m]: v_i(c) < 0\}$, and
@@ -987,12 +987,12 @@ Then $S$ is affordable and $-v_i(S) \le \ceil{w_im_i} = -\floor{w_iv_i([m])}$.
 Hence, $\APS_i \ge \floor{w_iv_i([m])}$.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:impl:tribool:m1s}
+\begin{lemma}
 \label{thm:impl:tribool:m1s}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 Then $\MMS_i = \mathrm{M1S}_i = \floor{v_i([m])/n}$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Allocate items $[m]$ among agents $[n]$ using \cref{thm:tribool-rr} with $f = v_i$.
 Then any two bundles differ by a value of at most one.
@@ -1005,7 +1005,7 @@ Hence, the smallest value $v_i(X_i)$ can have is $\floor{m'/n}$.
 Hence, $\mathrm{M1S}_i \ge \floor{m'/n}$.
 \end{proof}
 
-\begin{restatable}{lemma}{rthm:impl:tribool:ef1-gaps}
+\begin{lemma}
 \label{thm:impl:tribool:ef1-gaps}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
@@ -1016,7 +1016,7 @@ if at least one of these conditions hold:
 \item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
 \item $v_i(c) \in \{0, -1\}$ for all $c \in [m]$.
 \end{tightenum}
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Consider any subset $S$ of agents.
 On restricting $A$ to $S$, we get an allocation $B$ that is EF1-fair to $i$.
@@ -1031,13 +1031,13 @@ For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
 \[ \bigfloor{\frac{m}{n}} = \bigceil{\frac{m+1}{n}} - 1. \]
 \end{remark}
 
-\begin{restatable}{lemma}{rthm:impl:tribool:mms-to-eefx}
+\begin{lemma}
 \label{thm:impl:tribool:mms-to-eefx}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
 If $v_i(A_i) \ge \floor{v_i([m])/n}$ for some allocation $A$,
 then $A$ is epistemic-EFX-fair to $i$.
-\end{restatable}
+\end{lemma}
 \begin{proof}
 Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
 are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.

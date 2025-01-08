@@ -90,12 +90,12 @@
 
 %\newcommand*{\thmRecall}[1]{\texttt{#1}}
 %\newcommand*{\thmRecall}[1]{\csname #1\endcsname*}
-\makeatletter
-\newcommand*{\thmRecall}[1]{%
-\ifcsname #1\endcsname
-    \csname #1\endcsname*
-\else
-    \@latex@error{Undefined restatable: \noexpand#1}\@ehc
-\fi
-}
-\makeatother
+%\makeatletter
+%\newcommand*{\thmRecall}[1]{%
+%\ifcsname #1\endcsname
+%    \csname #1\endcsname*
+%\else
+%    \@latex@error{Undefined restatable: \noexpand#1}\@ehc
+%\fi
+%}
+%\makeatother
