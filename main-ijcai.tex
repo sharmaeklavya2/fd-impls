@@ -1,0 +1,85 @@
+\documentclass{article}
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+\usepackage{ijcai25}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{times}  % Use the postscript times font!
+\usepackage{soul}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{comment}
+\usepackage{centernot}
+\usepackage{graphicx}
+%\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[small]{caption}
+\usepackage{subcaption}
+\usepackage[switch]{lineno}
+\usepackage[hypertexnames=false,bookmarksnumbered=true,hidelinks,final]{hyperref}
+%\usepackage{algorithm,algpseudocode}
+\usepackage[capitalize,sort]{cleveref}
+
+\input{colorscheme.tex}
+\input{macros.tex}
+
+\let\version\versionIjcai
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
+
+\newenvironment*{tightenum}{\enumerate}{\endenumerate}
+
+\linenumbers  % Comment out this line in the camera-ready submission
+\urlstyle{same}
+\pdfinfo{
+/TemplateVersion (IJCAI.2025.0)
+}
+
+\title{Implications in Fair Division of Indivisible Items}
+
+% Multiple author syntax
+\author{
+Jugal Garg$^1$
+\And
+Eklavya Sharma$^1$
+\\ \affiliations
+$^1$Department of Industrial \& Enterprise Engineering, University of Illinois at Urbana-Champaign, USA.
+\\ \emails
+\{jugal,eklavya2\}@illinois.edu
+}
+
+\begin{document}
+
+\maketitle
+
+\input{abstract.tex}
+
+\input{sec/intro.tex}
+\input{sec/prelims.tex}
+\input{sec/notions.tex}
+\input{sec/resultsSummary.tex}
+\input{sec/cpig.tex}
+\input{sec/conclusion.tex}
+
+\newpage
+\bibliographystyle{named}
+\bibliography{bibdb}
+
+\newpage
+\appendix
+
+\input{sec/settings-extra.tex}
+\input{sec/notions-extra.tex}
+\input{sec/impls-extra.tex}
+\input{sec/cex-extra.tex}
+\input{sec/feas-extra.tex}
+\input{sec/dags.tex}
+
+\end{document}
