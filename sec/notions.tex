@@ -143,21 +143,10 @@ is called agent $i$'s \emph{MMS partition}.
 \end{definition}
 
 For unequal entitlements, there are two extensions of MMS:
-weighted MMS (WMMS) and pessimistic share (pessShare, c.f.~\cref{sec:notions:mms}).
+weighted MMS (WMMS) \cite{farhadi2019fair}
+and pessimistic share (pessShare) \cite{babaioff2023fair}.
+See \cref{sec:notions:mms} for their formal definitions.
 We focus on WMMS in this paper.
-
-\begin{definition}[WMMS \cite{farhadi2019fair}]
-\label{defn:wmms}
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
-Let $\Acal$ be the set of all allocations for $\Ical$.
-Then agent $i$'s \emph{weighted maximin share} (WMMS) is
-\[ \WMMS_i := w_i \max_{X \in \Acal} \min_{j \in N} \frac{v_i(X_j)}{w_j}. \]
-An allocation $A$ is WMMS-fair to agent $i$ if $v_i(A_i) \ge \WMMS_i$.
-An allocation $X$ that maximizes $w_i \min_{j \in N} \frac{v_i(X_j)}{w_j}$
-is called agent $i$'s \emph{WMMS partition}.
-\end{definition}
-
-For equal entitlements, it's trivial to show that $\WMMS_i = \MMS_i$.
 
 Next, we define AnyPrice Share (APS) \cite{babaioff2023fair}.
 For any non-negative integer $m$, define
@@ -178,9 +167,6 @@ A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector if
 However, they assume that all items are goods, and for that special cases,
 their definition is equivalent to \cref{defn:aps}
 (c.f.\cref{thm:aps-optimal-price} in \cref{sec:notions:aps}).
-%
-\cite{babaioff2023fair} gives another equivalent definition of APS,
-called the \emph{dual} definition. See \cref{sec:notions:aps} for details.
 
 \subsection{Derived Notions}
 

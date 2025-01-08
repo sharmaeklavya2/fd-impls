@@ -227,6 +227,19 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \subsection{MMS}
 \label{sec:notions:mms}
 
+\begin{definition}[WMMS \cite{farhadi2019fair}]
+\label{defn:wmms}
+Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
+Let $\Acal$ be the set of all allocations for $\Ical$.
+Then agent $i$'s \emph{weighted maximin share} (WMMS) is
+\[ \WMMS_i := w_i \max_{X \in \Acal} \min_{j \in N} \frac{v_i(X_j)}{w_j}. \]
+An allocation $A$ is WMMS-fair to agent $i$ if $v_i(A_i) \ge \WMMS_i$.
+An allocation $X$ that maximizes $w_i \min_{j \in N} \frac{v_i(X_j)}{w_j}$
+is called agent $i$'s \emph{WMMS partition}.
+\end{definition}
+
+For equal entitlements, it's trivial to show that $\WMMS_i = \MMS_i$.
+
 \begin{definition}[pessShare \cite{babaioff2023fair}]
 \label{defn:pessShare}
 Let $1 \le \ell \le d$. Let $\Pi_d(M)$ be the set of all $d$-partitions of $M$.
@@ -308,6 +321,9 @@ $p$ is non-negative and $p([m]) = 1$. Hence,
 When all items are chores, by \cref{thm:aps-optimal-price}, we can assume \wLoG{} that
 $p$ is non-positive and $p([m]) = -1$. Hence,
 \[ -\APS_i = \max_{q \in \Delta_m}\;\min_{S \subseteq [m]: q(S) \ge w_i} |v_i(S)|. \]
+
+\cite{babaioff2023fair} gives another equivalent definition of APS,
+called the \emph{dual} definition.
 
 \begin{definition}[APS (dual)]
 \label{defn:aps-dual}
