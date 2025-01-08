@@ -1,14 +1,10 @@
-\section{Non-Implications}
-\label{sec:cex}
-
-We give several non-implication results in \cref{table:non-impls},
-and defer the proofs to \cref{sec:cex-extra}.
-
-\footnotesize
-\begin{longtable}{cccccccc}
+\begin{table*}[!htb]
+\centering
 \caption{Non-implications among fairness notions.}
 \label{table:non-impls}
-\\ \toprule & \tiny valuation & \tiny marginals & \tiny identical & \tiny $n$ & \tiny entitlements & &
+\footnotesize
+\begin{tabular}{cccccccc}
+\toprule & \tiny valuation & \tiny marginals & \tiny identical & \tiny $n$ & \tiny entitlements & &
 \\ \midrule APS+PROPx $\nfimplies$ PROP
     & $m=1$ & $1, -1$ & yes & any & equal & \cref{cex:single-item} & trivial
 \\[\defaultaddspace] APS+PROPx $\nfimplies$ EF1
@@ -67,5 +63,5 @@ and defer the proofs to \cref{sec:cex-extra}.
 \\[\defaultaddspace] EF1 $\nfimplies$ MXS
     & submod & $\{0, 1\}$ & yes & $n=2$ & equal & \cref{cex:ef1-not-mxs-submod-binary} & \textbf{new}
 \\ \bottomrule
-\end{longtable}
-\normalsize
+\end{tabular}
+\end{table*}

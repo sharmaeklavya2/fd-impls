@@ -1,18 +1,14 @@
-\section{Implications}
-\label{sec:impls}
-
-We summarize implications among fairness notions in \cref{table:impls1},
-and defer the proofs to \cref{sec:impls-extra}.
-%
-For conciseness in the table, we write ep-$F$ instead of epistemic-$F$,
+For conciseness in \cref{table:impls1}, we write ep-$F$ instead of epistemic-$F$,
 min-$F$-sh instead of minimum-$F$-share,
 g-$F$ instead of groupise-$F$, and p-$F$ instead of pairwise-$F$.
 
-\footnotesize
-\begin{longtable}{cccccccc}
+\begin{table*}[!htb]
+\centering
 \caption{Implications among fairness notions.}
 \label{table:impls1}
-\\ \toprule & \tiny valuation & \tiny marginals & \tiny identical & \tiny $n$ & \tiny entitlements & &
+\footnotesize
+\begin{tabular}{cccccccc}
+\toprule & \tiny valuation & \tiny marginals & \tiny identical & \tiny $n$ & \tiny entitlements & &
 \\ \midrule $F$ $\Rightarrow$ ep-$F$ $\Rightarrow$ min-$F$-sh
     & -- & -- & -- & -- & -- & \cref{thm:impl:epistemic} & trivial
 \\[\defaultaddspace] g-$F$ $\fimplies$ $F$ + p-$F$
@@ -28,11 +24,11 @@ g-$F$ instead of groupise-$F$, and p-$F$ instead of pairwise-$F$.
     & -- & -- & -- & -- & -- & \cref{thm:impl:ef-to-efx+ef1} & trivial
 \\[\defaultaddspace] MEFS $\fimplies$ MXS+M1S
     & -- & -- & -- & -- & -- & \cref{thm:impl:ef-to-efx+ef1} & trivial
-\\[\defaultaddspace] EFX $\fimplies$ EF1
+\\[\defaultaddspace] EFX $\fimplies$ EF1\textsuperscript{\ref{foot:efx-to-ef1}}
     & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
-\\[\defaultaddspace] EEFX $\fimplies$ EEF1
+\\[\defaultaddspace] EEFX $\fimplies$ EEF1\textsuperscript{\ref{foot:efx-to-ef1}}
     & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
-\\[\defaultaddspace] MXS $\fimplies$ M1S
+\\[\defaultaddspace] MXS $\fimplies$ M1S\textsuperscript{\ref{foot:efx-to-ef1}}
     & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
 \\[\defaultaddspace] MXS $\fimplies$ EF1
     & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:mxs-to-ef1-n2} & \textbf{new}
@@ -85,8 +81,7 @@ g-$F$ instead of groupise-$F$, and p-$F$ instead of pairwise-$F$.
 \\[\defaultaddspace] MMS $\fimplies$ MXS
     & additive & -- & -- & -- & equal & \cref{thm:impl:mms-to-mxs} & \textbf{new}
 %
-\\\midrule PROP $\fimplies$ APS\footnote{\label{foot:pg}In addition to $F_1 \implies F_2$,
-    we also get p-$F_1$ $\fimplies$ p-$F_2$ and g-$F_1$ $\fimplies$ g-$F_2$.}
+\\\midrule PROP $\fimplies$ APS\textsuperscript{\ref{foot:pg}}
     & additive & -- & -- & -- & -- & \cref{thm:impl:prop-to-aps} & \cite{babaioff2023fair}
 \\[\defaultaddspace] PROP $\fimplies$ WMMS\textsuperscript{\ref{foot:pg}}
     & superadditive & -- & -- & -- & -- & \cref{thm:impl:prop-to-wmms} & folklore
@@ -95,9 +90,12 @@ g-$F$ instead of groupise-$F$, and p-$F$ instead of pairwise-$F$.
 \\[\defaultaddspace] PWMMS $\fimplies$ PAPS
     & additive & -- & -- & -- & -- & \cref{thm:impl:mms-to-aps-n2} & \cite{babaioff2023fair}
 \\ \bottomrule
-\end{longtable}
-\normalsize
+\end{tabular}
 
-EFX $\fimplies$ EF1, EEFX $\fimplies$ EEF1, and MXS $\fimplies$ M1S hold for additional settings.
-See \cref{thm:impl:efx-to-ef1} in \cref{sec:impls-extra:among-ef-efx-ef1} for details.
-In \cref{sec:impls-extra:tribool}, we prove additional implications when marginals are in $\{-1, 0, 1\}$.
+\begin{tightenum}
+\item \label{foot:efx-to-ef1}These results hold for additional settings.
+    See \cref{thm:impl:efx-to-ef1} in \cref{sec:impls-extra:among-ef-efx-ef1} for details.
+\item \label{foot:pg}In addition to $F_1 \implies F_2$, we also get p-$F_1$ $\fimplies$ p-$F_2$
+    and g-$F_1$ $\fimplies$ g-$F_2$.
+\end{tightenum}
+\end{table*}
