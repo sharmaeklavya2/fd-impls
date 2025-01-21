@@ -108,9 +108,10 @@ However, we get around this by encoding our implication and non-implication resu
 and implementing an inference engine that uses these results to automatically deduce new results.
 
 For example, if we ask the inference engine ``Does epistemic envy-freeness (EEF) imply maximin share (MMS) for goods
-with additive valuations?", it would give an affirmative answer based on these two results we show in the paper:
+with additive valuations?", it would give an affirmative answer based on these three results we show in the paper:
 \begin{enumerate}
-\item EEF implies proportionality (PROP) under subadditive valuations
+\item EEF implies minimum-EF-share fairness (MEFS).
+\item MEFS implies proportionality (PROP) under subadditive valuations
     (\cref{thm:impl:mefs-to-prop} in \cref{sec:impls-extra}).
 \item PROP implies MMS for superadditive valuations
     (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
