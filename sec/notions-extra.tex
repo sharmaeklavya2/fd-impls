@@ -14,7 +14,7 @@ So, we start with the definition of EFX for additive goods,
 and gradually build up to the general definition of EFX from there.
 Some of these ideas also appear in \cite{caragiannis2022existence}.
 
-There are actually two competing defintions of EFX for additive goods.
+There are actually two competing definitions of EFX for additive goods.
 According to the original definition by \cite{caragiannis2019unreasonable},
 an allocation $A$ is EFX-fair to agent $i$ if for every other agent $j$,
 removing any positively-valued good from $j$'s bundle eliminates $i$'s envy. Formally,
@@ -81,7 +81,7 @@ However, we argue that this is not sufficient.
 
 \begin{example}
 \label{ex:efx-mixed-manna}
-Consier a fair division instance $\Ical$ having 2 agents with equal entitlements,
+Consider a fair division instance $\Ical$ having 2 agents with equal entitlements,
 identical additive valuations, two goods of values $10$ each,
 and two chores of values $-9$ each.
 Consider an allocation $A$ where all the 4 items are allocated to agent 2.
@@ -334,7 +334,7 @@ Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ s
     \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
 \end{definition}
 
-\Cref{defn:aps-dual} can be interpreted as a linear programmming relaxation of MMS.
+\Cref{defn:aps-dual} can be interpreted as a linear programming relaxation of MMS.
 Formally, when entitlements are equal, adding the integrality constraints
 $nx_S \in \mathbb{Z}_{\ge 0}$ for all $S \in \Scal_z$ gives us an alternate definition of MMS.
 
@@ -457,7 +457,7 @@ According to \cite{baklanov2021achieving}, when dividing a set $[m]$ of goods am
 $A$ is PROPm-fair to agent $i$ if $v_i(A_i) + \max_{j \neq i} m_i(A_j) \ge v_i([m])/n$,
 where $m_i(S) \defeq \min_{g \in S} v_i(g)$.
 However, \cite{baklanov2021achieving} doesn't explicitly state what $m_i(\emptyset)$ is.
-The well-known convension of $\min(\emptyset) = \infty$ leads to the strange phenomenon
+The well-known convention of $\min(\emptyset) = \infty$ leads to the strange phenomenon
 where every agent is PROPm-satisfied if two agents receive no goods
 (whereas PROP1 is not guaranteed).
 One way to fix this is to only consider agents with non-empty bundles,

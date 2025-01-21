@@ -85,14 +85,14 @@ Suppose $i$ EF1-envies $j$.
 
 Since $i$ EF1-envies $j$, we get that for all $t \in A_j$, we have
 \[ \frac{v_i(A_i)}{w_i} < \frac{v_i(A_j \setminus \{t\})}{w_j}. \]
-Since $i$ is EFX-saisfied, we get that
+Since $i$ is EFX-satisfied, we get that
 for all $t \in A_j$ such that $v_i(t \mid A_i) > 0$, we have
 \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{t\})}{w_j}. \]
 Hence, for all $t \in A_j$, we get $v_i(t \mid A_i) \le 0$.
 
 Since $i$ EF1-envies $j$, we get that for all $t \in A_i$, we have
 \[ \frac{v_i(A_i \setminus \{t\})}{w_i} < \frac{v_i(A_j)}{w_j}. \]
-Since $i$ is EFX-saisfied, we get that
+Since $i$ is EFX-satisfied, we get that
 for all $t \in A_i$ such that $v_i(t \mid A_i \setminus \{t\}) < 0$, we have
 \[ \frac{v_i(A_i \setminus \{t\})}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
 Hence, for all $t \in A_i$, we get $v_i(t \mid A_i \setminus \{t\}) \ge 0$.
@@ -336,7 +336,7 @@ Hence, $v(A_i)/w_i = v([m])$ for all $i$, so $A$ is EF.
 \begin{lemma}[PROP $\fimplies$ EF for $n=2$]
 \label{thm:impl:prop-to-ef-n2}
 In the fair division instance $([2], [m], (v_1, v_2), w)$, for some agent $i$,
-if $v_i$ is superdditive and agent $i$ is PROP-satisfied by allocation $A$,
+if $v_i$ is superadditive and agent $i$ is PROP-satisfied by allocation $A$,
 then she is also envy-free in $A$.
 \end{lemma}
 \begin{proof}
@@ -642,7 +642,7 @@ and there are a finite number of different values $\phi(X)$ can take.
 Let $B$ be the final allocation thus obtained.
 Then $B_i = A_i$, and $|E_B| = n-1$ or $S_B = \emptyset$.
 
-By <a href="../misc/mms-and-all-envy.html">mms-and-all-envy.html</a>,
+By \cref{thm:mms-and-all-envy},
 $|E_B| = n-1$ implies $S_B = \emptyset$.
 Hence, $B$ is agent $i$'s EEFX-certificate for $A$.
 \end{proof}
