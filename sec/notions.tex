@@ -93,7 +93,7 @@ or $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ for some $c \in A_i$.
 Note that \cref{defn:prop1} uses strict inequalities, whereas most papers don't.
 We define it this way to make it a slightly stronger fairness notion.
 Also, this nuance doesn't affect most results, except those involving
-binary (or negative binary) valuations.
+binary valuations.
 
 \begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
 \label{defn:propx}
@@ -117,7 +117,7 @@ and for those settings, we show that our definition is equivalent to theirs
 \begin{definition}[PROPm]
 \label{defn:propm}
 Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
-An allocation $A$ is said to be PROPm-fair to agent $i$ iff
+An allocation $A$ is PROPm-fair to agent $i$ iff
 $v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
 \begin{tightenum}
 \item\label{item:propm:chores}$v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
@@ -131,8 +131,9 @@ $v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
 \end{definition}
 
 PROPm was originally defined in \cite{baklanov2021achieving} for additive goods.
-However, that definition has a minor error, which we explain in \cref{sec:notions:propm}.
-\Cref{defn:propm} fixes the error. Note that PROPm and PROPx are equivalent for chores.
+That definition has a minor error, which \cref{defn:propm} fixes.
+We explain the error in \cref{sec:notions:propm}.
+Note that PROPm and PROPx are equivalent for chores.
 
 \subsection{Maximin Share and AnyPrice Share}
 
@@ -151,15 +152,15 @@ For a finite set $M$, let $\Pi_n(M)$ be the set of all $n$-partitions of $M$.
 For a function $f: 2^M \to \mathbb{R}$, define
 \[ \MMS_f^n(M) \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n f(P_j). \]
 %
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, \eqEnt)$ be a fair division instance.
-Agent $i$'s \emph{maximin share} (MMS) is given by $\MMS_{v_i}^{|N|}(M)$.
+For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, \eqEnt)$,
+agent $i$'s \emph{maximin share} (MMS) is given by $\MMS_{v_i}^{|N|}(M)$.
 When the instance $\Ical$ is clear from context, we write $\MMS_i$ instead of $\MMS_{v_i}^{|N|}(M)$.
 An allocation $A$ is MMS-fair to agent $i$ if $v_i(A_i) \ge \MMS_{v_i}^{|N|}(M)$.
 A partition $P \in \Pi_n(M)$ for which $\min_{j=1}^n v_i(P_j) = \MMS_i$
 is called agent $i$'s \emph{MMS partition}.
 \end{definition}
 
-For unequal entitlements, there are two extensions of MMS:
+For unequal entitlements, there are two well-known extensions of MMS:
 weighted MMS (WMMS) \cite{farhadi2019fair}
 and pessimistic share (pessShare) \cite{babaioff2023fair}.
 See \cref{sec:notions:mms} for their formal definitions.

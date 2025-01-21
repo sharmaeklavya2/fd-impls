@@ -63,11 +63,11 @@ through the lens of \emph{implications}.
 
 Formally, a fairness notion $F_1$ \emph{implies} another notion $F_2$
 if every $F_1$-fair allocation is also $F_2$-fair.
-On the other hand, if we can find an allocation that is $F_1$-fair but not $F_2$-fair,
+On the other hand, if we can find an $F_1$-fair allocation that is not $F_2$-fair,
 we get a \emph{counterexample}, i.e., a proof that $F_1$ does not imply $F_2$.
 We give a near-complete picture of implications among fairness notions for additive valuations:
 for almost every pair of notions, we either prove that one notion implies the other, or we give a counterexample.
-These results help put fairness notions into a hierarchy,
+These results put fairness notions into a hierarchy,
 and the counterexamples shed light on the pros and cons of different notions.
 See \cref{fig:additive-nny} for the implications we show for additive goods and additive chores,
 and \cref{sec:dags} for similar figures for other fair division settings.
@@ -115,8 +115,8 @@ with additive valuations?", it would give an affirmative answer based on these t
 \item PROP implies MMS for superadditive valuations
     (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
 \end{enumerate}
-We implement our inference engine as a client-side JavaScript web application.
-The inference engine is not tied to the specifics of fair division,
+We implement our inference engine as a client-side web application in JavaScript.
+The engine is not tied to the specifics of fair division,
 and so may be of independent interest.
 
 Some fairness notions were originally defined only for very specific fair division settings.
@@ -161,6 +161,6 @@ which can be found in the full version of the paper included in the supplementar
 \fi
 \Cref{sec:settings-extra,sec:notions-extra} contain details on fair division settings and fairness notions.
 \Cref{sec:impls-extra,sec:cex-extra} contain proofs of our (non-)implication results.
-\Cref{sec:feas} contains results regarding (in)feasibility of fairness notions.
-\Cref{sec:dags} contains a collection of inference DAGs, similar to \cref{fig:additive-nny},
-for many different fair division settings.
+\Cref{sec:feas} contains results on (in)feasibility of fairness notions.
+\Cref{sec:dags} contains several implication DAGs, i.e.,
+analogues of \cref{fig:additive-nny} for other fair division settings.
