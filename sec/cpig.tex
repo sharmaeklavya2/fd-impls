@@ -56,7 +56,7 @@ supersets of $S$, and compute their transitive closure.
 In step 2, we find all counterexamples conditioned on $S$.
 To do this, for each $(\phi_1, \phi_2, T) \in C$,
 we first find all implications conditioned on $T$ like in step 1.
-If $\phi_1 \fimplies_T \phi'_1$ and $\phi'_2 \fimplies_T \phi_2$,
+Next, if $\phi_1 \fimplies_T \phi'_1$ and $\phi'_2 \fimplies_T \phi_2$,
 then we can infer that $\phi'_1 \nfimplies_{\!\!\!T\,\,\,} \phi'_2$, because otherwise,
 by transitivity, we get $\phi_1 \fimplies_T \phi_2$.
 Using this technique, we expand the set of all counterexamples.

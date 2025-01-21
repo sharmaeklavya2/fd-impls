@@ -18,7 +18,7 @@ For unequal entitlements, most papers use the term WEF instead of EF.
 But we use the term EF in this paper to emphasize that unequal entitlements
 is a property of the fair division setting, not the fairness notion.
 %
-It is easy to see that EF allocations may not exist, so several relaxtions have been studied.
+It is easy to see that EF allocations may not exist, so several relaxations have been studied.
 Two of the most popular relaxations of EF are
 EF1 \cite{budish2011combinatorial,lipton2004approximately},
 and EFX \cite{caragiannis2019unreasonable}.
@@ -181,7 +181,7 @@ A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector if
 \end{definition}
 
 \Cref{defn:aps} is slightly different from the original definition given in \cite{babaioff2023fair}.
-However, they assume that all items are goods, and for that special cases,
+However, they assume that all items are goods, and for that special case,
 their definition is equivalent to \cref{defn:aps}
 (c.f.\cref{thm:aps-optimal-price} in \cref{sec:notions:aps}).
 
@@ -189,7 +189,7 @@ their definition is equivalent to \cref{defn:aps}
 
 New fairness notions can be obtained by systematically modifying existing notions.
 %
-We start with two related concepts, epitemic fairness \cite{aziz2018knowledge,caragiannis2023new}
+We start with two related concepts, epistemic fairness \cite{aziz2018knowledge,caragiannis2023new}
 and minimum fair share \cite{caragiannis2023new}.
 
 \begin{definition}[epistemic fairness]
@@ -229,7 +229,7 @@ $\Mhat \defeq \bigcup_{j \in S} A_j$, and $\what_j \defeq w_j / \sum_{j \in S} w
 
 \begin{definition}[pairwise fairness]
 \label{defn:pairwise}
-For a fair diviion instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
 an allocation $A$ is called \emph{pairwise-$F$-fair} to agent $i$ if
 for all $j \in N \setminus \{i\}$, $A^{(j)}$ is $F$-fair to $i$ in the instance $\Ical^{(j)}$,
 where $(\Ical^{(j)}, A^{(j)}) \defeq \restrict(\Ical, A, \{i, j\})$.
@@ -237,7 +237,7 @@ where $(\Ical^{(j)}, A^{(j)}) \defeq \restrict(\Ical, A, \{i, j\})$.
 
 \begin{definition}[groupwise fairness]
 \label{defn:groupwise}
-For a fair diviion instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
+For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
 an allocation $A$ is called \emph{groupwise-$F$-fair} to agent $i$ if
 for all $S \subseteq N \setminus \{i\}$, $A^{(S)}$ is $F$-fair to $i$ in the instance $\Ical^{(S)}$,
 where $(\Ical^{(S)}, A^{(S)}) \defeq \restrict(\Ical, A, \{i\} \cup S)$.
