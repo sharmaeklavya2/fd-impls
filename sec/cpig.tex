@@ -34,8 +34,9 @@ and fairness notions are predicates over $\Omega$.
 
 The inference engine takes as input a tuple $(\Fcal, \Phi, I, C)$.
 $\Fcal$ is a set family over a ground set $\Omega$.
-    Since $\Omega$ can be uncountable, we represent sets in $\Fcal$ implicitly.
-    Given $S_1, S_2 \in \Fcal$, we should be able to efficiently tell whether $S_1 \subseteq S_2$.
+    Since $\Omega$ can be uncountable, we represent sets in $\Fcal$ implicitly
+    (see \cref{sec:fd-set-family} for details).
+    Moreover, given $S_1, S_2 \in \Fcal$, we should be able to efficiently tell whether $S_1 \subseteq S_2$.
 $\Phi$ is a set of predicates over $\Omega$.
 $I$ is a set of \emph{conditional implications}, i.e., a set of triples
     $(\phi_1, \phi_2, S) \in \Phi \times \Phi \times \Fcal$

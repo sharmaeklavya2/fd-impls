@@ -1,0 +1,44 @@
+digraph G {
+graph [margin=0];
+edge [arrowhead=vee, arrowsize=0.75];
+node [shape=box, margin="0.1,0.03", width=0, height=0, style=filled, fillcolor="#eeeeee"];
+
+general;
+dblMono [label="doubly monotone"];
+nonneg [label="≥ 0"];
+positive [label="> 0"];
+nonpos [label="≤ 0"];
+negative [label="< 0"];
+nonnegBival [label="≥ 0 bivalued"];
+positiveBival [label="> 0 bivalued"];
+nonposBival [label="≤ 0 bivalued"];
+negativeBival [label="< 0 bivalued"];
+//mixedBival [label="mixed bivalued"];
+tribool [label="{−1, 0, 1}"];
+binary [label="{0, 1}"];
+negBinary [label="{0, −1}"];
+unit [label="{1}"];
+negUnit [label="{−1}"];
+
+dblMono -> general;
+nonneg -> dblMono;
+nonpos -> dblMono;
+positive -> nonneg;
+negative -> nonpos;
+//mixedBival -> general;
+nonnegBival -> nonneg;
+nonposBival -> nonpos;
+positiveBival -> positive;
+negativeBival -> negative;
+positiveBival -> nonnegBival;
+negativeBival -> nonposBival;
+tribool -> general;
+binary -> tribool;
+negBinary -> tribool;
+binary -> nonnegBival;
+negBinary -> nonposBival;
+unit -> binary;
+unit -> positiveBival;
+negUnit -> negBinary;
+negUnit -> negativeBival;
+}

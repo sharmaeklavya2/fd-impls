@@ -1,0 +1,30 @@
+digraph G {
+graph [margin=0];
+edge [arrowhead=vee, arrowsize=0.75];
+node [shape=box, margin="0.1,0.03", width=0, height=0, style=filled, fillcolor="#eeeeee"];
+
+general;
+additive;
+subadd [label="subadditive"];
+superadd [label="superadditive"];
+submod [label="submodular"];
+supermod [label="supermodular"];
+xos [label="XOS"];
+cancelable;
+unitDemand [label="unit demand"];
+singleItem [label="single item"];
+
+subadd -> general;
+superadd -> general;
+cancelable -> general;
+xos -> subadd;
+submod -> xos;
+supermod -> superadd;
+additive -> submod;
+additive -> supermod;
+additive -> cancelable;
+unitDemand -> submod;
+unitDemand -> cancelable;
+singleItem -> additive;
+singleItem -> unitDemand;
+}
