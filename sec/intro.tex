@@ -7,13 +7,6 @@ One of the oldest-known applications occurs in the Bible \cite{bible_cut_and_cho
 
 Research in fair division began with the study of \emph{divisible} resources (e.g., land, water, cake)
 \cite{steinhaus1940sur,stromquist1980how,varian1974equity}.
-\begin{comment}
-A set $M$ of resources (usually represented as a \emph{cake}) must be divided among $n$ agents,
-and each agent $i$ has a function $v_i: 2^M \to \mathbb{R}$ assigning a numeric \emph{value} $v_i(S)$
-to every subset $S \subseteq M$ of the items.\footnote{%
-Formally, $v_i$ is a \emph{measure} over $M$.
-See \cite{cohn2013measure} or \cite{stein2009real} for an introduction to measure theory.}
-\end{comment}
 \emph{Fairness} was formally defined in two different ways:
 \emph{envy-freeness} (EF) and \emph{proportionality} (PROP).
 EF means that each agent believes that she got the best bundle of items compared to others,
@@ -116,7 +109,10 @@ with additive valuations?", it would give an affirmative answer based on these t
 \item PROP implies MMS for superadditive valuations
     (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
 \end{enumerate}
-We implement our inference engine as a client-side web application in JavaScript.
+We implement our inference engine as a client-side web application in JavaScript%
+\ifx\version\versionIjcai\else
+\ (\url{https://sharmaeklavya2.github.io/cpigjs/fairDiv/})%
+\fi.
 The engine is not tied to the specifics of fair division,
 and so may be of independent interest.
 
