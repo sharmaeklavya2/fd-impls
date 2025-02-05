@@ -5,6 +5,7 @@ node [shape=box, margin="0.1,0.03", width=0, height=0, style=filled, fillcolor="
 
 general;
 dblMono [label="doubly monotone"];
+dblStrMono [label="doubly strictly monotone"];
 nonneg [label="≥ 0"];
 positive [label="> 0"];
 nonpos [label="≤ 0"];
@@ -21,10 +22,13 @@ unit [label="{1}"];
 negUnit [label="{−1}"];
 
 dblMono -> general;
+dblStrMono -> dblMono;
 nonneg -> dblMono;
 nonpos -> dblMono;
 positive -> nonneg;
 negative -> nonpos;
+positive -> dblStrMono;
+negative -> dblStrMono;
 //mixedBival -> general;
 nonnegBival -> nonneg;
 nonposBival -> nonpos;
