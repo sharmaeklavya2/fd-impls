@@ -11,7 +11,7 @@ Research in fair division began with the study of \emph{divisible} resources (e.
 \emph{envy-freeness} (EF) and \emph{proportionality} (PROP).
 EF means that each agent believes that she got the best bundle of items compared to others,
 and PROP means that each agent's value for her own bundle is at least a $1/n$ fraction
-of her value of the entire set of items.
+of her value of the entire set of items, where $n$ is the number of agents.
 By the 1980s, procedures for finding allocations meeting these fairness criteria were known.
 
 These positive results break down when the items become indivisible.
@@ -39,7 +39,7 @@ A similar story played out for relaxations of PROP:
 PROP1's existence was easy to prove \cite{aziz2021fair},
 but stronger notions like MMS \cite{kurokawa2018fair} and PROPx \cite{aziz2020polynomial}
 were shown to be infeasible, so their relaxations have been studied
-\cite{kurokawa2018fair,akrami2023breaking,baklanov2021propm,caragiannis2023new}.
+\cite{kurokawa2018fair,akrami2024breaking,baklanov2021propm,caragiannis2023new}.
 Insisting on polynomial-time computability,
 compatibility with economic efficiency notions (like Pareto optimality),
 or other constraints \cite{bouveret2017fair,biswas2018fair,equbal2024fair}
@@ -127,10 +127,17 @@ and we present several observations to motivate the definitions we propose.
 
 \subsection{Related Work}
 
+\cite{amanatidis2023fair} give a survey on recent progress and open problems in fair division,
+where they consider many different fair division settings and fairness notions.
+
 The most common setting in fair division is equally-entitled agents
 having additive valuations over goods. For this setting, \cite{bouveret2016characterizing}
 studied implications among 5 fairness notions (CEEI, EF, PROP, MMS, min-max-share).
+\cite{amanatidis2018comparing} studies implications between
+multiplicative approximations of fairness notions.
 \cite{aziz2021fair} consider implications between EF, PROP, EF1, and PROP1 for mixed manna instead.
+\cite{chakraborty2024weighted} studies implications for the weighted setting
+among EF1, PROP1, APS, MNW, and other notions.
 Over time, as new fairness notions were proposed
 \cite{caragiannis2023new,babaioff2023fair,barman2018groupwise,aziz2018knowledge},
 their connections with other well-established notions were studied.

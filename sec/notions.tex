@@ -90,10 +90,9 @@ or $v_i(A_i \cup \{g\}) > w_iv_i([m])$ for some $g \in [m] \setminus A_i$,
 or $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ for some $c \in A_i$.
 \end{definition}
 
-Note that \cref{defn:prop1} uses strict inequalities, whereas most papers don't.
+Note that \cref{defn:prop1} uses strict inequalities, whereas most papers do not.
 We define it this way to make it a slightly stronger fairness notion.
-Also, this nuance doesn't affect most results, except those involving
-binary valuations.
+Also, this nuance doesn't affect most results, except those involving binary valuations.
 
 \begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
 \label{defn:propx}
@@ -167,7 +166,7 @@ See \cref{sec:notions:mms} for their formal definitions.
 We focus on WMMS in this paper.
 
 Next, we define AnyPrice Share (APS) \cite{babaioff2023fair}.
-For any non-negative integer $m$, define
+For any positive integer $m$, define
 $\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
 For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=1}^m x_j$.
 
@@ -177,14 +176,14 @@ For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 agent $i$'s AnyPrice Share (APS) is defined as
 \[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
 Here $p$ is called the \emph{price vector}.
-A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector if
+A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector for agent $i$ if
 \[ p^* \in \argmin_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
 \end{definition}
 
 \Cref{defn:aps} is slightly different from the original definition given in \cite{babaioff2023fair}.
 However, they assume that all items are goods, and for that special case,
 their definition is equivalent to \cref{defn:aps}
-(c.f.\cref{thm:aps-optimal-price} in \cref{sec:notions:aps}).
+(c.f. \cref{thm:aps-optimal-price} in \cref{sec:notions:aps}).
 
 \subsection{Derived Notions}
 
@@ -213,7 +212,7 @@ Then $B$ is called agent $i$'s \emph{minimum-$F$-share-certificate} for $A$.
 %
 Equivalently, an allocation $A$ is \emph{minimum-$F$-share-fair} to agent $i$ if
 $v_i(A_i)$ is at least her minimum-$F$-share, defined as
-\[ \minFS(\Ical, F, i) \defeq \min_{A \in \Acal(\Ical, F, i)} v_i(A_i). \]
+\[ \minFS(\Ical, F, i) \defeq \min_{X \in \Acal(\Ical, F, i)} v_i(X_i). \]
 \end{definition}
 
 We now describe pairwise fairness \cite{caragiannis2019unreasonable}
@@ -225,7 +224,7 @@ Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance
 and $A$ be an allocation. For a subset $S \subseteq N$ of agents, where $|S| \ge 2$,
 let $\restrict(\Ical, A, S)$ be the pair $(\Icalhat, \Ahat)$, where
 $\Ahat \defeq (A_j)_{j \in S}$, $\Icalhat \defeq (S, \Mhat, (v_j)_{j \in S}, \what)$,
-$\Mhat \defeq \bigcup_{j \in S} A_j$, and $\what_j \defeq w_j / \sum_{j \in S} w_j$.
+$\Mhat \defeq \bigcup_{j \in S} A_j$, and $\what_j \defeq w_j / \sum_{k \in S} w_k$.
 \end{definition}
 
 \begin{definition}[pairwise fairness]
