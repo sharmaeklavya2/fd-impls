@@ -27,8 +27,12 @@ Consequently, many definitions of fairness have been proposed for the indivisibl
 
 EF was relaxed to a notion called \emph{EF1} (envy-freeness up to one item),
 and algorithms guaranteeing EF1 allocations were given \cite{budish2011combinatorial,lipton2004approximately}.
-However, EF1 was considered a very weak fairness notion, so a stronger notion
-called \emph{EFX} (envy-freeness up to any item) \cite{caragiannis2019unreasonable} was extensively studied.
+However, EF1 was considered a somewhat weak fairness notion,
+%\footnote{Consider dividing a house, a car, and a bicycle among two agents.
+%Intuitively, the agent who gets the house shouldn't get anything else,
+%but allocating the house and the bicycle to one agent and the car to the other is EF1.},
+so a stronger notion called \emph{EFX} (envy-freeness up to any item)
+\cite{caragiannis2019unreasonable} was extensively studied.
 Despite considerable effort from researchers, the existence of EFX allocations
 remains an important open problem.
 Hence, relaxations of EFX \cite{caragiannis2023new,amanatidis2020multiple,chaudhury2021little}
@@ -42,7 +46,7 @@ were shown to be infeasible, so their relaxations have been studied
 \cite{kurokawa2018fair,akrami2024breaking,baklanov2021propm,caragiannis2023new}.
 Insisting on polynomial-time computability,
 compatibility with economic efficiency notions (like Pareto optimality),
-or other constraints \cite{bouveret2017fair,biswas2018fair,equbal2024fair}
+or other constraints \cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair}
 makes the problem harder, necessitating the use of weaker fairness notions.
 
 Hence, for the problem of fairly allocating indivisible items,
