@@ -450,6 +450,24 @@ By \cref{thm:submod-negative-elem}, $v_i(S \mid A_i \setminus S) < 0$ implies $\
 such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
+\subsection{PROP1}
+\label{sec:notions:prop1}
+
+Our definition of PROP1 (\cref{defn:prop1}) uses strict inequalities, i.e.,
+$v_i(A_i \cup \{g\}) > w_iv_i([m])$ instead of $v_i(A_i \cup \{g\} \ge w_iv_i([m])$,
+and $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ instead of $v_i(A_i \setminus \{c\} \ge w_iv_i([m])$.
+This is different from the convention followed by most fair division papers.
+
+We define it this way to make it a slightly stronger notion.
+In particular, when the items are identical, the stricter notion aligns with the
+the intuitive idea that each agent must get at least $\floor{m/n}$ goods
+or at most $\ceil{m/n}$ chores.
+However, outside of the identical items case,
+this nuance doesn't affect our results.
+All implications and counterexamples apply to both the stronger and weaker definitions.
+
+We alter PROPx and PROPm to also use strict inequalities.
+
 \subsection{PROPm}
 \label{sec:notions:propm}
 
