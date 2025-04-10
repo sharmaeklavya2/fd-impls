@@ -32,18 +32,22 @@ or additive chores with unequal entitlements, many implications are still open.
 Another interesting direction is to study implications of the form $F_1$+PO $\fimplies$ $F_2$+PO.
 For additive valuations and equal entitlements, most questions of this form are already resolved.
 This is because if $F_1 \implies F_2$, then $F_1$+PO $\fimplies$ $F_2$+PO.
-On the other hand, most of our counterexamples use identical valuations, where every allocation is trivially PO.
+On the other hand, most of our counterexamples use identical valuations,
+where every allocation is trivially PO.
 
-We omitted a few fairness notions from our work,
-since they are fundamentally different from the notions we consider.
+We did not consider fairness notions and settings that don't fit our model (\cref{sec:prelims}),
+like constrained fair division \cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
+or notions based on social graphs \cite{aziz2018knowledge}.
+We also did not consider multiplicative approximations
+of fairness notions \cite{amanatidis2018comparing},
+or parametrized notions like $\mathrm{WEF}(x, y)$ \cite{chakraborty2024weighted},
+since it is unclear how to extend the inference engine (\cref{sec:cpig}) for them.
+
+We omitted some fairness notions from our work because
+they are fundamentally different from the notions we consider.
 Equitability (EQ) \cite{brams1996fair}, and its relaxations like EQ1 and EQX
 \cite{amanatidis2023fair,gourves2014near}, compare different utility functions with each other.
 Notions like CEEI \cite{varian1974equity} and maximum Nash welfare \cite{caragiannis2019unreasonable}
 include an aspect of efficiency in addition to fairness.
 Nevertheless, we believe that studying relations between these notions
 is an interesting line of research, and we leave it as future work.
-
-In our work, we didn't consider constrained fair division \cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair}
-or multiplicative approximations of fairness notions \cite{amanatidis2018comparing}.
-It would be interesting to study implications
-and extend the inference engine (\cref{sec:cpig}) for them.
