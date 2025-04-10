@@ -118,26 +118,33 @@ This is because those definitions were for more restricted settings,
 and for those settings, we show that our definition is equivalent to theirs
 (\cref{sec:notions:propx}).
 
-\begin{definition}[PROPm]
+\begin{definition}[PROPm and PROPavg]
 \label{defn:propm}
-Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
-An allocation $A$ is PROPm-fair to agent $i$ iff
-$v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
+Let $A$ be an allocation for the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$.
+Fix an agent $i$. For every $j \in [n] \setminus \{i\}$,
+let $K_j \defeq \{v_i(S \mid A_i): S \subseteq A_j \text{ and } v_i(S \mid A_i) > 0\}$.
+Let $\tau_j \defeq 0$ if $K_j = \emptyset$ and $\tau_j \defeq \min(K_j)$ otherwise.
+Let $T \defeq \{\tau_j: j \in [n] \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
+Define conditions C1, C2, C4 as follows:
 \begin{tightenum}
-\item\label{item:propm:chores}$v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
+\item[(C1)]\label{item:propm:prop}$v_i(A_i) \ge w_iv_i([m])$.
+\item[(C2)]\label{item:propm:chores}
+    $v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
     such that $v_i(S \mid A_i \setminus S) < 0$.
-\item\label{item:propm:goods}For every $j \in [n] \setminus \{i\}$, define
-    $\tau_j$ to be 0 if $v_i(S \mid A_i) \le 0$ for all $S \subseteq A_j$,
-    and $\min(\{v_i(S \mid A_i): S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\})$ otherwise.
-    Define $T \defeq \{\tau_j: j \in [n] \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
-    Then either $T = \emptyset$, or $v_i(A_i) + \max(T) > w_iv_i([m])$.
+\item[(C3)]\label{item:propm:goods}
+    $T = \emptyset$, or $v_i(A_i) + \max(T) > w_iv_i([m])$.
+\item[(C4)]\label{item:propavg}
+    $T = \emptyset$, or $v_i(A_i) + \frac{1}{n-1}\sum_{j \in [n] \setminus \{i\}}\tau_j > w_iv_i([m])$.
 \end{tightenum}
+$A$ is PROPm-fair to $i$ if either C1 holds or both C2 and C3 hold.
+$A$ is PROPavg-fair to $i$ if either C1 holds or both C2 and C4 hold.
 \end{definition}
 
 PROPm was originally defined in \cite{baklanov2021achieving} for additive goods.
 That definition has a minor error, which \cref{defn:propm} fixes.
 We explain the error in \cref{sec:notions:propm}.
-Note that PROPm and PROPx are equivalent for chores.
+PROPavg was originally defined in \cite{kobayashi2025proportional} for additive goods.
+Note that PROPm, PROPavg, and PROPx are equivalent for chores.
 
 \subsection{Maximin Share and AnyPrice Share}
 
