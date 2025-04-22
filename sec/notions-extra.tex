@@ -513,6 +513,28 @@ but that definition is too weak: when all items are goods, every allocation is t
 a PROPm allocation always exists and can be computed in polynomial time.
 It can be verified that their result also works for our definition of PROPm (\cref{defn:propm}).
 
-The definitions of PROPm and PROPavg simplify under submodular valuations over goods and over chores.
+The definition of PROPm simplifies under submodular valuations over goods and over chores.
+The proof is similar to that of PROPx (\cref{thm:propx-equiv-submod-goods,thm:propx-equiv-submod-chores})
+and is based on \cref{thm:submod-positive-elem,thm:submod-negative-elem}, so we omit the details here.
+
+\subsection{PROPavg}
+\label{sec:notions:propavg}
+
+PROPavg was first defined in \cite{kobayashi2025proportional} for additive goods,
+Moreover, they claimed that PROPx implies PROPavg and PROPavg implies PROPm.
+However, their former claim is incorrect for their definition.
+
+Their definition of PROPavg is equivalent to ours for equal entitlements and additive goods,
+except that in condition C4, they use $\Sum(T)/(n-1)$ instead of $\Sum(T)/|T|$.
+Consider a fair division instance with three equally-entitled agents and two identical goods.
+Let $A$ be an allocation where agent 1 gets all goods and the other agents get nothing.
+This allocation is PROPx and PROPm, but is not PROPavg by \cite{kobayashi2025proportional}'s definition.
+
+We believe that finding a feasible fairness notion in between PROPx and PROPm is well-motivated,
+so we slightly change \cite{kobayashi2025proportional}'s definition to ensure that PROPx implies PROPavg.
+Also, for additive goods, when no agent gets an empty bundle in an allocation,
+then $|T| = n-1$, so both definitions are the same.
+
+Our definition of PROPavg simplifies under submodular valuations over goods and over chores.
 The proof is similar to that of PROPx (\cref{thm:propx-equiv-submod-goods,thm:propx-equiv-submod-chores})
 and is based on \cref{thm:submod-positive-elem,thm:submod-negative-elem}, so we omit the details here.
