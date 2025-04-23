@@ -167,16 +167,16 @@ Hence, it's not possible for $A$ to be MXS-fair to agent 1 but not EF1-fair to h
 \subsection{Among PROP-Based Notions}
 \label{sec:impls-extra:among-prop-based}
 
-\begin{lemma}[PROPx $\fimplies$ PROPm]
-\label{thm:impl:propx-to-propm}
+\begin{lemma}[PROPx $\fimplies$ PROPavg]
+\label{thm:impl:propx-to-propavg}
 In a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
-if an allocation is PROPx-fair to agent $i$, then it is also PROPm-fair to agent $i$.
+if an allocation is PROPx-fair to agent $i$, then it is also PROPavg-fair to agent $i$.
 \end{lemma}
 \begin{proof}
 Assume (for the sake of contradiction) that there is an allocation $A$ where
-agent $i$ is PROPx-satisfied but not PROPm-satisfied.
+agent $i$ is PROPx-satisfied but not PROPavg-satisfied.
 %
-Since $i$ is not PROPm-satisfied, we get $v_i(A_i) \le w_iv_i([m])$.
+Since $i$ is not PROPavg-satisfied, we get $v_i(A_i) \le w_iv_i([m])$.
 Since $i$ is PROPx-satisfied, we get
 
 \begin{itemize}
@@ -186,11 +186,13 @@ Since $i$ is PROPx-satisfied, we get
     such that $v_i(S \mid A_i) > 0$.
 \end{itemize}
 
-Since $i$ is not PROPm-satisfied, we get that $T \neq \emptyset$ and $v_i(A_i) + \max(T) \le w_iv_i([m])$.
-Let $\max(T) = \tau_{\jhat} = v_i(\Shat \mid A_i) > 0$.
-Then $v_i(A_i \cup \Shat) \le w_iv_i([m])$, which contradicts the fact that
-$i$ is PROPx-satisfied by $A$.
-Hence, if $i$ is PROPx-satisfied by $A$, then she is also PROPm-satisfied by $A$.
+Since $i$ is not PROPavg-satisfied, we get that $T \neq \emptyset$
+and $v_i(A_i) + \Sum(T)/|T| \le w_iv_i([m])$ ($T$ is defined in \cref{defn:propavg}).
+For each $\tau_j \in T$, we have $0 < \tau_j = v_i(S_j \mid A_i)$ for some $S_j \subseteq A_j$.
+Since $A$ is PROPx-fair to $i$, we have $v_i(A_i) + \tau_j > w_iv_i([m])$ for all $\tau_j \in T$.
+On averaging these inequalities, we get $v_i(A_i) + \Sum(T)/|T| > w_iv_i([m])$,
+which implies that $A$ is PROPavg-satisfied, which is a contradiction.
+Hence, if $i$ is PROPx-satisfied by $A$, then she is also PROPavg-satisfied by $A$.
 \end{proof}
 
 \begin{lemma}
@@ -460,68 +462,66 @@ Hence, there can't be an allocation $A$ that is epistemic-EFX-fair to $i$
 but not PROPx-fair to $i$.
 \end{proof}
 
-\begin{lemma}[EFX $\fimplies$ PROPm]
-\label{thm:impl:efx-to-propm}
+\begin{lemma}[EFX $\fimplies$ PROPavg]
+\label{thm:impl:efx-to-propavg}
 Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
 where $v_i$ is additive for some agent $i$.
-If an allocation $A$ is EFX-fair to agent $i$, then it is also PROPm-fair to agent $i$
+If an allocation $A$ is EFX-fair to agent $i$, then it is also PROPavg-fair to agent $i$
 if at least one of these conditions holds:
 \begin{tightenum}
-\item $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
+\item Agents have equal entitlements and $v_i(A_i) \ge 0$.
 \item $n=2$.
 \end{tightenum}
 \end{lemma}
 \begin{proof}
-Suppose agent $i$ is EFX-satisfied but not PROPm-satisfied by allocation $A$.
+Suppose agent $i$ is EFX-satisfied but not PROPavg-satisfied by allocation $A$.
 Then for some agent $\jhat \in [n] \setminus \{i\}$, we have
 \[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_{\jhat})}{w_{\jhat}}. \]
 
 Since $i$ doesn't EFX-envy $\jhat$, for all $S \subseteq A_i$ such that
 $v_i(S \mid A_i \setminus S) < 0$, we get
 \[ \frac{v_i(A_i \setminus S)}{w_i} \ge \frac{v_i(A_{\jhat})}{w_{\jhat}} > v_i([m]). \]
-Hence, condition \ref{item:propm:chores} (chores condition) of PROPm is satisfied.
-Since condition \ref{item:propm:goods} (goods condition) of PROPm is not satisfied, we get that
-$T \neq \emptyset$ and $v_i(A_i) + \max(T) \le w_iv_i([m])$.
+Hence, condition C2 of PROPavg is satisfied.
+Since condition C4 of PROPavg is not satisfied, we get that
+$T \neq \emptyset$ and $v_i(A_i) + \Sum(T)/|T| \le w_iv_i([m])$.
 %
-For all $j \in T$, we get
+For all $\tau_j \in T$, we get
 \begin{align}
 \frac{v_i(A_i)}{w_i} &\ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}
     \tag{$i$ doesn't EFX-envy $j$}
 \\ &= \frac{v_i(A_j)}{w_j} - \frac{\min(\{v_i(S): S \subseteq A_j \textrm{ and } v_i(S) > 0\})}{w_j}
     \notag
-\\ &= \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j} \ge \frac{v_i(A_j)}{w_j} - \frac{\max(T)}{w_j}.
-    \label{eqn:impl:efx-to-propm:1}
+\\ &= \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j}
+    \label{eqn:impl:efx-to-propavg:1}
 \end{align}
 
-\textbf{Special case 1}: $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, and $v_i(A_i) \ge 0$.
+\textbf{Special case 1}: agents have equal entitlements and $v_i(A_i) \ge 0$.
 
 Let $J \defeq \{j \in [n] \setminus \{i\}: \tau_j > 0\}$.
-For all $j \in J$, using \eqref{eqn:impl:efx-to-propm:1}, we get
-\[ \frac{v_i(A_i) + \max(T)}{w_i}
-\ge \frac{v_i(A_j)}{w_j} - \frac{\max(T)}{w_j} + \frac{\max(T)}{w_i}
-\ge \frac{v_i(A_j)}{w_j}. \]
+For all $j \in J$, using \eqref{eqn:impl:efx-to-propavg:1}, we get
+$v_i(A_i) + \tau_j \ge v_i(A_j)$.
 
 For all $j \in [n] \setminus (J \cup \{i\})$, we have $\tau_j = 0$, so $v_i(A_j) \le 0$. Hence,
 \[ \frac{v_i(A_i)}{w_i} \ge 0 \ge \frac{v_i(A_j)}{w_j}. \]
-Therefore,
-\[ v([m]) = \sum_{j=1}^n w_j\left(\frac{v_i(A_j)}{w_j}\right)
-    < \sum_{j=1}^n w_j\left(\frac{v_i(A_i) + \max(T)}{w_i}\right)
-    = \frac{v_i(A_i) + \max(T)}{w_i}. \]
-Hence, condition 1 of PROPm is satisfied, which is a contradiction.
-Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
+Define $\tau_i \defeq 0$. Then,
+\[ \frac{v([m])}{n} = \frac{1}{n}\sum_{j=1}^n v_i(A_j)
+    \le \frac{1}{n}\sum_{j=1}^n (v_i(A_i) + \tau_j)
+    = v_i(A_i) + \frac{\Sum(T)}{n} < v_i(A_i) + \frac{\Sum(T)}{|T|}. \]
+Hence, condition 1 of PROPavg is satisfied, which is a contradiction.
+Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPavg-satisfied by $A$.
 
 \textbf{Special case 2}: $n=2$
 
-Let the two agents be $i$ and $j$. Since $T \neq \emptyset$, we have $\max(T) = \tau_j > 0$.
-Since $i$ is not PROPm-satisfied by $A$, we get
+Let the two agents be $i$ and $j$. Since $T \neq \emptyset$, we have $T = \{\tau_j\}$, where $\tau_j > 0$.
+Since $i$ is not PROPavg-satisfied by $A$, we get
 \begin{align}
 & v_i(A_i) + \tau_j \le w_iv_i([m]) = w_iv_i(A_i) + w_iv_i(A_j)
 \\ &\implies w_jv_i(A_i) + \tau_j \le w_iv_i(A_j)
 \\ &\implies \frac{v_i(A_i)}{w_i} \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_iw_j}
     \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j}.
 \end{align}
-Combining this with equation \eqref{eqn:impl:efx-to-propm:1} gives us $\tau_j = 0$, which is a contradiction.
-Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPm-satisfied by $A$.
+Combining this with equation \eqref{eqn:impl:efx-to-propavg:1} gives us $\tau_j = 0$, which is a contradiction.
+Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPavg-satisfied by $A$.
 \end{proof}
 
 \subsection{MMS vs EFX}

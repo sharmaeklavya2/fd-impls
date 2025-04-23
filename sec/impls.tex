@@ -37,8 +37,10 @@ g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.
     & -- & -- & -- & -- & -- & -- & trivial
 \\[\defaultaddspace] PROP $\fimplies$ PROP1
     & -- & -- & -- & -- & -- & -- & trivial
-\\[\defaultaddspace] PROPx $\fimplies$ PROPm
-    & -- & -- & -- & -- & -- & \cref{thm:impl:propx-to-propm} & folklore
+\\[\defaultaddspace] PROPx $\fimplies$ PROPavg
+    & -- & -- & -- & -- & -- & \cref{thm:impl:propx-to-propavg} & trivial
+\\[\defaultaddspace] PROPavg $\fimplies$ PROPm
+    & -- & -- & -- & -- & -- & -- & trivial
 \\[\defaultaddspace] PROPm $\fimplies$ PROP1
     & submodular & -- & -- & -- & -- & \cref{thm:impl:propm-to-prop1} & folklore
 \\[\defaultaddspace] PROPm $\fimplies$ PROP1
@@ -65,10 +67,10 @@ g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.
     & subadditive & chores & -- & -- & -- & \cref{thm:impl:eef1-to-prop1} & \textbf{new}
 \\[\defaultaddspace] EEFX $\fimplies$ PROPx
     & subadditive & chores & -- & -- & -- & \cref{thm:impl:eefx-to-propx} & \cite{li2022almost}
-\\[\defaultaddspace] EFX $\fimplies$ PROPm
-    & additive & goods & -- & -- & equal & \cref{thm:impl:efx-to-propm} & folklore
-\\[\defaultaddspace] EFX $\fimplies$ PROPm
-    & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:efx-to-propm} & \textbf{new}
+\\[\defaultaddspace] EFX $\fimplies$ PROPavg
+    & additive & goods & -- & -- & equal & \cref{thm:impl:efx-to-propavg} & folklore
+\\[\defaultaddspace] EFX $\fimplies$ PROPavg
+    & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:efx-to-propavg} & \textbf{new}
 \\[\defaultaddspace] MXS $\fimplies$ PROP1
     & additive & goods & -- & -- & equal & \cref{thm:impl:mxs-to-prop1} & \cite{caragiannis2023new}
 %
