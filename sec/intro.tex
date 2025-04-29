@@ -108,13 +108,13 @@ For example, if we ask the inference engine ``Does epistemic envy-freeness (EEF)
 with additive valuations?", it would give an affirmative answer based on these three results we show in the paper:
 \begin{enumerate}
 \item EEF implies minimum-EF-share fairness (MEFS).
-\item MEFS implies proportionality (PROP) under subadditive valuations
+\item MEFS implies PROP under subadditive valuations
     (\cref{thm:impl:mefs-to-prop} in \cref{sec:impls-extra}).
 \item PROP implies MMS for superadditive valuations
     (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
 \end{enumerate}
 We implement our inference engine as a client-side web application in JavaScript%
-\ifx\version\versionIjcai\else
+\ifx\version\versionDefault
 \ (\url{https://sharmaeklavya2.github.io/cpigjs/fairDiv/})%
 \fi.
 The engine is not tied to the specifics of fair division,
