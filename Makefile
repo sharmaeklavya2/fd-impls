@@ -2,12 +2,16 @@ INAME = main
 ONAME = fimp
 IJ_INAME = main-ijcai
 IJ_ONAME = fimp-ijcai
+NEUR_INAME = main-neurips
+NEUR_ONAME = fimp-neurips
 TEX_OPTIONS = -cnf-line "max_print_line = 10000" -halt-on-error
 default:
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) $(INAME).tex
 	bibtex $(ONAME).aux
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) $(INAME).tex
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) $(INAME).tex
+clean:
+	rm -f *.{aux,bbl,blg,log,out,toc,vtc,cut}
 once-sepia:
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) "\def\colorscheme{sepia}\input{$(INAME).tex}"
 once-dark:
@@ -25,8 +29,17 @@ once-ijcai-dark:
 	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{dark}\input{$(IJ_INAME).tex}"
 once-ijcai-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{light}\input{$(IJ_INAME).tex}"
-clean:
-	rm -f *.{aux,bbl,blg,log,out,toc,vtc,cut}
+neurips:
+	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
+	bibtex $(NEUR_ONAME).aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
+	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
+once-neurips-sepia:
+	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{sepia}\input{$(NEUR_INAME).tex}"
+once-neurips-dark:
+	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{dark}\input{$(NEUR_INAME).tex}"
+once-neurips-light:
+	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{light}\input{$(NEUR_INAME).tex}"
 arxiv:
 	mkdir -p arxiv
 	cp -r figs dags arxiv
