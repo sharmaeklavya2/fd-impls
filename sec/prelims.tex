@@ -32,7 +32,7 @@ When $F(\Ical, A, i)$ is true, we say that allocation $A$ is $F$\emph{-fair} to 
 or that agent $i$ is $F$\emph{-satisfied} by allocation $A$.
 Allocation $A$ is said to be $F$-fair if it is $F$-fair to every agent.
 
-A notion $F$ of fairness is said to be \emph{feasible} if for every fair division instance,
+A fairness notion $F$ is said to be \emph{feasible} if for every fair division instance,
 there exists an $F$-fair allocation.
 We say that a notion $F_1$ of fairness \emph{implies} another notion $F_2$ of fairness if
 every $F_1$-fair allocation is also an $F_2$-fair allocation.
@@ -59,23 +59,22 @@ We study many fair division settings in this paper.
 A fair division setting is given by multiple \emph{features}.
 By picking different values of these features, we can get a wide variety of fair division settings.
 We consider 5 features in this paper:
-\begin{tightenum}
-\item Whether entitlements are equal.
-\item Whether there are only two agents.
-\item Whether agents have identical valuations.
-\item Valuation function type.
-\item Marginal values.
-\end{tightenum}
+(i) whether entitlements are equal,
+(ii) whether there are only two agents,
+(iii) whether agents have identical valuations,
+(iv) valuation function type,
+(v) marginal values.
 The first three are self-explanatory. We give an overview of the last two,
 and defer the details to \cref{sec:settings-extra}.
 
 \textbf{Valuation Function Type}:
 This feature tells us how values of different sets of items are related to each other.
-We consider additive, subadditive, superadditive, submodular, supermodular, and general functions.
+We consider many popular function types like additive, subadditive, superadditive,
+submodular, supermodular, and general functions.
 
 \textbf{Marginal values}:
 This feature tells us the possible marginal values items can have.
 For an agent $i \in N$, the marginal value of item $j$ over set $S$
 is given by $v_i(j \mid S) \defeq v_i(S \cup \{j\}) - v_i(S)$.
-We consider several marginal value types, e.g., non-negative (goods), non-positive (chores),
+We consider several popular marginal value types, e.g., non-negative (goods), non-positive (chores),
 bivalued ($\{a, b\}$), binary ($\{0, 1\}$), negative binary ($\{0, -1\}$).
