@@ -383,8 +383,38 @@ Furthermore,
 Hence, $\dAPS_i \ge z \iff \pAPS_i \ge z$.
 \end{proof}
 
+\subsection{PROP1}
+\label{sec:notions:prop1}
+
+Our definition of PROP1 (\cref{defn:prop1}) uses strict inequalities, i.e.,
+$v_i(A_i \cup \{g\}) > w_iv_i([m])$ instead of $v_i(A_i \cup \{g\}) \ge w_iv_i([m])$,
+and $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ instead of $v_i(A_i \setminus \{c\}) \ge w_iv_i([m])$.
+This is different from the convention followed by most fair division papers.
+
+We define it this way to make it a slightly stronger notion.
+In particular, when the items are identical, the stricter notion aligns with the the intuitive idea
+that each agent must get at least $\floor{m/n}$ goods or at most $\ceil{m/n}$ chores.
+However, outside of the identical items case, this nuance doesn't affect our results.
+All implications, counterexamples, and (in)feasibility results
+hold for both the stronger and weaker definitions.
+
+We alter PROPx, PROPm, and PROPavg to also use strict inequalities.
+
 \subsection{PROPx}
 \label{sec:notions:propx}
+
+\begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
+\label{defn:propx}
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+an allocation $A$ is said to be PROPx-fair to agent $i$ iff
+either $v_i(A_i) \ge w_i \cdot v_i([m])$ or both of these conditions hold:
+\begin{tightenum}
+\item $v_i(A_i \cup S) > w_i \cdot v_i([m])$ for every $S \subseteq [m] \setminus A_i$
+    such that $v_i(S \mid A_i) > 0$.
+\item $v_i(A_i \setminus S) > w_i \cdot v_i([m])$ for every $S \subseteq A_i$
+    such that $v_i(S \mid A_i \setminus S) < 0$.
+\end{tightenum}
+\end{definition}
 
 We identify special cases where our definition of PROPx (\cref{defn:propx})
 is equivalent to well-known definitions of PROPx under those special cases.
@@ -450,24 +480,45 @@ By \cref{thm:submod-negative-elem}, $v_i(S \mid A_i \setminus S) < 0$ implies $\
 such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
-\subsection{PROP1}
-\label{sec:notions:prop1}
+\subsection{PROPm and PROPavg}
+\label{sec:notions:propm-propavg}
 
-Our definition of PROP1 (\cref{defn:prop1}) uses strict inequalities, i.e.,
-$v_i(A_i \cup \{g\}) > w_iv_i([m])$ instead of $v_i(A_i \cup \{g\}) \ge w_iv_i([m])$,
-and $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ instead of $v_i(A_i \setminus \{c\}) \ge w_iv_i([m])$.
-This is different from the convention followed by most fair division papers.
+\begin{definition}[PROPm \cite{baklanov2021achieving} and PROPavg \cite{kobayashi2025proportional}]
+\label{defn:propm}
+\label{defn:propavg}
+Let $A$ be an allocation for the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$.
+Fix an agent $i$. For every $j \in [n] \setminus \{i\}$,
+let $K_j \defeq \{v_i(S \mid A_i): S \subseteq A_j \text{ and } v_i(S \mid A_i) > 0\}$.
+Let $\tau_j \defeq 0$ if $K_j = \emptyset$ and $\tau_j \defeq \min(K_j)$ otherwise.
+Let $T \defeq \{\tau_j: j \in [n] \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
+Define conditions C1, C2, C3, and C4 as follows:
+\begin{tightenum}
+\item[(C1)]\label{item:propm:prop}$v_i(A_i) \ge w_i \cdot v_i([m])$.
+\item[(C2)]\label{item:propm:chores}
+    $v_i(A_i \setminus S) > w_i \cdot v_i([m])$ for every $S \subseteq A_i$
+    such that $v_i(S \mid A_i \setminus S) < 0$.
+\item[(C3)]\label{item:propm:goods}
+    $T = \emptyset$, or $v_i(A_i) + \max(T) > w_i \cdot v_i([m])$.
+\item[(C4)]\label{item:propavg}
+    $T = \emptyset$, or $v_i(A_i) + \frac{1}{|T|}\sum_{\tau_j \in T}\tau_j > w_i \cdot v_i([m])$.
+\end{tightenum}
+$A$ is PROPm-fair to $i$ if either C1 holds or both C2 and C3 hold.
+$A$ is PROPavg-fair to $i$ if either C1 holds or both C2 and C4 hold.
+\end{definition}
 
-We define it this way to make it a slightly stronger notion.
-In particular, when the items are identical, the stricter notion aligns with the the intuitive idea
-that each agent must get at least $\floor{m/n}$ goods or at most $\ceil{m/n}$ chores.
-However, outside of the identical items case, this nuance doesn't affect our results.
-All implications, counterexamples, and (in)feasibility results
-hold for both the stronger and weaker definitions.
+PROPm was originally defined in \cite{baklanov2021achieving},
+and PROPavg was originally defined in \cite{kobayashi2025proportional},
+both for the additive goods setting.
+Note that PROPm, PROPavg, and PROPx are all equivalent to each other for chores.
 
-We alter PROPx, PROPm, and PROPavg to also use strict inequalities.
+The definitions of PROPm and PROPavg simplify under submodular valuations over goods and over chores.
+The proof is similar to that of PROPx (\cref{thm:propx-equiv-submod-goods,thm:propx-equiv-submod-chores})
+and is based on \cref{thm:submod-positive-elem,thm:submod-negative-elem}, so we omit the details here.
 
-\subsection{PROPm}
+The original definitions of PROPm and PROPavg have minor errors, which our definitions fix.
+We now explain these errors and motivate why we decided to define them the way have done.
+
+\subsubsection{Defining PROPm}
 \label{sec:notions:propm}
 
 PROPm was first defined in \cite{baklanov2021achieving}
@@ -513,11 +564,7 @@ but that definition is too weak: when all items are goods, every allocation is t
 a PROPm allocation always exists and can be computed in polynomial time.
 It can be verified that their result also works for our definition of PROPm (\cref{defn:propm}).
 
-The definition of PROPm simplifies under submodular valuations over goods and over chores.
-The proof is similar to that of PROPx (\cref{thm:propx-equiv-submod-goods,thm:propx-equiv-submod-chores})
-and is based on \cref{thm:submod-positive-elem,thm:submod-negative-elem}, so we omit the details here.
-
-\subsection{PROPavg}
+\subsubsection{Defining PROPavg}
 \label{sec:notions:propavg}
 
 PROPavg was first defined in \cite{kobayashi2025proportional} for additive goods,
@@ -534,7 +581,3 @@ We believe that finding a feasible fairness notion in between PROPx and PROPm is
 so we slightly change \cite{kobayashi2025proportional}'s definition to ensure that PROPx implies PROPavg.
 Also, for additive goods, when no agent gets an empty bundle in an allocation,
 then $|T| = n-1$, so both definitions are the same.
-
-Our definition of PROPavg simplifies under submodular valuations over goods and over chores.
-The proof is similar to that of PROPx (\cref{thm:propx-equiv-submod-goods,thm:propx-equiv-submod-chores})
-and is based on \cref{thm:submod-positive-elem,thm:submod-negative-elem}, so we omit the details here.

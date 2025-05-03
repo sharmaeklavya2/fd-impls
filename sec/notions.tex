@@ -12,8 +12,8 @@ or in the survey papers cited in \cref{sec:intro:related-work}.
 \begin{definition}[EF]
 \label{defn:ef}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
-In an allocation $A$, an agent $i \in [n]$ \emph{envies} another agent $j \in [n] \setminus \{i\}$ if
-$\frac{v_i(A_i)}{w_i} < \frac{v_i(A_j)}{w_j}$.
+In an allocation $A$, an agent $i \in [n]$ \emph{envies} another agent
+$j \in [n] \setminus \{i\}$ if $v_i(A_i)/w_i < v_i(A_j)/w_j$.
 Agent $i$ is \emph{envy-free} in $A$ (or $A$ is EF-fair to $i$) if
 she doesn't envy any other agent in $A$.
 \end{definition}
@@ -32,8 +32,8 @@ and EFX \cite{caragiannis2019unreasonable}.
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
 either $i$ does not envy $j$,
-or $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}$ for some $g \in A_j$,
-or $\displaystyle \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}$ for some $c \in A_i$.
+or $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$ for some $g \in A_j$,
+or $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$ for some $c \in A_i$.
 \end{definition}
 
 %\begin{restatable}[EFX]{definition}{rDefnEfx}
@@ -82,71 +82,37 @@ when marginals are (strictly) positive or negative.
 \begin{definition}[PROP]
 \label{defn:prop}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-agent $i$'s \emph{proportional share} is $w_iv_i([m])$.
-Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_iv_i([m])$.
+agent $i$'s \emph{proportional share} is $w_i \cdot v_i([m])$.
+Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_i \cdot v_i([m])$.
 \end{definition}
+
+A popular relaxation of PROP is PROP1 (proportional up to one item).
+Intuitively, an allocation is PROP1-fair to an agent
+if her bundle becomes better than the proportional share
+after taking a good from someone else or after giving away a chore to someone else.
+See \cref{defn:prop1} for a formal definition.
 
 \begin{definition}[PROP1 \cite{conitzer2017fair}]
 \label{defn:prop1}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is PROP1-fair to agent $i$ if
-either $v_i(A_i) \ge w_iv_i([m])$,
-or $v_i(A_i \cup \{g\}) > w_iv_i([m])$ for some $g \in [m] \setminus A_i$,
-or $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ for some $c \in A_i$.
+either $v_i(A_i) \ge w_i \cdot v_i([m])$,
+or $v_i(A_i \cup \{g\}) > w_i \cdot v_i([m])$ for some $g \in [m] \setminus A_i$,
+or $v_i(A_i \setminus \{c\}) > w_i \cdot v_i([m])$ for some $c \in A_i$.
 \end{definition}
 
 Note that \cref{defn:prop1} uses strict inequalities, whereas most papers do not.
 We define it this way to make it a slightly stronger fairness notion
 without altering its fundamental properties. See \cref{sec:notions:prop1} for details.
 
-\begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
-\label{defn:propx}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-an allocation $A$ is said to be PROPx-fair to agent $i$ iff
-either $v_i(A_i) \ge w_iv_i([m])$ or both of these conditions hold:
-\begin{tightenum}
-\item $v_i(A_i \cup S) > w_iv_i([m])$ for every $S \subseteq [m] \setminus A_i$
-    such that $v_i(S \mid A_i) > 0$.
-\item $v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
-    such that $v_i(S \mid A_i \setminus S) < 0$.
-\end{tightenum}
-\end{definition}
-
-\Cref{defn:propx} looks different from other well-known definitions of PROPx
-\cite{aziz2020polynomial,li2022almost}.
-This is because those definitions were for more restricted settings,
-and for those settings, we show that our definition is equivalent to theirs
-(\cref{sec:notions:propx}).
-
-\begin{definition}[PROPm \cite{baklanov2021achieving} and PROPavg \cite{kobayashi2025proportional}]
-\label{defn:propm}
-\label{defn:propavg}
-Let $A$ be an allocation for the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$.
-Fix an agent $i$. For every $j \in [n] \setminus \{i\}$,
-let $K_j \defeq \{v_i(S \mid A_i): S \subseteq A_j \text{ and } v_i(S \mid A_i) > 0\}$.
-Let $\tau_j \defeq 0$ if $K_j = \emptyset$ and $\tau_j \defeq \min(K_j)$ otherwise.
-Let $T \defeq \{\tau_j: j \in [n] \setminus \{i\} \textrm{ and } \tau_j > 0\}$.
-Define conditions C1, C2, C3, and C4 as follows:
-\begin{tightenum}
-\item[(C1)]\label{item:propm:prop}$v_i(A_i) \ge w_iv_i([m])$.
-\item[(C2)]\label{item:propm:chores}
-    $v_i(A_i \setminus S) > w_iv_i([m])$ for every $S \subseteq A_i$
-    such that $v_i(S \mid A_i \setminus S) < 0$.
-\item[(C3)]\label{item:propm:goods}
-    $T = \emptyset$, or $v_i(A_i) + \max(T) > w_iv_i([m])$.
-\item[(C4)]\label{item:propavg}
-    $T = \emptyset$, or $v_i(A_i) + \frac{1}{|T|}\sum_{\tau_j \in T}\tau_j > w_iv_i([m])$.
-\end{tightenum}
-$A$ is PROPm-fair to $i$ if either C1 holds or both C2 and C3 hold.
-$A$ is PROPavg-fair to $i$ if either C1 holds or both C2 and C4 hold.
-\end{definition}
-
-PROPm was originally defined in \cite{baklanov2021achieving},
-and PROPavg was originally defined in \cite{kobayashi2025proportional},
-both for the additive goods setting.
-The original definitions have minor errors, which our definition fixes.
-We explain the errors in \cref{sec:notions:propm,sec:notions:propavg}.
-Note that PROPm, PROPavg, and PROPx are equivalent for chores.
+PROPx (PROP up to any item) \cite{aziz2020polynomial,li2022almost},
+PROPavg (PROP up to the min-avg good) \cite{kobayashi2025proportional},
+and PROPm (PROP up to the minimax item) \cite{baklanov2021achieving}
+are strengthenings of PROP1. Due to space limitations, we formally describe them in
+\cref{sec:notions:propx,sec:notions:propm-propavg}, respectively.
+Our definitions are a little different from the original definitions because they also work for mixed manna,
+and the original definitions of PROPavg and PROPm have minor errors.
+See \cref{sec:notions:propx,sec:notions:propm-propavg} for details.
 
 \subsection{Maximin Share and AnyPrice Share}
 
