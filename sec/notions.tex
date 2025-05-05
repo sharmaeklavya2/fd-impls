@@ -86,11 +86,9 @@ agent $i$'s \emph{proportional share} is $w_i \cdot v_i([m])$.
 Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_i \cdot v_i([m])$.
 \end{definition}
 
-A popular relaxation of PROP is PROP1 (proportional up to one item).
-Intuitively, an allocation is PROP1-fair to an agent
-if her bundle becomes better than the proportional share
-after taking a good from someone else or after giving away a chore to someone else.
-See \cref{defn:prop1} for a formal definition.
+A popular relaxation of PROP is PROP1 (proportional up to one item),
+where each agent believes her bundle is better than the proportional share
+after taking some good or giving away some chore. See \cref{defn:prop1} for a formal definition.
 
 \begin{definition}[PROP1 \cite{conitzer2017fair}]
 \label{defn:prop1}
@@ -109,10 +107,10 @@ PROPx (PROP up to any item) \cite{aziz2020polynomial,li2022almost},
 PROPavg (PROP up to the min-avg good) \cite{kobayashi2025proportional},
 and PROPm (PROP up to the minimax item) \cite{baklanov2021achieving}
 are strengthenings of PROP1. Due to space limitations, we formally describe them in
-\cref{sec:notions:propx,sec:notions:propm-propavg}, respectively.
+\cref{sec:notions:propx,sec:notions:propm-propavg}.
 Our definitions are a little different from the original definitions because they also work for mixed manna,
 and the original definitions of PROPavg and PROPm have minor errors.
-See \cref{sec:notions:propx,sec:notions:propm-propavg} for details.
+%See \cref{sec:notions:propx,sec:notions:propm-propavg} for details.
 
 \subsection{Maximin Share and AnyPrice Share}
 
@@ -125,45 +123,21 @@ E.g., PROP is a share-based notion.
 We now describe two more share-based notions, maximin share (MMS) and AnyPrice share (APS).
 \end{comment}
 
-\begin{definition}[MMS \cite{budish2011combinatorial}]
-\label{defn:mms}
-For a finite set $M$, let $\Pi_n(M)$ be the set of all $n$-partitions of $M$.
-For a function $f: 2^M \to \mathbb{R}$, define
-\[ \MMS_f^n(M) \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n f(P_j). \]
-%
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, \eqEnt)$,
-agent $i$'s \emph{maximin share} (MMS) is given by $\MMS_{v_i}^{|N|}(M)$.
-When the instance $\Ical$ is clear from context, we write $\MMS_i$ instead of $\MMS_{v_i}^{|N|}(M)$.
-An allocation $A$ is MMS-fair to agent $i$ if $v_i(A_i) \ge \MMS_{v_i}^{|N|}(M)$.
-A partition $P \in \Pi_n(M)$ for which $\min_{j=1}^n v_i(P_j) = \MMS_i$
-is called agent $i$'s \emph{MMS partition}.
-\end{definition}
+When agents have equal entitlements, an allocation is
+maximin share (MMS) \cite{budish2011combinatorial} fair to an agent
+if her bundle's value is greater than or equal to the maximum she can get by
+partitioning the goods into $n$ bundles and picking the worst one.
 
-For unequal entitlements, there are two well-known extensions of MMS:
-weighted MMS (WMMS) \cite{farhadi2019fair}
-and pessimistic share (pessShare) \cite{babaioff2023fair}.
-See \cref{sec:notions:mms} for their formal definitions.
-We focus on WMMS in this paper.
+For equal entitlements, an agent's maximin share (MMS) \cite{budish2011combinatorial}
+is the maximum value she can obtain by partitioning the goods into $n$ bundles and picking the worst one.
+An allocation is MMS-fair to an agent if her bundle's value is at least her maximin share.
+See \cref{defn:mms} in \cref{sec:notions:mms} for a more formal definition.
 
-Next, we define AnyPrice Share (APS) \cite{babaioff2023fair}.
-For any positive integer $m$, define
-$\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
-For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=1}^m x_j$.
-
-\begin{definition}[APS]
-\label{defn:aps}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-agent $i$'s AnyPrice Share (APS) is defined as
-\[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
-Here $p$ is called the \emph{price vector}.
-A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector for agent $i$ if
-\[ p^* \in \argmin_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
-\end{definition}
-
-\Cref{defn:aps} is slightly different from the original definition given in \cite{babaioff2023fair}.
-However, they assume that all items are goods, and for that special case,
-their definition is equivalent to \cref{defn:aps}
-(c.f. \cref{thm:aps-optimal-price} in \cref{sec:notions:aps}).
+MMS has inspired similar notions for the unequal entitlements case.
+Weighted MMS (WMMS) \cite{farhadi2019fair} and pessimistic share (pessShare) \cite{babaioff2023fair}
+are well-known extensions of MMS, i.e., they are equivalent to MMS for equal entitlements.
+AnyPrice Share (APS) \cite{babaioff2023fair}, on the other hand, is a strictly stronger notion.
+See \cref{sec:notions:mms,sec:notions:aps} for details.
 
 \subsection{Derived Notions}
 

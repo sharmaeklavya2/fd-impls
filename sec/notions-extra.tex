@@ -232,6 +232,20 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \subsection{MMS}
 \label{sec:notions:mms}
 
+\begin{definition}[MMS \cite{budish2011combinatorial}]
+\label{defn:mms}
+For a finite set $M$, let $\Pi_n(M)$ be the set of all $n$-partitions of $M$.
+For a function $f: 2^M \to \mathbb{R}$, define
+\[ \MMS_f^n(M) \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n f(P_j). \]
+%
+For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, \eqEnt)$,
+agent $i$'s \emph{maximin share} (MMS) is given by $\MMS_{v_i}^{|N|}(M)$.
+When the instance $\Ical$ is clear from context, we write $\MMS_i$ instead of $\MMS_{v_i}^{|N|}(M)$.
+An allocation $A$ is MMS-fair to agent $i$ if $v_i(A_i) \ge \MMS_{v_i}^{|N|}(M)$.
+A partition $P \in \Pi_n(M)$ for which $\min_{j=1}^n v_i(P_j) = \MMS_i$
+is called agent $i$'s \emph{MMS partition}.
+\end{definition}
+
 \begin{definition}[WMMS \cite{farhadi2019fair}]
 \label{defn:wmms}
 Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
@@ -283,6 +297,24 @@ Hence, $\pessShare \le \MMS_i$.
 
 \subsection{APS}
 \label{sec:notions:aps}
+
+For any positive integer $m$, define
+$\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
+For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=1}^m x_j$.
+
+\begin{definition}[APS \cite{babaioff2023fair}]
+\label{defn:aps}
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+agent $i$'s AnyPrice Share (APS) is defined as
+\[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
+Here $p$ is called the \emph{price vector}.
+A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector for agent $i$ if
+\[ p^* \in \argmin_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
+\end{definition}
+
+\Cref{defn:aps} is slightly different from the original definition given in \cite{babaioff2023fair}.
+However, they assume that all items are goods, and for that special case,
+we prove that their definition is equivalent to \cref{defn:aps}.
 
 \begin{lemma}
 \label{thm:aps-optimal-price}
