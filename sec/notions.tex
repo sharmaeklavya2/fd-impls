@@ -172,35 +172,27 @@ $v_i(A_i)$ is at least her minimum-$F$-share, defined as
 We now describe pairwise fairness \cite{caragiannis2019unreasonable}
 and groupwise fairness \cite{barman2018groupwise}.
 
-\begin{definition}[restricting]
+\begin{definition}[restricting, pairwise fairness, and groupwise fairness]
 \label{defn:restricting}
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance
-and $A$ be an allocation. For a subset $S \subseteq N$ of agents, where $|S| \ge 2$,
-let $\restrict(\Ical, A, S)$ be the pair $(\Icalhat, \Ahat)$, where
-$\Ahat \defeq (A_j)_{j \in S}$, $\Icalhat \defeq (S, \Mhat, (v_j)_{j \in S}, \what)$,
-$\Mhat \defeq \bigcup_{j \in S} A_j$, and $\what_j \defeq w_j / \sum_{k \in S} w_k$.
-\end{definition}
-
-\begin{definition}[pairwise fairness]
 \label{defn:pairwise}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
-an allocation $A$ is called \emph{pairwise-$F$-fair} to agent $i$ if
-for all $j \in N \setminus \{i\}$, $A^{(j)}$ is $F$-fair to $i$ in the instance $\Ical^{(j)}$,
-where $(\Ical^{(j)}, A^{(j)}) \defeq \restrict(\Ical, A, \{i, j\})$.
-\end{definition}
-
-\begin{definition}[groupwise fairness]
 \label{defn:groupwise}
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$,
-an allocation $A$ is called \emph{groupwise-$F$-fair} to agent $i$ if
-for all $S \subseteq N \setminus \{i\}$, $A^{(S)}$ is $F$-fair to $i$ in the instance $\Ical^{(S)}$,
-where $(\Ical^{(S)}, A^{(S)}) \defeq \restrict(\Ical, A, \{i\} \cup S)$.
+Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance and $A$ be an allocation.
+For a subset $S \subseteq N$ of agents, where $|S| \ge 2$,
+let $\restrict(\Ical, A, S)$ be the pair $(\Ical^{(S)}, A^{(S)})$, where
+allocation $A^{(S)} \defeq (A_j)_{j \in S}$,
+instance $\Ical^{(S)} \defeq (S, \bigcup_{j \in S} A_j, (v_j)_{j \in S}, \what)$,
+and weights $\what_j \defeq w_j / \sum_{k \in S} w_k$.
+
+$A$ is \emph{pairwise-$F$-fair} to agent $i$ if for all $j \in N \setminus \{i\}$,
+$A^{(\{i, j\})}$ is $F$-fair to $i$ in the instance $\Ical^{(\{i, j\})}$.
+$A$ is \emph{groupwise-$F$-fair} to agent $i$ if for all $S \subseteq N \setminus \{i\}$,
+$A^{(\{i\} \cup S)}$ is $F$-fair to $i$ in the instance $\Ical^{(\{i\} \cup S)}$.
 \end{definition}
 
-In this paper, we consider the following derivative notions:
-\begin{tightenum}
-\item Epistemic envy-freeness (EEF), epistemic EFX (EEFX), epistemic EF1 (EEF1).
-\item Minimum EF share (MEFS), minimum EFX share (MXS), minimum EF1 share (M1S).
-\item Pairwise proportionality (PPROP), pairwise MMS (PMMS), pairwise APS (PAPS).
-\item Groupwise proportionality (GPROP), groupwise MMS (GMMS), groupwise APS (GAPS).
-\end{tightenum}
+In this paper, we consider these derived notions:
+%\begin{tightenum}
+Epistemic envy-freeness (EEF), epistemic EFX (EEFX), epistemic EF1 (EEF1),
+minimum EF share (MEFS), minimum EFX share (MXS), minimum EF1 share (M1S),
+pairwise proportionality (PPROP), pairwise MMS (PMMS), pairwise APS (PAPS),
+groupwise proportionality (GPROP), groupwise MMS (GMMS), groupwise APS (GAPS).
+%\end{tightenum}
