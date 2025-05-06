@@ -108,3 +108,16 @@
 \newcommand*{\fairDefLater}{\footnote{\label{foot:fairDefLater}%
 We formally define this fairness notion in \cref{sec:notions}.}}
 \newcommand*{\fairDefAgain}{\textsuperscript{\ref{foot:fairDefLater}}}
+
+\usepackage{xparse}
+
+\let\realItem\item  % save the original item command
+\makeatletter
+\NewDocumentCommand\myItem{ o }{%
+   \IfNoValueTF{#1}%
+      {\realItem}% add an item
+      {\realItem[#1]\def\@currentlabel{#1}\phantomsection}% add an item and update label
+}
+\makeatother
+
+\setlist[enumerate]{before=\let\item\myItem}% make \item=\myItem

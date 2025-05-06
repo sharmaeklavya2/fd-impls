@@ -16,14 +16,14 @@
     & Trivial
 \\[\defaultaddspace] APS & additive & -- & -- & $n=2$ & --
     & Proposition~6 of \cite{babaioff2023fair}
+\\[\defaultaddspace] PROPx & additive & chores & -- & -- & --
+    & Theorem 4.1 of \cite{li2022almost}\textsuperscript{\ref{foot:propx-li}}
 \\[\defaultaddspace] PROPm & additive & goods & -- & -- & equal
     & \cite{baklanov2021propm}
 \\[\defaultaddspace] PROPavg & additive & goods & -- & -- & equal
     & \cite{kobayashi2025proportional}\textsuperscript{\ref{foot:propavg}}
 \\[\defaultaddspace] PROP1 & additive & -- & -- & -- & --
     & \cite{aziz2020polynomial}
-\\[\defaultaddspace] PROPx & additive & chores & -- & -- & --
-    & Theorem 4.1 of \cite{li2022almost}\textsuperscript{\ref{foot:propx-li}}
 \\[\defaultaddspace] EFX & additive & $\ge 0$, $\le 0$ & yes & -- & --
     & Theorem 5 of \cite{springer2024almost}
 \\[\defaultaddspace] EEFX & cancelable & $\ge 0$, $\le 0$ & -- & -- & equal
@@ -49,14 +49,14 @@
 
 \footnotesize
 \begin{tightenum}
-\item \label{foot:dbl-mono}A function $v: 2^M \to \mathbb{R}$ is \emph{doubly monotone}
+\item[*] \label{foot:dbl-mono}A function $v: 2^M \to \mathbb{R}$ is \emph{doubly monotone}
     if $M = G \cup C$, and $\forall\,R \subseteq M$,
     we have $v(g \mid R) \ge 0$ for all $g \in G \setminus R$
     and $v(c \mid R) \le 0$ for all $c \in C \setminus R$.
-\item \label{foot:propx-li}Algorithm 2 of \cite{li2022almost} must be slightly modified
+\item[\textdagger] \label{foot:propx-li}Algorithm 2 of \cite{li2022almost} must be slightly modified
     to meet our slightly stricter definition of PROPx.
     Change line 5 from `if $|v_i(X_i)| > w_i$' to `if $|v_i(X_i)| \ge w_i$'.
-\item \label{foot:propavg}Algorithm 4.1 of \cite{kobayashi2025proportional}
+\item[\textdaggerdbl] \label{foot:propavg}Algorithm 4.1 of \cite{kobayashi2025proportional}
     must be slightly modified to meet our slightly stricter definition of PROPavg.
     Change the definition of the PROPavg-graph to use a strict inequality instead.
 \end{tightenum}
