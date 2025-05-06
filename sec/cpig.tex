@@ -1,11 +1,19 @@
 \section{Inference Engine}
 \label{sec:cpig}
 
-After we proved the results in \cref{table:impls1,table:non-impls},
-we wrote a computer program that uses data from these tables
-to infer new implications and non-implications among fairness notions.
-\Cref{fig:additive-nny,sec:dags} present the program's output for various settings.
-See \cref{fig:cpigjs} for the program's screenshot.
+We wrote a computer program, called the \emph{inference engine},
+that reads \cref{table:impls1,table:non-impls} and uses them to
+infer additional implications and counterexamples.
+
+Specifically, the program is initialized with a list of implications and counterexamples.
+Then we repeatedly query it with a fair division setting.
+For each query, it infers additional implications and counterexamples
+using something like transitive closure,
+and we display these inferred results as a directed acyclic graph (DAG).
+See \cref{fig:additive-nny,sec:dags} for examples of the program's output
+for various important fair division settings.
+The program is implemented as a web application;
+see \cref{fig:cpigjs} for the program's screenshot.
 \ifx\version\versionDefault
 Its source code can be found at \url{https://github.com/sharmaeklavya2/cpigjs/}.
 \else
@@ -52,7 +60,6 @@ $C$ is a set of \emph{conditional counterexamples}, i.e., a set of triples
 We repeatedly query the inference engine with a set $S \in \Fcal$,
 and it outputs all possible implications and counterexamples conditioned on $S$,
 even those that are not explicitly present in $I$ and $C$.
-In our implementation, we represent the output as a Hasse diagram.
 
 The inference engine works in two steps.
 In step 1, we find all implications conditioned on $S$.
