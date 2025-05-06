@@ -13,7 +13,8 @@ Research in fair division began with the study of \emph{divisible} resources (e.
 EF means that each agent believes that she got the best bundle of items compared to others,
 and PROP means that each agent's value for her own bundle is at least a $1/n$ fraction
 of her value of the entire set of items, where $n$ is the number of agents.
-By the 1980s, procedures for finding allocations meeting these fairness criteria were known
+By the 1980s, EF and PROP allocations were shown to exist,
+and algorithms for finding such allocations were given
 \cite{steinhaus1940sur,stromquist1980how,varian1974equity}.
 
 These positive results break down when the items become indivisible.
@@ -46,11 +47,11 @@ The existence of PROP1\fairDefAgain{} (proportional up to one item) was easy to 
 but stronger notions like MMS\fairDefAgain{} (maximin share) \cite{kurokawa2018fair}
 and PROPx\fairDefAgain{} (proportional up to any item) \cite{aziz2020polynomial}
 were shown to be infeasible, so their relaxations have been studied
-\cite{kurokawa2018fair,akrami2024breaking,baklanov2021propm,caragiannis2023new}.
-Insisting on polynomial-time computability,
-compatibility with economic efficiency notions (like Pareto optimality),
+\cite{kurokawa2018fair,akrami2024breaking,baklanov2021propm,caragiannis2023new,kobayashi2025proportional}.
+Moreover, insisting on polynomial-time computability,
+compatibility with notions of efficiency (like Pareto optimality),
 or other constraints \cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair}
-makes the problem harder, necessitating the use of weaker fairness notions.
+makes the problem harder, necessitating the use of even weaker fairness notions.
 
 Hence, for the problem of fairly allocating indivisible items,
 several notions of fairness have been proposed,
