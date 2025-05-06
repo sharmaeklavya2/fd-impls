@@ -109,7 +109,7 @@ Although our primary focus is equal entitlements and additive valuations over go
 we also consider all the other settings, i.e., all combinations of the above aspects of fair division.
 At first, this leads to a combinatorial explosion of different settings.
 However, we get around this by encoding our implication and non-implication results in a machine-readable format
-and implementing an inference engine that uses these results to automatically deduce new results.
+and implementing an \emph{inference engine} that uses these results to automatically deduce new results.
 
 For example, if we ask the inference engine
 ``Does epistemic envy-freeness (EEF\fairDefAgain{}) imply maximin share (MMS) for goods with additive valuations?",
@@ -121,12 +121,34 @@ it would give an affirmative answer based on these three results we show in the 
 \item PROP implies MMS for superadditive valuations
     (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
 \end{enumerate}
-We implement our inference engine as a client-side web application in JavaScript%
+
+\subsection{Our Contributions}
+
+%\begin{enumerate}
+We prove several implications and counterexamples between fairness notions for various settings.
+The implications put the notions into a hierarchy,
+and the counterexamples illustrate the relative merits of different fairness notions.
+For the most important setting of equal entitlements and additive valuations,
+we give a near-complete picture of implications for goods, chores, and mixed manna.
+
+We wrote a computer program, called an \emph{inference engine}, to automate part of our work.
+After proving some (non-)implications manually (\cref{sec:summary}),
+we fed those results into the inference engine,
+which then generated many more (non-)implications (\cref{fig:additive-nny,sec:dags}).
+We implement our inference engine as a web application in JavaScript%
 \ifx\version\versionDefault
 \ (\url{https://sharmaeklavya2.github.io/cpigjs/fairDiv/})%
 \fi.
-The engine is not tied to the specifics of fair division,
-and so may be of independent interest (c.f.~\cref{sec:cpig}).
+The engine can be extended beyond fair division (\cref{sec:cpig}),
+and so may be of independent interest.
+
+Many of the implications we prove in \cref{sec:summary} were already known
+for additive valuations and equal entitlements; we extended them to more general settings.
+On the other hand, most of the counterexamples in \cref{sec:summary} are new.
+We give the simplest possible counterexamples to make the distinctions
+between fairness notions as clear and accessible as possible.
+%While the examples may appear straightforward, discovering them was non-trivial,
+%especially given the large number needed to provide a complete picture of implications.
 
 Some fairness notions were originally defined only for very specific fair division settings.
 E.g., EFX was defined in \cite{caragiannis2019unreasonable} for additive goods.
@@ -136,6 +158,7 @@ We extend all fairness notions to the most general fair division setting we cons
 mixed manna with unequal entitlements.
 In some cases, picking an appropriate definition was non-trivial,
 and we present several observations to motivate the definitions we propose.
+%\end{enumerate}
 
 \subsection{Related Work}
 \label{sec:intro:related-work}
@@ -158,22 +181,16 @@ their connections with other well-established notions were studied.
 However, the above works only consider a limited number of fairness notions and fair division settings.
 Our work, on the other hand, aims to be more exhaustive, and thus, have broader applicability.
 
-For the popular setting of equally-entitled agents having additive valuations over goods,
-many implications were already known. However, it wasn't clear if this was the final picture,
-since many of the counterexamples were not known, a gap that we have now filled.
-For less common settings, e.g., chores, mixed manna, or unequal entitlements, much less was known,
-so our work makes a significant advancement towards understanding the fair division landscape.
-
 \subsection{Structure of the Paper}
 
 In \cref{sec:prelims}, we formally define the fair division problem, describe different fair division settings, and introduce associated notation.
-In \cref{sec:notions}, we describe all the fairness notions that we consider.
+In \cref{sec:notions}, we describe the fairness notions that we consider.
 In \cref{sec:summary}, we present a summary of our results, i.e.,
 a list of implications and counterexamples between pairs of fairness notions.
 In \cref{sec:cpig}, we describe our inference engine.
 \Cref{sec:conclusion} contains concluding remarks and open problems.
 
-\ifx\version\versionIjcai
+\ifx\version\versionDefault\else
 Due to space constraints, we move several details to appendices,
 which can be found in the full version of the paper included in the supplementary material.
 \fi
