@@ -135,10 +135,12 @@ We wrote a computer program, called an \emph{inference engine}, to automate part
 After proving some (non-)implications manually (\cref{sec:summary}),
 we fed those results into the inference engine,
 which then generated many more (non-)implications (\cref{fig:additive-nny,sec:dags}).
-We implement our inference engine as a web application in JavaScript%
+We implement our inference engine as a web application in JavaScript
 \ifx\version\versionDefault
-\ (\url{https://sharmaeklavya2.github.io/cpigjs/fairDiv/})%
-\fi.
+(\url{https://sharmaeklavya2.github.io/cpigjs/fairDiv/}).
+\else
+(anonymized demo at \url{https://cpigjs.github.io/cpigjs/fairDiv/}).
+\fi
 The engine can be extended beyond fair division (\cref{sec:cpig}),
 and so may be of independent interest.
 
