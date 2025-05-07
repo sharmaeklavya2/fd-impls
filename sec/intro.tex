@@ -163,7 +163,7 @@ and we present several observations to motivate the definitions we propose.
 \subsection{Related Work}
 \label{sec:intro:related-work}
 
-\cite{amanatidis2023fair} give a survey on recent progress and open problems in fair division,
+Amanatidis et~al.~\cite{amanatidis2023fair} give a survey on recent progress and open problems in fair division,
 where they consider many different fair division settings and fairness notions.
 
 The most common setting in fair division is equally-entitled agents
@@ -190,12 +190,14 @@ a list of implications and counterexamples between pairs of fairness notions.
 In \cref{sec:cpig}, we describe our inference engine.
 \Cref{sec:conclusion} contains concluding remarks and open problems.
 
-\ifx\version\versionDefault\else
+\ifx\version\versionIjcai
 Due to space constraints, we move several details to appendices,
 which can be found in the full version of the paper included in the supplementary material.
-\fi
+\else\ifx\version\versionNeurips
+Due to space constraints, we move several details to appendices.
+\fi\fi
 \Cref{sec:settings-extra,sec:notions-extra} contain details on fair division settings and fairness notions.
-\Cref{sec:impls-extra,sec:cex-extra} contain proofs of our (non-)implication results.
+\Cref{sec:impls-extra,sec:cex-extra} contain proofs of our \mbox{(non-)implication} results.
 \Cref{sec:feas} contains results on (in)feasibility of fairness notions.
 \Cref{sec:dags} contains several implication diagrams, i.e.,
 analogues of \cref{fig:additive-nny} for other fair division settings.
