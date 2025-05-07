@@ -23,10 +23,12 @@ Its source code is included in the supplementary material.
 \begin{figure}[htb]
 \centering
 \ifx\version\versionIjcai
-\includegraphics[width=0.96\linewidth]{figs/cpigjs-fd-ui2.pdf}
+\includegraphics[width=0.96\linewidth]{figs/cpigjs-ui5.pdf}
+\else\ifx\version\versionNeurips
+\includegraphics[width=0.75\textwidth]{figs/cpigjs-ui3.pdf}
 \else
-\includegraphics[width=0.6\textwidth]{figs/cpigjs-fd-ui.pdf}
-\fi
+\includegraphics[width=0.6\textwidth]{figs/cpigjs-ui4.pdf}
+\fi\fi
 \caption[Screenshot from cpigjs]{
 Screenshot from the inference engine's web interface for fair division.}
 \label{fig:cpigjs}
