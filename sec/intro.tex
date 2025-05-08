@@ -30,13 +30,9 @@ Consequently, many definitions of fairness have been proposed for the indivisibl
 
 EF was relaxed to a notion called \emph{EF1}\fairDefLater{} (envy-freeness up to one item),
 and algorithms guaranteeing EF1 allocations were given \cite{budish2011combinatorial,lipton2004approximately}.
-However, EF1 was considered a somewhat weak fairness notion,
-%\footnote{Consider dividing a house and two cars among two agents.
-%Intuitively, the agent who gets the house shouldn't get anything else,
-%but allocating the house and a car to one agent and only a car to the other is EF1.},
-so a stronger notion called \emph{EFX}\fairDefAgain{} (envy-freeness up to any item)
-\cite{caragiannis2019unreasonable} was extensively studied.
-Despite considerable effort from researchers, the existence of EFX allocations
+However, a much better relaxation of EF, called \emph{EFX}\fairDefAgain{} (envy-free up to any item),
+was proposed in \cite{caragiannis2019unreasonable}.
+However, despite considerable effort from researchers, the existence of EFX allocations
 remains an important open problem.
 Hence, relaxations of EFX \cite{caragiannis2023new,amanatidis2020multiple,chaudhury2021little}
 and the existence of EFX in special cases \cite{chaudhury2024efx,plaut2020almost,amanatidis2021maximum}
@@ -126,40 +122,38 @@ it would give an affirmative answer based on these three results we show in the 
 
 %\begin{enumerate}
 We prove several implications and counterexamples between fairness notions for various settings.
-The implications put the notions into a hierarchy,
-and the counterexamples illustrate the relative merits of different fairness notions.
-For the most important setting of equal entitlements and additive valuations,
+For the most important setting in fair division---equal entitlements and additive valuations---%
 we give a near-complete picture of implications for goods, chores, and mixed manna.
 
 We wrote a computer program, called an \emph{inference engine}, to automate part of our work.
 After proving some (non-)implications manually (\cref{sec:summary}),
 we fed those results into the inference engine,
 which then generated many more (non-)implications (\cref{fig:additive-nny,sec:dags}).
-We implement our inference engine as a web application in JavaScript
+We implemented our inference engine as a web application in JavaScript
 \ifx\version\versionDefault
 (\url{https://sharmaeklavya2.github.io/cpigjs/fairDiv/}).
 \else
 (anonymized demo at \url{https://cpigjs.github.io/cpigjs/fairDiv/}).
 \fi
-The engine can be extended beyond fair division (\cref{sec:cpig}),
+The engine can be extended beyond fair division (see \cref{sec:cpig}),
 and so may be of independent interest.
 
-Many of the implications we prove in \cref{sec:summary} were already known
-for additive valuations and equal entitlements; we extended them to more general settings.
-On the other hand, most of the counterexamples in \cref{sec:summary} are new.
-We give the simplest possible counterexamples to make the distinctions
-between fairness notions as clear and accessible as possible.
-%While the examples may appear straightforward, discovering them was non-trivial,
-%especially given the large number needed to provide a complete picture of implications.
+Although some counterexamples we list (\cref{sec:summary}) were already known, most of them are new.
+Additionally, we give the simplest possible counterexamples to make
+the distinctions between fairness notions as clear and accessible as possible.
+This was challenging, especially given the large number of counterexamples we show.
+On the other hand, most implications we prove were already known,
+but they were known only for additive valuations and equal entitlements,
+and we extended them to more general settings.
 
-Some fairness notions were originally defined only for very specific fair division settings.
-E.g., EFX was defined in \cite{caragiannis2019unreasonable} for additive goods.
+Some fairness notions were originally defined only for very specific fair division settings,
+e.g., EFX was defined in \cite{caragiannis2019unreasonable} only for additive goods.
 %(Although EFX was also defined for mixed manna by many subsequent works,
 %there are now several competing definitions, and their relative merits are unclear.)
 We extend all fairness notions to the most general fair division setting we consider:
 mixed manna with unequal entitlements.
 In some cases, picking an appropriate definition was non-trivial,
-and we present several observations to motivate the definitions we propose.
+and we present many observations to motivate our definitions.
 %\end{enumerate}
 
 \subsection{Related Work}
@@ -185,19 +179,24 @@ Our work, on the other hand, aims to be more exhaustive, and thus, have broader 
 
 \subsection{Structure of the Paper}
 
-In \cref{sec:prelims}, we formally define the fair division problem, describe different fair division settings, and introduce associated notation.
-In \cref{sec:notions}, we describe the fairness notions that we consider.
+In \cref{sec:prelims}, we formally define the fair division problem,
+describe different fair division settings, and introduce associated notation.
+In \cref{sec:notions}, we describe the fairness notions we consider in this paper.
 In \cref{sec:summary}, we present a summary of our results, i.e.,
 a list of implications and counterexamples between pairs of fairness notions.
 In \cref{sec:cpig}, we describe our inference engine.
 \Cref{sec:conclusion} contains concluding remarks and open problems.
 
+\ifx\version\versionDefault\else
+This paper is an ambitious undertaking, and we have an extensive list of results.
+Hence, due to space constraints, we had to move all proofs to the appendices.
+The proofs are short and self-contained, so we urge interested reviewers to look at
+proofs of a small sample of results.
+\fi
 \ifx\version\versionIjcai
-Due to space constraints, we move several details to appendices,
-which can be found in the full version of the paper included in the supplementary material.
-\else\ifx\version\versionNeurips
-Due to space constraints, we move several details to appendices.
-\fi\fi
+The appendices can be found in the full version of the paper included in the supplementary material.
+\fi
+
 \Cref{sec:settings-extra,sec:notions-extra} contain details on fair division settings and fairness notions.
 \Cref{sec:impls-extra,sec:cex-extra} contain proofs of our \mbox{(non-)implication} results.
 \Cref{sec:feas} contains results on (in)feasibility of fairness notions.
