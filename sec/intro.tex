@@ -33,7 +33,10 @@ each offering a different level of perceived fairness.
 We believe that a systematic comparison of these fairness notions is essential for guiding both practical applications and future research in this area. To contribute to this objective, we present a comprehensive analysis of 22 different fairness notions, examined through the lens of \emph{implications}.
 
 Formally, we say that a fairness notion $F_1$ \emph{implies} another notion $F_2$ if every $F_1$-fair allocation is also $F_2$-fair. Conversely, if we can identify an $F_1$-fair allocation that is not $F_2$-fair,
-we have a \emph{counterexample}, demonstrating that $F_1$ does not imply $F_2$. For the most well-studied setting in fair allocation---additive valuations---we give a near-complete picture of the implications among fairness notions. For almost every pair of notions, we either prove that one notion implies the other, or we give a counterexample. These results establish a hierarchy of  fairness notions with the counterexamples highlighting the strengths and weaknesses of each. Refer to  \cref{fig:additive-nny} for the implications in the context of additive goods and additive chores,
+we have a \emph{counterexample}, demonstrating that $F_1$ does not imply $F_2$.
+For the most well-studied setting in fair allocation---additive valuations---we give a near-complete picture of the implications among fairness notions.
+For almost every pair of notions, we either prove that one notion implies the other, or we give a counterexample.
+These results establish a hierarchy of fairness notions, and the counterexamples highlight the strengths and weaknesses of each notion. Refer to \cref{fig:additive-nny} for the implications in the context of additive goods and chores,
 and to \cref{sec:dags} for similar figures in other fair division settings.
 
 \begin{figure*}[!htb]
@@ -66,7 +69,7 @@ but for chores, MMS $\nfimplies$ PROP1, and PROP $\nfimplies$ EEF1.}
 The literature on fair division covers a wide range of settings, including distinctions between goods, chores, and mixed manna, as well as varying entitlements (equal vs. unequal) and different classes of valuation functions.
 Special cases, such as identical valuations or fair division among only two agents, have also been explored.
 Although our primary focus is on equal entitlements and additive valuations over goods and over chores,
-we also consider all the other combinations of these aspects of fair division. At first, this leads to a combinatorial explosion of possible settings. However, we address this challenge by encoding our results on implications and non-implications in a machine-readable format, and by implementing an \emph{inference engine} that uses these results to automatically deduce new results.
+we also consider all the other combinations of these aspects of fair division. At first, this leads to a combinatorial explosion of possible settings. However, we address this challenge by encoding our results on implications and non-implications in a machine-readable format, and by implementing an \emph{inference engine} that uses these results to automatically deduce new implications and non-implications.
 
 For instance, if we query the inference engine with
 ``Does epistemic envy-freeness (EEF\fairDefAgain{}) imply maximin share (MMS) for goods with additive valuations?",
@@ -78,6 +81,7 @@ it would give an affirmative answer based on these three results we show in the 
 \item PROP implies MMS for superadditive valuations
     (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
 \end{enumerate}
+%Similarly, the inference engine can also infer counterexamples. See \cref{sec:cpig} for details.
 
 \subsection{Our Contributions}
 
@@ -135,7 +139,7 @@ In \cref{sec:cpig}, we describe our inference engine.
 \Cref{sec:conclusion} contains concluding remarks and open problems.
 
 \ifx\version\versionDefault\else
-This work is an ambitious undertaking with an extensive set of results. Therefore, all the proofs are in the appendices because of space constraints. As the proofs are concise and self-contained, we encourage interested readers to review a sample of them. 
+This work is an ambitious undertaking with an extensive set of results. Therefore, all the proofs are in the appendices because of space constraints. As the proofs are concise and self-contained, we encourage interested readers to review a sample of them.
 \fi
 \ifx\version\versionIjcai
 The appendices can be found in the full version of the paper included in the supplementary material.
