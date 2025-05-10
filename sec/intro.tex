@@ -1,17 +1,17 @@
 \section{Introduction}
 \label{sec:intro}
 
-The problem of fairly allocating items among multiple agents has garnered significant attention in the fields such as computer science, multi-agent systems, and game theory. It has practical applications in many real-world scenarios such as dividing inheritance, distributing natural resources among countries or states, allocating public housing, settling divorce agreements, and assigning research papers to reviewers.
+The problem of fairly allocating items among multiple agents has garnered significant attention in fields such as computer science, multi-agent systems, and game theory. It has practical applications in many real-world scenarios such as dividing inheritance, distributing natural resources among countries or states, allocating public housing, settling divorce agreements, and assigning research papers to reviewers.
 %One of the oldest-known applications occurs in the Bible \cite{bible_cut_and_choose}.
 
 Research in fair division began with the study of \emph{divisible} resources, such as land, water, and cake
-\cite{steinhaus1940sur,stromquist1980how,varian1974equity}. The concept of \emph{fairness} was formally defined in two primary ways: \emph{envy-freeness} (EF) and \emph{proportionality} (PROP). EF ensures that each agent believes they have received the best bundle compared to others, while PROP guarantees that each agent's value for their own bundle is at least a $1/n$ fraction of their value of the entire set of items, where $n$ is the number of agents. By the 1980s, both EF and PROP allocations were shown to exist, and algorithms were developed to find such allocations
+\cite{steinhaus1940sur,stromquist1980how,varian1974equity}. The concept of \emph{fairness} was formally defined primarily in two ways: \emph{envy-freeness} (EF) and \emph{proportionality} (PROP). EF ensures that each agent believes they have received the best bundle compared to others, while PROP guarantees that each agent's value for their own bundle is at least a $1/n$ fraction of their value of the entire set of items, where $n$ is the number of agents. By the 1980s, both EF and PROP allocations were shown to exist, and algorithms were developed to find such allocations
 \cite{steinhaus1940sur,stromquist1980how,varian1974equity}.
 
 These positive results no longer hold when the items are indivisible. For instance, when 5 identical goods must be divided among two agents, an EF or PROP allocation is not possible. However, one can still aim for \emph{approximate} fairness; for example, an allocation where one agent receives 3 goods and the other receives 2 goods is intuitively as fair as possible. The challenge arises when we move beyond simple cases, such as this, to the general setting where items are heterogeneous and agents have different preferences. In such cases, formally defining (approximate) fairness becomes much more complex. As a result, many fairness notions have been proposed for the indivisible setting.
 
 The concept of EF was relaxed to a notion called \emph{EF1}\fairDefLater{} (envy-freeness up to one item),
-with algorithms designed to guarantee EF1 allocations \cite{budish2011combinatorial,lipton2004approximately}.
+and algorithms were designed to guarantee EF1 allocations \cite{budish2011combinatorial,lipton2004approximately}.
 A stronger relaxation of EF, called \emph{EFX}\fairDefAgain{} (envy-free up to any item),
 was introduced in \cite{caragiannis2019unreasonable}.
 Despite significant efforts, the existence of EFX allocations remains an open problem. Consequently, relaxations of EFX \cite{caragiannis2023new,amanatidis2020multiple,chaudhury2021little}
