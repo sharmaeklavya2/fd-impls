@@ -1054,3 +1054,168 @@ Otherwise, transferring a good from $j$ to $i$ or a chore from $i$ to $j$ in $B$
 eliminates $i$'s envy towards $j$.
 Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
 \end{proof}
+
+\subsection{Unit-Demand Valuations}
+\label{sec:impls-extra:unit-demand}
+
+We now study implications between fairness notions when agents have unit-demand valuations over goods.
+A function $v: 2^{[m]} \to \mathbb{R}_{\ge 0}$ is said to be \emph{unit-demand} if $v(\emptyset) = 0$,
+and for any non-empty set $X \subseteq M$, we have $v(X) = \max_{g \in X} v(\{g\})$.
+
+Unit-demand functions capture scenarios where agents want just one good, e.g., when the goods are houses.
+Unit-demand functions are known to be submodular and cancelable.
+% TODO: prove it
+
+\begin{table*}[htb]
+\centering
+\caption[Unit-demand implications]{Implications among fairness notions when
+valuations are unit-demand, marginals are non-negative, and entitlements are equal.}
+\label{table:impls-unit-demand}
+\small
+\begin{tabular}{ccHHHcH}
+\toprule implication & \footnotesize valuations & \footnotesize marginals & \footnotesize $n=2$ & \footnotesize entitlements & proof &
+\\\midrule MEFS $\fimplies$ EF
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:ef} & trivial
+\\[\defaultaddspace] MMS $\fimplies$ APS
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:mms,thm:ud:aps} & \textbf{new}
+\\[\defaultaddspace] PMMS $\fimplies$ PAPS
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:mms,thm:ud:aps} & \textbf{new}
+\\[\defaultaddspace] GMMS $\fimplies$ GAPS
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:mms,thm:ud:aps} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ PROP1
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:m1s,thm:ud:prop1} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ APS
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:m1s,thm:ud:aps} & \textbf{new}
+\\[\defaultaddspace] EF1 $\fimplies$ GAPS
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:ud:m1s,thm:ud:aps} & \textbf{new}
+\\[\defaultaddspace] PPROP $\fimplies$ GPROP
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:impl:ud:pprop-to-gprop} & \textbf{new}
+\\[\defaultaddspace] EF1 $\fimplies$ PROPavg
+    & unit-demand & $\ge 0$ & -- & equal
+    & \cref{thm:impl:ud:ef1-to-propavg} & \textbf{new}
+\\ \bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{remark}
+\label{thm:ud:ef}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge v_i(2) \ge \ldots \ge v_i(m)$.
+Then agent $i$ is envy-free in allocation $A$ iff $v_i(A_i) = v(1)$.
+\end{remark}
+
+\begin{lemma}
+\label{thm:ud:m1s}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
+Then allocation $A$ is M1S-fair to agent $i$ iff $v_i(A_i) \ge v_i(n)$.
+\end{lemma}
+\begin{proof}
+Suppose $A$ is M1S-fair to agent $i$. Let $B$ be agent $i$'s M1S-certificate for $A$.
+Let $G \defeq \{g \in [m]: v_i(g) > v_i(B_i)\}$.
+Then $B$ is EF1-fair to agent $i$, so every agent $j \in [n] \setminus \{i\}$
+has at most one good from $G$, so $|G| \le n-1$.
+If $v_i(B_i) < v_i(n)$, then $G \supseteq [n]$, which is a contradiction.
+Hence, $v_i(A_i) \ge v_i(B_i) \ge v_i(n)$.
+
+Suppose $v_i(A_i) \ge v_i(n)$. Let $B$ be an allocation where we give
+exactly one good from $[n-1]$ to each agent in $[n] \setminus \{i\}$,
+and allocate $[m] \setminus [n-1]$ to agent $i$.
+Then $B$ is EF1-fair to $i$ and $v_i(A_i) \ge v_i(n) = v_i(B_i)$.
+Hence, $B$ is an M1S-certificate for agent $i$ for allocation $A$.
+Hence, $A$ is M1S-fair to agent $i$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:ud:mms}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
+Then agent $i$'s maximin share is $v_i(n)$.
+\end{lemma}
+\begin{proof}
+In every $n$-partition $P$ of $[m]$, some bundle $P_k$ does not contain a good from $[n-1]$.
+Then $v_i(P_k) \le v_i(n)$. Hence, $\MMS_i \le v_i(n)$.
+Let $P$ be a partition where $P_j = \{j\}$ for $j \in [n-1]$ and $P_n = [m] \setminus [n-1]$.
+Then $\min_{j=1}^n v_i(P_j) = v_i(n)$. Hence, $\MMS_i = v_i(n)$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:ud:aps}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
+Then agent $i$'s anyprice share is $v_i(n)$.
+\end{lemma}
+\begin{proof}
+Set the price of the first $n-1$ goods to be $1/(n-1)$ each
+and set the price of all the remaining goods to 0.
+This tells us that $\APS_i \le v_i([m] \setminus [n-1]) = v_i(n)$.
+
+For any non-negative price vector, some item from $[n]$ is affordable,
+and gives value at least $v_i(n)$. Hence, $\APS_i \ge v_i(n)$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:ud:prop1}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
+Then every allocation is PROP1-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Let $1 \in A_j$. If $j = i$, then $v_i(A_i) = v_i([m]) > v_i([m])/n$.
+If $j \neq i$, then $v_i(A_i \cup \{1\}) = v_i([m]) > v_i([m])/n$.
+\end{proof}
+
+\begin{lemma}[PPROP $\fimplies$ GPROP]
+\label{thm:impl:ud:pprop-to-gprop}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
+If an allocation $A$ is PPROP-fair to agent $i$, then it is also GPROP-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Let $1 \in A_j$. $v_i(A_i) \ge v_i(A_i \cup A_j)/2 = v(1)/2$.
+For any $S \subseteq [n]$ such that $i \in S$, we get
+\[ \frac{1}{|S|}v_i\left(\bigcup_{j \in S} A_j\right)
+\le \frac{v_i([m])}{2} = \frac{v(1)}{2} \le v_i(A_i). \]
+Hence, $A$ is GPROP-fair to agent $i$.
+\end{proof}
+
+\begin{lemma}[EF1 $\fimplies$ PROPavg]
+\label{thm:impl:ud:ef1-to-propavg}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
+where $v_i$ is unit-demand for some agent $i$.
+\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
+If an allocation $A$ is EF1-fair to agent $i$, then it is also PROPavg-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+If $1 \in A_i$, then $A$ is PROP-fair. Now assume $1 \not\in A_i$.
+Let $G \defeq \{g \in [m]: v_i(g) > v_i(A_i)\}$. Then $1 \in G$.
+For each agent $j \in [n] \setminus \{i\}$, we have $|A_j \cap G| \le 1$
+because $A$ is EF1-fair to agent $i$.
+Let $J \defeq \{j \in [n] \setminus \{i\}: A_j \cap G \neq \emptyset\}$.
+
+Recall the definition of $\tau_j$ from \cref{defn:propavg}.
+If $A_j \cap G = \emptyset$, then $\tau_j = 0$.
+If $A_j \cap G \neq \emptyset$, then $\tau_j = v_i(A_j) - v_i(A_i) > 0$.
+%
+\begin{align*}
+& v_i(A_i) + \frac{1}{n-1}\sum_{j \in [n] \setminus \{i\}} \tau_j
+= v_i(A_i) + \frac{1}{n-1}\sum_{j \in J} (v_i(A_j) - v_i(A_i))
+\\ &= \left(1 - \frac{|J|}{n-1}\right)v_i(A_i) + \frac{1}{n-1}\sum_{g \in G} v_i(g)
+\ge \frac{v_i(1)}{n-1} > \frac{v_i([m])}{n}.
+\end{align*}
+Hence, $A$ is PROPavg-fair to agent $i$.
+\end{proof}
