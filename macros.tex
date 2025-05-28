@@ -111,7 +111,6 @@ We formally define EF1 and other fairness notions in \cref{sec:notions}.}}
 \newcommand*{\fairDefAgain}{}
 
 \usepackage{xparse}
-
 \let\realItem\item  % save the original item command
 \makeatletter
 \NewDocumentCommand\myItem{ o }{%
@@ -120,5 +119,6 @@ We formally define EF1 and other fairness notions in \cref{sec:notions}.}}
       {\realItem[#1]\def\@currentlabel{#1}\phantomsection}% add an item and update label
 }
 \makeatother
-
 \setlist[enumerate]{before=\let\item\myItem}% make \item=\myItem
+
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
