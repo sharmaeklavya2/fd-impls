@@ -529,47 +529,6 @@ Moreover, for any price vector, the cheapest 2 goods are affordable, and their t
 Hence, APS is at least $2a$.
 \end{proof}
 
-We first define a function in \cref{cex:ud-submod-canc} by perturbing a unit-demand function.
-We then use it to show that a PROP allocation may not be M1S.
-
-\begin{lemma}
-\label{cex:ud-submod-canc}
-Let $0 \le \eps < 1/6$ and $v: 2^{[3]} \to \mathbb{R}_{\ge 0}$, where
-\[ v(S) := \begin{cases}
-4 + 2\eps|S| & \textrm{ if } 1 \in S \textrm{ or } 2 \in S
-\\ 3 + 2\eps|S| & \textrm{ if } S = \{3\}
-\\ 0 & \textrm{ otherwise}
-\end{cases}. \]
-Then $v$ is submodular and cancelable.
-\end{lemma}
-\begin{proof}
-\[ v(g \mid S) = 2\eps + \begin{cases}
-0 & \textrm{ if } 1 \in S \textrm{ or } 2 \in S
-\\ 1 & \textrm{ if } S = \{3\}
-\\ v(\{g\}) & \textrm{ if } S = \emptyset
-\end{cases}. \]
-We can see that adding elements to $S$ never increases $v(g \mid S)$.
-Hence, $v$ is submodular.
-
-One can confirm that $v$ is cancelable by painstakingly applying the definition of cancelable valuations
-(c.f.~\cref{sec:settings-extra}).
-\end{proof}
-
-\begin{lemma}[PROP $\nfimplies$ M1S]
-\label{cex:prop-not-m1s-submod}
-Consider a fair division instance with 2 equally-entitled agents
-having an identical valuation function $v$ over 3 goods as defined in \cref{cex:ud-submod-canc}.
-Then the allocation $A = (\{1, 2\}, \{3\})$ is PROP but not M1S.
-\end{lemma}
-\begin{proof}
-$A$ is PROP since $v(A_1) = 4+6\eps$, $v(A_2) = 3+2\eps$, and the PROP share is $2+3\eps$.
-Suppose $A$ is M1S and agent 2's M1S certificate for $A$ is $B$.
-Then $v(B_2) \le v(A_2) = 3 + 2\eps$, so $B_2 = \{3\}$. Hence, $B_1 = \{1, 2\}$.
-However, $\min_{g \in B_1} v(B_1 \setminus \{g\}) = 4 + 6\eps > 3 + 2\eps = v(B_2)$.
-Hence, agent 2 is not EF1-satisfied by $B$, which contradicts the fact that $B$
-is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
-\end{proof}
-
 \begin{lemma}
 \label{cex:part-matroid-rank}
 Let $M \defeq \{r_1, r_2, g_1, g_2, b\}$ and define $v: 2^M \to \mathbb{R}$ as
@@ -589,3 +548,59 @@ having an identical valuation function $v$ over 5 goods as defined in \cref{cex:
 Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
 but agent 1 is not MXS-satisfied by $A$.
 \end{example}
+
+\subsubsection{Unit-Demand Valuations}
+\label{sec:cex-extra:unit-demand}
+
+It is known that unit-demand functions are submodular and cancelable.
+We first show how to perturb a unit-demand function such that
+submodularity and cancelability remain preserved and all marginals become positive.
+
+\begin{lemma}
+\label{thm:ud-perturb}
+Let $u: 2^{[m]} \to \mathbb{R}_{\ge 0}$ be a function and $\eps \in \mathbb{R}_{\ge 0}$.
+For any $X \subseteq [m]$, define $\uhat(X) \defeq u(X) + |X|\eps$.
+If $u$ is submodular, then $\uhat$ is also submodular.
+If $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
+\end{lemma}
+\begin{proof}
+If $u$ is submodular, then for any $S, T \subseteq [m]$, we get
+\[ \uhat(S) + \uhat(T) - \uhat(S \cup T) - \uhat(S \cap T)
+= u(S) + u(T) - u(S \cup T) - u(S \cap T) \ge 0. \]
+Hence, $\uhat$ is also submodular.
+
+Let $u$ be cancelable.
+For every $T \subseteq [m]$ and $S_1, S_2 \subseteq [m] \setminus T$,
+if $\uhat(S_1 \cup T) > \uhat(S_2 \cup T)$,
+we need to show that $\uhat(S_1) > \uhat(S_2)$
+to prove that $\uhat$ is cancelable.
+This is trivial when $T = \emptyset$ or $\eps = 0$.
+
+If $|S_1| = |S_2|$, then $u(S_1 \cup T) > u(S_2 \cup T)$.
+Since $u$ is cancelable, we get $u(S_1) > u(S_2)$, which implies $\uhat(S_1) > \uhat(S_2)$.
+
+Let $\eps > 0$. If $S_1 = \emptyset$, we get
+$\uhat(S_1 \cup T) > \uhat(S_2 \cup T) \implies u(S_2 \mid T) < - |S_2|\eps$,
+which is a contradition since $u$ is non-negative. Hence, $S_1 \neq \emptyset$.
+If $S_2 = \emptyset$, we get $\uhat(S_1) \ge |S_1|\eps > 0 = \uhat(S_2)$.
+When $m \le 3$, we have considered all cases.
+Hence, if $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
+\end{proof}
+
+\begin{lemma}[PROP $\nfimplies$ M1S]
+\label{cex:prop-not-m1s-submod}
+Consider a unit-demand function $v$ over 3 goods such that $v(1) = v(2) = 4$ and $v(3) = 3$.
+Let $0 \le \eps < 1/6$ and $\vhat(X) \defeq v(X) + 2|X|\eps$ for all $X \subseteq [3]$.
+Consider a fair division instance with 3 goods and
+2 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A = (\{1, 2\}, \{3\})$ is PROP but not M1S.
+\end{lemma}
+\begin{proof}
+$A$ is PROP since $\vhat(A_1) = 4+4\eps$, $\vhat(A_2) = 3+2\eps$, and the PROP share is $2+3\eps$.
+Suppose $A$ is M1S and agent 2's M1S certificate for $A$ is $B$.
+$B_2 \neq \emptyset$, since $B$ is EF1-fair to agent 2.
+Moreover, $\vhat(B_2) \le \vhat(A_2) = 3 + 2\eps$, so $B_2 = \{3\}$. Hence, $B_1 = \{1, 2\}$.
+However, $\min_{g \in B_1} \vhat(B_1 \setminus \{g\}) = 4 + 4\eps > 3 + 2\eps = \vhat(B_2)$.
+Hence, agent 2 is not EF1-satisfied by $B$, which contradicts the fact that $B$
+is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
+\end{proof}
