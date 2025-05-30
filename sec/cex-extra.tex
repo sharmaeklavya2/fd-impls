@@ -489,8 +489,8 @@ Let $A$ be an allocation where the first agent gets both items.
 Then $A$ is PROP1 but not M1S.
 \end{example}
 
-\subsection{Non-Additive Valuations}
-\label{sec:cex-extra:non-add}
+\subsection{Submodular and Supermodular Valuations}
+\label{sec:cex-extra:submod-supmod}
 
 \begin{lemma}[EF $\nfimplies$ PROP]
 \label{cex:ef-not-prop-supmod}
@@ -549,7 +549,7 @@ Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
 but agent 1 is not MXS-satisfied by $A$.
 \end{example}
 
-\subsubsection{Unit-Demand Valuations}
+\subsection{Unit-Demand Valuations}
 \label{sec:cex-extra:unit-demand}
 
 It is known that unit-demand functions are submodular and cancelable.
@@ -587,6 +587,38 @@ When $m \le 3$, we have considered all cases.
 Hence, if $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
 \end{proof}
 
+\begin{table*}[htb]
+\centering
+\caption[Non-implications among fairness notions for unit-demand valuations]{%
+Non-implications among fairness notions for
+identical unit-demand valuations and equal entitlements.
+They also hold for cancelable valuations with positive marginals when $m \le 3$,
+and submodular valuations with positive marginals.}
+\label{table:non-impls-ud}
+\begin{tabular}{ccHHccHcH}
+\toprule non-implication & valuation & marginals & identical & $n$ & $m$ & entitlements & proof &
+\\ \midrule PROP $\nfimplies$ M1S
+    & unit-demand & $\ge 0$ & yes & 2 & 3 & equal
+    & \cref{cex:prop-not-m1s-submod} & \textbf{new}
+\\[\defaultaddspace] PROP1 $\nfimplies$ PROPm
+    & unit-demand & $\ge 0$ & yes & 2 & 2 & equal
+    & \cref{cex:ud:prop1-not-propm} & \textbf{new}
+\\[\defaultaddspace] PROP $\nfimplies$ PPROP
+    & unit-demand & $\ge 0$ & yes & 3 & 3 & equal
+    & \cref{cex:ud:prop-not-pprop} & \textbf{new}
+\\[\defaultaddspace] MMS $\nfimplies$ EF1
+    & unit-demand & $\ge 0$ & yes & 4 & 5 & equal
+    & \cref{cex:ud:mms-not-ef1-propm} & \textbf{new}
+\\[\defaultaddspace] MMS $\nfimplies$ PROPm
+    & unit-demand & $\ge 0$ & yes & 4 & 5 & equal
+    & \cref{cex:ud:mms-not-ef1-propm} & \textbf{new}
+\\[\defaultaddspace] PROPm $\nfimplies$ PROPavg
+    & unit-demand & $\ge 0$ & yes & 3 & 3 & equal
+    & \cref{cex:ud:propm-not-propavg} & \textbf{new}
+\\ \bottomrule
+\end{tabular}
+\end{table*}
+
 \begin{lemma}[PROP $\nfimplies$ M1S]
 \label{cex:prop-not-m1s-submod}
 Consider a unit-demand function $v$ over 3 goods such that $v(1) = v(2) = 4$ and $v(3) = 3$.
@@ -604,3 +636,44 @@ However, $\min_{g \in B_1} \vhat(B_1 \setminus \{g\}) = 4 + 4\eps > 3 + 2\eps = 
 Hence, agent 2 is not EF1-satisfied by $B$, which contradicts the fact that $B$
 is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
 \end{proof}
+
+\begin{example}[PROP1 $\nfimplies$ PROPm]
+\label{cex:ud:prop1-not-propm}
+Consider a unit-demand function $v$ over 2 goods such that $v(1) = 30$ and $v(2) = 10$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [2]$.
+Consider a fair division instance with 2 goods and
+2 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1, 2\}, \emptyset)$ is PROP1 but not PROPm.
+\end{example}
+
+\begin{example}[PROP $\nfimplies$ PPROP]
+\label{cex:ud:prop-not-pprop}
+Consider a unit-demand function $v$ over 3 goods such that $v(1) = 30$ and $v(2) = v(3) = 11$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [3]$.
+Consider a fair division instance with 3 goods and
+3 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1\}, \{2\}, \{3\})$ is PROP but no alloction is PPROP.
+\end{example}
+
+\begin{example}[MMS $\nfimplies$ EF1, PROPm]
+\label{cex:ud:mms-not-ef1-propm}
+Consider a unit-demand function $v$ over 5 goods such that
+$v(1) = 200$ and $v(2) = 30$ and $v(3) = v(4) = v(5) = 10$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [5]$.
+Consider a fair division instance with 5 goods and
+4 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1, 2\}, \{3\}, \{4\}, \{5\})$
+is MMS but not EF1 and not PROPm.
+(The maximin share is $10 + \eps$. The proportional share is $50 + (5/4)\eps$.)
+\end{example}
+
+\begin{example}[PROPm $\nfimplies$ PROPavg]
+\label{cex:ud:propm-not-propavg}
+Consider a unit-demand function $v$ over 3 goods such that
+$v(1) = 75$, $v(2) = 30$, and $v(3) = 10$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [3]$.
+Consider a fair division instance with 3 goods and
+3 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1, 3\}, \{2\}, \emptyset)$ is PROPm but not PROPavg.
+(The proportional share is $25+\eps$.)
+\end{example}
