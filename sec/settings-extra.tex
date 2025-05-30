@@ -18,6 +18,7 @@ A function $u: 2^M \to \mathbb{R}$ is
 \end{tightenum}
 
 Note that when $|M|=1$, $u$ belongs to all of these classes simultaneously.
+See \cref{fig:dag-posets:valuation} for relations between valuation function types.
 
 \subsection{Marginal Values}
 
@@ -35,3 +36,25 @@ Note that when $|M|=1$, $u$ belongs to all of these classes simultaneously.
 We can break up the class of bivalued instances into positive bivalued, negative bivalued,
 binary, negative binary, and mixed bivalued
 (mixed means that exactly one of $a$ and $b$ is positive and the other is negative).
+See \cref{fig:dag-posets:marginals} for relations between marginal values.
+
+\begin{figure*}[!htb]
+\centering
+\begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/valuation.pdf}
+    \caption{Valuation function type}
+    \label{fig:dag-posets:valuation}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.59\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figs/marginal.pdf}
+    \caption{Marginal values}
+    \label{fig:dag-posets:marginals}
+\end{subfigure}
+\caption[Hasse diagrams of valuation function type and marginal values]{%
+Valuation function type and marginal values represented as a digraph where
+there is a path from $u$ to $v$ iff $u$ is a subclass of $v$.}
+\label{fig:dag-posets}
+\end{figure*}

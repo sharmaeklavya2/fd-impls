@@ -74,26 +74,6 @@ The product of $(\mathbb{N}, \le)$ with itself is $(\mathbb{N}^2, \preceq)$,
 where $(a_1, a_2) \preceq (b_1, b_2)$ iff $a_1 \le a_2$ and $b_1 \le b_2$.
 \end{example}
 
-\begin{figure*}[!htb]
-\centering
-\begin{subfigure}{0.4\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{figs/valuation.pdf}
-    \caption{Valuation function type}
-\end{subfigure}
-\hfill
-\begin{subfigure}{0.59\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{figs/marginal.pdf}
-    \caption{Marginal values}
-\end{subfigure}
-\caption[Hasse diagrams of valuation function type and marginal values]{%
-Partial orders for valuation function type and marginal values represented as \emph{Hasse diagrams},
-i.e., for a DAG $G = (V, E)$, the corresponding partial order is $(V, \preceq)$,
-where $u \preceq v$ iff there is a path from $u$ to $v$ in $G$.}
-\label{fig:dag-posets}
-\end{figure*}
-
 Recall the 5 features of fair division from \cref{sec:settings}:
 whether entitlements are equal,
 whether there are only two agents,
@@ -104,7 +84,11 @@ and marginal values.
 We define a partial order for each of these 5 features.
 The first three features are represented by the \emph{boolean} partial order:
 $(\{\mathrm{true}, \mathrm{unknown}\}, \{\mathrm{true} \preceq \mathrm{unknown}, \mathrm{true} \preceq \mathrm{true}, \mathrm{unknown} \preceq \mathrm{unknown}\})$.
-The partial orders for the last two features are given by \cref{fig:dag-posets}.
+The partial order for each of the last two features is
+represented as a DAG in \cref{fig:dag-posets} in \cref{sec:settings-extra}.
+(Formally, for a DAG $G = (V, E)$, the corresponding partial order is $(V, \preceq)$,
+where $u \preceq v$ iff there is a path from $u$ to $v$ in $G$.)
+%
 Let $(P, \preceq)$ be the product of these 5 partial orders.
 %
 For a fair division setting $s \in P$, let
