@@ -11,10 +11,14 @@ A function $u: 2^M \to \mathbb{R}$ is
 \item \emph{superadditive} if for any two disjoint sets $S, T \subseteq M$, we have $u(S \cup T) \ge u(S) + u(T)$.
 \item \emph{submodular} if for any $S, T \subseteq M$, we have $u(S \cup T) + u(S \cap T) \le u(S) + u(T)$.
 \item \emph{supermodular} if for any $S, T \subseteq M$, we have $u(S \cup T) + u(S \cap T) \ge u(S) + u(T)$.
-\item \emph{cancelable} if for any $T \subseteq M$ and $S_1, S_2 \subseteq M \setminus T$,
+\item \emph{cancelable} \cite{berger2021almost} if
+    for any $T \subseteq M$ and $S_1, S_2 \subseteq M \setminus T$,
     we have $u(S_1 \cup T) > u(S_2 \cup T) \implies u(S_1) > u(S_2)$.
 \item \emph{unit-demand} if $u(\emptyset) = 0$, and for any $\emptyset \neq S \subseteq M$,
-    we have $u(S) \defeq \max_{j \in S} u(\{j\})$.
+    we have $u(S) \ge 0$ and $u(S) \defeq \max_{j \in S} u(\{j\})$.
+\item \emph{XOS} (aka \emph{fractionally subadditive}) \cite{nisan2000bidding,feige2009maximizing}
+    if there exist additive functions $a_1$, $\ldots$, $a_k$, such that
+    $u(S) = \max_{j=1}^k a_j(S)$ for all $S \subseteq M$.
 \end{tightenum}
 
 Note that when $|M|=1$, $u$ belongs to all of these classes simultaneously.
