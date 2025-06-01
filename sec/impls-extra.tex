@@ -349,6 +349,30 @@ Assume $i=1$ \wLoG. Then
 Hence, agent 1 does not envy agent 2.
 \end{proof}
 
+\begin{lemma}[PPROP $\fimplies$ PROP]
+\label{thm:impl:pprop-to-prop}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
+if $v_i$ is submodular and allocation $A$ is pairwise-PROP-fair to agent $i$
+then $A$ is PROP-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Since $A$ is PPROP-fair to $i$, for all $j \in [n] \setminus \{i\}$, we get
+\begin{align*}
+& v_i(A_i) \ge \frac{w_i}{w_i + w_j}v_i(A_i \cup A_j)
+\\ &\implies (w_i+w_j)v_i(A_i) \ge w_i(v_i(A_j \mid A_i) + v_i(A_i))
+\\ &\implies w_j v_i(A_i) \ge w_i v_i(A_j \mid A_i).
+\end{align*}
+Sum these inequalities over all $j \in [n] \setminus \{i\}$ to get
+\[ (1-w_i) v_i(A_i) \ge w_i \sum_{j \neq i} v_i(A_j \mid A_i). \]
+By \cref{thm:submod-marginal-is-submod}, $v_i(\cdot \mid A_i)$ is subadditive. Hence,
+\begin{align*}
+& (1-w_i) v_i(A_i) \ge w_i \sum_{j \neq i} v_i(A_j \mid A_i)
+    \ge w_i v_i([m] \setminus A_i \mid A_i)
+\\ &\implies v_i(A_i) \ge w_i v_i([m]).
+\end{align*}
+Hence, agent $i$ is PROP-satisfied by $A$.
+\end{proof}
+
 \subsection{EFX, EF1 vs PROPx, PROPm, PROP1}
 \label{sec:impls-extra:efx-ef1-vs-propx-propm-prop1}
 
