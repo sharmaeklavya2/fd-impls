@@ -383,85 +383,122 @@ if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
 and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to agent $i$.
 \end{lemma}
 
-\begin{lemma}[EEF1 $\fimplies$ PROP1, Proposition 2 of \cite{aziz2021fair}]
-\label{thm:impl:eef1-to-prop1}
-For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
-if an allocation $X$ is epistemic-EF1-fair to agent $i$, then $X$ is also PROP1-fair to $i$
-if one of these conditions hold:
-\begin{tightenum}
-\item $v_i$ is subadditive and the items are chores to agent $i$.
-\item $v_i$ is additive and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
-\item $v_i$ is additive and $n=2$.
-\end{tightenum}
+\begin{lemma}[EEF1 $\fimplies$ PROP1 for chores]
+\label{thm:impl:eef1-to-prop1-chores}
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$
+where all items are chores to agent $i$ and $v_i$ is subaditive,
+if an allocation $X$ is epistemic-EF1-fair to agent $i$,
+then $X$ is also PROP1-fair to $i$.
 \end{lemma}
 \begin{proof}
-Suppose agent $i$ is epistemic-EF1-satisfied but not PROP1-satisfied by allocation $X$.
-Let $A$ be agent $i$'s epistemic-EF1-certificate for $X$.
-Then $A$ is EF1-fair to agent $i$.
-If $A$ is PROP1-fair to $i$, then $X$ would also be PROP1-fair to agent $i$,
-which is a contradiction. Hence, $A$ is not PROP1-fair to $i$.
-Therefore, all of these hold:
-\begin{tightenum}
-\item $v_i(A_i) < w_iv_i([m])$.
-\item $v_i(A_i \cup \{g\}) \le w_iv_i([m])$ for all $g \in [m] \setminus A_i$.
-\item $v_i(A_i \setminus \{c\}) \le w_iv_i([m])$ for all $c \in A_i$.
-\end{tightenum}
+Suppose agent $i$ is EEF1-satisfied by $X$.
+Let $A$ be agent $i$'s EEF1-certificate for $X$.
+Suppose $A$ is not PROP1-fair to $i$, we get $v_i(A_i) < w_iv_i([m])$
+and $v_i(A_i \setminus \{c\}) \le w_iv_i([m])$ for all $c \in A_i$.
 
-Since $v_i$ is subadditive, there exists $j \in [n] \setminus \{i\}$ such that $v_i(A_j) > w_jv_i([m])$
+Since $v_i$ is subadditive, there exists $j \in [n] \setminus \{i\}$
+such that $v_i(A_j) > w_jv_i([m])$
 (otherwise $v_i([m]) \le \sum_{j=1}^n v_i(A_j) < \sum_{j=1}^n w_jv_j([m]) = v_i([m])$). Hence,
 \[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_j)}{w_j}. \]
-Hence, $i$ envies $j$. But $i$ is EF1-satisfied. Hence,
-\\ $\exists c \in A_i$ such that
-    $\displaystyle \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}$,
-\\ or $\exists g \in A_j$ such that
-    $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}$.
-
-\textbf{Case 1}: $\exists c \in A_i$ such that $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$.
+Hence, $i$ envies $j$ in $A$. But $i$ is EF1-satisfied by $A$.
+Hence, $\exists c \in A_i$ such that
+\[ \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
 
 Since $i$ is PROP1-unsatisfied and $v_i(A_j) > w_jv_i([m])$, we get
 \[ \frac{v_i(A_j)}{w_j} \le \frac{v_i(A_i \setminus \{c\})}{w_i} \le v_i([m]) < \frac{v_i(A_j)}{w_j}, \]
 which is a contradiction.
-Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
+Hence, $A$ is PROP1-fair to $i$, and so, $X$ is PROP1-fair to agent $i$.
+\end{proof}
 
-\textbf{Case 2}: $\exists g \in A_j$ such that $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$.
+\begin{lemma}[EEF1 $\fimplies$ PROP1]
+\label{thm:impl:eef1-to-prop1-submod}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$
+where $v_i$ is submodular for some agent $i$
+and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
+If an allocation $X$ is epistemic-EF1-fair to agent $i$,
+then $X$ is also PROP1-fair to $i$.
+\end{lemma}
+\begin{proof}
+Suppose agent $i$ is EEF1-satisfied by $X$.
+Let $A$ be agent $i$'s EEF1-certificate for $X$.
+Then $A$ is EF1-fair to $i$.
+We will show that $A$ is PROP1-fair to $i$
+(which would prove that $X$ is also PROP1-fair to $i$).
+This is trivial if $A$ is PROP-fair to $i$,
+so assume $A$ is not PROP-fair to $i$, i.e., $v_i(A_i) < w_iv_i([m])$.
 
-First, we show that this case doesn't occur if all items in $A_j$ are chores.
-Since $i$ envies $j$ but not EF1-envies $j$, we get
-\begin{equation}
-\label{eq:impl:eef1-to-prop1:gpos}
-\frac{v_i(g \mid A_j \setminus \{g\})}{w_j}
-= \frac{v_i(A_j) - v_i(A_j \setminus \{g\})}{w_j}
-\ge \frac{v_i(A_j)}{w_j} - \frac{v_i(A_i)}{w_i} > 0.
-\end{equation}
-Hence, this case doesn't occur if all items in $A_j$ are chores.
+By \cref{thm:submod-marginal-is-submod}, we get that
+$v_i(\cdot \mid A_i)$ is subadditive. Hence,
+\[ v_i([m]) = v_i(A_i) + v_i([m] \setminus A_i \mid A_i)
+    \le v_i(A_i) + \sum_{j \neq i} v_i(A_j \mid A_i). \]
+Hence, for some $j \in [n] \setminus \{i\}$,
+we get $v_i(A_j \mid A_i) > w_jv_i([m])$. Hence,
+\[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_j \mid A_i)}{w_j} \le \frac{v_i(A_j)}{w_j}. \]
+Hence, $i$ envies $j$ in $A$. Since $A$ is EF1-fair to $i$, we get two cases:
 
-Since $i$ is not PROP1-satisfied, we get
+\textbf{Case 1}: $\exists c \in A_i$ such that
+    $\displaystyle \frac{v_i(A_i \setminus \{c\})}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\\ Then $v_i(A_i \setminus \{c\}) > w_iv_i([m])$, so $A$ is PROP1-fair.
+
+\textbf{Case 2}: $\exists g \in A_j$ such that
+    $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}$.
 \begin{align*}
-& \frac{v_i(A_i) + v_i(g \mid A_i)}{w_i} \le w_i([m]) < \frac{v_i(A_j)}{w_j}
-\\ &\implies \frac{v_i(g \mid A_i)}{w_i} < \frac{v_i(A_j)}{w_j} - \frac{v_i(A_i)}{w_i}
-    \le \frac{v_i(g \mid A_j \setminus \{g\})}{w_j}.
+& \frac{v_i(A_i \cup \{g\})}{w_i}
+    = \frac{v_i(A_i)}{w_i} + \frac{v_i(g \mid A_i)}{w_i}
+\\ &\ge \frac{v_i(A_j \setminus \{g\})}{w_j} + \frac{v_i(g \mid A_i)}{w_j}
+    \tag{$w_i \le w_j$}
+\\ &\ge \frac{v_i(A_j \setminus \{g\} \mid A_i) + v_i(g \mid A_i)}{w_j}
+    \tag{$v_i$ is submodular}
+\\ &\ge \frac{v_i(A_j \mid A_i)}{w_j}
+    \tag{$v_i(\cdot \mid A_i)$ is subadditive}
+\\ &> v_i([m]).
 \end{align*}
+Hence, $A$ is PROP1-fair to $i$.
 
-Let $v_i$ be additive. Then we get
-\[ \frac{v_i(g)}{w_i} < \frac{v_i(g)}{w_j} \implies w_j < w_i. \]
-If $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$, we get a contradiction.
+In both cases, we get that $A$ is PROP1-fair to $i$.
+Hence, $X$ is also PROP1-fair to $i$.
+\end{proof}
 
-Now suppose $v_i$ is additive and $n=2$.
-Then the agents are $i$ and $j$. Note that $w_i + w_j = 1$.
-Let $\ghat \in \argmax_{t \in A_j} v_i(t)$.
-Since $i$ is not PROP1-satisfied, we get
+\begin{lemma}[EF1 $\fimplies$ PROP1 for $n=2$]
+\label{thm:impl:ef1-to-prop1-n2}
+Consider a fair division instance $([2], [m], (v_1, v_2), w)$
+where $v_i$ is submodular for some agent $i$.
+If an allocation $A$ is EF1-fair to agent $i$,
+then $A$ is also PROP1-fair to $i$.
+\end{lemma}
+\begin{proof}
+\WLoG, let $i = 1$.
+If $A$ is PROP-fair to agent 1, then we are done,
+so assume $A$ is not PROP-fair to agent 1.
+By subadditivity of $v_1$, we get
+$v_1([m]) \le v_1(A_1) + v_1(A_2)$.
+Since $v_1(A_1) < w_1v_1([m])$, we get $v_1(A_2) > w_2v_1([m])$.
+Hence, $v_1(A_1)/w_1 < v_1([m]) < v_1(A_2)/w_2$, so agent 1 envies agent 2.
+Since $A$ is EF1-fair to agent 1, there are two cases:
+
+\textbf{Case 1}: $\exists c \in A_1$ such that
+    $\displaystyle \frac{v_1(A_1 \setminus \{c\})}{w_1} \ge \frac{v_1(A_2)}{w_2}$.
+\\ Then $v_1(A_1 \setminus \{c\}) > w_1v_1([m])$, so $A$ is PROP1-fair.
+
+\textbf{Case 2}: $\exists \ghat \in A_2$ such that
+    $\displaystyle \frac{v_1(A_1)}{w_1} \ge \frac{v_1(A_2 \setminus \{\ghat\})}{w_2}$.
+\\ By subadditivity of $v_1$ and PROP-unfairness of $A$, we get
+\[ v_1([m]) \le v_1(A_1 \cup \{\ghat\}) + v_1(A_2 \setminus \{\ghat\})
+    \le v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1). \]
+Let $g^* \defeq \max_{g \in A_2} v_1(g \mid A_1)$.
+If $v_1(g^* \mid A_1) \le 0$, then $v_1(g \mid A_1) \le 0$ for all $g \in A_2$.
+By \cref{thm:submod-marginal-is-submod}, $v_1(\cdot \mid A_1)$ is subadditive.
+Hence, $v_1(A_2 \mid A_1) \le \sum_{g \in A_2} v_1(g \mid A_1) \le 0$.
+Hence, $v_1(M) = v_1(A_1) + v_1(A_2 \mid A_1) \le v_1(A_1)$,
+which is a contradiction since $A$ is not PROP-fair to agent 1.
+Hence, $v_1(g^* \mid A_1) > 0$. Therefore,
 \begin{align*}
-& v_i(A_i \cup \{\ghat\}) \le w_iv_i([m]) = w_iv_i(A_i \cup \{\ghat\}) + w_iv_i(A_j \setminus \{\ghat\})
-\\ &\implies \frac{v_i(A_i \cup \{\ghat\})}{w_i} \le \frac{v_i(A_j \setminus \{\ghat\})}{w_j}.
+& \frac{v_1(A_1 \cup \{g^*\})}{w_1}
+    = v_1(A_1 \cup \{g^*\}) + \frac{w_2}{w_1}v_1(A_1 \cup \{g^*\})
+\\ &> v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1)
+    \ge v_1([m]).
 \end{align*}
-Based on the assumption of Case 2, we get
-\[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j} \ge \frac{v_i(A_j \setminus \{\ghat\})}{w_j}. \]
-Hence,
-\[ v_i(A_i \cup \{\ghat\}) \le \frac{w_i}{w_j}v_i(A_j \setminus \{\ghat\}) \le v_i(A_i). \]
-Therefore, $v_i(\ghat) \le 0$.
-Since $\ghat$ is the most-valuable item in $A_j$ to $i$, we get that $v_i(g) \le 0$,
-which contradicts \eqref{eq:impl:eef1-to-prop1:gpos}.
-Hence, it's impossible for agent $i$ to be EF1-satisfied but not PROP1-satisfied by $A$ for this case.
+Hence, $A$ is PROP1-fair to agent 1.
 \end{proof}
 
 \begin{lemma}[EEFX $\fimplies$ PROPx, Lemma 2.1 of \cite{li2022almost}]
@@ -1043,7 +1080,7 @@ if at least one of these conditions hold:
 \begin{proof}
 Consider any subset $S$ of agents.
 On restricting $A$ to $S$, we get an allocation $B$ that is EF1-fair to $i$.
-$B$ is also PROP1-fair to $i$ by \cref{thm:impl:eef1-to-prop1},
+$B$ is also PROP1-fair to $i$ by \cref{thm:impl:eef1-to-prop1-chores,thm:impl:eef1-to-prop1-submod,thm:impl:ef1-to-prop1-n2},
 and APS-fair to $i$ by \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps}.
 Hence, $A$ is groupwise-APS-fair to $i$.
 \end{proof}
