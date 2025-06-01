@@ -489,66 +489,6 @@ Let $A$ be an allocation where the first agent gets both items.
 Then $A$ is PROP1 but not M1S.
 \end{example}
 
-\subsection{Submodular and Supermodular Valuations}
-\label{sec:cex-extra:submod-supmod}
-
-\begin{lemma}[EF $\nfimplies$ PROP]
-\label{cex:ef-not-prop-supmod}
-Consider a fair division instance with 2 agents and 4 goods.
-The agents have identical valuations and equal entitlements.
-Let $a, b \in \mathbb{R}_{\ge 0}$ such that $3a < b$.
-The valuation function $v$ is given by
-\[ v(S) \defeq \begin{cases}
-|S|a & \textrm{ if } |S| \le 3
-\\ 3a + b & \textrm{ if } |S| = 4
-\end{cases}. \]
-Then $v$ is supermodular, no PROP1 allocation exists,
-and if $a > 0$, then no PROPm allocation exists.
-However, an allocation where each agent gets 2 goods is EF+APS+MMS.
-\end{lemma}
-\begin{proof}
-For any $g \in [4]$ and $S \subseteq [4] \setminus \{g\}$, we have
-\[ v(g \mid S) = \begin{cases}
-a & \textrm{ if } |S| \le 2
-\\ b & \textrm{ if } |S| = 3
-\end{cases}. \]
-Hence, $v$ is supermodular.
-
-The proportional share is $(3a + b)/2$.
-In any allocation, some agent gets at most 2 goods,
-and even if she is given an additional good, her valuation is $3a < (3a+b)/2$.
-Hence, no allocation is PROP1, and no allocation is PROPm if $a > 0$.
-(When $a = 0$, every allocation is PROPm.)
-
-$v(A_1) = v(A_2) = 2a$, so $A$ is EF.
-It is easy to check that the MMS is $2a$.
-
-If we set the price of each good to 1, then at most 2 goods are affordable.
-Hence, APS is at most $2a$.
-Moreover, for any price vector, the cheapest 2 goods are affordable, and their total valuation is $2a$.
-Hence, APS is at least $2a$.
-\end{proof}
-
-\begin{lemma}
-\label{cex:part-matroid-rank}
-Let $M \defeq \{r_1, r_2, g_1, g_2, b\}$ and define $v: 2^M \to \mathbb{R}$ as
-$v(S) \defeq \boolone(r_1 \in S \textrm{ or } r_2 \in S)
-    + \boolone(g_1 \in S \textrm{ or } g_2 \in S) + \boolone(b \in S)$.
-Then $v$ is submodular and has binary marginals, i.e.,
-$v(g \mid S) \in \{0, 1\}$ for all $S \subseteq M$ and $g \in M \setminus S$.
-\end{lemma}
-\begin{proof}[Proof sketch]
-$v$ is the rank function of a partition matroid.
-\end{proof}
-
-\begin{example}[EF1 $\nfimplies$ MXS]
-\label{cex:ef1-not-mxs-submod-binary}
-Consider a fair division instance with 2 equally-entitled agents
-having an identical valuation function $v$ over 5 goods as defined in \cref{cex:part-matroid-rank}.
-Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
-but agent 1 is not MXS-satisfied by $A$.
-\end{example}
-
 \subsection{Unit-Demand Valuations}
 \label{sec:cex-extra:unit-demand}
 
@@ -676,4 +616,84 @@ Consider a fair division instance with 3 goods and
 3 equally-entitled agents having valuation function $\vhat$.
 Then the allocation $A \defeq (\{1, 3\}, \{2\}, \emptyset)$ is PROPm but not PROPavg.
 (The proportional share is $25+\eps$.)
+\end{example}
+
+\subsection{Submodular and Supermodular Valuations}
+\label{sec:cex-extra:submod-supmod}
+
+\begin{lemma}[EF $\nfimplies$ PROP]
+\label{cex:ef-not-prop-supmod}
+Consider a fair division instance with 2 agents and 4 goods.
+The agents have identical valuations and equal entitlements.
+Let $a, b \in \mathbb{R}_{\ge 0}$ such that $3a < b$.
+The valuation function $v$ is given by
+\[ v(S) \defeq \begin{cases}
+|S|a & \textrm{ if } |S| \le 3
+\\ 3a + b & \textrm{ if } |S| = 4
+\end{cases}. \]
+Then $v$ is supermodular, no PROP1 allocation exists,
+and if $a > 0$, then no PROPm allocation exists.
+However, an allocation where each agent gets 2 goods is EF+APS+MMS.
+\end{lemma}
+\begin{proof}
+For any $g \in [4]$ and $S \subseteq [4] \setminus \{g\}$, we have
+\[ v(g \mid S) = \begin{cases}
+a & \textrm{ if } |S| \le 2
+\\ b & \textrm{ if } |S| = 3
+\end{cases}. \]
+Hence, $v$ is supermodular.
+
+The proportional share is $(3a + b)/2$.
+In any allocation, some agent gets at most 2 goods,
+and even if she is given an additional good, her valuation is $3a < (3a+b)/2$.
+Hence, no allocation is PROP1, and no allocation is PROPm if $a > 0$.
+(When $a = 0$, every allocation is PROPm.)
+
+$v(A_1) = v(A_2) = 2a$, so $A$ is EF.
+It is easy to check that the MMS is $2a$.
+
+If we set the price of each good to 1, then at most 2 goods are affordable.
+Hence, APS is at most $2a$.
+Moreover, for any price vector, the cheapest 2 goods are affordable, and their total valuation is $2a$.
+Hence, APS is at least $2a$.
+\end{proof}
+
+\begin{definition}[PMRF]
+\label{defn:pmrf}
+Let $P = (P_1, \ldots, P_k)$ be a partition of a finite set $M$.
+Define $\PMRF(P)$ as the function $f: 2^M \to [|M|]$ where
+$f(X) \defeq \sum_{i=1}^k \boolone(X \cap P_i \neq \emptyset)$.
+(Here $\boolone(C)$ is 1 if condition $C$ is true and 0 otherwise.)
+\end{definition}
+
+\begin{lemma}
+\label{thm:pmrf-submod}
+For any partition $P$ over a finite set $M$,
+$f \defeq \PMRF(P)$ is submodular, and $f(g \mid X) \in \{0, 1\}$
+for any $X \subseteq M$ and $g \in M \setminus X$.
+\end{lemma}
+\begin{proof}[Proof sketch]
+$f$ is the rank function of a partition matroid.
+% TODO: prove.
+\end{proof}
+
+\begin{example}[EF $\nfimplies$ MMS]
+\label{cex:ef-not-mms-pmrf}
+Let $P \defeq (\{r_1, r_2\}, \{g_1, g_2\})$, $\eps \in \mathbb{R}_{\ge 0}$,
+and $v(X) \defeq \PMRF(P)(X) + |X|\eps$ for all $X \subseteq M \defeq \{r_1, r_2, g_1, g_2\}$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $v$.
+Then the maximin share is at least $2 + 2\eps$,
+as exemplified by the partition $(\{r_1, g_1\}, \{r_2, g_2\})$.
+The allocation $P$ is EF but not MMS,
+since each agent's value for her own bundle is $1 + 2\eps$.
+\end{example}
+
+\begin{example}[EF1 $\nfimplies$ MXS]
+\label{cex:ef1-not-mxs-pmrf}
+Let $P \defeq (\{r_1, r_2\}, \{g_1, g_2\}, \{b\})$ and $v \defeq \PMRF(P)$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $v$.
+Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
+but agent 1 is not MXS-satisfied by $A$.
 \end{example}
