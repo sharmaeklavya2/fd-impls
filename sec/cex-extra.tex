@@ -664,23 +664,26 @@ Let $P = (P_1, \ldots, P_k)$ be a partition of a finite set $M$.
 Define $\PMRF(P)$ as the function $f: 2^M \to [|M|]$ where
 $f(X) \defeq \sum_{i=1}^k \boolone(X \cap P_i \neq \emptyset)$.
 (Here $\boolone(C)$ is 1 if condition $C$ is true and 0 otherwise.)
+For any $\eps \in \mathbb{R}_{\ge 0}$, define $\PMRF_{+\eps}(P)$
+as the function $f$ where $f(X) = \PMRF(P)(X) + |X|\eps$.
 \end{definition}
 
 \begin{lemma}
 \label{thm:pmrf-submod}
 For any partition $P$ over a finite set $M$,
-$f \defeq \PMRF(P)$ is submodular, and $f(g \mid X) \in \{0, 1\}$
+$f \defeq \PMRF_{+\eps}(P)$ is submodular, and $f(g \mid X) \in \{\eps, 1+\eps\}$
 for any $X \subseteq M$ and $g \in M \setminus X$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-$f$ is the rank function of a partition matroid.
+$\PMRF(P)$ is the rank function of a partition matroid, and hence, is submodular.
 % TODO: prove.
+The submodularity of $f$ follows from \cref{thm:ud-perturb}.
 \end{proof}
 
 \begin{example}[EF $\nfimplies$ MMS]
 \label{cex:ef-not-mms-pmrf}
 Let $P \defeq (\{r_1, r_2\}, \{g_1, g_2\})$, $\eps \in \mathbb{R}_{\ge 0}$,
-and $v(X) \defeq \PMRF(P)(X) + |X|\eps$ for all $X \subseteq M \defeq \{r_1, r_2, g_1, g_2\}$.
+and $v \defeq \PMRF_{+\eps}(P)$.
 Consider a fair division instance with 2 equally-entitled agents
 having identical valuation function $v$.
 Then the maximin share is at least $2 + 2\eps$,
@@ -696,4 +699,16 @@ Consider a fair division instance with 2 equally-entitled agents
 having identical valuation function $v$.
 Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
 but agent 1 is not MXS-satisfied by $A$.
+\end{example}
+
+\begin{example}[MEFS $\nfimplies$ EF1]
+\label{cex:mefs-not-ef1-pmrf}
+Let $P \defeq (\{a\}, \{b\}, \{c\}, \{d\}, \{e_1, e_2\}, \{f_1, f_2\}, \{g_1, g_2\})$.
+Let $v \defeq \PMRF_{+\eps}(P)$ for $0 \le \eps \le 1/2$.
+Let $A \defeq (\{a, e_1, f_1, g_1\}, \{b, c, d, e_2, f_2, g_2\})$.
+Since $v(A_2) = 6 + 6\eps$ and $v(A_1) = 4 + 4\eps$,
+agent 2 is envy-free in $A$ but agent 1 is not EF1-satisfied by $A$.
+However, agent 1 is MEFS-satisfied by $A$, and her MEFS-certificate for $A$ is
+$B \defeq (\{a, b, c, d\}, \{e_1, e_2, f_1, f_2, g_1, g_2\})$,
+since $v(B_1) = v(A_1) = 4 + 4\eps$ and $v(B_2) = 3 + 6\eps$.
 \end{example}
