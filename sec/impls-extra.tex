@@ -525,64 +525,80 @@ but not PROPx-fair to $i$.
 
 \begin{lemma}[EFX $\fimplies$ PROPavg]
 \label{thm:impl:efx-to-propavg}
-Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
-where $v_i$ is additive for some agent $i$.
-If an allocation $A$ is EFX-fair to agent $i$, then it is also PROPavg-fair to agent $i$
-if at least one of these conditions holds:
-\begin{tightenum}
-\item Agents have equal entitlements and $v_i(A_i) \ge 0$.
-\item $n=2$.
-\end{tightenum}
+Let $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance
+where $v_i$ is submodular for some agent $i$ and $v_i(A_i) \ge 0$.
+If an allocation $A$ is EFX-fair to agent $i$,
+then it is also PROPavg-fair to agent $i$.
 \end{lemma}
 \begin{proof}
-Suppose agent $i$ is EFX-satisfied but not PROPavg-satisfied by allocation $A$.
+If $A$ is PROP-fair to agent $i$, we are done, so assume $A$ is not PROP-fair to $i$.
+By \cref{thm:submod-marginal-is-submod}, we get that $v_i(\cdot \mid A_i)$ is subadditive.
+Hence, $v_i([m]) = v_i(A_i) + v_i([m] \mid A_i) \le v_i(A_i) + \sum_{j \neq i} v_i(A_j \mid A_i)$.
 Then for some agent $\jhat \in [n] \setminus \{i\}$, we have
-\[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_{\jhat})}{w_{\jhat}}. \]
+\[ v_i(A_i) < \frac{v_i([m])}{n} < v_i(A_{\jhat} \mid A_i) \le v_i(A_{\jhat}). \]
 
 Since $i$ doesn't EFX-envy $\jhat$, for all $S \subseteq A_i$ such that
 $v_i(S \mid A_i \setminus S) < 0$, we get
-\[ \frac{v_i(A_i \setminus S)}{w_i} \ge \frac{v_i(A_{\jhat})}{w_{\jhat}} > v_i([m]). \]
-Hence, condition C2 of PROPavg is satisfied.
-Since condition C4 of PROPavg is not satisfied, we get that
-$T \neq \emptyset$ and $v_i(A_i) + \Sum(T)/|T| \le w_iv_i([m])$.
-%
-For all $\tau_j \in T$, we get
-\begin{align}
-\frac{v_i(A_i)}{w_i} &\ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}
-    \tag{$i$ doesn't EFX-envy $j$}
-\\ &= \frac{v_i(A_j)}{w_j} - \frac{\min(\{v_i(S): S \subseteq A_j \textrm{ and } v_i(S) > 0\})}{w_j}
-    \notag
-\\ &= \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j}
-    \label{eqn:impl:efx-to-propavg:1}
-\end{align}
+\[ v_i(A_i \setminus S) \ge v_i(A_{\jhat}) > \frac{v_i([m])}{n}. \]
+Hence, condition C2 of PROPavg is satisfied (c.f.~\cref{defn:propavg}).
 
-\textbf{Special case 1}: agents have equal entitlements and $v_i(A_i) \ge 0$.
+For any $j \in [n] \setminus \{i\}$, recall that
+$\tau_j \defeq 0$ if $v_i(S \mid A_i) \le 0$ for all $S \subseteq A_j$, and
+$\tau_j \defeq \min(\{v_i(S \mid A_i): S \subseteq A_j \text{ and } v_i(S \mid A_i) > 0\})$ otherwise.
+If $\tau_j = 0$, then $v_i(A_j \mid A_i) \le 0 \le v_i(A_i) + \tau_j$.
+Now suppose $\tau_j > 0$. Then $\tau_j = v_i(S \mid A_i) > 0$ for some $S \subseteq A_j$.
+Since $A$ is EFX-fair to $i$,
+\begin{align*}
+& v_i(A_i) + \tau_j
+    = v_i(A_i) + v_i(S \mid A_i)
+\\ &\ge v_i(A_j \setminus S) + v_i(S \mid A_i)
+\\ &\ge v_i(A_j \setminus S \mid A_i) + v_i(S \mid A_i)
+    \tag{$v_i$ is submodular}
+\\ &\ge v_i(A_j \mid A_i).
+    \tag{$v_i(\cdot \mid A_i)$ is subadditive}
+\end{align*}
+Let $T \defeq \{\tau_j: j \in [n] \setminus \{i\} \text{ and } \tau_j > 0\}$.
+On adding the above inequalities for all $j \in [n] \setminus \{i\}$,
+and using the subadditivity of $v_i(\cdot \mid A_i)$, we get
+\begin{align*}
+& (n-1)v_i(A_i) + \sum_{j \neq i}\tau_j
+    \ge \sum_{j \neq i} v_i(A_j \mid A_i)
+    \ge v_i([m] \setminus A_i \mid A_i)
+\\ &\implies nv_i(A_i) + \Sum(T) \ge v_i([m]).
+\end{align*}
+If $T = \emptyset$, then condition C4 of PROPavg is trivially satisfied.
+Otherwise, $v_i(A_i) + \Sum(T)/(n-1) > v_i(A_i) + \Sum(T)/n \ge v_i([m])/n$.
+\end{proof}
 
-Let $J \defeq \{j \in [n] \setminus \{i\}: \tau_j > 0\}$.
-For all $j \in J$, using \eqref{eqn:impl:efx-to-propavg:1}, we get
-$v_i(A_i) + \tau_j \ge v_i(A_j)$.
+\begin{lemma}[EFX $\fimplies$ PROPx for $n=2$]
+\label{thm:impl:efx-to-propx-n2}
+Let $([2], [m], (v_1, v_2), w)$ be a fair division instance
+where $v_i$ is subadditive for some agent $i$.
+If an allocation $A$ is EFX-fair to agent $i$,
+then it is also PROPx-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Let the two agents be $i$ and $j$.
+If $A$ is PROP-fair to agent $i$, we are done, so assume $v_i(A_i) < w_iv_i([m])$.
+By subadditivity of $v_i$, we get $v_i([m]) \le v_i(A_i) + v_i(A_j)$. Hence,
+\[ \frac{v_i(A_i)}{w_i} < v_i([m]) < \frac{v_i(A_j)}{w_j}. \]
+Hence, $i$ envies $j$.
 
-For all $j \in [n] \setminus (J \cup \{i\})$, we have $\tau_j = 0$, so $v_i(A_j) \le 0$. Hence,
-\[ \frac{v_i(A_i)}{w_i} \ge 0 \ge \frac{v_i(A_j)}{w_j}. \]
-Define $\tau_i \defeq 0$. Then,
-\[ \frac{v([m])}{n} = \frac{1}{n}\sum_{j=1}^n v_i(A_j)
-    \le \frac{1}{n}\sum_{j=1}^n (v_i(A_i) + \tau_j)
-    = v_i(A_i) + \frac{\Sum(T)}{n} < v_i(A_i) + \frac{\Sum(T)}{|T|}. \]
-Hence, condition 1 of PROPavg is satisfied, which is a contradiction.
-Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPavg-satisfied by $A$.
+Let $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
+Since $A$ is EFX-fair to $i$, we get
+\[ \frac{v_i(A_i \setminus S)}{w_i} \ge \frac{v_i(A_j)}{w_j} > v_i([m]). \]
 
-\textbf{Special case 2}: $n=2$
+Let $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$. Then
+\begin{align*}
+v_i([m]) &\le v_i(A_i \cup S) + v_i(A_j \setminus S)
+    \tag{$v_i$ is subadditive}
+\\ &\le v_i(A_i \cup S) + \frac{w_j}{w_i}v_i(A_i)
+    \tag{$A$ is EFX-fair to $i$}
+\\ &< v_i(A_i \cup S) + \frac{w_j}{w_i}v_i(A_i \cup S)
+    = \frac{v_i(A_i \cup S)}{w_i}.
+\end{align*}
 
-Let the two agents be $i$ and $j$. Since $T \neq \emptyset$, we have $T = \{\tau_j\}$, where $\tau_j > 0$.
-Since $i$ is not PROPavg-satisfied by $A$, we get
-\begin{align}
-& v_i(A_i) + \tau_j \le w_iv_i([m]) = w_iv_i(A_i) + w_iv_i(A_j)
-\\ &\implies w_jv_i(A_i) + \tau_j \le w_iv_i(A_j)
-\\ &\implies \frac{v_i(A_i)}{w_i} \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_iw_j}
-    \le \frac{v_i(A_j)}{w_j} - \frac{\tau_j}{w_j}.
-\end{align}
-Combining this with equation \eqref{eqn:impl:efx-to-propavg:1} gives us $\tau_j = 0$, which is a contradiction.
-Hence, it's impossible for $i$ to be EFX-satisfied by $A$ but not PROPavg-satisfied by $A$.
+Hence, $A$ is PROPx-fair to $i$.
 \end{proof}
 
 \subsection{MMS vs EFX}
