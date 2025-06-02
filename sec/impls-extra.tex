@@ -349,11 +349,11 @@ Assume $i=1$ \wLoG. Then
 Hence, agent 1 does not envy agent 2.
 \end{proof}
 
-\begin{lemma}[PPROP $\fimplies$ PROP]
-\label{thm:impl:pprop-to-prop}
+\begin{lemma}[PPROP $\fimplies$ GPROP]
+\label{thm:impl:pprop-to-gprop}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is submodular and allocation $A$ is pairwise-PROP-fair to agent $i$
-then $A$ is PROP-fair to agent $i$.
+then $A$ is groupwise-PROP-fair to agent $i$.
 \end{lemma}
 \begin{proof}
 Since $A$ is PPROP-fair to $i$, for all $j \in [n] \setminus \{i\}$, we get
@@ -371,6 +371,8 @@ By \cref{thm:submod-marginal-is-submod}, $v_i(\cdot \mid A_i)$ is subadditive. H
 \\ &\implies v_i(A_i) \ge w_i v_i([m]).
 \end{align*}
 Hence, agent $i$ is PROP-satisfied by $A$.
+This also works if we restrict the allocation to a subset of agents,
+so $i$ is also GPROP-satisfied by $A$.
 \end{proof}
 
 \subsection{EFX, EF1 vs PROPx, PROPm, PROP1}
