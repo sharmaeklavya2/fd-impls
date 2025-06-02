@@ -1165,21 +1165,12 @@ valuations are unit-demand, marginals are non-negative, and entitlements are equ
 \\[\defaultaddspace] GMMS $\fimplies$ GAPS
     & unit-demand & $\ge 0$ & -- & equal
     & \cref{thm:ud:mms,thm:ud:aps} & \textbf{new}
-\\[\defaultaddspace] M1S $\fimplies$ PROP1
-    & unit-demand & $\ge 0$ & -- & equal
-    & \cref{thm:ud:m1s,thm:ud:prop1} & \textbf{new}
 \\[\defaultaddspace] M1S $\fimplies$ APS
     & unit-demand & $\ge 0$ & -- & equal
     & \cref{thm:ud:m1s,thm:ud:aps} & \textbf{new}
 \\[\defaultaddspace] EF1 $\fimplies$ GAPS
     & unit-demand & $\ge 0$ & -- & equal
     & \cref{thm:ud:m1s,thm:ud:aps} & \textbf{new}
-\\[\defaultaddspace] PPROP $\fimplies$ GPROP
-    & unit-demand & $\ge 0$ & -- & equal
-    & \cref{thm:impl:ud:pprop-to-gprop} & \textbf{new}
-\\[\defaultaddspace] EF1 $\fimplies$ PROPavg
-    & unit-demand & $\ge 0$ & -- & equal
-    & \cref{thm:impl:ud:ef1-to-propavg} & \textbf{new}
 \\ \bottomrule
 \end{tabular}
 \end{table*}
@@ -1255,46 +1246,4 @@ Then every allocation is PROP1-fair to agent $i$.
 \begin{proof}
 Let $1 \in A_j$. If $j = i$, then $v_i(A_i) = v_i([m]) > v_i([m])/n$.
 If $j \neq i$, then $v_i(A_i \cup \{1\}) = v_i([m]) > v_i([m])/n$.
-\end{proof}
-
-\begin{lemma}[PPROP $\fimplies$ GPROP]
-\label{thm:impl:ud:pprop-to-gprop}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
-where $v_i$ is unit-demand for some agent $i$.
-\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
-If an allocation $A$ is PPROP-fair to agent $i$, then it is also GPROP-fair to agent $i$.
-\end{lemma}
-\begin{proof}
-Let $1 \in A_j$. $v_i(A_i) \ge v_i(A_i \cup A_j)/2 = v(1)/2$.
-For any $S \subseteq [n]$ such that $i \in S$, we get
-\[ \frac{1}{|S|}v_i\left(\bigcup_{j \in S} A_j\right)
-\le \frac{v_i([m])}{2} = \frac{v(1)}{2} \le v_i(A_i). \]
-Hence, $A$ is GPROP-fair to agent $i$.
-\end{proof}
-
-\begin{lemma}[EF1 $\fimplies$ PROPavg]
-\label{thm:impl:ud:ef1-to-propavg}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ over goods
-where $v_i$ is unit-demand for some agent $i$.
-\WLoG, let $v_i(1) \ge \ldots \ge v_i(m)$.
-If an allocation $A$ is EF1-fair to agent $i$, then it is also PROPavg-fair to agent $i$.
-\end{lemma}
-\begin{proof}
-If $1 \in A_i$, then $A$ is PROP-fair. Now assume $1 \not\in A_i$.
-Let $G \defeq \{g \in [m]: v_i(g) > v_i(A_i)\}$. Then $1 \in G$.
-For each agent $j \in [n] \setminus \{i\}$, we have $|A_j \cap G| \le 1$
-because $A$ is EF1-fair to agent $i$.
-Let $J \defeq \{j \in [n] \setminus \{i\}: A_j \cap G \neq \emptyset\}$.
-
-Recall the definition of $\tau_j$ from \cref{defn:propavg}.
-If $A_j \cap G = \emptyset$, then $\tau_j = 0$.
-If $A_j \cap G \neq \emptyset$, then $\tau_j = v_i(A_j) - v_i(A_i) > 0$.
-%
-\begin{align*}
-& v_i(A_i) + \frac{1}{n-1}\sum_{j \in [n] \setminus \{i\}} \tau_j
-= v_i(A_i) + \frac{1}{n-1}\sum_{j \in J} (v_i(A_j) - v_i(A_i))
-\\ &= \left(1 - \frac{|J|}{n-1}\right)v_i(A_i) + \frac{1}{n-1}\sum_{g \in G} v_i(g)
-\ge \frac{v_i(1)}{n-1} > \frac{v_i([m])}{n}.
-\end{align*}
-Hence, $A$ is PROPavg-fair to agent $i$.
 \end{proof}
