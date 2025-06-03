@@ -894,6 +894,13 @@ When entitlements are equal, $\APS_i \ge \pessShare_i \ge \MMS_i$
 by \cref{thm:impl:aps-to-pess}.
 \end{proof}
 
+\begin{lemma}[MMS = APS, \cite{kulkarni2024approximating}]
+For a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$,
+if $v_i$ is submodular for some agent $i$, and $v_i$ has binary marginals
+(i.e., $v_i(g \mid X) \in \{0, 1\}$ for some $X \subseteq [m]$ and $g \in [m] \setminus X$),
+then $\APS_i = \MMS_i$.
+\end{lemma}
+
 \subsection{Additive Triboolean Valuations}
 \label{sec:impls-extra:tribool}
 
