@@ -727,3 +727,43 @@ Consider a fair division instance with 2 equally-entitled agents
 having identical valuation function $\vhat$.
 Then $A \defeq ([4], [10] \setminus [4])$ is PROP but agent 1 is not M1S-satisfied.
 \end{example}
+
+\begin{lemma}[MMS $\nfimplies$ APS for $n=2$, Remark 2 of \cite{babaioff2023fair}]
+\label{cex:mms-not-aps-n2-submod}
+Let $C \defeq \{\{1, 2, 3\}, \{1, 5, 6\}, \{2, 4, 6\}, \{3, 4, 5\}\}$.
+Let $v: 2^{[6]} \to \mathbb{R}_{\ge 0}$ be a function defined as
+\[ v(X) \defeq \begin{cases}
+0 & \text{ if } X = \emptyset
+\\ 2 & \text{ if } |X| = 1
+\\ 4 & \text{ if } |X| = 2
+\\ 5 & \text{ if } |X| = 3 \text{ and } X \not\in C
+\\ 6 & \text{ if } X \in C \text{ or } |X| \ge 4
+\end{cases}. \]
+Let $0 \le \eps < 1/3$ and define $\vhat$ as $\vhat(X) \defeq v(X) + |X|\eps$.
+Then $\vhat$ is submodular.
+
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $\vhat$.
+The maximin share is $5 + 3\eps$, but the APS is $6 + 3\eps$.
+Moreover, there exists an MMS allocation but no allocation is APS.
+\end{lemma}
+\begin{proof}
+For any $X \subseteq [6]$, and $g \in [6] \setminus X$, we have
+\begin{tightenum}
+\item $|X| \le 1 \implies \vhat(g \mid X) = 2 + \eps$.
+\item $|X| = 2 \implies \vhat(g \mid X) \in \{1 + \eps, 2 + \eps\}$.
+\item $|X| = 3 \implies \vhat(g \mid X) \in \{\eps, 1 + \eps\}$.
+\item $|X| = 4 \implies \vhat(g \mid X) = \eps$.
+\end{tightenum}
+Hence, $\vhat(g \mid X)$ decreases with $|X|$, so $\vhat$ is submodular.
+
+The MMS is less than 6 because for every set in $C$,
+its complement is not in $C$.
+The APS is $6 + 3\eps$ by the dual definition of APS (\cref{defn:aps-dual}),
+by setting $x_S = 1/4$ when $S \in C$.
+
+For identical valuations, an MMS allocation always exists.
+For identical valuations, in any allocation, some agent gets a bundle of value at most the MMS.
+Since the APS is strictly greater than the MMS, that agent is not APS-satisfied.
+Hence, no allocation is APS.
+\end{proof}
