@@ -539,7 +539,7 @@ and submodular valuations with positive marginals.}
 \toprule non-implication & valuation & marginals & identical & $n$ & $m$ & entitlements & proof &
 \\ \midrule PROP $\nfimplies$ M1S
     & unit-demand & $\ge 0$ & yes & 2 & 3 & equal
-    & \cref{cex:prop-not-m1s-submod} & \textbf{new}
+    & \cref{cex:prop-not-m1s-unit-demand} & \textbf{new}
 \\[\defaultaddspace] PROP1 $\nfimplies$ PROPm
     & unit-demand & $\ge 0$ & yes & 2 & 2 & equal
     & \cref{cex:ud:prop1-not-propm} & \textbf{new}
@@ -560,7 +560,7 @@ and submodular valuations with positive marginals.}
 \end{table*}
 
 \begin{lemma}[PROP $\nfimplies$ M1S]
-\label{cex:prop-not-m1s-submod}
+\label{cex:prop-not-m1s-unit-demand}
 Consider a unit-demand function $v$ over 3 goods such that $v(1) = v(2) = 4$ and $v(3) = 3$.
 Let $0 \le \eps < 1/6$ and $\vhat(X) \defeq v(X) + 2|X|\eps$ for all $X \subseteq [3]$.
 Consider a fair division instance with 3 goods and
@@ -705,10 +705,25 @@ but agent 1 is not MXS-satisfied by $A$.
 \label{cex:mefs-not-ef1-pmrf}
 Let $P \defeq (\{a\}, \{b\}, \{c\}, \{d\}, \{e_1, e_2\}, \{f_1, f_2\}, \{g_1, g_2\})$.
 Let $v \defeq \PMRF_{+\eps}(P)$ for $0 \le \eps \le 1/2$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $v$.
 Let $A \defeq (\{a, e_1, f_1, g_1\}, \{b, c, d, e_2, f_2, g_2\})$.
 Since $v(A_2) = 6 + 6\eps$ and $v(A_1) = 4 + 4\eps$,
 agent 2 is envy-free in $A$ but agent 1 is not EF1-satisfied by $A$.
 However, agent 1 is MEFS-satisfied by $A$, and her MEFS-certificate for $A$ is
 $B \defeq (\{a, b, c, d\}, \{e_1, e_2, f_1, f_2, g_1, g_2\})$,
 since $v(B_1) = v(A_1) = 4 + 4\eps$ and $v(B_2) = 3 + 6\eps$.
+\end{example}
+
+\begin{example}[PROP $\nfimplies$ M1S]
+\label{cex:prop-not-m1s-uniform-matroid}
+Let $v: 2^{[10]} \to \mathbb{R}_{\ge 0}$ be a function defined as $v(X) \defeq \min(6, |X|)$.
+Then $v$ is submodular (since $v$ is the rank function of a uniform matroid)
+and $v$ has binary marginals (i.e., $v(g \mid X) \in \{0, 1\}$
+for all $X \subseteq [10]$ and $g \in [m] \setminus X$).
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$.
+
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $\vhat$.
+Then $A \defeq ([4], [10] \setminus [4])$ is PROP but agent 1 is not M1S-satisfied.
 \end{example}
