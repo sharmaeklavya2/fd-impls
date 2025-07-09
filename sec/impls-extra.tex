@@ -573,13 +573,17 @@ Hence, $X$ is also PROP1-fair to $i$.
 
 \begin{lemma}[EF1 $\fimplies$ PROP1 for $n=2$]
 \label{thm:impl:ef1-to-prop1-n2}
-Consider a fair division instance $([2], [m], (v_1, v_2), w)$
-where $v_i$ is submodular for some agent $i$.
-If an allocation $A$ is EF1-fair to agent $i$,
-then $A$ is also PROP1-fair to $i$.
+Consider a fair division instance $([2], [m], (v_1, v_2), w)$,
+where $v_i$ is subadditive for some agent $i$.
+If an allocation $A$ is EF1-fair to agent 1,
+then it is also PROP1-fair to agent 1 if at least one of the following hold:
+\begin{tightenum}
+\item $v_1(g \mid A_2 \setminus \{g\}) \le 0$ for all $g \in A_2$.
+\item $v_1(g \mid A_1) > 0$ for some $g \in A_2$.
+\item $v_1$ is submodular.
+\end{tightenum}
 \end{lemma}
 \begin{proof}
-\WLoG, let $i = 1$.
 If $A$ is PROP-fair to agent 1, then we are done,
 so assume $A$ is not PROP-fair to agent 1.
 By subadditivity of $v_1$, we get
@@ -594,23 +598,32 @@ Since $A$ is EF1-fair to agent 1, there are two cases:
 
 \textbf{Case 2}: $\exists \ghat \in A_2$ such that
     $\displaystyle \frac{v_1(A_1)}{w_1} \ge \frac{v_1(A_2 \setminus \{\ghat\})}{w_2}$.
-\\ By subadditivity of $v_1$ and PROP-unfairness of $A$, we get
-\[ v_1([m]) \le v_1(A_1 \cup \{\ghat\}) + v_1(A_2 \setminus \{\ghat\})
-    \le v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1). \]
-Let $g^* \defeq \max_{g \in A_2} v_1(g \mid A_1)$.
-If $v_1(g^* \mid A_1) \le 0$, then $v_1(g \mid A_1) \le 0$ for all $g \in A_2$.
+\\ Since agent 1 envies agent 2, we get
+\[ \frac{v_1(A_2)}{w_2} > \frac{v_1(A_2 \setminus \{\ghat\})}{w_2}
+\implies v_1(\ghat \mid A_2 \setminus \{\ghat\}) > 0. \]
+By subadditivity of $v_1$ and PROP-unfairness of $A$, we get
+\begin{align*}
+v_1([m]) &\le v_1(A_1 \cup \{\ghat\}) + v_1(A_2 \setminus \{\ghat\})
+    \le v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1)
+\\ &= \frac{v_1(A_1 \cup \{\ghat\})}{w_1} - \frac{w_2}{w_1}v_1(\ghat \mid A_1).
+\end{align*}
+Let $g^* \defeq \max_{g \in A_2} v_1(g \mid A_1)$. Then
+\begin{align*}
+v_1(A_1 \cup \{g^*\}) &= v_1(A_1 \cup \{\ghat\})
+    + (v_1(g^* \mid A_1) - v_1(\ghat \mid A_1))
+\\ &\ge w_1v_1([m]) + v_1(g^* \mid A_1) - (1-w_2)v_1(\ghat \mid A_1)
+\\ &\ge w_1v_1([m]) + w_2v_1(g^* \mid A_1).
+\end{align*}
+If $v_1(g^* \mid A_i) > 0$, then $A$ is PROP1-fair to agent 1.
+
+Suppose $v_1(g^* \mid A_i) \le 0$ and $v_1$ is submodular.
+Then $v_1(g \mid A_1) \le 0$ for all $g \in A_2$.
 By \cref{thm:submod-marginal-is-submod}, $v_1(\cdot \mid A_1)$ is subadditive.
 Hence, $v_1(A_2 \mid A_1) \le \sum_{g \in A_2} v_1(g \mid A_1) \le 0$.
 Hence, $v_1(M) = v_1(A_1) + v_1(A_2 \mid A_1) \le v_1(A_1)$,
 which is a contradiction since $A$ is not PROP-fair to agent 1.
-Hence, $v_1(g^* \mid A_1) > 0$. Therefore,
-\begin{align*}
-& \frac{v_1(A_1 \cup \{g^*\})}{w_1}
-    = v_1(A_1 \cup \{g^*\}) + \frac{w_2}{w_1}v_1(A_1 \cup \{g^*\})
-\\ &> v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1)
-    \ge v_1([m]).
-\end{align*}
-Hence, $A$ is PROP1-fair to agent 1.
+Hence, $v_1(g^* \mid A_i) > 0$ if $v_1$ is submodular,
+and thus, $A$ is PROP1-fair to agent 1.
 \end{proof}
 
 \begin{lemma}[EEFX $\fimplies$ PROPx, Lemma 2.1 of \cite{li2022almost}]
