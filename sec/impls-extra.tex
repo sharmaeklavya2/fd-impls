@@ -164,6 +164,116 @@ which is a contradiction.
 Hence, it's not possible for $A$ to be MXS-fair to agent 1 but not EF1-fair to her.
 \end{proof}
 
+We will now show that every MXS allocation is also M1S
+when marginal values are \emph{doubly monotone}.
+We first define double monotonicity (\cref{defn:dbl-mono}).
+Then we state a simple observation on how EFX and EF1 are related.
+Finally, we use that as the basis for an iterative algorithm
+for computing an agent's M1S certificate using their MXS certificate.
+
+\begin{definition}[doubly monotone]
+\label{defn:dbl-mono}
+For two sets $G$ and $C$, a function $v: 2^{[m]} \to \mathbb{R}$ is called
+$(G, C)$-\emph{doubly-monotone} if $G \cap C = \emptyset$,
+$G \cup C = [m]$, and $\forall\,R \subseteq [m]$,
+we have $v(g \mid R) \ge 0$ for all $g \in G \setminus R$
+and $v(c \mid R) \le 0$ for all $c \in C \setminus R$.
+\end{definition}
+
+\begin{observation}
+\label{thm:special-efx-is-ef1}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
+where $v_i$ is $(G, C)$-doubly-monotone.
+If all of the following hold for an alloation $A$, then $A$ is EF1-fair to agent $i$.
+\begin{tightenum}
+\item $A$ is EFX-fair to agent $i$.
+\item $v_i(g \mid A_i) > 0$ for all $g \in G \setminus A_i$.
+\item $v_i(c \mid A_i \setminus \{c\}) < 0$ for all $c \in A_i \cap C$.
+\end{tightenum}
+\end{observation}
+
+\begin{algorithm}[htb]
+\caption{$\improve(Z)$: Here $Z$ is an allocation for the fair division instance
+$([n], G \cup C, (v_i)_{i=1}^n, w)$.}
+\label{algo:mxs-to-m1s}
+\begin{algorithmic}[1]
+\While{\texttt{true}}
+    \If{$\exists g \in G \cap Z_j$ for some $j \in [n] \setminus \{i\}$ such that $v_i(g \mid Z_i) = 0$}
+        \State $Z_i = Z_i \cup \{g\}$.
+        \State $Z_j = Z_j \setminus \{g\}$.
+    \ElsIf{$\exists c \in Z_i \cap C$ such that $v_i(c \mid Z_i \setminus \{c\}) = 0$}
+        \State $Z_i = Z_i \setminus \{c\}$.
+        \State Pick any $j \in [n] \setminus \{i\}$ and set $Z_j = Z_j \cup \{c\}$.
+    \Else\label{alg-line:mxs-to-m1s:else}
+        \State \label{alg-line:mxs-to-m1s:return}\Return $Z$.
+    \EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\begin{lemma}
+\label{thm:impl:mxs-to-m1s}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
+where $v_i$ is $(G, C)$-doubly-monotone.
+If an allocation $A$ is MXS-fair to agent $i$,
+then it is also M1S-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Let $B$ be agent $i$'s MXS-certificate for $A$.
+Then $B$ is EFX-fair to agent $i$ and $v_i(B_i) \le v_i(A_i)$.
+Define $\Bhat \defeq \improve(B)$, where $\improve$ is defined in \cref{algo:mxs-to-m1s}.
+
+In any iteration of the while loop in \cref{algo:mxs-to-m1s},
+let $X$ be the allocation at the beginning of the iteration.
+Either $X$ is returned at line \ref{alg-line:mxs-to-m1s:return},
+or the allocation gets modified to $Y$, and the following invariants hold:
+\begin{tightenum}
+\item If $X$ is EFX-fair to $i$, then $Y$ is also EFX-fair to $i$.
+\item $|Y_i \cap G| - |Y_i \cap C| > |X_i \cap G| - |X_i \cap C|$.
+\item $v_i(Y_i) = v_i(X_i)$.
+\end{tightenum}
+The first invariant ensures that $\Bhat$ is also EFX-fair to $i$.
+The second invariant ensures that $\improve$ terminates.
+Then using \cref{thm:special-efx-is-ef1}, we get that $\Bhat$ is EF1-fair to agent $i$.
+The third invariant ensures that $v_i(\Bhat_i) = v_i(B_i) \le v_i(A_i)$,
+which makes $\Bhat$ an M1S-certificate for allocation $A$ and agent $i$.
+The second and third invariants are trivial to show.
+We now prove the first invariant.
+
+Suppose $Y_i = X_i \cup \{g\}$ and $Y_j = X_j \setminus \{g\}$,
+where $g \in G \cap X_j$ such that $v_i(g \mid X_i) = 0$.
+Pick any $S \subseteq Y_j$ such that $v_i(S \mid Y_i) > 0$. Then
+\begin{align*}
+v_i(S \cup \{g\} \mid X_i) &= v_i(S \cup \{g\} \cup X_i) - v_i(X_i)
+\\ &= (v_i(S \cup Y_i) - v_i(Y_i)) + (v_i(Y_i) - v_i(X_i))
+\\ &= v_i(S \mid Y_i) > 0.
+\end{align*}
+Since $X$ is EFX-fair to agent $i$, we get
+\[ \frac{v_i(Y_i)}{w_i} = \frac{v_i(X_i)}{w_i}
+    \ge \frac{v_i(X_j \setminus (S \cup \{g\}))}{w_j}
+    = \frac{v_i(Y_j \setminus S)}{w_j}, \]
+so $i$ doesn't EFX-envy agent $j$.
+Agent $i$ also doesn't EFX-envy agents in $[n] \setminus \{i, j\}$
+since their bundles remain the same. Hence, $i$ is EFX-satisfied by $Y$.
+
+Suppose $Y_i = X_i \setminus \{c\}$ and $Y_j = X_j \cup \{c\}$,
+where $c \in X_i \cap C$ such that $v_i(c \mid X_i \setminus \{c\}) = 0$.
+Pick any $S \subseteq Y_i$ such that $v_i(S \mid Y_i \setminus S) < 0$. Then
+\begin{align*}
+v_i(S \cup \{c\} \mid X_i \setminus (S \cup \{c\}))
+    &= v(X_i) - v_i(X_i \setminus (S \cup \{c\}))
+\\ &= (v(X_i) - v_i(Y_i)) + (v_i(Y_i) - v_i(Y_i \setminus S))
+\\ &= v_i(S \mid Y_i \setminus S) < 0.
+\end{align*}
+Since $X$ is EFX-fair to agent $i$, we get that
+for any other agent $k \in [n] \setminus \{i\}$,
+\[ \frac{v_i(Y_i \setminus S)}{w_i} = \frac{v_i(X_i \setminus (S \cup \{c\}))}{w_i}
+    \ge \frac{v_i(X_k)}{w_k} \ge \frac{v_i(Y_k)}{w_k}. \]
+Hence, agent $i$ is EFX-satisfied with $Y$.
+
+Hence, invariant 1 holds, so $\Bhat$ is agent $i$'s M1S-certificate for allocation $A$.
+\end{proof}
+
 \subsection{Among PROP-Based Notions}
 \label{sec:impls-extra:among-prop-based}
 

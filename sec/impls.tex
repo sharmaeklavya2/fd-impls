@@ -28,8 +28,9 @@ g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.
     & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
 \\[\defaultaddspace] EEFX $\fimplies$ EEF1\textsuperscript{\ref{foot:efx-to-ef1}}
     & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
-\\[\defaultaddspace] MXS $\fimplies$ M1S\textsuperscript{\ref{foot:efx-to-ef1}}
-    & additive & -- & -- & -- & -- & \cref{thm:impl:efx-to-ef1} & trivial
+\\[\defaultaddspace] MXS $\fimplies$ M1S
+    & -- & dblMono\textsuperscript{\ref{foot:dbl-mono-1}}
+    & -- & -- & -- & \cref{thm:impl:mxs-to-m1s} & \textbf{new}
 \\[\defaultaddspace] MXS $\fimplies$ EF1
     & additive & -- & -- & $n=2$ & -- & \cref{thm:impl:mxs-to-ef1-n2} & \textbf{new}
 %
@@ -104,9 +105,13 @@ g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.
 \begin{tightenum}
 \item[*] \label{foot:efx-to-ef1}These results hold for additional settings.
     See \cref{thm:impl:efx-to-ef1} in \cref{sec:impls-extra:among-ef-efx-ef1} for details.
-\item[\textdagger] \label{foot:pg}In addition to $F_1 \fimplies F_2$, we also get p-$F_1$ $\fimplies$ p-$F_2$
-    and g-$F_1$ $\fimplies$ g-$F_2$.
-\item[\textdaggerdbl] \label{foot:eef1-to-prop1}\cite{aziz2021fair}
+\item[\textdagger] \label{foot:dbl-mono-1}A function $v: 2^M \to \mathbb{R}$ is \emph{doubly monotone}
+    if $M = G \cup C$, and $\forall\,R \subseteq M$,
+    we have $v(g \mid R) \ge 0$ for all $g \in G \setminus R$
+    and $v(c \mid R) \le 0$ for all $c \in C \setminus R$.
+\item[\textdaggerdbl] \label{foot:pg}In addition to $F_1 \fimplies F_2$,
+    we also get p-$F_1$ $\fimplies$ p-$F_2$ and g-$F_1$ $\fimplies$ g-$F_2$.
+\item[\S] \label{foot:eef1-to-prop1}\cite{aziz2021fair}
     proved this for additive valuations.
 \end{tightenum}
 \end{table*}
