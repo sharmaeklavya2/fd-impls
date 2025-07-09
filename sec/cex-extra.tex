@@ -822,3 +822,36 @@ $v_i(A_i \cup \{g\}) > v_i([m])/2$ for some $g \in [m] \setminus A_i$,
 not just $v_i(A_i \cup \{g\}) \ge v_i([m])/2$.
 This nuance is crucial to this counterexample.)
 \end{example}
+
+\begin{lemma}[optimal bin packing is subadditive]
+\label{thm:bin-packing}
+Let $(s_j)_{j=1}^m$ be a sequence where $0 \le s_j \le 1$ for all $j \in [m]$.
+For any $X \subseteq [m]$, define $\optBP_s(X)$ as the smallest integer $k$
+such that a partition $(P_1, \ldots, P_k)$ of $X$ exists
+such that $\sum_{j \in P_i} s_j \le 1$ for all $i \in [k]$.
+Then $\optBP_s$ is subadditive.
+\end{lemma}
+\begin{proof}
+Pick any two disjoint sets $X, Y \subseteq [m]$.
+Let $k_X \defeq \optBP_s(X)$ and $k_Y \defeq \optBP_s(Y)$.
+Let $(P_1, \ldots, P_{k_X})$ and $(Q_1, \ldots, Q_{k_Y})$ be the corresponding partitions.
+Then $(P_1, \ldots, P_{k_X}, Q_1, \ldots, Q_{k_Y})$ is a feasible partition of $X \cup Y$,
+so $\optBP_s(X \cup Y) \le k_X + k_Y$.
+\end{proof}
+
+\begin{example}
+\label{cex:gaps-not-prop1-subadd}
+Let $s = (2/5, 3/5, 3/5, 3/5, 3/5)$. Let $0 \le \eps < 1/3$.
+Consider a fair division instance with 3 equally-entitled agents
+having an identical valuation function $v$ over 5 goods.
+$v(X) \defeq \optBP_s(X) + |X|\eps + \eps\boolone(1 \in X)$.
+Then $v$ is subadditive by \cref{thm:bin-packing}.
+
+Then allocation $A = (\{1\}, \{2, 3\}, \{4, 5\})$ is EFX, groupwise APS
+(set the price of each good to 1), and pairwise PROP.
+However, agent 1 is not PROP1-satisfied in $A$, since $v([m]) = 4 + 6\eps$,
+and $v(A_1 \cup \{g\}) = 1 + 3\eps$ for all $g \in [5] \setminus A_1$
+
+(Note that unlike \cref{cex:ef1-not-prop1-subadd}, this example
+works even for the weaker definition of PROP1.)
+\end{example}
