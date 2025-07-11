@@ -825,7 +825,8 @@ This nuance is crucial to this counterexample.)
 
 \begin{lemma}[optimal bin packing is subadditive]
 \label{thm:bin-packing}
-Let $(s_j)_{j=1}^m$ be a sequence where $0 \le s_j \le 1$ for all $j \in [m]$.
+Let $(s_j)_{j=1}^m$ be a sequence where $0 \le s_j \le 1$ for all $j \in [m]$
+($s_j$ is called the \emph{size} of item $j$).
 For any $X \subseteq [m]$, define $\optBP_s(X)$ as the smallest integer $k$
 such that a partition $(P_1, \ldots, P_k)$ of $X$ exists
 such that $\sum_{j \in P_i} s_j \le 1$ for all $i \in [k]$.
@@ -859,3 +860,42 @@ and $v(A_1 \cup \{g\}) = 1 + 3\eps$ for all $g \in [6] \setminus A_1$
 (Note that unlike \cref{cex:ef1-not-prop1-subadd}, this example
 works even for the weaker definition of PROP1.)
 \end{example}
+
+\begin{lemma}
+\label{cex:paps-pprop-not-propm-binary-subadd}
+Let $A_1$, $A_2$, and $A_3$ be pairwise-disjoint sets where
+$A_1$ contains 7 goods of size $0.6$, $A_2$ contains 21 goods of size $0.4$,
+and $A_3$ contains 21 goods of size $0.4$. Let $M \defeq A_1 \cup A_2 \cup A_3$.
+Let $v(X) \defeq \optBP(X)$ for all $X \subseteq M$.
+Consider a fair division instance with 3 equally-entitled agents
+having the same valuation function $v$ over $M$.
+Then allocation $A \defeq (A_1, A_2, A_3)$ is EFX+PPROP+PAPS,
+but agent 1 is not PROPm-satisfied by $A$.
+\end{lemma}
+\begin{proof}
+First, we show that $v(S) = \max(|S \cap A_1|, \ceil{|S|/2})$ for any $S \subseteq M$.
+To see this, suppose $S$ contains $a$ items of size $0.6$ and $b$ items of size $0.4$.
+If $b \le a$, we require $a$ to pack the items and $\ceil{(a+b)/2} \le a$.
+If $b \ge a$, then we require $\ceil{(a+b)/2}$ bins to pack the items and $a \le (a+b)/2$.
+As a corollary, we get that for all $S \subseteq M \setminus A_1$,
+we have $v(S \mid A_1) = \max(0, \ceil{(|S|-|A_1|)/2})$.
+
+$v(A_2) = v(A_3) = 11$ and $v(A_1) = 7$, so agents 2 and 3 are envy-free.
+For any $S \subseteq A_2$, $v(S \mid A_1) > 0 \iff |S| \ge 8$,
+and $|S| \ge 8 \implies |A_2 \setminus S| \le 13 \implies v(A_2 \setminus S) \le 7 = v(A_1)$.
+Hence, agent 1 doesn't EFX-envy agent 2. Similarly, she doesn't EFX-envy agent 3.
+Hence, $A$ is EFX.
+
+$v(A_2 \cup A_3) = 21$, and $v(A_1 \cup A_2) = v(A_1 \cup A_3) = 14$.
+Hence, $A$ is pairwise PROP. We will now show that $A$ is pairwise APS.
+Set the price of each item to 1.
+It's easy to see that the allocation restricted to agents 2 and 3 is APS.
+Now suppose we restrict the allocation to agents 1 and 2.
+Then $S \subseteq A_1 \cup A_2$ is affordable iff $|S| \le |A_1 \cup A_2|/2 = 14$.
+For $|S| = 14$, we get $v(S) = 7$, so the APS is at most 7.
+Hence, $A$ is pairwise APS satisfied.
+
+$v(M)/3 = 25/3 = 8 + 1/3$.
+For $S \subseteq A_2$ such that $|S| = 8$, we get that $v(S \mid A_1) = 1$,
+but $v(A_1 \cup S) = 8 < v(M)/3$. Hence, agent 1 is not PROPm-satisfied by $A$.
+\end{proof}
