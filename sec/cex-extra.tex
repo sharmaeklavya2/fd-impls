@@ -802,10 +802,11 @@ Let $([2], [9], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance where
 $v_i(S) \defeq \ceil{|S|/4}$ for all $i \in [2]$ and $S \subseteq [9]$.
 Then $v_i$ is subaditive for $i \in [2]$ by \cref{thm:floor-ceil-value}.
 Let $A$ be an allocation where agent 1 has 3 goods and agent 2 has 6 goods.
-Then $A$ is APS+EFX+PROPx but not EF1 or PROP1.
+Then $A$ is GAPS+EFX+PROPx but not EF1 or PROP1.
 
 Each agent's APS is $\le 1$, because if we price each good at $1/9$,
 then a bundle is affordable iff its value is at most 1.
+Each agent's proportional share is $3/2$.
 Note that $A$ is not \EFXZero{} (c.f.~\cref{defn:efx0-goods});
 the difference between EFX and \EFXZero{} is crucial here.
 \end{example}
@@ -816,7 +817,7 @@ Let $([2], [7], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance where
 $v_i(S) \defeq \ceil{|S|/4}$ for all $i \in [2]$ and $S \subseteq [7]$.
 Then $v_i$ is subaditive for $i \in [2]$ by \cref{thm:floor-ceil-value}.
 Let $A$ be an allocation where agent 1 has 2 goods and agent 2 has 5 goods.
-Then $A$ is APS+EF1 but not PROP1.
+Then $A$ is GAPS+EF1 but not PROP1.
 (Note that in our definition of PROP1 (c.f.~\cref{defn:prop1}), we require
 $v_i(A_i \cup \{g\}) > v_i([m])/2$ for some $g \in [m] \setminus A_i$,
 not just $v_i(A_i \cup \{g\}) \ge v_i([m])/2$.
