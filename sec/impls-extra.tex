@@ -877,14 +877,15 @@ Hence, $B$ is agent $i$'s EEFX-certificate for $A$.
 
 \begin{definition}
 \label{defn:leximin}
-For any set $S \subseteq M$, let $\Pi_n(S)$ denote the set of all $n$-partitions of $S$.
-For any sequence $X = (x_i)_{i=1}^n$ of real numbers, define $\sorted(X)$ to be a permutation of $X$
+Let $R$ be a totally-ordered set.
+For any sequence $X = (x_i)_{i=1}^n$ from $R$, define $\sorted(X)$ to be a permutation of $X$
 where entries occur in non-decreasing order.
-For any two sequences $X = (x_i)_{i=1}^n$ and $Y = (y_i)_{i=1}^n$, we say that $X \le Y$ if
+For any two sequences $X = (x_i)_{i=1}^n$ and $Y = (y_i)_{i=1}^n$ from $R$, we say that $X \le Y$ if
 $\exists i \in [n]$ such that $x_i \le y_i$ and $x_j = y_j$ for all $j \in [i-1]$.
 (Note that this relation $\le$ over sequences is a total ordering.)
 
-We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[m]} \to \mathbb{R}$ if
+For any set $S \subseteq M$, let $\Pi_n(S)$ denote the set of all $n$-partitions of $S$.
+We say that $P \in \Pi_n([m])$ is a leximin $n$-partition of a function $f: 2^{[m]} \to R$ if
 \[ P \in \argmax_{X \in \Pi_n([m])} \sorted\left((f(X_j))_{j=1}^n\right). \]
 \end{definition}
 
@@ -918,6 +919,39 @@ by \cref{thm:impl:mms-to-efx-n2}, agent 1 is EFX-satisfied by $(P_1, P_j)$ in $\
 
 On considering all values of $j$, we get that agent 1 is EFX-satisfied by $P$ in $\Ical$.
 Hence, $P$ is agent 1's MXS-certificate for $A$.
+\end{proof}
+
+\begin{lemma}[MMS $\fimplies$ \MXSZero]
+\label{thm:impl:mms-to-mxs0}
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance over goods.
+If an allocation $A$ is MMS-fair to agent $i$, then it is also \MXSZero-fair to $i$.
+(\EFXZero{} for goods is defined in \cref{defn:efx0-goods}.
+\MXSZero{} is the minimum-\EFXZero{}-share.
+Also note that \EFXZero{} implies EF1, and so, \MXSZero{} implies M1S.)
+\end{lemma}
+\begin{proof}
+Without loss of generality, assume $i = 1$.
+Let $\vhat(X) \defeq (v_1(X), |X|)$.
+Then $\vhat$'s co-domain is totally-ordered, assuming pairs are compared lexicographically.
+Let $P$ be a leximin $n$-partition of $\vhat$ (c.f.~\cref{defn:leximin})
+such that $\vhat(P_1) \le \vhat(P_2) \le \ldots \le \vhat(P_n)$.
+($P$ is also called the leximin++ partition of $v_1$ \cite{plaut2020almost}).
+Then $v_1(P_1) = \min_{j=1}^n v_1(P_j)$.
+Hence, $v_1(P_1) = \MMS_{v_1}^n([m]) \le v_1(A_1)$.
+
+For any $j \ge 2$, we get that $(P_1, P_j)$ is also a leximin 2-partition of $\vhat$
+(when $\vhat$'s domain is restricted to $P_1 \cup P_j$).
+We will now show that agent 1 doesn't \EFXZero{}-envy agent $j$, i.e.,
+$v_1(P_1) \ge \max_{g \in P_j} v_1(P_j \setminus \{g\})$.
+(If $P_j = \emptyset$, this is trivially true.)
+Suppose $v_1(P_1) < v_1(P_j \setminus \{g\})$ for some $g \in P_j$.
+Let $Q_1 \defeq P_1 \cup \{g\}$ and $Q_j \defeq P_j \setminus \{g\}$.
+Then $\vhat(Q_1) > \vhat(P_1)$ and $\vhat(Q_j) > \vhat(P_1)$.
+Hence, $(P_1, P_j)$ is not a leximin 2-partition of $\vhat$, which is a contradiction.
+Hence, agent 1 doesn't \EFXZero{}-envy agent $j$.
+
+On considering all values of $j$, we get that agent 1 is \EFXZero-satisfied by $P$ in $\Ical$.
+Hence, $P$ is agent 1's \MXSZero{}-certificate for $A$.
 \end{proof}
 
 \subsection{Among PROP, APS, MMS}
