@@ -862,7 +862,7 @@ and $v(A_1 \cup \{g\}) = 1 + 3\eps$ for all $g \in [6] \setminus A_1$
 works even for the weaker definition of PROP1.)
 \end{example}
 
-\begin{lemma}
+\begin{lemma}[PAPS+PPROP $\nfimplies$ PROPm or M1S for binary subadd]
 \label{cex:paps-pprop-not-propm-binary-subadd}
 Let $A_1$, $A_2$, and $A_3$ be pairwise-disjoint sets where
 $A_1$ contains 7 goods of size $0.6$, $A_2$ contains 21 goods of size $0.4$,
@@ -871,7 +871,7 @@ Let $v(X) \defeq \optBP(X)$ for all $X \subseteq M$.
 Consider a fair division instance with 3 equally-entitled agents
 having the same valuation function $v$ over $M$.
 Then allocation $A \defeq (A_1, A_2, A_3)$ is EFX+PPROP+PAPS,
-but agent 1 is not PROPm-satisfied by $A$.
+but $A$ is not PROPm-fair or M1S-fair to agent 1.
 \end{lemma}
 \begin{proof}
 First, we show that $v(S) = \max(|S \cap A_1|, \ceil{|S|/2})$ for any $S \subseteq M$.
@@ -898,5 +898,16 @@ Hence, $A$ is pairwise APS satisfied.
 
 $v(M)/3 = 25/3 = 8 + 1/3$.
 For $S \subseteq A_2$ such that $|S| = 8$, we get that $v(S \mid A_1) = 1$,
-but $v(A_1 \cup S) = 8 < v(M)/3$. Hence, agent 1 is not PROPm-satisfied by $A$.
+but $v(A_1 \cup S) = 8 < v(M)/3$. Hence, $A$ is not PROPm-fair to agent 1.
+Also, $v(A_1 \cup \{g\}) = v(A_1) = 7$ for all $g \in M \setminus A_1$,
+so $A$ is also not PROP1-fair to $A$.
+
+Suppose $A$ is M1S-fair to agent 1. Let $B$ be her M1S-certificate for $A$.
+Then $v(B_1) \le v(A_1) = 7$ and $B$ is EF1-fair to agent 1.
+$v(B_1) \le 7$ implies $|B_1| \le 14$. Since $|M| = 49$, we get that
+$\max(|B_2|, |B_3|) \ge \ceil{|M - B_1|/2} \ge 18$.
+Hence, some agent $i \in \{2, 3\}$ has a bundle of value at least $9$.
+If one good is removed from their bundle, its value can drop by at most $8$,
+so $B$ is not EF1-fair to agent 1, which is a contradiction.
+Hence, $A$ is not M1S-fair to agent 1.
 \end{proof}
