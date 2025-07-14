@@ -725,13 +725,13 @@ v_i([m]) &\le v_i(A_i \cup S) + v_i(A_j \setminus S)
 Hence, $A$ is PROPx-fair to $i$.
 \end{proof}
 
-\begin{lemma}[M1S $\fimplies$ PROP1 for binary submodular]
-\label{thm:impl:m1s-to-prop1-matroid}
+\begin{lemma}[M1S $\fimplies$ PROPx for binary subadditive]
+\label{thm:impl:m1s-to-propx-binary-subadd}
 Let $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance
-where $v_i$ is submodular for some agent $i$ and $v_i$ has binary marginals,
+where $v_i$ is subadditive for some agent $i$ and $v_i$ has binary marginals,
 i.e., $v_i(g \mid X) \in \{0, 1\}$ for all $X \subseteq [m]$ and $g \in [m] \setminus X$.
 If an allocation $A$ is M1S-fair to agent $i$,
-then it is also PROP1-fair to agent $i$.
+then it is also PROPx-fair to agent $i$.
 \end{lemma}
 \begin{proof}
 Let $B$ be agent $i$'s M1S-certificate for $A$. Let $k \defeq v_i(B_i)$.
@@ -744,13 +744,9 @@ Hence,
 Hence, agent $i$'s proportional share is at most $k + (1-1/n) < k + 1$.
 
 If $v_i(A_i) \ge k + 1$, then $A$ is PROP-fair to $i$. So now assume $v_i(A_i) = k$.
-If $\exists g \in [m] \setminus A_i$ such that $v_i(g \mid A_i) = 1$,
-then $v_i(A_i \cup \{g\}) = k + 1$, so $A$ is PROP1-fair to $i$.
-Now suppose $v_i(g \mid A_i) = 0$ for all $g \in [m] \setminus A_i$. Then
-\[ v_i([m]) = v_i(A_i) + v_i([m] \setminus A_i \mid A_i)
-    \le k + \sum_{g \in [m] \setminus A_i} v_i(g \mid A_i) = k = v_i(A_i). \]
-Hence, $A$ is PROP-fair to $i$.
-In all cases, $A$ is PROP1-fair to $i$.
+Let $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
+Since marginals are binary, we have $v_i(A_i \cup S) \ge v_i(A_i) + 1 = k + 1$,
+so $A$ is PROPx-fair to agent $i$.
 \end{proof}
 
 \subsection{MMS vs EFX}
