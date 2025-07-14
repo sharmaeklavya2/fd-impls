@@ -489,6 +489,47 @@ Let $A$ be an allocation where the first agent gets both items.
 Then $A$ is PROP1 but not M1S.
 \end{example}
 
+\subsection{Supermodular Valuations}
+\label{sec:cex-extra:supmod}
+
+\begin{lemma}[EF+GAPS $\nfimplies$ PROP1]
+\label{cex:ef-not-prop-supmod}
+Let $0 \le \eps < 1/12$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
+\[ f(x) \defeq x\eps + \begin{cases}
+0 & \textrm{ if } x \le k
+\\ x-k & \textrm{ if } x > k
+\end{cases}. \]
+Consider a fair division instance with $n$ equally-entitled agents
+having an identical valuation function $v$ over $4n$ goods,
+where $v(X) = f(|X|)$ for all $X \subseteq [4n]$. Then $v$ is supermodular.
+
+Let $A$ be the allocation where each agent gets 4 goods. Then $A$ is EF+GAPS+GMMS.
+If $k = 5$, then no PROP1 or PROPm allocation exists.
+If $n \ge 3$ and $k = 8$, then $A$ is PPROP but no PROP1 allocation exists.
+\end{lemma}
+\begin{proof}
+For any $X \subseteq [4n]$ and $g \in [4n] \setminus X$, we have
+\[ v(g \mid X) = \begin{cases}
+\eps & \textrm{ if } |X| \le k
+\\ 1 + \eps & \textrm{ if } |X| \ge k
+\end{cases}. \]
+Since $v(g \mid X)$ is non-decreasing in $|X|$, $v$ is supermodular.
+
+Since all agents have the same bundle, $A$ is EF and GMMS.
+Set the price of each good to 1 to get that $A$ is GAPS.
+
+The proportional share is $4-k/n+4\eps$.
+For $k = 5$, the proportional share is at least $3/2$,
+but $f(5) = 5\eps$ and $f(6) = 1+6\eps < 3/2$.
+In any allocation, some agent will have at most 4 goods,
+and that agent would not be PROP1 or PROPm satisfied.
+
+If $n \ge 3$ and $k = 8$, then the proportional share is at least $4/3$.
+Since $f(8) = 8\eps$ and $f(4) = 4\eps$, $A$ is pairwise PROP.
+In any allocation, some agent gets at most 4 goods,
+and $f(5) = 5\eps < 4/3$, so that agent is not PROP1-satisfied.
+\end{proof}
+
 \subsection{Unit-Demand Valuations}
 \label{sec:cex-extra:unit-demand}
 
@@ -526,38 +567,6 @@ If $S_2 = \emptyset$, we get $\uhat(S_1) \ge |S_1|\eps > 0 = \uhat(S_2)$.
 When $m \le 3$, we have considered all cases.
 Hence, if $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
 \end{proof}
-
-\begin{table*}[htb]
-\centering
-\caption[Non-implications among fairness notions for unit-demand valuations]{%
-Non-implications among fairness notions for
-identical unit-demand valuations and equal entitlements.
-They also hold for cancelable valuations with positive marginals when $m \le 3$,
-and submodular valuations with positive marginals.}
-\label{table:non-impls-ud}
-\begin{tabular}{ccHHccHcH}
-\toprule non-implication & valuation & marginals & identical & $n$ & $m$ & entitlements & proof &
-\\ \midrule PROP $\nfimplies$ M1S
-    & unit-demand & $\ge 0$ & yes & 2 & 3 & equal
-    & \cref{cex:prop-not-m1s-unit-demand} & \textbf{new}
-\\[\defaultaddspace] PROP1 $\nfimplies$ PROPm
-    & unit-demand & $\ge 0$ & yes & 2 & 2 & equal
-    & \cref{cex:ud:prop1-not-propm} & \textbf{new}
-\\[\defaultaddspace] PROP $\nfimplies$ PPROP
-    & unit-demand & $\ge 0$ & yes & 3 & 3 & equal
-    & \cref{cex:ud:prop-not-pprop} & \textbf{new}
-\\[\defaultaddspace] MMS $\nfimplies$ EF1
-    & unit-demand & $\ge 0$ & yes & 4 & 5 & equal
-    & \cref{cex:ud:mms-not-ef1-propm} & \textbf{new}
-\\[\defaultaddspace] MMS $\nfimplies$ PROPm
-    & unit-demand & $\ge 0$ & yes & 4 & 5 & equal
-    & \cref{cex:ud:mms-not-ef1-propm} & \textbf{new}
-\\[\defaultaddspace] PROPm $\nfimplies$ PROPavg
-    & unit-demand & $\ge 0$ & yes & 3 & 3 & equal
-    & \cref{cex:ud:propm-not-propavg} & \textbf{new}
-\\ \bottomrule
-\end{tabular}
-\end{table*}
 
 \begin{lemma}[PROP $\nfimplies$ M1S]
 \label{cex:prop-not-m1s-unit-demand}
@@ -618,46 +627,8 @@ Then the allocation $A \defeq (\{1, 3\}, \{2\}, \emptyset)$ is PROPm but not PRO
 (The proportional share is $25+\eps$.)
 \end{example}
 
-\subsection{Submodular and Supermodular Valuations}
-\label{sec:cex-extra:submod-supmod}
-
-\begin{lemma}[EF+GAPS $\nfimplies$ PROP1]
-\label{cex:ef-not-prop-supmod}
-Let $0 \le \eps < 1/12$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
-\[ f(x) \defeq x\eps + \begin{cases}
-0 & \textrm{ if } x \le k
-\\ x-k & \textrm{ if } x > k
-\end{cases}. \]
-Consider a fair division instance with $n$ equally-entitled agents
-having an identical valuation function $v$ over $4n$ goods,
-where $v(X) = f(|X|)$ for all $X \subseteq [4n]$. Then $v$ is supermodular.
-
-Let $A$ be the allocation where each agent gets 4 goods. Then $A$ is EF+GAPS+GMMS.
-If $k = 5$, then no PROP1 or PROPm allocation exists.
-If $n \ge 3$ and $k = 8$, then $A$ is PPROP but no PROP1 allocation exists.
-\end{lemma}
-\begin{proof}
-For any $X \subseteq [4n]$ and $g \in [4n] \setminus X$, we have
-\[ v(g \mid X) = \begin{cases}
-\eps & \textrm{ if } |X| \le k
-\\ 1 + \eps & \textrm{ if } |X| \ge k
-\end{cases}. \]
-Since $v(g \mid X)$ is non-decreasing in $|X|$, $v$ is supermodular.
-
-Since all agents have the same bundle, $A$ is EF and GMMS.
-Set the price of each good to 1 to get that $A$ is GAPS.
-
-The proportional share is $4-k/n+4\eps$.
-For $k = 5$, the proportional share is at least $3/2$,
-but $f(5) = 5\eps$ and $f(6) = 1+6\eps < 3/2$.
-In any allocation, some agent will have at most 4 goods,
-and that agent would not be PROP1 or PROPm satisfied.
-
-If $n \ge 3$ and $k = 8$, then the proportional share is at least $4/3$.
-Since $f(8) = 8\eps$ and $f(4) = 4\eps$, $A$ is pairwise PROP.
-In any allocation, some agent gets at most 4 goods,
-and $f(5) = 5\eps < 4/3$, so that agent is not PROP1-satisfied.
-\end{proof}
+\subsection{Submodular Valuations}
+\label{sec:cex-extra:submod}
 
 \begin{definition}[PMRF]
 \label{defn:pmrf}

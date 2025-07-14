@@ -60,7 +60,24 @@
     & supermod & $\ge 0$ bival & yes & $n \ge 2$ & equal & \cref{cex:ef-not-prop-supmod} & trivial
 \\[\defaultaddspace] PPROP $\nfimplies$ PROP1
     & supermod & $\ge 0$ bival & yes & $n \ge 3$ & equal & \cref{cex:ef-not-prop-supmod} & trivial
-\\[\defaultaddspace] EF $\nfimplies$ MMS
+%
+\\\midrule PROP $\nfimplies$ M1S
+    & unit-dem & $\ge 0$ & yes & $n=2$ & equal
+    & \cref{cex:prop-not-m1s-unit-demand} & \textbf{new}
+\\[\defaultaddspace] PROP1 $\nfimplies$ PROPm
+    & unit-dem & $\ge 0$ & yes & $n=2$ & equal
+    & \cref{cex:ud:prop1-not-propm} & \textbf{new}
+\\[\defaultaddspace] PROP $\nfimplies$ PPROP
+    & unit-dem & $\ge 0$ & yes & $n=3$ & equal
+    & \cref{cex:ud:prop-not-pprop} & \textbf{new}
+\\[\defaultaddspace] PROPm $\nfimplies$ PROPavg
+    & unit-dem & $\ge 0$ & yes & $n=3$ & equal
+    & \cref{cex:ud:propm-not-propavg} & \textbf{new}
+\\[\defaultaddspace] MMS $\nfimplies$ EF1 or PROPm
+    & unit-dem & $\ge 0$ & yes & $n=4$ & equal
+    & \cref{cex:ud:mms-not-ef1-propm} & \textbf{new}
+%
+\\\midrule EF $\nfimplies$ MMS
     & submod & $\ge 0$ bival & yes & $n=2$ & equal & \cref{cex:ef-not-mms-pmrf} & folklore
 \\[\defaultaddspace] EEF $\nfimplies$ EF1 or PPROP
     & submod & $\ge 0$ bival & yes & $n=3$ & equal & \cref{cex:eef-not-ef1-pprop-pmrf} & \textbf{new}
