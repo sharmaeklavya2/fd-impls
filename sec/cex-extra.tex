@@ -494,7 +494,7 @@ Then $A$ is PROP1 but not M1S.
 
 \begin{lemma}[EF+GAPS $\nfimplies$ PROP1]
 \label{cex:ef-not-prop-supmod}
-Let $0 \le \eps < 1/12$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
+Let $0 \le \eps < 1/27$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
 \[ f(x) \defeq x\eps + \begin{cases}
 0 & \textrm{ if } x \le k
 \\ x-k & \textrm{ if } x > k
@@ -505,7 +505,8 @@ where $v(X) = f(|X|)$ for all $X \subseteq [4n]$. Then $v$ is supermodular.
 
 Let $A$ be the allocation where each agent gets 4 goods. Then $A$ is EF+GAPS+GMMS.
 If $k = 5$, then no PROP1 or PROPm allocation exists.
-If $n \ge 3$ and $k = 8$, then $A$ is PPROP but no PROP1 allocation exists.
+If $n \ge 3$ and $k = 8$, then $A$ is PPROP but no PROP1 or PROPx allocation exists.
+Additionally if $\eps = 0$, then $A$ is PROPavg.
 \end{lemma}
 \begin{proof}
 For any $X \subseteq [4n]$ and $g \in [4n] \setminus X$, we have
@@ -527,7 +528,10 @@ and that agent would not be PROP1 or PROPm satisfied.
 If $n \ge 3$ and $k = 8$, then the proportional share is at least $4/3$.
 Since $f(8) = 8\eps$ and $f(4) = 4\eps$, $A$ is pairwise PROP.
 In any allocation, some agent gets at most 4 goods,
-and $f(5) = 5\eps < 4/3$, so that agent is not PROP1-satisfied.
+and $f(5) = 5\eps < 4/3$, so that agent is not PROP1-satisfied,
+and $f(9) = 1 + 9\eps < 4/3$, so that agent is not PROPx-satisfied.
+Additionally, if $\eps = 0$, for any two agents $i$ and $j$,
+we have $v(A_j \mid A_i) = f(8) - f(4) = 0$. Hence, $A$ is PROPavg.
 \end{proof}
 
 \subsection{Unit-Demand Valuations}
