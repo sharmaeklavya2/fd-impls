@@ -727,8 +727,8 @@ Hence, $A$ is PROPx-fair to $i$.
 
 \begin{lemma}[M1S $\fimplies$ PROPx for binary subadditive]
 \label{thm:impl:m1s-to-propx-binary-subadd}
-Let $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance
-where $v_i$ is subadditive for some agent $i$ and $v_i$ has binary marginals,
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance where
+$w_i < 1/(n-1)$ for some agent $i$, and $v_i$ is subadditive has binary marginals,
 i.e., $v_i(g \mid X) \in \{0, 1\}$ for all $X \subseteq [m]$ and $g \in [m] \setminus X$.
 If an allocation $A$ is M1S-fair to agent $i$,
 then it is also PROPx-fair to agent $i$.
@@ -736,12 +736,13 @@ then it is also PROPx-fair to agent $i$.
 \begin{proof}
 Let $B$ be agent $i$'s M1S-certificate for $A$. Let $k \defeq v_i(B_i)$.
 Then $v_i(A_i) \ge k$ and $B$ is EF1-fair to $i$.
-Pick $j \in [n] \setminus \{i\}$. If $i$ doesn't envy $j$, then $v_i(B_j) \le k$.
-Otherwise, $\exists g \in B_j$ such that $v_i(B_j \setminus \{g\}) \le k$.
-So, $v_i(B_j) = v_i(B_j \setminus \{g\}) + v_i(g \mid B_j \setminus \{g\}) \le k + 1$.
+Pick $j \in [n] \setminus \{i\}$.
+If $i$ doesn't envy $j$, then $v_i(B_j) \le kw_j/w_i$.
+Otherwise, $\exists g \in B_j$ such that $v_i(B_j \setminus \{g\}) \le kw_j/w_i$.
+So, $v_i(B_j) = v_i(B_j \setminus \{g\}) + v_i(g \mid B_j \setminus \{g\}) \le k(w_j/w_i) + 1$.
 Hence,
-\[ v_i([m]) \le \sum_{j=1}^n v_i(B_j) \le k + (n-1)(k+1) = nk + (n-1). \]
-Hence, agent $i$'s proportional share is at most $k + (1-1/n) < k + 1$.
+\[ v_i([m]) \le \sum_{j=1}^n v_i(B_j) \le (n-1) + k/w_i. \]
+Hence, agent $i$'s proportional share is at most $k + w_i(n-1) < k + 1$.
 
 If $v_i(A_i) \ge k + 1$, then $A$ is PROP-fair to $i$. So now assume $v_i(A_i) = k$.
 Let $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
