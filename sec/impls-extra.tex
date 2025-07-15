@@ -393,6 +393,57 @@ But this contradicts \ref{item:impl:propm-to-prop1:unprop1-goods}.
 Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfied.
 \end{proof}
 
+\begin{lemma}
+\label{thm:binary-inc-subset}
+Let $f: 2^{[m]} \to \mathbb{R}$ such that $f$ has tribool marginals, i.e.,
+for all $X \subseteq [m]$ and $j \in [m] \setminus X$, we have $f(j \mid X) \in \{-1, 0, 1\}$.
+For any disjoint sets $S, T \subseteq [m]$ such that $f(T \mid S) > 0$,
+there exists $T' \subseteq T$ such that $f(T' \mid S) = 1$.
+\end{lemma}
+\begin{proof}
+Let $T = \{g_1, \ldots, g_k\}$.
+For any $0 \le j \le k$, define $T_j \defeq \{g_1, \ldots, g_j\}$
+and $\alpha_j \defeq f(T_j \mid S)$.
+Then $\alpha_0 = f(\emptyset \mid S) = 0$, and $\alpha_k = f(T \mid S) > 0$.
+Let $t$ be the smallest value in $[k]$ such that $\alpha_t > 0$.
+\[ \alpha_t = f(T_t \mid S) = \alpha_{t-1} + f(g_t \mid S \cup T_{t-1}). \]
+Since $\alpha_{t-1} \le 0$, we get that $\alpha_t \le f(g_t \mid S \cup T_{t-1}) \le 1$.
+Since marginals are in $\{-1, 0, 1\}$, we get $\alpha_t = 1$, so $f(T_t \mid S) = 1$.
+\end{proof}
+
+\begin{lemma}[PROPm vs PROPavg vs PROPx for binary subadd]
+\label{thm:impl:propm-to-propavg-propx-binary-subadd}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
+where $v_i$ has tribool marginals for some agent $i$, i.e.,
+for all $X \subseteq [m]$ and $j \in [m] \setminus X$,
+we have $v_i(j \mid X) \in \{-1, 0, 1\}$.
+Suppose agent $i$ is PROPm-satisfied by allocation $A$.
+Then $A$ is also PROPavg-fair to $i$.
+Moreover, if $v_i$ is subadditive and $w_i = 1/n$,
+then $A$ is also PROPx-fair to $i$.
+\end{lemma}
+\begin{proof}
+If $A$ is PROP-fair to $i$, then we are done, so assume otherwise.
+For $j \neq i$, recall the definition of $\tau_j$ from \cref{defn:propm}.
+We have two cases:
+
+\textbf{Case 1}: $\tau_j = 0$ for all $j \neq i$.
+\\ Then $A$ is PROPavg by definition. Let $v_i$ be subadditive.
+Then for all $j \in [n] \setminus \{i\}$, we have
+\[ \tau_j = 0 \iff v_i(A_j \mid A_i) = 0 \implies v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i). \]
+Hence,
+\[ v_i([m]) \le \sum_{j=1}^n v_i(A_i) \le nv_i(A_i). \]
+Therefore, if $w_i = 1/n$, then $A$ is PROP-fair to $i$.
+
+\textbf{Case 2}: $\tau_j > 0$ for some $j \neq i$.
+\\ By \cref{thm:binary-inc-subset}, we get $\tau_j \in \{0, 1\}$ for all $j$.
+Since $A$ is PROPm-fair to $i$, we get $v_i(A_i) + 1 > w_iv_i([m])$.
+Since the average of $\{\tau_j: j \neq i, \tau_j > 0\}$ is 1, $A$ is also PROPavg-fair to $i$.
+If $v_i([m] \setminus A_i \mid A_i) = 0$, then $v_i(A_i) = v_i([m]) > w_iv_i([m])$, so $A$ is PROP-fair to $i$.
+Otherwise, for every $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$,
+we get $v_i(A_i \cup S) \ge v_i(A_i) + 1 > w_iv_i([m])$, so $A$ is PROPx-fair to $i$.
+\end{proof}
+
 \subsection{EF vs PROP}
 \label{sec:impls-extra:ef-vs-prop}
 
