@@ -489,6 +489,26 @@ Let $A$ be an allocation where the first agent gets both items.
 Then $A$ is PROP1 but not M1S.
 \end{example}
 
+\begin{lemma}[GAPS $\nfimplies$ PROPx for $n=2$]
+\label{cex:gaps-not-propx-n2}
+Let $t \in \{-1, 1\}$. Consider a fair division instance $([2], [12], (v, v), (0.4, 0.6))$,
+where $v(1) = v(2) = 10t$ and $v(j) = t$ for all $j \in [12] \setminus [2]$.
+Then allocation $A = (\{1\}, [12] \setminus \{1\})$ is APS but not PROPx.
+\end{lemma}
+\begin{proof}
+Agents 1 and 2 have proportional shares $12t$ and $18t$, respectively.
+
+For $t = 1$, agent 1's APS is at most $10$
+(price items 1 and 2 at $0.45$ each and the remaining items at $0.01$ each),
+and agent 2's APS is at most $18$ (price each item at its value).
+Hence, $A$ is APS but not PROPx-fair to agent 1.
+
+For $t = -1$, agent 2's APS is at most $-20$
+(price items 1 and 2 at $-0.45$ each and the remaining items at $-0.01$ each),
+and agent 1's APS is at most $-12$ (price each item at its value).
+Hence, $A$ is APS but not PROPx-fair to agent 2.
+\end{proof}
+
 \subsection{Supermodular Valuations}
 \label{sec:cex-extra:supmod}
 
