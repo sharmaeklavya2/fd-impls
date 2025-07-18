@@ -364,7 +364,36 @@ but agent 3 is not PROPavg-satisfied by $A$.
 \subsection{Unequal Entitlements}
 \label{sec:cex-extra:uneqEnt}
 
-\begin{lemma}[PROP1+M1S is infeasible]
+\begin{example}[PROP1 $\nfimplies$ M1S]
+\label{cex:prop1-not-m1s-n2}
+Consider a fair division instance with 2 agents having identical additive valuations.
+Let $t \in \{-1, 1\}$. Let there be 2 items, each of value $t$.
+Let the entitlement vector be $(2/3, 1/3)$.
+Let $A$ be an allocation where the first agent gets both items.
+Then $A$ is PROP1 but not M1S.
+\end{example}
+
+\begin{lemma}[GAPS $\nfimplies$ PROPx for $n=2$]
+\label{cex:gaps-not-propx-n2}
+Let $t \in \{-1, 1\}$. Consider a fair division instance $([2], [12], (v, v), (0.4, 0.6))$,
+where $v(1) = v(2) = 10t$ and $v(j) = t$ for all $j \in [12] \setminus [2]$.
+Then allocation $A = (\{1\}, [12] \setminus \{1\})$ is APS but not PROPx.
+\end{lemma}
+\begin{proof}
+Agents 1 and 2 have proportional shares $12t$ and $18t$, respectively.
+
+For $t = 1$, agent 1's APS is at most $10$
+(price items 1 and 2 at $0.45$ each and the remaining items at $0.01$ each),
+and agent 2's APS is at most $18$ (price each item at its value).
+Hence, $A$ is APS but not PROPx-fair to agent 1.
+
+For $t = -1$, agent 2's APS is at most $-20$
+(price items 1 and 2 at $-0.45$ each and the remaining items at $-0.01$ each),
+and agent 1's APS is at most $-12$ (price each item at its value).
+Hence, $A$ is APS but not PROPx-fair to agent 2.
+\end{proof}
+
+\begin{lemma}[PROP1+M1S is infeasible for goods]
 \label{cex:prop1-plus-m1s-ue}
 Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
 where the entitlement vector is $w \defeq (7/12, 5/24, 5/24)$,
@@ -479,35 +508,6 @@ This proves that any M1S allocation is WMMS.
 \cite{chakraborty2021weighted} also proves that EF1+PROP1 allocations may not exist for unequal entitlements,
 We use a different counterexample in \cref{cex:prop1-plus-m1s-ue},
 which allows us to also prove other non-implications.
-
-\begin{example}[PROP1 $\nfimplies$ M1S]
-\label{cex:prop1-not-m1s-n2}
-Consider a fair division instance with 2 agents having identical additive valuations.
-Let $t \in \{-1, 1\}$. Let there be 2 items, each of value $t$.
-Let the entitlement vector be $(2/3, 1/3)$.
-Let $A$ be an allocation where the first agent gets both items.
-Then $A$ is PROP1 but not M1S.
-\end{example}
-
-\begin{lemma}[GAPS $\nfimplies$ PROPx for $n=2$]
-\label{cex:gaps-not-propx-n2}
-Let $t \in \{-1, 1\}$. Consider a fair division instance $([2], [12], (v, v), (0.4, 0.6))$,
-where $v(1) = v(2) = 10t$ and $v(j) = t$ for all $j \in [12] \setminus [2]$.
-Then allocation $A = (\{1\}, [12] \setminus \{1\})$ is APS but not PROPx.
-\end{lemma}
-\begin{proof}
-Agents 1 and 2 have proportional shares $12t$ and $18t$, respectively.
-
-For $t = 1$, agent 1's APS is at most $10$
-(price items 1 and 2 at $0.45$ each and the remaining items at $0.01$ each),
-and agent 2's APS is at most $18$ (price each item at its value).
-Hence, $A$ is APS but not PROPx-fair to agent 1.
-
-For $t = -1$, agent 2's APS is at most $-20$
-(price items 1 and 2 at $-0.45$ each and the remaining items at $-0.01$ each),
-and agent 1's APS is at most $-12$ (price each item at its value).
-Hence, $A$ is APS but not PROPx-fair to agent 2.
-\end{proof}
 
 \subsection{Supermodular Valuations}
 \label{sec:cex-extra:supmod}
