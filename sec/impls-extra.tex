@@ -393,57 +393,6 @@ But this contradicts \ref{item:impl:propm-to-prop1:unprop1-goods}.
 Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfied.
 \end{proof}
 
-\begin{lemma}
-\label{thm:binary-inc-subset}
-Let $f: 2^{[m]} \to \mathbb{R}$ such that $f$ has tribool marginals, i.e.,
-for all $X \subseteq [m]$ and $j \in [m] \setminus X$, we have $f(j \mid X) \in \{-1, 0, 1\}$.
-For any disjoint sets $S, T \subseteq [m]$ such that $f(T \mid S) > 0$,
-there exists $T' \subseteq T$ such that $f(T' \mid S) = 1$.
-\end{lemma}
-\begin{proof}
-Let $T = \{g_1, \ldots, g_k\}$.
-For any $0 \le j \le k$, define $T_j \defeq \{g_1, \ldots, g_j\}$
-and $\alpha_j \defeq f(T_j \mid S)$.
-Then $\alpha_0 = f(\emptyset \mid S) = 0$, and $\alpha_k = f(T \mid S) > 0$.
-Let $t$ be the smallest value in $[k]$ such that $\alpha_t > 0$.
-\[ \alpha_t = f(T_t \mid S) = \alpha_{t-1} + f(g_t \mid S \cup T_{t-1}). \]
-Since $\alpha_{t-1} \le 0$, we get that $\alpha_t \le f(g_t \mid S \cup T_{t-1}) \le 1$.
-Since marginals are in $\{-1, 0, 1\}$, we get $\alpha_t = 1$, so $f(T_t \mid S) = 1$.
-\end{proof}
-
-\begin{lemma}[PROPm vs PROPavg vs PROPx for binary subadd]
-\label{thm:impl:propm-to-propavg-propx-binary-subadd}
-Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
-where $v_i$ has tribool marginals for some agent $i$, i.e.,
-for all $X \subseteq [m]$ and $j \in [m] \setminus X$,
-we have $v_i(j \mid X) \in \{-1, 0, 1\}$.
-Suppose agent $i$ is PROPm-satisfied by allocation $A$.
-Then $A$ is also PROPavg-fair to $i$.
-Moreover, if $v_i$ is subadditive and $w_i = 1/n$,
-then $A$ is also PROPx-fair to $i$.
-\end{lemma}
-\begin{proof}
-If $A$ is PROP-fair to $i$, then we are done, so assume otherwise.
-For $j \neq i$, recall the definition of $\tau_j$ from \cref{defn:propm}.
-We have two cases:
-
-\textbf{Case 1}: $\tau_j = 0$ for all $j \neq i$.
-\\ Then $A$ is PROPavg by definition. Let $v_i$ be subadditive.
-Then for all $j \in [n] \setminus \{i\}$, we have
-\[ \tau_j = 0 \iff v_i(A_j \mid A_i) = 0 \implies v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i). \]
-Hence,
-\[ v_i([m]) \le \sum_{j=1}^n v_i(A_i) \le nv_i(A_i). \]
-Therefore, if $w_i = 1/n$, then $A$ is PROP-fair to $i$.
-
-\textbf{Case 2}: $\tau_j > 0$ for some $j \neq i$.
-\\ By \cref{thm:binary-inc-subset}, we get $\tau_j \in \{0, 1\}$ for all $j$.
-Since $A$ is PROPm-fair to $i$, we get $v_i(A_i) + 1 > w_iv_i([m])$.
-Since the average of $\{\tau_j: j \neq i, \tau_j > 0\}$ is 1, $A$ is also PROPavg-fair to $i$.
-If $v_i([m] \setminus A_i \mid A_i) = 0$, then $v_i(A_i) = v_i([m]) > w_iv_i([m])$, so $A$ is PROP-fair to $i$.
-Otherwise, for every $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$,
-we get $v_i(A_i \cup S) \ge v_i(A_i) + 1 > w_iv_i([m])$, so $A$ is PROPx-fair to $i$.
-\end{proof}
-
 \subsection{EF vs PROP}
 \label{sec:impls-extra:ef-vs-prop}
 
@@ -774,31 +723,6 @@ v_i([m]) &\le v_i(A_i \cup S) + v_i(A_j \setminus S)
 \end{align*}
 
 Hence, $A$ is PROPx-fair to $i$.
-\end{proof}
-
-\begin{lemma}[M1S $\fimplies$ PROPx for binary subadditive]
-\label{thm:impl:m1s-to-propx-binary-subadd}
-Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance where
-$w_i < 1/(n-1)$ for some agent $i$, and $v_i$ is subadditive has binary marginals,
-i.e., $v_i(g \mid X) \in \{0, 1\}$ for all $X \subseteq [m]$ and $g \in [m] \setminus X$.
-If an allocation $A$ is M1S-fair to agent $i$,
-then it is also PROPx-fair to agent $i$.
-\end{lemma}
-\begin{proof}
-Let $B$ be agent $i$'s M1S-certificate for $A$. Let $k \defeq v_i(B_i)$.
-Then $v_i(A_i) \ge k$ and $B$ is EF1-fair to $i$.
-Pick $j \in [n] \setminus \{i\}$.
-If $i$ doesn't envy $j$, then $v_i(B_j) \le kw_j/w_i$.
-Otherwise, $\exists g \in B_j$ such that $v_i(B_j \setminus \{g\}) \le kw_j/w_i$.
-So, $v_i(B_j) = v_i(B_j \setminus \{g\}) + v_i(g \mid B_j \setminus \{g\}) \le k(w_j/w_i) + 1$.
-Hence,
-\[ v_i([m]) \le \sum_{j=1}^n v_i(B_j) \le (n-1) + k/w_i. \]
-Hence, agent $i$'s proportional share is at most $k + w_i(n-1) < k + 1$.
-
-If $v_i(A_i) \ge k + 1$, then $A$ is PROP-fair to $i$. So now assume $v_i(A_i) = k$.
-Let $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
-Since marginals are binary, we have $v_i(A_i \cup S) \ge v_i(A_i) + 1 = k + 1$,
-so $A$ is PROPx-fair to agent $i$.
 \end{proof}
 
 \subsection{MMS vs EFX}
@@ -1134,44 +1058,60 @@ if $v_i$ is submodular for some agent $i$, and $v_i$ has binary marginals
 then $\APS_i = \MMS_i$.
 \end{lemma}
 
-\subsection{Additive Triboolean Valuations}
+\subsection{Binary and Negative-Binary Valuations}
 \label{sec:impls-extra:tribool}
 
 \begin{table*}[htb]
 \centering
 \caption[Tribool implications]{Implications among fairness notions when
-valuations are additive and marginals are triboolean,
+valuations are additive and marginals are binary or negative-binary,
 i.e, they belong to the set $\{-1, 0, 1\}$.}
 \label{table:impls-tribool}
 \small
-\begin{tabular}{cccccccc}
-\toprule & \footnotesize valuations & \footnotesize marginals & \footnotesize $n=2$ & \footnotesize entitlements & &
+\begin{tabular}{cccHcccc}
+\toprule & \footnotesize valuations & \footnotesize marginals & \footnotesize identical & \footnotesize $n=2$ & \footnotesize entitlements & &
 \\\midrule EF1 $\fimplies$ EFX & additive & $\{-1, 0, 1\}$
-    & -- & -- & -- & trivial
+    & -- & -- & -- & -- & trivial
 \\[\defaultaddspace] EEF1 $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
-    & -- & -- & -- & trivial
+    & -- & -- & -- & -- & trivial
 \\[\defaultaddspace] M1S $\fimplies$ MXS & additive & $\{-1, 0, 1\}$
-    & -- & -- & -- & trivial
+    & -- & -- & -- & -- & trivial
 \\[\defaultaddspace] PROP1 $\fimplies$ PROPx & -- & $\{-1, 0, 1\}$
-    & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & \textbf{new}
+    & -- & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & \textbf{new}
 %
 \\\midrule PROP $\fimplies$ EEF & additive & $\{-1, 0, 1\}$
-    & -- & equal & \cref{thm:impl:tribool:prop} & \textbf{new}
+    & -- & -- & equal & \cref{thm:impl:tribool:prop} & \textbf{new}
 \\[\defaultaddspace] APS $\fimplies$ PROPx & additive & $\{-1, 0, 1\}$
-    & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
+    & -- & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
 \\[\defaultaddspace] PROP1 $\fimplies$ APS & additive & $\{-1, 0, 1\}$
-    & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
+    & -- & -- & -- & \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps} & \textbf{new}
 \\[\defaultaddspace] M1S $\fimplies$ APS & additive & $\{-1, 0, 1\}$
-    & -- & equal & \cref{thm:impl:tribool:aps,thm:impl:tribool:m1s} & \textbf{new}
+    & -- & -- & equal & \cref{thm:impl:tribool:aps,thm:impl:tribool:m1s} & \textbf{new}
 \\[\defaultaddspace] MMS $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
-    & -- & equal & \cref{thm:impl:tribool:mms-to-eefx} & \textbf{new}
+    & -- & -- & equal & \cref{thm:impl:tribool:mms-to-eefx} & \textbf{new}
 %
 \\\midrule EF1 $\fimplies$ GAPS & additive & $\{-1, 0, 1\}$
-    & -- & equal & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+    & -- & -- & equal & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
 \\[\defaultaddspace] EF1 $\fimplies$ PAPS & additive & $\{-1, 0, 1\}$
-    & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+    & -- & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
 \\[\defaultaddspace] EF1 $\fimplies$ GAPS & additive & $\{-1, 0\}$
-    & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+    & -- & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+%
+\\\midrule MMS $\fimplies$ APS
+    & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & \cite{kulkarni2024approximating}
+\\[\defaultaddspace] PMMS $\fimplies$ PAPS
+    & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & \cite{kulkarni2024approximating}
+\\[\defaultaddspace] GMMS $\fimplies$ GAPS
+    & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & \cite{kulkarni2024approximating}
+\\[\defaultaddspace] PROPm $\fimplies$ PROPavg
+    & -- & $\{-1, 0, 1\}$ & -- & -- & -- & \cref{thm:impl:propm-to-propavg-propx-binary-subadd} & \textbf{new}
+\\[\defaultaddspace] PROPm $\fimplies$ PROPx
+    & subadditive & $\{-1, 0, 1\}$ & -- & -- & equal
+    & \cref{thm:impl:propm-to-propavg-propx-binary-subadd} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ PROPx
+    & subadditive & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ PROPx
+    & subadditive & $\{0, 1\}$ & -- & $n=2$ & -- & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
 \\ \bottomrule
 \end{tabular}
 \end{table*}
@@ -1372,6 +1312,82 @@ then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
 Otherwise, transferring a good from $j$ to $i$ or a chore from $i$ to $j$ in $B$
 eliminates $i$'s envy towards $j$.
 Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+\end{proof}
+
+\begin{lemma}
+\label{thm:binary-inc-subset}
+Let $f: 2^{[m]} \to \mathbb{R}$ such that $f$ has tribool marginals, i.e.,
+for all $X \subseteq [m]$ and $j \in [m] \setminus X$, we have $f(j \mid X) \in \{-1, 0, 1\}$.
+For any disjoint sets $S, T \subseteq [m]$ such that $f(T \mid S) > 0$,
+there exists $T' \subseteq T$ such that $f(T' \mid S) = 1$.
+\end{lemma}
+\begin{proof}
+Let $T = \{g_1, \ldots, g_k\}$.
+For any $0 \le j \le k$, define $T_j \defeq \{g_1, \ldots, g_j\}$
+and $\alpha_j \defeq f(T_j \mid S)$.
+Then $\alpha_0 = f(\emptyset \mid S) = 0$, and $\alpha_k = f(T \mid S) > 0$.
+Let $t$ be the smallest value in $[k]$ such that $\alpha_t > 0$.
+\[ \alpha_t = f(T_t \mid S) = \alpha_{t-1} + f(g_t \mid S \cup T_{t-1}). \]
+Since $\alpha_{t-1} \le 0$, we get that $\alpha_t \le f(g_t \mid S \cup T_{t-1}) \le 1$.
+Since marginals are in $\{-1, 0, 1\}$, we get $\alpha_t = 1$, so $f(T_t \mid S) = 1$.
+\end{proof}
+
+\begin{lemma}[PROPm vs PROPavg vs PROPx for binary subadd]
+\label{thm:impl:propm-to-propavg-propx-binary-subadd}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance
+where $v_i$ has tribool marginals for some agent $i$, i.e.,
+for all $X \subseteq [m]$ and $j \in [m] \setminus X$,
+we have $v_i(j \mid X) \in \{-1, 0, 1\}$.
+Suppose agent $i$ is PROPm-satisfied by allocation $A$.
+Then $A$ is also PROPavg-fair to $i$.
+Moreover, if $v_i$ is subadditive and $w_i = 1/n$,
+then $A$ is also PROPx-fair to $i$.
+\end{lemma}
+\begin{proof}
+If $A$ is PROP-fair to $i$, then we are done, so assume otherwise.
+For $j \neq i$, recall the definition of $\tau_j$ from \cref{defn:propm}.
+We have two cases:
+
+\textbf{Case 1}: $\tau_j = 0$ for all $j \neq i$.
+\\ Then $A$ is PROPavg by definition. Let $v_i$ be subadditive.
+Then for all $j \in [n] \setminus \{i\}$, we have
+\[ \tau_j = 0 \iff v_i(A_j \mid A_i) = 0 \implies v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i). \]
+Hence,
+\[ v_i([m]) \le \sum_{j=1}^n v_i(A_i) \le nv_i(A_i). \]
+Therefore, if $w_i = 1/n$, then $A$ is PROP-fair to $i$.
+
+\textbf{Case 2}: $\tau_j > 0$ for some $j \neq i$.
+\\ By \cref{thm:binary-inc-subset}, we get $\tau_j \in \{0, 1\}$ for all $j$.
+Since $A$ is PROPm-fair to $i$, we get $v_i(A_i) + 1 > w_iv_i([m])$.
+Since the average of $\{\tau_j: j \neq i, \tau_j > 0\}$ is 1, $A$ is also PROPavg-fair to $i$.
+If $v_i([m] \setminus A_i \mid A_i) = 0$, then $v_i(A_i) = v_i([m]) > w_iv_i([m])$, so $A$ is PROP-fair to $i$.
+Otherwise, for every $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$,
+we get $v_i(A_i \cup S) \ge v_i(A_i) + 1 > w_iv_i([m])$, so $A$ is PROPx-fair to $i$.
+\end{proof}
+
+\begin{lemma}[M1S $\fimplies$ PROPx for binary subadditive]
+\label{thm:impl:m1s-to-propx-binary-subadd}
+Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance where
+$w_i < 1/(n-1)$ for some agent $i$, and $v_i$ is subadditive has binary marginals,
+i.e., $v_i(g \mid X) \in \{0, 1\}$ for all $X \subseteq [m]$ and $g \in [m] \setminus X$.
+If an allocation $A$ is M1S-fair to agent $i$,
+then it is also PROPx-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Let $B$ be agent $i$'s M1S-certificate for $A$. Let $k \defeq v_i(B_i)$.
+Then $v_i(A_i) \ge k$ and $B$ is EF1-fair to $i$.
+Pick $j \in [n] \setminus \{i\}$.
+If $i$ doesn't envy $j$, then $v_i(B_j) \le kw_j/w_i$.
+Otherwise, $\exists g \in B_j$ such that $v_i(B_j \setminus \{g\}) \le kw_j/w_i$.
+So, $v_i(B_j) = v_i(B_j \setminus \{g\}) + v_i(g \mid B_j \setminus \{g\}) \le k(w_j/w_i) + 1$.
+Hence,
+\[ v_i([m]) \le \sum_{j=1}^n v_i(B_j) \le (n-1) + k/w_i. \]
+Hence, agent $i$'s proportional share is at most $k + w_i(n-1) < k + 1$.
+
+If $v_i(A_i) \ge k + 1$, then $A$ is PROP-fair to $i$. So now assume $v_i(A_i) = k$.
+Let $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
+Since marginals are binary, we have $v_i(A_i \cup S) \ge v_i(A_i) + 1 = k + 1$,
+so $A$ is PROPx-fair to agent $i$.
 \end{proof}
 
 \subsection{Unit-Demand Valuations}
