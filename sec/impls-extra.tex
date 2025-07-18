@@ -1107,7 +1107,9 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
 \\[\defaultaddspace] M1S $\fimplies$ PROPx
     & subadditive & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
 \\[\defaultaddspace] M1S $\fimplies$ PROPx
-    & subadditive & $\{0, 1\}$ & -- & $n=2$ & -- & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
+    & subadditive & $\{-1, 0, 1\}$ & -- & $n=2$ & -- & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ PROPx
+    & subadditive & $\{-1, 0\}$ & -- & -- & -- & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
 \\ \bottomrule
 \end{tabular}
 
@@ -1371,26 +1373,65 @@ we get $v_i(A_i \cup S) \ge v_i(A_i) + 1 > w_iv_i([m])$, so $A$ is PROPx-fair to
 \begin{lemma}[M1S $\fimplies$ PROPx for binary subadditive]
 \label{thm:impl:m1s-to-propx-binary-subadd}
 Let $([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance where
-$w_i < 1/(n-1)$ for some agent $i$, and $v_i$ is subadditive has binary marginals,
-i.e., $v_i(g \mid X) \in \{0, 1\}$ for all $X \subseteq [m]$ and $g \in [m] \setminus X$.
-If an allocation $A$ is M1S-fair to agent $i$,
-then it is also PROPx-fair to agent $i$.
+$v_i$ is subadditive and has $\{-1, 0, 1\}$ marginals,
+i.e., $v_i(g \mid X) \in \{-1, 0, 1\}$ for all $X \subseteq [m]$ and $g \in [m] \setminus X$.
+Let allocation $A$ be M1S-fair to agent $i$.
+Then $A$ is also PROPx-fair to agent $i$ if at least one of the following hold:
+\begin{tightenum}
+\item $n=2$.
+\item $w_i < 1/(n-1)$ and $v_i$ has $\{0, 1\}$ marginals.
+\item $v_i$ has $\{-1, 0\}$ marginals.
+\end{tightenum}
 \end{lemma}
 \begin{proof}
 Let $B$ be agent $i$'s M1S-certificate for $A$. Let $k \defeq v_i(B_i)$.
 Then $v_i(A_i) \ge k$ and $B$ is EF1-fair to $i$.
-Pick $j \in [n] \setminus \{i\}$.
-If $i$ doesn't envy $j$, then $v_i(B_j) \le kw_j/w_i$.
+If $v_i(A_i) \ge w_iv_i([m])$, then $A$ is PROP-fair to $i$, and we are done.
+Now let $k \le v_i(A_i) < w_iv_i([m])$.
+
+Define sets $J_0$, $J_G$, and $J_C$ as follows:
+\begin{align*}
+J_0 &\defeq \left\{j \in [n] \setminus \{i\}: \frac{v_i(B_i)}{w_i} \ge \frac{v_i(B_j)}{w_j} \right\},
+\\ J_G &\defeq \left\{j \in [n] \setminus \{i\}: \frac{v_i(B_j \setminus \{g\})}{w_j}
+    \le \frac{v_i(B_i)}{w_i} < \frac{v_i(B_j)}{w_j} \text{ for some } g \in B_j \right\},
+\\ J_C &\defeq \left\{j \in [n] \setminus \{i\}: \frac{v_i(B_i)}{w_i}
+    < \frac{v_i(B_j)}{w_j} \le \frac{v_i(B_i \setminus \{c\})}{w_i} \text{ for some } c \in B_i \right\}.
+\end{align*}
+Since $B$ is EF1-fair to $i$, we have $J_0 \cup J_G \cup J_C = [n] \setminus \{i\}$.
+Also, $J_0$ and $J_G \cup J_C$ are disjoint.
+
+If all items are goods, then $J_C = \emptyset$.
+If all items are chores, then $J_G = \emptyset$.
+If $n = 2$, then $J_G = \emptyset$ or $J_C = \emptyset$.
+Hence, if at least one of the three conditions of the lemma hold,
+then either $J_G = \emptyset$, or $J_C = \emptyset$ and $w_i < 1/(n-1)$.
+We first show that, under these conditions, $w_iv_i([m]) < k + 1$.
+
+\textbf{Case 1}: $J_C = \emptyset$ and $w_i < 1/(n-1)$.
+\\ Pick $j \in [n] \setminus \{i\}$.
+If $j \in J_0$, then $v_i(B_j) \le kw_j/w_i$.
 Otherwise, $\exists g \in B_j$ such that $v_i(B_j \setminus \{g\}) \le kw_j/w_i$.
 So, $v_i(B_j) = v_i(B_j \setminus \{g\}) + v_i(g \mid B_j \setminus \{g\}) \le k(w_j/w_i) + 1$.
 Hence,
 \[ v_i([m]) \le \sum_{j=1}^n v_i(B_j) \le (n-1) + k/w_i. \]
-Hence, agent $i$'s proportional share is at most $k + w_i(n-1) < k + 1$.
+Hence, $w_iv_i([m]) \le k + w_i(n-1) < k + 1$ (since $w_i < 1/(n-1)$).
 
-If $v_i(A_i) \ge k + 1$, then $A$ is PROP-fair to $i$. So now assume $v_i(A_i) = k$.
-Let $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
-Since marginals are binary, we have $v_i(A_i \cup S) \ge v_i(A_i) + 1 = k + 1$,
-so $A$ is PROPx-fair to agent $i$.
+\textbf{Case 2}: $J_G = \emptyset$
+\\ Pick $j \in [n] \setminus \{i\}$.
+If $j \in J_0$, then $v_i(B_j) \le kw_j/w_i$.
+Otherwise, $\exists c \in B_i$ such that $v_i(B_i \setminus \{c\})/w_i \ge v_i(B_j)/w_j$.
+$v_i(B_i \setminus \{c\}) = v_i(B_i) - v_i(c \mid B_i \setminus \{c\}) \le k + 1$.
+So, $v_i(B_j) \le (k+1)w_j/w_i$. Hence,
+\[ v_i([m]) \le \sum_{j=1}^n v_i(B_j) \le \frac{k+1}{w_i} - 1. \]
+Hence, $w_iv_i([m]) \le k+1 - w_i < k + 1$.
+
+Now we will show that $A$ is PROPx-fair to $i$.
+Note that $k \le v_i(A_i) < w_iv_i([m]) < k + 1$, so $v_i(A_i) = k$.
+If $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$,
+then $v_i(A_i \cup S) \ge k + 1 > w_iv_i([m])$.
+If $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$,
+then $v_i(A_i \setminus S) = v_i(A_i) - v_i(S \mid A_i \setminus S) \ge k + 1 > w_iv_i([m])$.
+Hence, $A$ is PROPx-fair to agent $i$.
 \end{proof}
 
 \subsection{Unit-Demand Valuations}
