@@ -505,6 +505,91 @@ Hence, $|X_i| \ge \WMMS_i$ for all $i$, so $X$ is WMMS.
 This proves that any M1S allocation is WMMS.
 \end{proof}
 
+\begin{lemma}
+\label{cex:gwmms-nimpl-prop1-m1s-ue-chores}
+Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
+where the entitlement vector is $w \defeq (9/16, 7/32, 7/32)$,
+the agents have identical additive valuations, and each chore has disutility 1.
+Let $X$ be an allocation. Then
+\begin{tightenum}
+\item $\APS_1 = -4$ and $\APS_2 = \APS_3 = -2$.
+\item $X$ is APS $\iff$ $X$ is PROP1.
+\item $\WMMS_1 = -5$ and $\WMMS_2 = \WMMS_3 = -35/18$.
+\item $X$ is WMMS $\iff$ $X$ is groupwise-WMMS $\iff$ $(|X_1| = 5$ and $|X_2| = |X_3| = 1)$.
+\item $X$ is EFX $\iff$ $X$ is M1S $\iff$ $(|X_1| = 3$ and $|X_2| = |X_3| = 2)$.
+\end{tightenum}
+Therefore,
+\begin{tightenum}
+\item PROP1+WMMS is infeasible for this instance.
+\item M1S+WMMS is infeasible for this instance.
+\item GWMMS doesn't imply PROP1 or M1S.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Note that $\floor{-x} = -\ceil{x}$ for all $x \in \mathbb{R}$.
+
+By \cref{thm:impl:tribool:aps}, $-\APS_1 = \ceil{\frac{9 \times 7}{16}} = 4$,
+and $-\APS_2 = -\APS_3 = \ceil{\frac{7 \times 7}{32}} = 2$.
+By \cref{thm:impl:tribool:aps,thm:impl:tribool:prop1},
+an allocation is APS iff it is PROP1.
+
+For any allocation $X$, define
+\[ f(X) \defeq \max_{j=1}^3 \frac{|X_j|}{w_j}. \]
+Then $-\WMMS_i = w_i\min_X f(X)$ for all $i \in [3]$.
+If $|X_1| \ge 6$, then $f(X) \ge 6/w_1 = 10 + 2/3$.
+If $|X_2| \ge 2$ or $|X_3| \ge 2$, then $f(X) \ge 2/w_2 = 9 + 1/7$.
+Otherwise, $|X_1| = 5$ and $|X_2| = |X_3| = 1$,
+so $f(X) = \max(5 \times 16/9, 1 \times 32/7) = 80/9 = 9 - 1/9$.
+Hence, $\min_X f(X) = 80/9$, so $-\WMMS_1 = 5$ and $-\WMMS_2 = -\WMMS_3 = 35/18 < 2$.
+Hence, an allocation $X$ is WMMS iff $|X_1| = 5$ and $|X_2| = |X_3| = 1$.
+
+Any GWMMS allocation is also WMMS by definition. We now prove the converse.
+Let $A$ be a WMMS allocation. For every possible value of $S \subseteq [3]$,
+we show that $(\Icalhat, \Ahat) \defeq \restrict(\Ical, A, S)$ is WMMS
+(c.f.~\cref{defn:restricting}).
+\begin{tightenum}
+\item $S = \{1, 2\}$:
+    $\Icalhat$ has 6 chores and entitlement vector $\what \defeq (18/25, 7/25)$.
+    Let $X$ be an allocation for $\Icalhat$.
+    Let $\fhat(X) \defeq \max_{j=1}^2 |X_j|/\what_j$.
+    If $|X_1| \ge 6$, then $\fhat(X) \ge 6/\what_1 = 25/3 = 8 + 1/3$.
+    If $|X_2| \ge 2$, then $\fhat(X) \ge 2/\what_2 = 50/7 = 7 + 1/7$.
+    Otherwise, $|X_1| = 5$ and $|X_2| = 1$, so
+    $\fhat(X) = \max(5/\what_1, 1/\what_2) = 125/18 = 7 - 1/18$.
+    Hence, $-\WMMS_1 = 5$ and $-\WMMS_2 = 35/18 < 2$.
+    Hence, $\Ahat$ is WMMS for $\Icalhat$.
+\item $S = \{1, 3\}$:
+    Similar to the $S = \{1, 2\}$ case.
+\item $S = \{2, 3\}$:
+    $\Icalhat$ has 2 chores and entitlement vector $(1/2, 1/2)$.
+    Then $-\WMMS_1 = -\WMMS_2 = 1$.
+    Hence, $\Ahat$ is WMMS for $\Icalhat$.
+\end{tightenum}
+Hence, $A$ is GWMMS.
+
+Suppose $X$ is M1S. Let $A$ be agent 1's M1S certificate.
+Then $|X_1| \le |A_1|$ and $A$ is EF1-fair to agent 1.
+Suppose $|A_1| \ge 4$. Then $|A_2| \le 1$ or $|A_3| \le 1$. \WLoG{}, let $|A_2| \le 1$. Then
+\[ \frac{|A_1|-1}{w_1} \ge \frac{3}{w_1} = 5 + \frac{1}{3} > 5 - \frac{3}{7} = \frac{1}{w_2} \ge \frac{|A_2|}{w_2}. \]
+Hence, agent 1 EF1-envies agent 2, which is a contradiction.
+Hence, $|X_1| \le |A_1| \le 3$.
+
+Let $B$ be agent 3's M1S certificate.
+Then $|X_3| \le |B_3|$ and $B$ is EF1-fair to agent 3.
+Suppose $|B_3| \ge 3$. If $|B_2| \le 1$, then agent 3 EF1-envies agent 2, so $|B_2| \ge 2$.
+Hence, $|B_1| \le 2$. Then
+\[ \frac{|B_3|-1}{w_3} \ge \frac{2}{w_3} = 9 + \frac{1}{7} > 4 - \frac{4}{9} = \frac{2}{w_1} \ge \frac{|B_1|}{w_1}. \]
+Hence, agent 3 EF1-envies agent 2, which is a contradiction.
+Hence, $|X_3| \le |B_3| \le 2$.
+We can similarly prove that $|X_2| \le 2$.
+
+Hence, if $X$ is M1S, then $|X_1| = 3$ and $|X_2| = |X_3| = 2$. Moreover,
+\[ \frac{|X_1|-1}{w_1} = 4 - \frac{4}{9} < 9 + \frac{1}{7} = \frac{|X_2|}{w_2} = \frac{|X_3|}{w_3}, \]
+\[ \frac{|X_3|-1}{w_3} = \frac{|X_2|-1}{w_2} = 5 - \frac{3}{7} < 5 + \frac{1}{3} = \frac{|X_1|}{w_1}. \]
+Hence, $X$ is EFX. Also, for additive valuations, EFX implies M1S by \cref{thm:impl:efx-to-ef1}.
+Hence, $X$ is EFX iff $X$ is M1S.
+\end{proof}
+
 \cite{chakraborty2021weighted} also proves that EF1+PROP1 allocations may not exist for unequal entitlements,
 We use a different counterexample in \cref{cex:prop1-plus-m1s-ue},
 which allows us to also prove other non-implications.
