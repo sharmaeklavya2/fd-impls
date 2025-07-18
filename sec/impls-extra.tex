@@ -1070,12 +1070,12 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
 \small
 \begin{tabular}{cccHcccc}
 \toprule & \footnotesize valuations & \footnotesize marginals & \footnotesize identical & \footnotesize $n=2$ & \footnotesize entitlements & &
-\\\midrule EF1 $\fimplies$ EFX & additive & $\{-1, 0, 1\}$
-    & -- & -- & -- & -- & trivial
-\\[\defaultaddspace] EEF1 $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
-    & -- & -- & -- & -- & trivial
-\\[\defaultaddspace] M1S $\fimplies$ MXS & additive & $\{-1, 0, 1\}$
-    & -- & -- & -- & -- & trivial
+\\\midrule EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
+    & additive & $\{-1, 0, 1\}$ & -- & -- & equal & -- & trivial
+\\[\defaultaddspace] EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
+    & additive & $\{0, 1\}$ & -- & -- & -- & -- & trivial
+\\[\defaultaddspace] EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
+    & additive & $\{-1, 0\}$ & -- & -- & -- & -- & trivial
 \\[\defaultaddspace] PROP1 $\fimplies$ PROPx & -- & $\{-1, 0, 1\}$
     & -- & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & \textbf{new}
 %
@@ -1097,11 +1097,7 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
 \\[\defaultaddspace] EF1 $\fimplies$ GAPS & additive & $\{-1, 0\}$
     & -- & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
 %
-\\\midrule MMS $\fimplies$ APS
-    & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & \cite{kulkarni2024approximating}
-\\[\defaultaddspace] PMMS $\fimplies$ PAPS
-    & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & \cite{kulkarni2024approximating}
-\\[\defaultaddspace] GMMS $\fimplies$ GAPS
+\\\midrule MMS $\fimplies$ APS\textsuperscript{\ref{foot:pg2}}
     & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & \cite{kulkarni2024approximating}
 \\[\defaultaddspace] PROPm $\fimplies$ PROPavg
     & -- & $\{-1, 0, 1\}$ & -- & -- & -- & \cref{thm:impl:propm-to-propavg-propx-binary-subadd} & \textbf{new}
@@ -1114,6 +1110,13 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
     & subadditive & $\{0, 1\}$ & -- & $n=2$ & -- & \cref{thm:impl:m1s-to-propx-binary-subadd} & \textbf{new}
 \\ \bottomrule
 \end{tabular}
+
+\begin{tightenum}
+\item[*] \label{foot:epistemic-also}EEF1 $\fimplies$ EEFX and M1S $\fimplies$ MXS
+    also hold for the same conditions.
+\item[\textdagger] \label{foot:pg2}PMMS $\fimplies$ PAPS and GMMS $\fimplies$ GAPS
+    also hold for the same conditions.
+\end{tightenum}
 \end{table*}
 
 \begin{lemma}[PROP1 $\fimplies$ PROPx]
