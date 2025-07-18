@@ -1,0 +1,429 @@
+\section{Details of Non-Implications (Non-Additive Valuations)}
+\label{sec:cex-nonadd-extra}
+
+\input{sec/cex-nonadd.tex}
+
+\subsection{Supermodular Valuations}
+\label{sec:cex-extra:supmod}
+
+\begin{lemma}[EF+GAPS $\nfimplies$ PROP1]
+\label{cex:ef-not-prop-supmod}
+Let $0 \le \eps < 1/27$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
+\[ f(x) \defeq x\eps + \begin{cases}
+0 & \textrm{ if } x \le k
+\\ x-k & \textrm{ if } x > k
+\end{cases}. \]
+Consider a fair division instance with $n$ equally-entitled agents
+having an identical valuation function $v$ over $4n$ goods,
+where $v(X) = f(|X|)$ for all $X \subseteq [4n]$. Then $v$ is supermodular.
+
+Let $A$ be the allocation where each agent gets 4 goods. Then $A$ is EF+GAPS+GMMS.
+If $k = 5$, then no PROP1 or PROPm allocation exists.
+If $n \ge 3$ and $k = 8$, then $A$ is PPROP but no PROP1 or PROPx allocation exists.
+Additionally if $\eps = 0$, then $A$ is PROPavg.
+\end{lemma}
+\begin{proof}
+For any $X \subseteq [4n]$ and $g \in [4n] \setminus X$, we have
+\[ v(g \mid X) = \begin{cases}
+\eps & \textrm{ if } |X| \le k
+\\ 1 + \eps & \textrm{ if } |X| \ge k
+\end{cases}. \]
+Since $v(g \mid X)$ is non-decreasing in $|X|$, $v$ is supermodular.
+
+Since all agents have the same bundle, $A$ is EF and GMMS.
+Set the price of each good to 1 to get that $A$ is GAPS.
+
+The proportional share is $4-k/n+4\eps$.
+For $k = 5$, the proportional share is at least $3/2$,
+but $f(5) = 5\eps$ and $f(6) = 1+6\eps < 3/2$.
+In any allocation, some agent will have at most 4 goods,
+and that agent would not be PROP1 or PROPm satisfied.
+
+If $n \ge 3$ and $k = 8$, then the proportional share is at least $4/3$.
+Since $f(8) = 8\eps$ and $f(4) = 4\eps$, $A$ is pairwise PROP.
+In any allocation, some agent gets at most 4 goods,
+and $f(5) = 5\eps < 4/3$, so that agent is not PROP1-satisfied,
+and $f(9) = 1 + 9\eps < 4/3$, so that agent is not PROPx-satisfied.
+Additionally, if $\eps = 0$, for any two agents $i$ and $j$,
+we have $v(A_j \mid A_i) = f(8) - f(4) = 0$. Hence, $A$ is PROPavg.
+\end{proof}
+
+\subsection{Unit-Demand Valuations}
+\label{sec:cex-extra:unit-demand}
+
+It is known that unit-demand functions are submodular and cancelable.
+We first show how to perturb a unit-demand function such that
+submodularity and cancelability remain preserved and all marginals become positive.
+
+\begin{lemma}
+\label{thm:ud-perturb}
+Let $u: 2^{[m]} \to \mathbb{R}_{\ge 0}$ be a function and $\eps \in \mathbb{R}_{\ge 0}$.
+For any $X \subseteq [m]$, define $\uhat(X) \defeq u(X) + |X|\eps$.
+If $u$ is submodular, then $\uhat$ is also submodular.
+If $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
+\end{lemma}
+\begin{proof}
+If $u$ is submodular, then for any $S, T \subseteq [m]$, we get
+\[ \uhat(S) + \uhat(T) - \uhat(S \cup T) - \uhat(S \cap T)
+= u(S) + u(T) - u(S \cup T) - u(S \cap T) \ge 0. \]
+Hence, $\uhat$ is also submodular.
+
+Let $u$ be cancelable.
+For every $T \subseteq [m]$ and $S_1, S_2 \subseteq [m] \setminus T$,
+if $\uhat(S_1 \cup T) > \uhat(S_2 \cup T)$,
+we need to show that $\uhat(S_1) > \uhat(S_2)$
+to prove that $\uhat$ is cancelable.
+This is trivial when $T = \emptyset$ or $\eps = 0$.
+
+If $|S_1| = |S_2|$, then $u(S_1 \cup T) > u(S_2 \cup T)$.
+Since $u$ is cancelable, we get $u(S_1) > u(S_2)$, which implies $\uhat(S_1) > \uhat(S_2)$.
+
+Let $\eps > 0$. If $S_1 = \emptyset$, we get
+$\uhat(S_1 \cup T) > \uhat(S_2 \cup T) \implies u(S_2 \mid T) < - |S_2|\eps$,
+which is a contradition since $u$ is non-negative. Hence, $S_1 \neq \emptyset$.
+If $S_2 = \emptyset$, we get $\uhat(S_1) \ge |S_1|\eps > 0 = \uhat(S_2)$.
+When $m \le 3$, we have considered all cases.
+Hence, if $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
+\end{proof}
+
+\begin{lemma}[PROP $\nfimplies$ M1S]
+\label{cex:prop-not-m1s-unit-demand}
+Consider a unit-demand function $v$ over 3 goods such that $v(1) = v(2) = 4$ and $v(3) = 3$.
+Let $0 \le \eps < 1/6$ and $\vhat(X) \defeq v(X) + 2|X|\eps$ for all $X \subseteq [3]$.
+Consider a fair division instance with 3 goods and
+2 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A = (\{1, 2\}, \{3\})$ is PROP but not M1S.
+\end{lemma}
+\begin{proof}
+$A$ is PROP since $\vhat(A_1) = 4+4\eps$, $\vhat(A_2) = 3+2\eps$, and the PROP share is $2+3\eps$.
+Suppose $A$ is M1S and agent 2's M1S certificate for $A$ is $B$.
+$B_2 \neq \emptyset$, since $B$ is EF1-fair to agent 2.
+Moreover, $\vhat(B_2) \le \vhat(A_2) = 3 + 2\eps$, so $B_2 = \{3\}$. Hence, $B_1 = \{1, 2\}$.
+However, $\min_{g \in B_1} \vhat(B_1 \setminus \{g\}) = 4 + 4\eps > 3 + 2\eps = \vhat(B_2)$.
+Hence, agent 2 is not EF1-satisfied by $B$, which contradicts the fact that $B$
+is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
+\end{proof}
+
+\begin{example}[PROP1 $\nfimplies$ PROPm]
+\label{cex:ud:prop1-not-propm}
+Consider a unit-demand function $v$ over 2 goods such that $v(1) = 30$ and $v(2) = 10$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [2]$.
+Consider a fair division instance with 2 goods and
+2 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1, 2\}, \emptyset)$ is PROP1 but not PROPm.
+\end{example}
+
+\begin{example}[PROP $\nfimplies$ PPROP]
+\label{cex:ud:prop-not-pprop}
+Consider a unit-demand function $v$ over 3 goods such that $v(1) = 30$ and $v(2) = v(3) = 11$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [3]$.
+Consider a fair division instance with 3 goods and
+3 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1\}, \{2\}, \{3\})$ is PROP but no alloction is PPROP.
+\end{example}
+
+\begin{example}[MMS $\nfimplies$ EF1, PROPm]
+\label{cex:ud:mms-not-ef1-propm}
+Consider a unit-demand function $v$ over 5 goods such that
+$v(1) = 200$ and $v(2) = 30$ and $v(3) = v(4) = v(5) = 10$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [5]$.
+Consider a fair division instance with 5 goods and
+4 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1, 2\}, \{3\}, \{4\}, \{5\})$
+is MMS but not EF1 and not PROPm.
+(The maximin share is $10 + \eps$. The proportional share is $50 + (5/4)\eps$.)
+\end{example}
+
+\begin{example}[PROPm $\nfimplies$ PROPavg]
+\label{cex:ud:propm-not-propavg}
+Consider a unit-demand function $v$ over 3 goods such that
+$v(1) = 75$, $v(2) = 30$, and $v(3) = 10$.
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [3]$.
+Consider a fair division instance with 3 goods and
+3 equally-entitled agents having valuation function $\vhat$.
+Then the allocation $A \defeq (\{1, 3\}, \{2\}, \emptyset)$ is PROPm but not PROPavg.
+(The proportional share is $25+\eps$.)
+\end{example}
+
+\subsection{Submodular Valuations}
+\label{sec:cex-extra:submod}
+
+\begin{definition}[PMRF]
+\label{defn:pmrf}
+Let $P = (P_1, \ldots, P_k)$ be a partition of a finite set $M$.
+Define $\PMRF(P)$ as the function $f: 2^M \to [|M|]$ where
+$f(X) \defeq \sum_{i=1}^k \boolone(X \cap P_i \neq \emptyset)$.
+(Here $\boolone(C)$ is 1 if condition $C$ is true and 0 otherwise.)
+For any $\eps \in \mathbb{R}_{\ge 0}$, define $\PMRF_{+\eps}(P)$
+as the function $f$ where $f(X) = \PMRF(P)(X) + |X|\eps$.
+\end{definition}
+
+\begin{lemma}
+\label{thm:pmrf-submod}
+For any partition $P$ over a finite set $M$,
+$f \defeq \PMRF_{+\eps}(P)$ is submodular, and $f(g \mid X) \in \{\eps, 1+\eps\}$
+for any $X \subseteq M$ and $g \in M \setminus X$.
+\end{lemma}
+\begin{proof}[Proof sketch]
+$\PMRF(P)$ is the rank function of a partition matroid, and hence, is submodular.
+% TODO: prove.
+The submodularity of $f$ follows from \cref{thm:ud-perturb}.
+\end{proof}
+
+\begin{example}[EF $\nfimplies$ MMS]
+\label{cex:ef-not-mms-pmrf}
+Let $P \defeq (\{r_1, r_2\}, \{g_1, g_2\})$, $\eps \in \mathbb{R}_{\ge 0}$,
+and $v \defeq \PMRF_{+\eps}(P)$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $v$.
+Then the maximin share is at least $2 + 2\eps$,
+as exemplified by the partition $(\{r_1, g_1\}, \{r_2, g_2\})$.
+The allocation $P$ is EF but not MMS,
+since each agent's value for her own bundle is $1 + 2\eps$.
+\end{example}
+
+\begin{example}[EF1 $\nfimplies$ MXS]
+\label{cex:ef1-not-mxs-pmrf}
+Let $P \defeq (\{r_1, r_2\}, \{g_1, g_2\}, \{b\})$ and $v \defeq \PMRF(P)$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $v$.
+Then the allocation $A \defeq (\{r_1, r_2\}, \{g_1, g_2, b\})$ is EF1
+but agent 1 is not MXS-satisfied by $A$.
+\end{example}
+
+\begin{example}[MEFS $\nfimplies$ EF1]
+\label{cex:mefs-not-ef1-pmrf}
+Let $P \defeq (\{a\}, \{b\}, \{c\}, \{d\}, \{e_1, e_2\}, \{f_1, f_2\}, \{g_1, g_2\})$.
+Let $v \defeq \PMRF_{+\eps}(P)$ for $0 \le \eps \le 1/2$.
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $v$.
+Let $A \defeq (\{a, e_1, f_1, g_1\}, \{b, c, d, e_2, f_2, g_2\})$.
+Since $v(A_2) = 6 + 6\eps$ and $v(A_1) = 4 + 4\eps$,
+agent 2 is envy-free in $A$ but agent 1 is not EF1-satisfied by $A$.
+However, agent 1 is MEFS-satisfied by $A$, and her MEFS-certificate for $A$ is
+$B \defeq (\{a, b, c, d\}, \{e_1, e_2, f_1, f_2, g_1, g_2\})$,
+since $v(B_1) = v(A_1) = 4 + 4\eps$ and $v(B_2) = 3 + 6\eps$.
+\end{example}
+
+\begin{example}
+\label{cex:eef-not-ef1-pprop-pmrf}
+Let $M \defeq \{a_j\}_{j=1}^6 \cup \{b_j\}_{j=1}^6 \cup \{c_j\}_{j=1}^4$.
+Let $P$ be a partition of $M$ where $X \in P$ iff $X = \{a_j, b_j\}$ for some $j \in [6]$
+or $X = \{c_j\}$ for some $j \in [4]$.
+Let $v \defeq \PMRF_{+\eps}(P)$ for $0 \le \eps < 1/6$.
+Consider a fair division instance with 3 equally-entitled agents
+having identical valuation function $v$.
+
+Let $A \defeq (\{a_j\}_{j=1}^6, \{b_j\}_{j=1}^6, \{c_j\}_{j=1}^4)$.
+Then $v(A_1) = v(A_2) = 6(1+\eps)$ and $v(A_3) = 4(1+\eps)$.
+Then $A$ is not EF1 and not PPROP.
+But $A$ is EEF since agents 1 and 2 are envy-free,
+and agent 3's EEF-certificate is $B$ where
+$B_1 \defeq \{a_1, a_2, a_3, b_1, b_2, b_3\}$,
+$B_2 \defeq \{a_4, a_5, a_6, b_4, b_5, b_6\}$, and $B_3 = A_3$.
+Then $v(B_3) = 4(1+\eps)$ and $v(B_1) = v(B_2) = 3 + 6\eps < 4$.
+\end{example}
+
+\begin{example}[PROP $\nfimplies$ M1S]
+\label{cex:prop-not-m1s-uniform-matroid}
+Let $v: 2^{[10]} \to \mathbb{R}_{\ge 0}$ be a function defined as $v(X) \defeq \min(6, |X|)$.
+Then $v$ is submodular (since $v$ is the rank function of a uniform matroid)
+and $v$ has binary marginals (i.e., $v(g \mid X) \in \{0, 1\}$
+for all $X \subseteq [10]$ and $g \in [m] \setminus X$).
+Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$.
+
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $\vhat$.
+Then $A \defeq ([4], [10] \setminus [4])$ is PROP but agent 1 is not M1S-satisfied.
+\end{example}
+
+\begin{lemma}[MMS $\nfimplies$ APS for $n=2$, Remark 2 of \cite{babaioff2023fair}]
+\label{cex:mms-not-aps-n2-submod}
+Let $C \defeq \{\{1, 2, 3\}, \{1, 5, 6\}, \{2, 4, 6\}, \{3, 4, 5\}\}$.
+Let $v: 2^{[6]} \to \mathbb{R}_{\ge 0}$ be a function defined as
+\[ v(X) \defeq \begin{cases}
+0 & \text{ if } X = \emptyset
+\\ 2 & \text{ if } |X| = 1
+\\ 4 & \text{ if } |X| = 2
+\\ 5 & \text{ if } |X| = 3 \text{ and } X \not\in C
+\\ 6 & \text{ if } X \in C \text{ or } |X| \ge 4
+\end{cases}. \]
+Let $0 \le \eps < 1/3$ and define $\vhat$ as $\vhat(X) \defeq v(X) + |X|\eps$.
+Then $\vhat$ is submodular.
+
+Consider a fair division instance with 2 equally-entitled agents
+having identical valuation function $\vhat$.
+The maximin share is $5 + 3\eps$, but the APS is $6 + 3\eps$.
+Moreover, there exists an MMS allocation but no allocation is APS.
+\end{lemma}
+\begin{proof}
+For any $X \subseteq [6]$, and $g \in [6] \setminus X$, we have
+\begin{tightenum}
+\item $|X| \le 1 \implies \vhat(g \mid X) = 2 + \eps$.
+\item $|X| = 2 \implies \vhat(g \mid X) \in \{1 + \eps, 2 + \eps\}$.
+\item $|X| = 3 \implies \vhat(g \mid X) \in \{\eps, 1 + \eps\}$.
+\item $|X| = 4 \implies \vhat(g \mid X) = \eps$.
+\end{tightenum}
+Hence, $\vhat(g \mid X)$ decreases with $|X|$, so $\vhat$ is submodular.
+
+The MMS is less than 6 because for every set in $C$,
+its complement is not in $C$.
+The APS is $6 + 3\eps$ by the dual definition of APS (\cref{defn:aps-dual}),
+by setting $x_S = 1/4$ when $S \in C$.
+
+For identical valuations, an MMS allocation always exists.
+For identical valuations, in any allocation, some agent gets a bundle of value at most the MMS.
+Since the APS is strictly greater than the MMS, that agent is not APS-satisfied.
+Hence, no allocation is APS.
+\end{proof}
+
+\subsection{Subadditive Valuations}
+\label{sec:cex-extra:subadd}
+
+\begin{lemma}
+\label{thm:floor-ceil-value}
+For any $k \in \mathbb{N}$, define the set functions $f_1, f_2: 2^{[m]} \to \mathbb{R}$ as
+$f_1(S) = \floor{|S|/k}$ and $f_2(S) = \ceil{|S|/k}$, respectively.
+Then $f_1$ is superadditive, $f_2$ is subadditive,
+and for any $S \subseteq [m]$, $g \in [m] \setminus S$, and $i \in [2]$,
+we have $f_i(g \mid S) \in \{0, 1\}$.
+\end{lemma}
+
+\begin{example}
+\label{cex:gaps-not-ef1-prop1-subadd}
+Let $([2], [9], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance where
+$v_i(S) \defeq \ceil{|S|/4}$ for all $i \in [2]$ and $S \subseteq [9]$.
+Then $v_i$ is subaditive for $i \in [2]$ by \cref{thm:floor-ceil-value}.
+Let $A$ be an allocation where agent 1 has 3 goods and agent 2 has 6 goods.
+Then $A$ is GAPS+EFX+PROPx but not EF1 or PROP1.
+
+Each agent's APS is $\le 1$, because if we price each good at $1/9$,
+then a bundle is affordable iff its value is at most 1.
+Each agent's proportional share is $3/2$.
+Note that $A$ is not \EFXZero{} (c.f.~\cref{defn:efx0-goods});
+the difference between EFX and \EFXZero{} is crucial here.
+\end{example}
+
+\begin{example}
+\label{cex:ef1-not-prop1-subadd}
+Let $([2], [7], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance where
+$v_i(S) \defeq \ceil{|S|/4}$ for all $i \in [2]$ and $S \subseteq [7]$.
+Then $v_i$ is subaditive for $i \in [2]$ by \cref{thm:floor-ceil-value}.
+Let $A$ be an allocation where agent 1 has 2 goods and agent 2 has 5 goods.
+Then $A$ is GAPS+EF1 but not PROP1.
+(Note that in our definition of PROP1 (c.f.~\cref{defn:prop1}), we require
+$v_i(A_i \cup \{g\}) > v_i([m])/2$ for some $g \in [m] \setminus A_i$,
+not just $v_i(A_i \cup \{g\}) \ge v_i([m])/2$.
+This nuance is crucial to this counterexample.)
+\end{example}
+
+\begin{lemma}[optimal bin packing is subadditive]
+\label{thm:bin-packing}
+Let $(s_j)_{j=1}^m$ be a sequence where $0 \le s_j \le 1$ for all $j \in [m]$
+($s_j$ is called the \emph{size} of item $j$).
+For any $X \subseteq [m]$, define $\optBP_s(X)$ as the smallest integer $k$
+such that a partition $(P_1, \ldots, P_k)$ of $X$ exists
+such that $\sum_{j \in P_i} s_j \le 1$ for all $i \in [k]$.
+Then $\optBP_s$ is subadditive and has binary marginals,
+i.e., $\optBP_s(X \cup \{g\}) - \optBP_s(X) \in \{0, 1\}$.
+\end{lemma}
+\begin{proof}
+Pick any two disjoint sets $X, Y \subseteq [m]$.
+Let $k_X \defeq \optBP_s(X)$ and $k_Y \defeq \optBP_s(Y)$.
+Let $(P_1, \ldots, P_{k_X})$ and $(Q_1, \ldots, Q_{k_Y})$ be the corresponding partitions.
+Then $(P_1, \ldots, P_{k_X}, Q_1, \ldots, Q_{k_Y})$ is a feasible partition of $X \cup Y$,
+so $\optBP_s(X \cup Y) \le k_X + k_Y$.
+\end{proof}
+
+\begin{example}
+\label{cex:gaps-not-prop1-subadd}
+Let $s = (1/5, 1/5, 3/5, 3/5, 3/5, 3/5)$. Let $0 \le \eps < 1/3$.
+Consider a fair division instance with 3 equally-entitled agents
+having an identical valuation function $v$ over 6 goods.
+$v(X) \defeq \optBP_s(X) + |X|\eps$
+($\optBP_s$ is defined in \cref{thm:bin-packing}).
+Then by \cref{thm:bin-packing}, $v$ is subadditive,
+and for every $X \subseteq [6]$ and $g \in [6] \setminus X$,
+we have $v(g \mid X) \in \{\eps, 1+\eps\}$.
+
+Then allocation $A = (\{1, 2\}, \{3, 4\}, \{5, 6\})$ is EFX, pairwise PROP, and groupwise APS
+(set the price of the first two goods to $1/2$ and the last four goods to 1).
+However, agent 1 is not PROP1-satisfied in $A$, since $v([6]) = 4 + 6\eps$,
+and $v(A_1 \cup \{g\}) = 1 + 3\eps$ for all $g \in [6] \setminus A_1$
+
+(Note that unlike \cref{cex:ef1-not-prop1-subadd}, this example
+works even for the weaker definition of PROP1.)
+\end{example}
+
+\begin{lemma}[PAPS+PPROP $\nfimplies$ PROPm or M1S for binary subadd]
+\label{cex:paps-pprop-not-propm-binary-subadd}
+Let $A_1$, $A_2$, and $A_3$ be pairwise-disjoint sets where
+$A_1$ contains 7 goods of size $0.6$, $A_2$ contains 21 goods of size $0.4$,
+and $A_3$ contains 21 goods of size $0.4$. Let $M \defeq A_1 \cup A_2 \cup A_3$.
+Let $v(X) \defeq \optBP(X)$ for all $X \subseteq M$.
+Consider a fair division instance with 3 equally-entitled agents
+having the same valuation function $v$ over $M$.
+Then allocation $A \defeq (A_1, A_2, A_3)$ is EFX+PPROP+PAPS,
+but $A$ is not PROPm-fair or M1S-fair to agent 1.
+\end{lemma}
+\begin{proof}
+First, we show that $v(S) = \max(|S \cap A_1|, \ceil{|S|/2})$ for any $S \subseteq M$.
+To see this, suppose $S$ contains $a$ items of size $0.6$ and $b$ items of size $0.4$.
+If $b \le a$, we require $a$ to pack the items and $\ceil{(a+b)/2} \le a$.
+If $b \ge a$, then we require $\ceil{(a+b)/2}$ bins to pack the items and $a \le (a+b)/2$.
+As a corollary, we get that for all $S \subseteq M \setminus A_1$,
+we have $v(S \mid A_1) = \max(0, \ceil{(|S|-|A_1|)/2})$.
+
+$v(A_2) = v(A_3) = 11$ and $v(A_1) = 7$, so agents 2 and 3 are envy-free.
+For any $S \subseteq A_2$, $v(S \mid A_1) > 0 \iff |S| \ge 8$,
+and $|S| \ge 8 \implies |A_2 \setminus S| \le 13 \implies v(A_2 \setminus S) \le 7 = v(A_1)$.
+Hence, agent 1 doesn't EFX-envy agent 2. Similarly, she doesn't EFX-envy agent 3.
+Hence, $A$ is EFX.
+
+$v(A_2 \cup A_3) = 21$, and $v(A_1 \cup A_2) = v(A_1 \cup A_3) = 14$.
+Hence, $A$ is pairwise PROP. We will now show that $A$ is pairwise APS.
+Set the price of each item to 1.
+It's easy to see that the allocation restricted to agents 2 and 3 is APS.
+Now suppose we restrict the allocation to agents 1 and 2.
+Then $S \subseteq A_1 \cup A_2$ is affordable iff $|S| \le |A_1 \cup A_2|/2 = 14$.
+For $|S| = 14$, we get $v(S) = 7$, so the APS is at most 7.
+Hence, $A$ is pairwise APS satisfied.
+
+$v(M)/3 = 25/3 = 8 + 1/3$.
+For $S \subseteq A_2$ such that $|S| = 8$, we get that $v(S \mid A_1) = 1$,
+but $v(A_1 \cup S) = 8 < v(M)/3$. Hence, $A$ is not PROPm-fair to agent 1.
+Also, $v(A_1 \cup \{g\}) = v(A_1) = 7$ for all $g \in M \setminus A_1$,
+so $A$ is also not PROP1-fair to $A$.
+
+Suppose $A$ is M1S-fair to agent 1. Let $B$ be her M1S-certificate for $A$.
+Then $v(B_1) \le v(A_1) = 7$ and $B$ is EF1-fair to agent 1.
+$v(B_1) \le 7$ implies $|B_1| \le 14$. Since $|M| = 49$, we get that
+$\max(|B_2|, |B_3|) \ge \ceil{|M - B_1|/2} \ge 18$.
+Hence, some agent $i \in \{2, 3\}$ has a bundle of value at least $9$.
+If one good is removed from their bundle, its value can drop by at most $8$,
+so $B$ is not EF1-fair to agent 1, which is a contradiction.
+Hence, $A$ is not M1S-fair to agent 1.
+\end{proof}
+
+\begin{lemma}[GMMS $\nfimplies$ APS]
+\label{cex:gmms-not-aps-binary-subadd}
+Let there be 15 items of sizes
+$65/96$, $31/96$, $31/96$, $31/96$, $23/96$, $23/96$, $23/96$, $17/96$,
+$11/96$, $7/96$, $7/96$, $7/96$, $5/96$, $5/96$, $5/96$.
+Consider a fair division instance with 3 equally-entitled agents having
+the same valuation function $v \defeq \optBP_s$ over the 15 items (c.f.~\cref{thm:bin-packing}).
+Then $v$ is subadditive and has binary marginals.
+Also, the AnyPrice share is at least 2, but the maximin share is 1.
+Hence, no APS allocation exists, but the leximin allocation is GMMS.
+\end{lemma}
+\begin{proof}
+The total size of the items is $3 \times 97/96$.
+By Lemma C.1 of \cite{babaioff2023fair}, no $3$-partition of the items exists
+such that the total size of each partition is at least $97/96$.
+Hence, in every 3-partition $M$, some bundle has total size at most 1, so that bundle has value at most 1.
+So, the maximin share is 1.
+
+By Lemma C.1 of \cite{babaioff2023fair}, there exist 6 sets $(S_j)_{j=1}^6$ of items
+such that each set has total size $97/96$ (and hence value 2) and each item appears in exactly two sets.
+Hence, the APS is at least 2 (c.f.~\cref{defn:aps-dual}).
+\end{proof}

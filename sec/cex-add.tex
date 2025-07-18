@@ -1,7 +1,7 @@
 \begin{table*}[!htb]
 \centering
-\caption{Non-implications among fairness notions.}
-\label{table:non-impls}
+\caption{Non-implications among fairness notions (additive valuations).}
+\label{table:cex-add}
 \footnotesize
 \begin{tabular}{cccccccc}
 \toprule & \tiny valuation & \tiny marginals & \tiny identical & \tiny $n$ & \tiny entitlements & &
@@ -72,71 +72,11 @@
     & additive & $-1$ & yes & $n=3$ & unequal & \cref{cex:gwmms-nimpl-prop1-m1s-ue-chores} & \textbf{new}
 \\[\defaultaddspace] PROP $\nfimplies$ M1S
     & additive & $\le 0$ bival & no & $n=3$ & unequal & \cref{cex:prop-not-m1s-chores} & \textbf{new}
-%
-\\\midrule \hfill\makecell[l]{EF+GAPS $\nfimplies$ \\ PROP1 or PROPm}\hfill
-    & supermod & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n \ge 2$ & equal & \cref{cex:ef-not-prop-supmod} & trivial
-\\[\defaultaddspace] PPROP $\nfimplies$ PROP1
-    & supermod & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n \ge 3$ & equal & \cref{cex:ef-not-prop-supmod} & trivial
-%
-\\\midrule PROP $\nfimplies$ M1S\textsuperscript{\ref{foot:unit-dem}}
-    & unit-dem & $\ge 0$ & yes & $n=2$ & equal
-    & \cref{cex:prop-not-m1s-unit-demand} & \textbf{new}
-\\[\defaultaddspace] PROP1 $\nfimplies$ PROPm\textsuperscript{\ref{foot:unit-dem}}
-    & unit-dem & $\ge 0$ & yes & $n=2$ & equal
-    & \cref{cex:ud:prop1-not-propm} & \textbf{new}
-\\[\defaultaddspace] PROP $\nfimplies$ PPROP\textsuperscript{\ref{foot:unit-dem}}
-    & unit-dem & $\ge 0$ & yes & $n=3$ & equal
-    & \cref{cex:ud:prop-not-pprop} & \textbf{new}
-\\[\defaultaddspace] PROPm $\nfimplies$ PROPavg\textsuperscript{\ref{foot:unit-dem}}
-    & unit-dem & $\ge 0$ & yes & $n=3$ & equal
-    & \cref{cex:ud:propm-not-propavg} & \textbf{new}
-\\[\defaultaddspace] GAPS $\nfimplies$ PROPx
-    & unit-dem & $\ge 0$ & yes & $n=3$ & equal & \cref{cex:gaps-not-propx} & \textbf{new}
-\\[\defaultaddspace] MMS $\nfimplies$ EF1 or PROPm
-    & unit-dem & $\ge 0$ & yes & $n=4$ & equal
-    & \cref{cex:ud:mms-not-ef1-propm} & \textbf{new}
-%
-\\\midrule EF $\nfimplies$ MMS
-    & submod & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n=2$ & equal & \cref{cex:ef-not-mms-pmrf} & folklore
-\\[\defaultaddspace] EEF $\nfimplies$ EF1 or PPROP
-    & submod & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n=3$ & equal & \cref{cex:eef-not-ef1-pprop-pmrf} & \textbf{new}
-\\[\defaultaddspace] MEFS $\nfimplies$ EF1
-    & submod & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n=2$ & equal & \cref{cex:mefs-not-ef1-pmrf} & \textbf{new}
-\\[\defaultaddspace] PROP $\nfimplies$ M1S
-    & submod & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n=2$ & equal & \cref{cex:prop-not-m1s-uniform-matroid} & \textbf{new}
-\\[\defaultaddspace] MMS $\nfimplies$ APS
-    & submod & $> 0$ & yes & $n=2$ & equal & \cref{cex:mms-not-aps-n2-submod} & \cite{babaioff2023fair}
-\\[\defaultaddspace] GAPS+PPROP $\nfimplies$ PROP1
-    & subadd & $\ge 0$ bival\textsuperscript{\ref{foot:nonneg-bival}}
-    & yes & $n=3$ & equal & \cref{cex:gaps-not-prop1-subadd} & \textbf{new}
-%
-\\\midrule EF1 $\nfimplies$ MXS
-    & submod & $\{0, 1\}$ & yes & $n=2$ & equal & \cref{cex:ef1-not-mxs-pmrf} & \textbf{new}
-\\[\defaultaddspace] GAPS $\nfimplies$ PROP1 or EF1
-    & subadd & $\{0, 1\}$ & yes & $n=2$ & equal & \cref{cex:gaps-not-ef1-prop1-subadd} & \textbf{new}
-\\[\defaultaddspace] GAPS+EF1 $\nfimplies$ PROP1
-    & subadd & $\{0, 1\}$ & yes & $n=2$ & equal & \cref{cex:ef1-not-prop1-subadd} & \textbf{new}
-\\[\defaultaddspace] \hfill\makecell[l]{PAPS+PPROP \\ $\nfimplies$ PROPm or M1S}\hfill
-    & subadd & $\{0, 1\}$ & yes & $n=3$ & equal & \cref{cex:paps-pprop-not-propm-binary-subadd} & \textbf{new}
-\\[\defaultaddspace] GMMS $\nfimplies$ APS
-    & subadd & $\{0, 1\}$ & yes & $n=3$ & equal & \cref{cex:gmms-not-aps-binary-subadd} & \textbf{new}
-\\[\defaultaddspace] PROPavg $\nfimplies$ PROPx
-    & supermod & $\{0, 1\}$ & yes & $n \ge 3$ & equal & \cref{cex:ef-not-prop-supmod} & \textbf{new}
-\\ \bottomrule
+\\\bottomrule
 \end{tabular}
 
 \begin{tightenum}
 \item[*] \label{foot:pos-neg-bival}Result holds for both
     positive bivalued marginals and negative bivalued marginals.
-\item[\textdagger] \label{foot:unit-dem}Result also holds for
-    submodular cancelable valuations with positive marginals.
-\item[\textdaggerdbl] \label{foot:nonneg-bival}Result holds for both
-    $\{0, 1\}$ marginals and positive bivalued marginals.
 \end{tightenum}
 \end{table*}
