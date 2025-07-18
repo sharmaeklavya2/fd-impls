@@ -393,6 +393,16 @@ and agent 1's APS is at most $-12$ (price each item at its value).
 Hence, $A$ is APS but not PROPx-fair to agent 2.
 \end{proof}
 
+\begin{example}[WMMS and M1S are incompatible for chores]
+\label{cex:wmms-plus-m1s-chores}
+Let $([2], [2], (v, v), (0.9, 0.1))$ be a fair division instance, where $v(1) = v(2) = -1$.
+Then for all $i \in [2]$, we have
+\[ \frac{-\WMMS_i}{w_i} = \min_X \max\left(\frac{10|X_1|}{9}, 10|X_2|\right), \]
+so $-\WMMS_1 = 2$ and $-\WMMS_2 = 2/9$.
+Hence, allocation $X$ is WMMS iff $|X_2| = 0$.
+On the other hand, $X$ is M1S iff $|X_1| = |X_2| = 1$ iff $X$ is EFX.
+\end{example}
+
 \begin{lemma}[PROP1+M1S is infeasible for goods]
 \label{cex:prop1-plus-m1s-ue}
 Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
@@ -505,6 +515,10 @@ Hence, $|X_i| \ge \WMMS_i$ for all $i$, so $X$ is WMMS.
 This proves that any M1S allocation is WMMS.
 \end{proof}
 
+\cite{chakraborty2021weighted} also proves that EF1+PROP1 allocations may not exist for unequal entitlements,
+We use a different counterexample in \cref{cex:prop1-plus-m1s-ue},
+which allows us to also prove other non-implications.
+
 \begin{lemma}
 \label{cex:gwmms-nimpl-prop1-m1s-ue-chores}
 Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
@@ -590,9 +604,29 @@ Hence, $X$ is EFX. Also, for additive valuations, EFX implies M1S by \cref{thm:i
 Hence, $X$ is EFX iff $X$ is M1S.
 \end{proof}
 
-\cite{chakraborty2021weighted} also proves that EF1+PROP1 allocations may not exist for unequal entitlements,
-We use a different counterexample in \cref{cex:prop1-plus-m1s-ue},
-which allows us to also prove other non-implications.
+\begin{lemma}[PROP $\nfimplies$ M1S for chores]
+\label{cex:prop-not-m1s-chores}
+Let $([3], [7], (v_i)_{i=1}^3, w)$ be a fair division instance,
+where $w = (4/7, 3/14, 3/14)$ and $v$ is given by the following table:
+
+\begin{tabular}{cccccccc}
+\toprule $c$ & 1 & 2 & 3 & 4 & 5 & 6 & 7
+\\\midrule $-v_1(c)$ & 1 & 1 & 1 & 1 & 1 & 1 & 1
+\\ $-v_2(c) = -v_3(c)$ & 1 & 1 & 1 & 1 & 0 & 0 & 0
+\\\bottomrule
+\end{tabular}
+
+Let $A$ be an allocation where $A_1 = [4]$. Then $A$ is PROP but not M1S-fair to agent 1.
+\end{lemma}
+\begin{proof}
+Suppose $A$ is M1S-fair to agent 1.
+Let $X$ be agent 1's M1S certificate for $A$.
+Then $|X_1| \ge 4$, so $|X_2| \le 1$ or $|X_3| \le 1$. Hence,
+\[ \frac{|X_1|-1}{w_1} \ge \frac{3}{w_1} = 5 + \frac{1}{4} > 5 - \frac{1}{3}
+= \frac{1}{w_2} \ge \min\left(\frac{|X_2|}{w_2}, \frac{|X_3|}{w_3}\right). \]
+Hence, $X$ is not EF1-fair to agent 1, which is a contradiction.
+Hence, $A$ is not M1S-fair to agent 1.
+\end{proof}
 
 \subsection{Supermodular Valuations}
 \label{sec:cex-extra:supmod}
