@@ -415,7 +415,8 @@ Hence, $\dAPS_i \ge z \iff \pAPS_i \ge z$.
 \subsection{PROP1}
 \label{sec:notions:prop1}
 
-Our definition of PROP1 (\cref{defn:prop1}) uses strict inequalities, i.e.,
+We use the definition of PROP1 from \cite{feige2025low}.
+This definition (c.f.~\cref{defn:prop1}) uses strict inequalities, i.e.,
 $v_i(A_i \cup \{g\}) > w_iv_i([m])$ instead of $v_i(A_i \cup \{g\}) \ge w_iv_i([m])$,
 and $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ instead of $v_i(A_i \setminus \{c\}) \ge w_iv_i([m])$.
 This is different from the convention followed by most fair division papers.
@@ -423,9 +424,10 @@ This is different from the convention followed by most fair division papers.
 We define it this way to make it a slightly stronger notion.
 In particular, when the items are identical, the stricter notion aligns with the the intuitive idea
 that each agent must get at least $\floor{m/n}$ goods or at most $\ceil{m/n}$ chores.
-However, outside of the identical items case, this nuance doesn't affect our results.
-All implications, counterexamples, and (in)feasibility results
-hold for both the stronger and weaker definitions.
+However, outside of the identical items case, this nuance doesn't affect our results much.
+Almost all implications, counterexamples, and (in)feasibility results
+hold for both the stronger and weaker definitions,
+and we explicitly mention when they don't.
 
 We alter PROPx, PROPm, and PROPavg to also use strict inequalities.
 
