@@ -39,16 +39,6 @@ This is because if $F_1 \fimplies F_2$, then $F_1$+PO $\fimplies$ $F_2$+PO.
 On the other hand, most of our counterexamples use identical valuations,
 where every allocation is trivially PO.
 
-Some fairness notions and settings don't fit our model (\cref{sec:prelims}),
-so it is unclear how to systematically represent results about them
-and extend the inference engine (\cref{sec:cpig}) for them.
-Examples of such settings include constrained fair division
-\cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
-notions based on social graphs \cite{aziz2018knowledge},
-multiplicative approximations of fairness notions \cite{amanatidis2018comparing},
-and parametrized notions like $\mathrm{WEF}(x, y)$ \cite{chakraborty2024weighted}.
-Extending our techniques to these settings and notions would be an interesting line of research.
-
 We omitted some fairness notions from our work because
 they are fundamentally different from the notions we consider.
 Equitability (EQ) \cite{brams1996fair}, and its relaxations like EQ1 and EQX
@@ -62,3 +52,27 @@ or a mix of divisible and indivisible items \cite{liu2024mixed}.
 %(see \cref{table:impls1,table:cex-add,table:cex-nonadd,table:impls-tribool,table:impls-unit-demand}).
 Nevertheless, we believe that these notions and settings offer an interesting line of research,
 and our inference engine (\cref{sec:cpig}) can be readily adapted for them.
+
+Some fairness notions and settings don't fit our model (\cref{sec:prelims}),
+so it is unclear how to systematically represent results about them
+and extend the inference engine (\cref{sec:cpig}) for them.
+Examples of such settings include constrained fair division
+\cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
+notions based on social graphs \cite{aziz2018knowledge},
+parametrized notions like $\mathrm{WEF}(x, y)$ \cite{chakraborty2024weighted},
+and multiplicative approximations of fairness notions \cite{amanatidis2018comparing}.
+Specifically, studying multiplicative approximations presents the following challenges:
+\begin{tightenum}
+\item For all $\alpha \in (0,1]$, $\alpha$-EF1 implies $\alpha/(1+\alpha)$-PMMS,
+    and $\alpha$-PMMS implies $\alpha/(2-\alpha)$-EF1
+    (Propositions 3.8 and 4.6 in \cite{amanatidis2018comparing}).
+    It's unclear how to properly visually depict such results, since we can have
+    infinite chains like EF1 $\fimplies$ $1/2$-PMMS $\fimplies$ $1/3$-EF1 $\fimplies$ $1/4$-PMMS \ldots.
+\item To infer new implications using existing ones, we need to be able to
+    represent, compose, and evaluate arbitrary functions of approximation ratios.
+    For some results, such representation is non-trivial.
+    For example, MMS $\fimplies$ EEFX (\cref{thm:impl:mms-to-eefx}),
+    but $(1-\eps)$-MMS doesn't imply $\eps$-EEFX for $n=2$ and any $\eps > 0$
+    (Proposition 4.8 in \cite{amanatidis2018comparing}).
+\end{tightenum}
+Extending our techniques to these settings and notions would be an interesting line of research.
