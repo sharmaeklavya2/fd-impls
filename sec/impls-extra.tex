@@ -1063,13 +1063,13 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
 \begin{tabular}{cccHcccc}
 \toprule & \footnotesize valuations & \footnotesize marginals & \footnotesize identical & \footnotesize $n=2$ & \footnotesize entitlements & &
 \\\midrule EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
-    & additive & $\{-1, 0, 1\}$ & -- & -- & equal & -- & trivial
+    & additive & $\{-1, 0, 1\}$ & -- & -- & equal & \cref{thm:impl:tribool:ef1-to-efx} & trivial
 \\[\defaultaddspace] EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
-    & additive & $\{0, 1\}$ & -- & -- & -- & -- & trivial
+    & additive & $\{0, 1\}$ & -- & -- & -- & \cref{thm:impl:tribool:ef1-to-efx} & trivial
 \\[\defaultaddspace] EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
-    & additive & $\{-1, 0\}$ & -- & -- & -- & -- & trivial
+    & additive & $\{-1, 0\}$ & -- & -- & -- & \cref{thm:impl:tribool:ef1-to-efx} & trivial
 \\[\defaultaddspace] PROP1 $\fimplies$ PROPx & -- & $\{-1, 0, 1\}$
-    & -- & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & \textbf{new}
+    & -- & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & trivial
 %
 \\\midrule PROP $\fimplies$ EEF & additive & $\{-1, 0, 1\}$
     & -- & -- & equal & \cref{thm:impl:tribool:prop} & \textbf{new}
@@ -1112,6 +1112,54 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
     also hold for the same conditions.
 \end{tightenum}
 \end{table*}
+
+\begin{lemma}[EF1 $\fimplies$ EFX]
+\label{thm:impl:tribool:ef1-to-efx}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
+$v_i$ is additive for some agent $i$. If an allocation $A$ is EF1-fair to $i$,
+then it is also EFX-fair to $i$ if at least one of these conditions is satisfied:
+\begin{tightenum}
+\item agents have equal entitlements and $v_i$'s marginals are triboolean, i.e.,
+    $v_i(t \mid S) \in \{-1, 0, 1\}$ for all $S \subseteq [m]$ and $t \in [m] \setminus S$.
+\item $v_i$'s marginals are binary, i.e.,
+    $v_i(t \mid S) \in \{0, 1\}$ for all $S \subseteq [m]$ and $t \in [m] \setminus S$.
+\item $v_i$'s marginals are negative binary, i.e.,
+    $v_i(t \mid S) \in \{0, -1\}$ for all $S \subseteq [m]$ and $t \in [m] \setminus S$.
+\end{tightenum}
+\end{lemma}
+\begin{proof}
+Suppose agents have equal entitlements and $v_i$'s marginals are triboolean.
+Since $i$ is EF1-satisfied, for any other agent $j$, either $v_i(A_i) \ge v_i(A_j)$,
+or $v_i(A_i) \ge v_i(A_j \setminus \{g\})$ for some $g \in A_j$,
+or $v_i(A_i \setminus \{c\}) \ge v_i(A_j)$ for some $c \in A_i$.
+Hence, we get $v_i(A_i) \ge v_i(A_j) - 1$.
+For any $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$,
+we have $v_i(A_j \setminus S) = v_i(A_j) - v_i(S) \le v_i(A_j) - 1 \le v_i(A_i)$.
+For any $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$,
+we have $v_i(A_i \setminus S) = v_i(A_i) - v_i(S) \ge v_i(A_i) + 1 \ge v_i(A_j)$.
+Hence, $i$ doesn't EFX-envy $j$.
+Since this holds for every $j$, $A$ is EFX-fair to agent $i$.
+
+Suppose $v_i$'s marginals are binary.
+Since $i$ is EF1-satisfied, for any other agent $j$, either $v_i(A_i)/w_i \ge v_i(A_j)/w_j$,
+or for some $g \in A_j$, we have $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$,
+which implies $v_i(A_i)/w_i \ge (v_i(A_j) - 1)/w_j$.
+For any $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$, we have
+\[ \frac{v_i(A_j \setminus S)}{w_j} = \frac{v_i(A_j) - v_i(S)}{w_j}
+\le \frac{v_i(A_j) - 1}{w_j} \le \frac{v_i(A_i)}{w_i}. \]
+Hence, $i$ doesn't EFX-envy agent $j$.
+Since this holds for every $j$, $A$ is EFX-fair to agent $i$.
+
+Suppose $v_i$'s marginals are negative binary.
+Since $i$ is EF1-satisfied, for any other agent $j$, either $v_i(A_i)/w_i \ge v_i(A_j)/w_j$,
+or for some $c \in A_i$, we have $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$,
+which implies $(v_i(A_i) - 1)/w_i \ge v_i(A_j)/w_j$.
+For any $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$, we have
+\[ \frac{v_i(A_i \setminus S)}{w_i} = \frac{v_i(A_i) - v_i(S)}{w_i}
+\ge \frac{v_i(A_i) - 1}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
+Hence, $i$ doesn't EFX-envy agent $j$.
+Since this holds for every $j$, $A$ is EFX-fair to agent $i$.
+\end{proof}
 
 \begin{lemma}[PROP1 $\fimplies$ PROPx]
 \label{thm:impl:prop1-to-propx-tribool}
