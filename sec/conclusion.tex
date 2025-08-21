@@ -39,13 +39,15 @@ This is because if $F_1 \fimplies F_2$, then $F_1$+PO $\fimplies$ $F_2$+PO.
 On the other hand, most of our counterexamples use identical valuations,
 where every allocation is trivially PO.
 
-We did not consider fairness notions and settings that don't fit our model (\cref{sec:prelims}),
-like constrained fair division \cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
-or notions based on social graphs \cite{aziz2018knowledge}.
-We also did not consider multiplicative approximations
-of fairness notions \cite{amanatidis2018comparing},
-or parametrized notions like $\mathrm{WEF}(x, y)$ \cite{chakraborty2024weighted},
-since it is unclear how to extend the inference engine (\cref{sec:cpig}) for them.
+Some fairness notions and settings don't fit our model (\cref{sec:prelims}),
+so it is unclear how to systematically represent results about them
+and extend the inference engine (\cref{sec:cpig}) for them.
+Examples of such settings include constrained fair division
+\cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
+notions based on social graphs \cite{aziz2018knowledge},
+multiplicative approximations of fairness notions \cite{amanatidis2018comparing},
+and parametrized notions like $\mathrm{WEF}(x, y)$ \cite{chakraborty2024weighted}.
+Extending our techniques to these settings and notions would be an interesting line of research.
 
 We omitted some fairness notions from our work because
 they are fundamentally different from the notions we consider.
@@ -53,5 +55,10 @@ Equitability (EQ) \cite{brams1996fair}, and its relaxations like EQ1 and EQX
 \cite{amanatidis2023fair,gourves2014near}, compare different utility functions with each other.
 Notions like CEEI \cite{varian1974equity} and maximum Nash welfare \cite{caragiannis2019unreasonable}
 include an aspect of efficiency in addition to fairness.
-Nevertheless, we believe that studying relations between these notions
-is an interesting line of research, and we leave it as future work.
+We also didn't study fair division of divisible items \cite{steinhaus1940sur,stromquist1980how,varian1974equity},
+or a mix of divisible and indivisible items \cite{liu2024mixed}.
+%Another reason to not study these notions and settings was to limit the scope of our work,
+%since our results are already quite extensive,
+%(see \cref{table:impls1,table:cex-add,table:cex-nonadd,table:impls-tribool,table:impls-unit-demand}).
+Nevertheless, we believe that these notions and settings offer an interesting line of research,
+and our inference engine (\cref{sec:cpig}) can be readily adapted for them.
