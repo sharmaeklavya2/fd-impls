@@ -28,8 +28,8 @@ and EFX (envy-free up to any item) \cite{caragiannis2019unreasonable}.
 
 \begin{definition}[EF1]
 \label{defn:ef1}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+In $\Ical$, an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
 either $i$ does not envy $j$,
 or $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$ for some $g \in A_j$,
 or $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$ for some $c \in A_i$.
@@ -38,8 +38,8 @@ or $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$ for some $c \in A_i$.
 %\begin{restatable}[EFX]{definition}{rDefnEfx}
 \begin{definition}[EFX]
 \label{defn:efx}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-an allocation $A$ is EFX-fair to agent $i$ if for each $j \in [n] \setminus \{i\}$,
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+In $\Ical$, an allocation $A$ is EFX-fair to agent $i$ if for each $j \in [n] \setminus \{i\}$,
 either $i$ doesn't envy $j$, or both of the following hold:
 \begin{enumerate}
 \ifx\version\versionIjcai
@@ -65,22 +65,21 @@ either $i$ doesn't envy $j$, or both of the following hold:
 \end{enumerate}
 \end{definition}
 
-\Cref{defn:efx} looks very different from the original definition of EFX
-given by \cite{caragiannis2019unreasonable}.
-Moreover, an alternative definition of EFX, which we call \EFXZero,
-is studied in some works \cite{plaut2020almost,chaudhury2021little,chaudhury2024efx}.
-In \cref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense
-and why it is better than \EFXZero.
-We also show that it is equivalent to the original definition when
-valuations are submodular, and it is equivalent to \EFXZero{}
+\Cref{defn:efx} looks different from the original definition of EFX given by \cite{caragiannis2019unreasonable},
+and also differs from \EFXZero, an alternative definition of EFX studied by many papers
+\cite{plaut2020almost,chaudhury2021little,chaudhury2024efx}.
+However, we show that \cref{defn:efx} is equivalent to the original definition of EFX when
+valuations are submodular, and equivalent to \EFXZero{}
 when marginals are (strictly) positive or negative.
+Moreover, in \cref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense
+and why it is better than \EFXZero{} and the original definition of EFX.
 
 \subsection{Proportionality-Based Notions}
 
 \begin{definition}[PROP]
 \label{defn:prop}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-agent $i$'s \emph{proportional share} is $w_i \cdot v_i([m])$.
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+For $\Ical$, agent $i$'s \emph{proportional share} is $w_i \cdot v_i([m])$.
 Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_i \cdot v_i([m])$.
 \end{definition}
 
@@ -90,8 +89,8 @@ after taking some good or giving away some chore. See \cref{defn:prop1} for a fo
 
 \begin{definition}[PROP1 \cite{conitzer2017fair}]
 \label{defn:prop1}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-an allocation $A$ is PROP1-fair to agent $i$ if
+Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+In $\Ical$, an allocation $A$ is PROP1-fair to agent $i$ if
 either $v_i(A_i) \ge w_i \cdot v_i([m])$,
 or $v_i(A_i \cup \{g\}) > w_i \cdot v_i([m])$ for some $g \in [m] \setminus A_i$,
 or $v_i(A_i \setminus \{c\}) > w_i \cdot v_i([m])$ for some $c \in A_i$.
@@ -163,8 +162,8 @@ $v_i(A_i)$ is at least her minimum-$F$-share, defined as
 \[ \minFS(\Ical, F, i) \defeq \min_{X \in \Acal(\Ical, F, i)} v_i(X_i). \]
 \end{definition}
 
-We now describe pairwise fairness \cite{caragiannis2019unreasonable}
-and groupwise fairness \cite{barman2018groupwise}.
+We now describe pairwise \cite{caragiannis2019unreasonable}
+and groupwise \cite{barman2018groupwise} fairness.
 
 \begin{definition}[restricting, pairwise fairness, and groupwise fairness]
 \label{defn:restricting}

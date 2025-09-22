@@ -4,6 +4,8 @@ IJ_INAME = main-ijcai
 IJ_ONAME = fimp-ijcai
 NEUR_INAME = main-neurips
 NEUR_ONAME = fimp-neurips
+AAMAS_INAME = main-aamas
+AAMAS_ONAME = fimp-aamas
 TEX_OPTIONS = -cnf-line "max_print_line = 10000" -halt-on-error
 default:
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) $(INAME).tex
@@ -40,6 +42,17 @@ once-neurips-dark:
 	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{dark}\input{$(NEUR_INAME).tex}"
 once-neurips-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{light}\input{$(NEUR_INAME).tex}"
+aamas:
+	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
+	bibtex $(AAMAS_ONAME).aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
+	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
+once-aamas-sepia:
+	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{sepia}\input{$(AAMAS_INAME).tex}"
+once-aamas-dark:
+	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{dark}\input{$(AAMAS_INAME).tex}"
+once-aamas-light:
+	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{light}\input{$(AAMAS_INAME).tex}"
 arxiv:
 	mkdir -p arxiv
 	cp -r figs dags arxiv

@@ -25,6 +25,18 @@ We present two such examples:
     and PROP1 does not imply M1S for this simpler case (\cref{cex:prop1-not-m1s-n2}).
 \end{enumerate}
 
+\begin{figure}[htb]
+\centering
+\ifx\nCols\nColsOne
+\includegraphics[width=0.8\textwidth]{figs/cpigjs-ui3.pdf}
+\else
+\includegraphics[width=\columnwidth]{figs/cpigjs-ui5.pdf}
+\fi
+\caption[Screenshot from cpigjs]{
+Screenshot from the inference engine's web interface for fair division.}
+\label{fig:cpigjs}
+\end{figure}
+
 For each fair division setting that we query the engine with,
 it summarizes its inferred results as a directed acyclic graph (DAG).
 See \cref{fig:additive-nny,sec:dags} for examples of the program's output
@@ -37,20 +49,6 @@ Its source is available on Github \cite{cpigjsEku}.
 Its anonymized source is available on Github \cite{cpigjsAnony},
 and is also included as supplementary material.
 \fi
-
-\begin{figure}[htb]
-\centering
-\ifx\version\versionIjcai
-\includegraphics[width=0.96\linewidth]{figs/cpigjs-ui5.pdf}
-\else\ifx\version\versionNeurips
-\includegraphics[width=0.75\textwidth]{figs/cpigjs-ui3.pdf}
-\else
-\includegraphics[width=0.6\textwidth]{figs/cpigjs-ui4.pdf}
-\fi\fi
-\caption[Screenshot from cpigjs]{
-Screenshot from the inference engine's web interface for fair division.}
-\label{fig:cpigjs}
-\end{figure}
 
 Our program is not limited to just fair division.
 It can be used more broadly for \emph{conditional predicate implications}.
