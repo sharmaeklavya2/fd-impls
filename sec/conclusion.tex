@@ -2,11 +2,20 @@
 \label{sec:conclusion}
 
 We prove several implications and non-implications between fairness notions,
-and for additive valuations, we give an almost complete picture of implications.
+and for many settings, we give an almost complete picture of implications.
 We believe this would help inform further research in fair division.
 This would be especially useful if one wants to extend a fair division result
 to a stronger notion or a more general setting,
 or study a weaker notion or a simpler setting for a hard problem.
+
+Our framework can easily accommodate new fairness notions.
+One just needs to prove a few key implications and counterexamples, and the rest can be inferred.
+In fact, we originally started with only 18 fairness notions, and gradually expanded the list
+to 22 notions as we found out about them.
+When we added PROPavg \cite{kobayashi2025proportional}, for example, we only had to add the following 5 results:
+PROPx $\fimplies$ PROPavg, PROPavg $\fimplies$ PROPm, EFX $\fimplies$ PROPavg,
+PROPavg $\nfimplies$ PROPx, and PROPm $\nfimplies$ PROPavg.
+The inference engine inferred PROPavg's relationship to the remaining notions.
 
 \Cref{fig:additive-nny} shows us that the only notions whose feasibility is unknown are EFX and PMMS,
 and resolving their feasibility is one of fair division's most important problems.
