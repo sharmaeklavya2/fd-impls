@@ -5,7 +5,7 @@ We wrote a computer program, called the \emph{inference engine}.
 We initialize it with a list of implications and counterexamples (\cref{sec:summary:manual}),
 and then we repeatedly query it with a fair division setting.
 For each query, it infers additional implications and counterexamples
-using something like transitive closure.
+using a method similar to transitive closure.
 
 Although the inference procedure is simple, the engine can still make non-trivial inferences.
 We present two such examples:
@@ -76,7 +76,7 @@ $C$ is a set of \emph{conditional counterexamples}, i.e., a set of triples
 
 We repeatedly query the inference engine with a set $S \in \Fcal$,
 and it outputs all possible implications and counterexamples conditioned on $S$,
-even those that are not explicitly present in $I$ and $C$.
+even those not explicitly present in $I$ and $C$.
 
 The inference engine works in two steps.
 In step 1, we find all implications conditioned on $S$.
