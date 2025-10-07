@@ -27,12 +27,16 @@
 \input{macros.tex}
 \input{macros2.tex}
 
-\let\version\versionDefault
-\let\nCols\nColsOne
+\VersionDefaulttrue
+\ColsOnetrue
+%\Anonymoustrue
 \let\bigTableSize\footnotesize
 \let\tableHeadSize\tiny
 
 \title{Exploring Relations among Fairness Notions\texorpdfstring{\\}{ }in Discrete Fair Division}
+\ifAnonymous
+\author{\empty}
+\else
 \author{
 Jugal Garg%
 \thanks{Department of Industrial \& Enterprise Engineering, University of Illinois at Urbana-Champaign, USA}
@@ -41,7 +45,7 @@ Jugal Garg%
 Eklavya Sharma\footnotemark[1]
 \\ \texttt{\small eklavya2@illinois.edu}
 }
-%\author{\empty}
+\fi
 \date{\empty}
 
 \begin{document}

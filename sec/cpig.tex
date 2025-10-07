@@ -27,7 +27,7 @@ We present two such examples:
 
 \begin{figure}[htb]
 \centering
-\ifx\nCols\nColsOne
+\ifColsOne
 \includegraphics[width=0.8\textwidth]{figs/cpigjs-ui3.pdf}
 \else
 \includegraphics[width=\columnwidth]{figs/cpigjs-ui5.pdf}
@@ -43,10 +43,10 @@ See \cref{fig:additive-nny,sec:dags} for examples of the program's output
 for various important fair division settings.
 The program is implemented as a web application;
 see \cref{fig:cpigjs} for the program's screenshot.
-\ifx\version\versionDefault
-Its source is available on Github \cite{cpigjsEku}.
-\else
+\ifAnonymous
 Its source code is included as supplementary material.
+\else
+Its source is available on Github \cite{cpigjsEku}.
 \fi
 
 Our program is not limited to just fair division.

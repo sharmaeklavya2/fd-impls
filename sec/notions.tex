@@ -42,7 +42,7 @@ Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
 In $\Ical$, an allocation $A$ is EFX-fair to agent $i$ if for each $j \in [n] \setminus \{i\}$,
 either $i$ doesn't envy $j$, or both of the following hold:
 \begin{enumerate}
-\ifx\version\versionIjcai
+\ifVersionIjcai
 \item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max\left(\left\{
     \begin{array}{l}
     v_i(A_j \setminus S): S \subseteq A_j
@@ -52,7 +52,7 @@ either $i$ doesn't envy $j$, or both of the following hold:
 \item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j
     \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}$.
 \fi
-\ifx\version\versionIjcai
+\ifVersionIjcai
 \item $\displaystyle \frac{\min\left(\left\{
     \begin{array}{r}
     v_i(A_i \setminus S): S \subseteq A_i \textrm{ and }

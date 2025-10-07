@@ -103,10 +103,10 @@ After proving some (non)implications manually (\cref{sec:summary}),
 we fed those results into the inference engine,
 which then generated many additional (non)implications (\cref{fig:additive-nny,sec:dags}).
 Our inference engine is implemented as a web application in JavaScript
-\ifx\version\versionDefault
-\cite{cpigjsEku}.
-\else
+\ifAnonymous
 (source code included as supplementary material).
+\else
+\cite{cpigjsEku}.
 \fi
 The engine can be extended beyond fair division (see \cref{sec:cpig}),
 and may have broader applications of independent interest.
@@ -153,7 +153,7 @@ In \cref{sec:summary}, we present a summary of our results, i.e., a list of impl
 In \cref{sec:cpig}, we describe our inference engine.
 \Cref{sec:conclusion} contains concluding remarks and open problems.
 
-\ifx\version\versionDefault\else
+\ifVersionDefault\else
 This work is an ambitious undertaking with an extensive set of results.
 Hence, due to space constraints, all proofs are deferred to appendices
 in the full version of the paper included in the supplementary material.
