@@ -12,7 +12,7 @@ and $w_i$ is called agent $i$'s \emph{entitlement}.
 
 Our task is to find a fair allocation. An \emph{allocation} $A \defeq (A_i)_{i \in N}$ is
 a collection of pairwise-disjoint subsets of $M$ such that $\bigcup_{i=1}^n A_i = M$.
-(If we relax the condition $\bigcup_{i=1}^n A_i = M$, we get \emph{partial allocations}.)
+%(If we relax the condition $\bigcup_{i=1}^n A_i = M$, we get \emph{partial allocations}.)
 The set $A_i$ is called agent $i$'s \emph{bundle} in $A$.
 
 For any non-negative integer $k$, define $[k] \defeq \{1, 2, \ldots, k\}$.
@@ -27,7 +27,7 @@ of $S$ over $T$ is defined as $u(S \mid T) \defeq u(S \cup T) - u(T)$.
 \label{sec:prelims:fairness-notions}
 
 A \emph{fairness notion} $F$ is a function that takes as input a fair division instance $\Ical$,
-a (partial) allocation $A$, and an agent $i$, and outputs either true or false.
+an allocation $A$, and an agent $i$, and outputs either true or false.
 When $F(\Ical, A, i)$ is true, we say that allocation $A$ is $F$\emph{-fair} to agent $i$,
 or that agent $i$ is $F$\emph{-satisfied} by allocation $A$.
 Allocation $A$ is said to be $F$-fair if it is $F$-fair to every agent.
