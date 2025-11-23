@@ -33,6 +33,10 @@ In $\Ical$, an allocation $A$ is EF1-fair to agent $i$ if for every other agent 
 either $i$ does not envy $j$,
 or $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$ for some $g \in A_j$,
 or $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$ for some $c \in A_i$.
+
+Equivalently, $A$ is EF1-fair to $i$ if for every other agent $j$
+and some $S \subseteq A_i \cup A_j$ such that $|S| \le 1$, we have
+$v_i(A_i \setminus S)/w_i \ge v_i(A_j \setminus S)/w_j$.
 \end{definition}
 
 %\begin{restatable}[EFX]{definition}{rDefnEfx}
