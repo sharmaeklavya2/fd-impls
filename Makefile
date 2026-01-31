@@ -70,3 +70,10 @@ arxiv:
 	@echo "Now cd to arxiv and run 'pdflatex $(ONAME)-final.tex' thrice."
 arxiv.zip: arxiv
 	cd arxiv && zip -r ../arxiv.zip . -x '.*' -x '*.db' -x '__MACOSX'
+camred:
+	mkdir -p camred
+	cp -r figs dags camred
+	cp aamas.cls by.pdf camred
+	# https://github.com/sharmaeklavya2/tex-flatten
+	tex-flatten.py $(AAMAS_INAME).tex --bbl-to-read $(AAMAS_ONAME).bbl -o camred/$(AAMAS_ONAME)-final.tex
+	@echo "Now cd to camred and run 'pdflatex $(AAMAS_ONAME)-final.tex' thrice."

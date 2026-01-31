@@ -1,6 +1,7 @@
 *.aux
 *.bbl
 *.blg
+*.cut
 *.log
 *.out
 *.ent
@@ -14,6 +15,7 @@ __pycache__/
 
 .secret
 arxiv
+camred
 .env
 
 *.zip
