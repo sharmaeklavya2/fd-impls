@@ -10,22 +10,22 @@ We present two such examples:
 \begin{enumerate}
 \item EEFX does not imply PROPavg (for equal entitlements over additive goods).
     This follows from a chain of (non-)implications:
-    EEFX is implied by APS (\cref{thm:impl:aps-to-pess,thm:impl:mms-to-eefx}),
-    APS does not imply PROPm (\cref{cex:aps-not-propm}), and PROPm is implied by PROPavg.
+    EEFX is implied by APS (Lemmas \extRef{thm:impl:aps-to-pess} and \extRef{thm:impl:mms-to-eefx}),
+    APS does not imply PROPm (\extCref{cex:aps-not-propm}), and PROPm is implied by PROPavg.
     Finding such a chain can be difficult if one is not
     intimately aware of all implications and counterexamples.
     The engine helps uncover many such non-obvious insights.
 \item APS does not imply EEF1 for unequal entitlements (over additive goods).
     To prove this, one cannot find a chain as in the previous example, since it doesn't exist.
     However, for the simpler case of binary valuations among two agents,
-    APS is equivalent to PROP1 (\cref{thm:impl:tribool:aps,thm:impl:tribool:prop1}),
-    EEF1 is equivalent to M1S (\cref{thm:impl:tribool:ef1-to-efx,thm:impl:mxs-to-ef1-n2}),
-    and PROP1 does not imply M1S for this simpler case (\cref{cex:prop1-not-m1s-n2}).
+    APS is equivalent to PROP1 (Lemmas \extRef{thm:impl:tribool:aps} and \extRef{thm:impl:tribool:prop1}),
+    EEF1 is equivalent to M1S (Lemmas \extRef{thm:impl:tribool:ef1-to-efx} and \extRef{thm:impl:mxs-to-ef1-n2}),
+    and PROP1 does not imply M1S for this simpler case (\extCref{cex:prop1-not-m1s-n2}).
 \end{enumerate}
 
 For each fair division setting that we query the engine with,
 it summarizes its inferred results as a directed acyclic graph (DAG).
-See \cref{fig:additive-nny,sec:dags} for examples of the program's output
+See \cref{fig:additive-nny} and \extCref{sec:dags} for examples of the program's output
 for various important fair division settings.
 The program is implemented as a web application;
 see \cref{fig:cpigjs} for the program's screenshot.
@@ -62,7 +62,7 @@ and fairness notions are predicates over $\Omega$.
 The inference engine's input is a tuple $(\Fcal, \Phi, I, C)$.
 $\Fcal$ is a set family over a ground set $\Omega$.
     Since $\Omega$ can be uncountable, we represent sets in $\Fcal$ implicitly
-    (see \cref{sec:fd-set-family}).
+    (see \extCref{sec:fd-set-family}).
     Moreover, given $S_1, S_2 \in \Fcal$, we should be able to efficiently tell whether $S_1 \subseteq S_2$.
 $\Phi$ is a set of predicates over $\Omega$.
 $I$ is a set of \emph{conditional implications}, i.e., a set of triples
@@ -91,7 +91,7 @@ Then we select counterexamples conditioned on subsets of $S$.
 
 We can further extend the inference engine to also make inferences about
 feasibility and infeasibility of fairness notions using data from
-\cref{table:feas,table:infeas} (c.f.~\cref{sec:feas}).
+Tables \extRef{table:feas} and \extRef{table:infeas} in \extCref{sec:feas}.
 Specifically, if $F_1 \fimplies_S F_2$ and $F_1$ is feasible for setting $S$,
 then $F_2$ is also feasible for setting $S$.
 Contrapositively, if $F_1 \fimplies_S F_2$ and $F_2$ is infeasible for setting $S$,

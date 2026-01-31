@@ -7,15 +7,15 @@
 We first prove several implications and non-implications among fairness notions manually,
 i.e., without using the inference engine.
 We summarize implications in \cref{table:impls1} (page \pageref{table:impls1}),
-and defer the proofs to \cref{sec:impls-extra}.
+and defer the proofs to \extCref{sec:impls-extra}.
 We state several non-implications in \cref{table:cex-add} (page \pageref{table:cex-add}),
-and defer the proofs to \cref{sec:cex-add-extra}.
+and defer the proofs to \extCref{sec:cex-add-extra}.
 
-In \cref{sec:impls-extra:tribool}, we prove additional implications when
+In \extCref{sec:impls-extra:tribool}, we prove additional implications when
 marginals are $\{0, 1\}$ or $\{-1, 0\}$.
-In \cref{sec:impls-extra:unit-demand}, we prove additional implications for unit-demand valuations.
-In \cref{sec:cex-nonadd-extra}, we prove several non-implications for non-additive valuations.
-We list results regarding the feasibility and infeasibility of fairness notions in \cref{sec:feas}.
+In \extCref{sec:impls-extra:unit-demand}, we prove additional implications for unit-demand valuations.
+In \extCref{sec:cex-nonadd-extra}, we prove several non-implications for non-additive valuations.
+We list results regarding the feasibility and infeasibility of fairness notions in \extCref{sec:feas}.
 
 \subsection{Automatically-Inferred Results}
 \label{sec:summary:auto}
@@ -35,27 +35,27 @@ the special case of only two agents and the special case of identical valuations
 The last column states the number of unresolved (non-)implications for each setting.
 We only list settings with at most 3 unresolved implications,
 whereas there are $\binom{22}{2} = 110$ pairs of fairness notions.
-The figures referenced in this table can be found in \cref{sec:dags}.}
+The figures referenced in this table can be found in \extCref{sec:dags}.}
 \label{table:dag-summary}
 \begin{tabular}{HccHHccc}
 \toprule & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements & \scriptsize figures & \scriptsize open problems
 \\ \midrule          & additive & goods  & -- & -- & equal
-    & \cref{fig:additive-nny:goods,fig:additive-general-nyy} & 1
+    & Figures \ref{fig:additive-nny:goods} and \extRef{fig:additive-general-nyy} & 1
 \\[\defaultaddspace] & additive & chores & -- & -- & equal
-    & \cref{fig:additive-nny:chores,fig:additive-general-nyy} & 0
+    & Figures \ref{fig:additive-nny:chores} and \extRef{fig:additive-general-nyy} & 0
 \\[\defaultaddspace] & additive & mixed  & -- & -- & equal
-    & \cref{fig:additive-general-nny,fig:additive-general-nyy} & 0
+    & Figures \extRef{fig:additive-general-nny} and \extRef{fig:additive-general-nyy} & 0
 \\[\defaultaddspace] & submodular & goods & -- & -- & equal
-    & \cref{fig:submod-nonneg-nny,fig:submod-nonneg-nyy} & 1
+    & Figures \extRef{fig:submod-nonneg-nny} and \extRef{fig:submod-nonneg-nyy} & 1
 \\[\defaultaddspace] & subadditive & goods & -- & -- & equal
-    & \cref{fig:subadd-nonneg-nny} & 1
+    & \extCref{fig:subadd-nonneg-nny} & 1
 \\[\defaultaddspace] & general & goods & -- & -- & equal
-    & \cref{fig:general-nonneg-nny,fig:general-positive-nny} & 0
+    & Figures \extRef{fig:general-nonneg-nny} and \extRef{fig:general-positive-nny} & 0
 %
 \\\midrule           & additive & goods  & -- & -- & unequal
-    & \cref{fig:additive-nonneg-nnn,fig:additive-nonneg-nyn} & 3
+    & Figures \extRef{fig:additive-nonneg-nnn} and \extRef{fig:additive-nonneg-nyn} & 3
 \\[\defaultaddspace] & additive & chores & -- & -- & unequal
-    & \cref{fig:additive-nonpos-nnn} & 3
+    & \extCref{fig:additive-nonpos-nnn} & 3
 \\[\defaultaddspace] & additive & mixed  & -- & -- & unequal
     & -- & 3
 \\[\defaultaddspace] & subadditive & goods & -- & -- & unequal
@@ -63,9 +63,9 @@ The figures referenced in this table can be found in \cref{sec:dags}.}
 \\[\defaultaddspace] & general & goods & -- & -- & unequal
     & -- & 2
 %
-\\\midrule           & additive & $\{-1, 0\}$ & -- & -- & equal & \cref{fig:additive-tribool-nny} & 0
-\\[\defaultaddspace] & additive & $\{0, 1\}$ & -- & -- & equal & \cref{fig:additive-tribool-nny} & 0
-\\[\defaultaddspace] & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{fig:submod-binary-nny} & 2
+\\\midrule           & additive & $\{-1, 0\}$ & -- & -- & equal & \extCref{fig:additive-tribool-nny} & 0
+\\[\defaultaddspace] & additive & $\{0, 1\}$ & -- & -- & equal & \extCref{fig:additive-tribool-nny} & 0
+\\[\defaultaddspace] & submodular & $\{0, 1\}$ & -- & -- & equal & \extCref{fig:submod-binary-nny} & 2
 \\[\defaultaddspace] & subadditive & $\{0, 1\}$ & -- & -- & equal & -- & 2
 \\[\defaultaddspace] & general & $\{0, 1\}$ & -- & -- & equal & -- & 2
 \\ \bottomrule

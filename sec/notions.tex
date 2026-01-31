@@ -75,7 +75,7 @@ and also differs from \EFXZero, an alternative definition of EFX studied by many
 However, we show that \cref{defn:efx} is equivalent to the original definition of EFX when
 valuations are submodular, and equivalent to \EFXZero{}
 when marginals are (strictly) positive or negative.
-Moreover, in \cref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense
+Moreover, in \extCref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense
 and why it is better than \EFXZero{} and the original definition of EFX.
 
 \subsection{Proportionality-Based Notions}
@@ -103,13 +103,13 @@ or $v_i(A_i \setminus \{c\}) > w_i \cdot v_i([m])$ for some $c \in A_i$.
 Note that \cref{defn:prop1} uses strict inequalities, whereas most papers do not.
 This definition is from \cite{feige2025low}, and we use it to make PROP1
 a slightly stronger notion without altering its fundamental properties.
-See \cref{sec:notions:prop1} for details.
+See \extCref{sec:notions:prop1} for details.
 
 PROPx (PROP up to any item) \cite{aziz2020polynomial,li2022almost},
 PROPavg (PROP up to the min-avg good) \cite{kobayashi2025proportional},
 and PROPm (PROP up to the minimax item) \cite{baklanov2021achieving}
 are strengthenings of PROP1. Due to space limitations, we formally describe them in
-\cref{sec:notions:propx,sec:notions:propm-propavg}.
+Appendices \extRef{sec:notions:propx} and \extRef{sec:notions:propm-propavg}.
 Our definitions are a little different from the original definitions because they also work for mixed manna,
 and the original definitions of PROPavg and PROPm have minor errors.
 %See \cref{sec:notions:propx,sec:notions:propm-propavg} for details.
@@ -128,13 +128,13 @@ We now describe two more share-based notions, maximin share (MMS) and AnyPrice s
 For equal entitlements, an agent's maximin share (MMS) \cite{budish2011combinatorial}
 is the maximum value she can obtain by partitioning the goods into $n$ bundles and picking the worst one.
 An allocation is MMS-fair to her if her bundle's value is at least her maximin share.
-See \cref{sec:notions:mms} for a more formal definition.
+See \extCref{sec:notions:mms} for a more formal definition.
 
 MMS has inspired similar notions for the unequal entitlements case.
 Weighted MMS (WMMS) \cite{farhadi2019fair} and pessimistic share (pessShare) \cite{babaioff2023fair}
 are well-known extensions of MMS, i.e., they are equivalent to MMS for equal entitlements.
 AnyPrice Share (APS) \cite{babaioff2023fair}, on the other hand, is a strictly stronger notion.
-See \cref{sec:notions:mms,sec:notions:aps} for details.
+See Appendices \extRef{sec:notions:mms} and \extRef{sec:notions:aps} for details.
 
 \subsection{Derived Notions}
 

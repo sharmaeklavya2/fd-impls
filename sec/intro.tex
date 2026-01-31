@@ -54,7 +54,7 @@ For almost every pair of notions, we either prove that one notion implies the ot
 These results establish a hierarchy of fairness notions,
 and the counterexamples highlight the strengths and weaknesses of each notion.
 See \cref{fig:additive-nny} for the implications in the context of additive goods and chores,
-and \cref{sec:dags} for similar figures in other fair division settings.
+and \extCrefCin{sec:dags} for similar figures in other fair division settings.
 
 \begin{figure*}[!htb]
 \centering
@@ -96,9 +96,9 @@ it would give an affirmative answer based on these three results we show in the 
 \begin{enumerate}
 \item EEF implies minimum-EF-share fairness (MEFS\fairDefAgain{}).
 \item MEFS implies PROP under subadditive valuations
-    (\cref{thm:impl:mefs-to-prop} in \cref{sec:impls-extra}).
+    (\extCref{thm:impl:mefs-to-prop} in \extCrefCof{sec:impls-extra}).
 \item PROP implies MMS for superadditive valuations
-    (\cref{thm:impl:prop-to-wmms} in \cref{sec:impls-extra}).
+    (\extCref{thm:impl:prop-to-wmms} in \extCrefCof{sec:impls-extra}).
 \end{enumerate}
 In \cref{sec:cpig}, we give two more examples of inference that are much more involved,
 and highlight the inference engine's usefulness.
@@ -113,7 +113,8 @@ We also give near-complete picture of implications for submodular, subadditive, 
 We developed a computer program, called the \emph{inference engine}, to automate part of our work.
 After proving some (non)implications manually (\cref{sec:summary}),
 we fed those results into the inference engine,
-which then generated many additional (non)implications (\cref{fig:additive-nny,sec:dags}).
+which then generated many additional (non)implications
+(\cref{fig:additive-nny} and \extCrefCof{sec:dags}).
 Our inference engine is implemented as a web application in JavaScript
 \ifAnonymous
 (source code included as supplementary material).
@@ -179,8 +180,10 @@ Hence, due to space constraints, all proofs are deferred to appendices in the fu
 As the proofs are concise and self-contained, we encourage interested readers to review a sample of them.
 \fi
 
-\Cref{sec:settings-extra,sec:notions-extra} contain details on fair division settings and fairness notions.
-\Cref{sec:impls-extra,sec:cex-add-extra,sec:cex-nonadd-extra} contain proofs of our \mbox{(non-)implication} results.
-\Cref{sec:feas} contains results on (in)feasibility of fairness notions.
-\Cref{sec:dags} contains several implication diagrams, i.e.,
+Appendices \extRef{sec:settings-extra} and \extRef{sec:notions-extra}
+contain details on fair division settings and fairness notions.
+Appendices \extRef{sec:impls-extra}, \extRef{sec:cex-add-extra}, \extRef{sec:cex-nonadd-extra}
+contain proofs of our \mbox{(non-)implication} results.
+\extCref{sec:feas} contains results on (in)feasibility of fairness notions.
+\extCref{sec:dags} contains several implication diagrams, i.e.,
 analogues of \cref{fig:additive-nny} for other fair division settings.
