@@ -1,14 +1,26 @@
 \section{Introduction}
 \label{sec:intro}
 
-The problem of fairly allocating items among multiple agents has garnered significant attention in fields such as computer science, multi-agent systems, and game theory. It has practical applications in many real-world scenarios such as dividing inheritance, distributing natural resources among countries or states, allocating public housing, settling divorce agreements, and assigning research papers to reviewers.
+The problem of fairly allocating items among multiple agents has garnered significant attention in computer science, multi-agent systems, and game theory.
+It has applications in many real-world scenarios such as dividing inheritance, distributing natural resources among countries or states, allocating public housing, divorce settlements, and assigning research papers to reviewers.
 %One of the oldest-known applications occurs in the Bible \cite{bible_cut_and_choose}.
 
 Research in fair division began with the study of \emph{divisible} resources, such as land, water, and cake
-\cite{steinhaus1940sur,stromquist1980how,varian1974equity}. The concept of \emph{fairness} was formally defined primarily in two ways: \emph{envy-freeness} (EF) and \emph{proportionality} (PROP). EF ensures that each agent believes they have received the best bundle compared to others, while PROP guarantees that each agent's value for their own bundle is at least a $1/n$ fraction of their value of the entire set of items, where $n$ is the number of agents. By the 1980s, both EF and PROP allocations were shown to exist, and algorithms were developed to find such allocations
+\cite{steinhaus1940sur,stromquist1980how,varian1974equity}.
+\emph{Fairness} was formally defined primarily in two ways:
+\emph{envy-freeness} (EF) and \emph{proportionality} (PROP).
+EF ensures that each agent believes they received the best bundle compared to others,
+while PROP guarantees that each agent's value for their own bundle is at least
+a $1/n$ fraction of their value of the entire set of items, where $n$ is the number of agents.
+By the 1980s, both EF and PROP allocations were shown to exist,
+and algorithms to find them were developed
 \cite{steinhaus1940sur,stromquist1980how,varian1974equity}.
 
-These positive results no longer hold when the items are indivisible. For instance, when 5 identical goods must be divided among two agents, an EF or PROP allocation is not possible. However, one can still aim for \emph{approximate} fairness; for example, an allocation where one agent receives 3 goods and the other receives 2 goods is intuitively as fair as possible. The challenge arises when we move beyond simple cases, such as this, to the general setting where items are heterogeneous and agents have different preferences. In such cases, formally defining (approximate) fairness becomes much more complex. As a result, many fairness notions have been proposed for the indivisible setting.
+These positive results no longer hold when the items are indivisible.
+For instance, when 5 identical goods must be divided among two agents, an EF or PROP allocation is not possible.
+However, one can still aim for \emph{approximate} fairness; e.g., an allocation where one agent receives 3 goods and the other receives 2 goods is intuitively as fair as possible.
+However, when we move beyond such simple examples to the general setting where items are heterogeneous and agents have different preferences, formally defining (approximate) fairness becomes much more complex.
+As a result, many fairness notions have been proposed for the indivisible setting.
 
 The concept of EF was relaxed to a notion called \emph{EF1}\fairDefLater{} (envy-freeness up to one item),
 and algorithms were designed to guarantee EF1 allocations \cite{budish2011combinatorial,lipton2004approximately}.
@@ -26,7 +38,7 @@ were shown to be infeasible. As a result, various relaxations of these notions h
 \cite{kurokawa2018fair,akrami2024breaking,akrami2023randomized,baklanov2021propm,caragiannis2023new,kobayashi2025proportional}.
 Additionally, enforcing polynomial-time computability,
 compatibility with efficiency notions (such as Pareto optimality), or other constraints \cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair}
-has made these problems more challenging, often necessitating the use of even weaker fairness concepts.
+makes these problems more challenging, often necessitating the use of even weaker fairness concepts.
 
 Hence, for the problem of fairly allocating indivisible items, a variety of fairness notions have been proposed,
 each offering a different level of perceived fairness.
@@ -48,14 +60,14 @@ and \cref{sec:dags} for similar figures in other fair division settings.
 \centering
 \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[scale=0.6]{dags/additive-nonneg-0-0-1.pdf}
+    \includegraphics[scale=0.55]{dags/additive-nonneg-0-0-1.pdf}
     \caption{Goods}
     \label{fig:additive-nny:goods}
 \end{subfigure}
 \hfill
 \begin{subfigure}{0.5\textwidth}
     \centering
-    \includegraphics[scale=0.6]{dags/additive-nonpos-0-0-1.pdf}
+    \includegraphics[scale=0.55]{dags/additive-nonpos-0-0-1.pdf}
     \caption{Chores}
     \label{fig:additive-nny:chores}
 \end{subfigure}
@@ -111,7 +123,9 @@ Our inference engine is implemented as a web application in JavaScript
 The engine can be extended beyond fair division (see \cref{sec:cpig}),
 and may have broader applications of independent interest.
 
-Although some of the counterexamples we list (\cref{sec:summary}) are already known, the majority are new. Additionally, we give the simplest possible counterexamples to clearly illustrate the distinctions between fairness notions, making them as accessible as possible. This was a challenging task, especially given the large number of counterexamples we show. On the other hand, most implications we prove were previously established, but only for the specific case of additive valuations and equal entitlements. We extend these results to more general settings.
+Although some of the counterexamples we list (\cref{sec:summary}) are already known, the majority are new.
+Additionally, we give the simplest possible counterexamples to clearly illustrate the distinctions between fairness notions. This was a challenging task, especially given the large number of counterexamples we show.
+On the other hand, most implications we prove were previously established, but only for the specific case of additive valuations and equal entitlements. We extend these results to more general settings.
 
 Some fairness notions were originally defined for very specific settings;
 for example, EFX was introduced in \cite{caragiannis2019unreasonable} only for additive goods.
@@ -156,8 +170,12 @@ In \cref{sec:cpig}, we describe our inference engine.
 
 \ifVersionDefault\else
 This work is an ambitious undertaking with an extensive set of results.
-Hence, due to space constraints, all proofs are deferred to appendices
-in the full version of the paper included in the supplementary material.
+Hence, due to space constraints, all proofs are deferred to appendices in the full version of the paper
+\ifAnonymous
+    included in the supplementary material.
+\else
+    \cite{garg2025exploring}.
+\fi
 As the proofs are concise and self-contained, we encourage interested readers to review a sample of them.
 \fi
 

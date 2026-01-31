@@ -12,7 +12,7 @@ We present two such examples:
     This follows from a chain of (non-)implications:
     EEFX is implied by APS (\cref{thm:impl:aps-to-pess,thm:impl:mms-to-eefx}),
     APS does not imply PROPm (\cref{cex:aps-not-propm}), and PROPm is implied by PROPavg.
-    Finding such a chain may not be simple, unless one is
+    Finding such a chain can be difficult if one is not
     intimately aware of all implications and counterexamples.
     The engine helps uncover many such non-obvious insights.
 \item APS does not imply EEF1 for unequal entitlements (over additive goods).
@@ -22,18 +22,6 @@ We present two such examples:
     EEF1 is equivalent to M1S (\cref{thm:impl:tribool:ef1-to-efx,thm:impl:mxs-to-ef1-n2}),
     and PROP1 does not imply M1S for this simpler case (\cref{cex:prop1-not-m1s-n2}).
 \end{enumerate}
-
-\begin{figure}[htb]
-\centering
-\ifColsOne
-\includegraphics[width=0.8\textwidth]{figs/cpigjs-ui3.pdf}
-\else
-\includegraphics[width=\columnwidth]{figs/cpigjs-ui5.pdf}
-\fi
-\caption[Screenshot from cpigjs]{
-Screenshot from the inference engine's web interface for fair division.}
-\label{fig:cpigjs}
-\end{figure}
 
 For each fair division setting that we query the engine with,
 it summarizes its inferred results as a directed acyclic graph (DAG).
@@ -46,6 +34,18 @@ Its source code is included as supplementary material.
 \else
 Its source is available on Github \cite{cpigjsEku}.
 \fi
+
+\begin{figure}[htb]
+\centering
+\ifColsOne
+\includegraphics[width=0.8\textwidth]{figs/cpigjs-ui3.pdf}
+\else
+\includegraphics[width=0.9\columnwidth]{figs/cpigjs-ui5.pdf}
+\fi
+\caption[Screenshot from cpigjs]{
+Screenshot from the inference engine's web interface for fair division.}
+\label{fig:cpigjs}
+\end{figure}
 
 Our program is not limited to just fair division.
 It can be used more broadly for \emph{conditional predicate implications}.
