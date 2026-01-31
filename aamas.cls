@@ -1432,6 +1432,8 @@
 \acmPrice{15.00}
 \def\acmSubmissionID#1{\def\@acmSubmissionID{#1}}
 \acmSubmissionID{}
+\def\doi#1{\def\@doi{10.65109/#1}}
+\doi{}
 \def\acmISBN#1{\def\@acmISBN{#1}}
 \acmISBN{978-x-xxxx-xxxx-x/YY/MM}
 \def\acmDOI#1{\def\@acmDOI{#1}}
@@ -1626,7 +1628,7 @@
    \AtBeginDocument{\acmPrice{}}%
    \fi
    \ifnum\acm@copyrightmode=15\relax % ifaamas
-    \@printpermissionfalse
+    %\@printpermissionfalse
     \@acmownedfalse
   \fi}
 \def\setcopyright#1{\setkeys{ACM@}{acmcopyrightmode=#1}}
@@ -1669,7 +1671,7 @@
   under Creative Commons CC-BY-NC-ND~4.0 License.
   \or % ifaamas
   International Foundation for Autonomous Agents and Multiagent Systems
-  (www.ifaamas.org). This work is licenced under the Creative Commons Attribution 4.0 International (CC-BY~4.0) licence.
+  (www.ifaamas.org). %This work is licensed under the Creative Commons Attribution 4.0 International (CC-BY~4.0) license.
   \fi}
 \def\@formatdoi#1{\url{https://doi.org/#1}}
 \def\@copyrightpermission{%
@@ -1898,6 +1900,7 @@
               \ifx\@acmISBN\@empty\else\dots\$ACM~ISBN~\@acmISBN\\\fi %ifaamas
               \ifx\@acmPrice\@empty\else\dots\$\@acmPrice\\\fi %ifaamas
               %\ifx\@acmDOI\@empty\else\@formatdoi{\@acmDOI}\fi% ifaamas
+              \@formatdoi{\@doi}% ifaamas added in 2026 by Rafael C. Cardoso as publication chair
             \fi
           \fi
         \fi
@@ -2486,6 +2489,7 @@
     \fi
   \fi
   % \ifx\@acmDOI\@empty\else\@formatdoi{\@acmDOI}\fi %ifaamas
+   \ifx\@doi\@empty\else\@formatdoi{\@doi}\fi %ifaamas added in 2026 by Rafael C. Cardoso as publication chair
   \par\egroup}
 \def\@printendtopmatter{%
   \let\@vspace\@vspace@orig

@@ -1,8 +1,9 @@
 % https://cyprusconferences.org/aamas2026/submission-instructions/
-\documentclass[sigconf,anonymous]{aamas}
+% For anonymized submission, use this
+%\documentclass[sigconf,anonymous]{aamas}
 
 % For camera-ready, use this
-%\documentclass[sigconf]{aamas}
+\documentclass[sigconf]{aamas}
 
 %%% Load required packages here (note that many are included already).
 
@@ -27,7 +28,7 @@
 \usepackage{algorithm,algpseudocode}
 \usepackage[capitalize,sort]{cleveref}
 
-%\usepackage{balance} % for balancing columns on the final page
+\usepackage{balance} % for balancing columns on the final page
 
 \input{colorscheme.tex}
 \hypersetup{colorlinks,linkcolor=textRed,citecolor=textRed,urlcolor=textBlue}
@@ -40,13 +41,32 @@
 \hypersetup{hypertexnames=false,bookmarksnumbered=true,final}
 
 \ColsTwotrue
-\Anonymoustrue
 \let\bigTableSize\normalsize
 \let\tableHeadSize\footnotesize
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% For the final camera-ready submission, you will be assigned a DOI.
+% The DOI suffix is included in the subject line of an email sent by Sheridan,
+% which starts with ``About your submission''
+
+\doi{DRAH3963}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%% AAMAS-2026 copyright block (do not change!)
+
+\makeatletter
+\gdef\@copyrightpermission{
+  \begin{minipage}{0.2\columnwidth}
+   \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[width=0.90\textwidth]{by}}
+  \end{minipage}\hfill
+  \begin{minipage}{0.8\columnwidth}
+   \href{https://creativecommons.org/licenses/by/4.0/}{This work is licensed under a Creative Commons Attribution International 4.0 License.}
+  \end{minipage}
+  \vspace{5pt}
+}
+\makeatother
 
 \setcopyright{ifaamas}
 \acmConference[AAMAS '26]{Proc.\@ of the 25th International Conference
@@ -62,7 +82,7 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% == IMPORTANT ==
-%%% Use this command to specify your submission number.
+%%% Use this command to specify your OpenReview submission number.
 %%% In anonymous mode, it will be printed on the first page.
 
 \acmSubmissionID{1197}
@@ -70,6 +90,9 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
 %%% Use this command to specify the title of your paper.
 
 \title{Exploring Relations among Fairness Notions\texorpdfstring{\\}{ }in Discrete Fair Division}
+
+% Add the subtitle below for an extended abstract
+% \subtitle{Extended Abstract}
 
 %%% Provide names, affiliations, and email addresses for all authors.
 
@@ -92,7 +115,7 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
 %%% Use this command to specify a few keywords describing your work.
 %%% Keywords should be separated by commas.
 
-\keywords{Fair Allocation, Fair Division}
+\keywords{Fair Allocation; Fair Division}
 
 \begin{document}
 
@@ -135,5 +158,9 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
 \input{sec/feas-extra.tex}
 \input{sec/fd-set-family.tex}
 \input{sec/dags.tex}
+
+% \begin{acks}
+% Put acknowledgements here.
+% \end{acks}
 
 \end{document}
