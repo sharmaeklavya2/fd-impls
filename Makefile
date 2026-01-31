@@ -20,6 +20,8 @@ once-dark:
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) "\def\colorscheme{dark}\input{$(INAME).tex}"
 once-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) "\def\colorscheme{light}\input{$(INAME).tex}"
+bib:
+	bibtex $(ONAME).aux
 ijcai:
 	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) $(IJ_INAME).tex
 	bibtex $(IJ_ONAME).aux
@@ -31,6 +33,8 @@ once-ijcai-dark:
 	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{dark}\input{$(IJ_INAME).tex}"
 once-ijcai-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{light}\input{$(IJ_INAME).tex}"
+ijcai-bib:
+	bibtex $(IJ_ONAME).aux
 neurips:
 	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
 	bibtex $(NEUR_ONAME).aux
@@ -42,6 +46,8 @@ once-neurips-dark:
 	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{dark}\input{$(NEUR_INAME).tex}"
 once-neurips-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{light}\input{$(NEUR_INAME).tex}"
+neurips-bib:
+	bibtex $(NEUR_ONAME).aux
 aamas:
 	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
 	bibtex $(AAMAS_ONAME).aux
@@ -53,6 +59,8 @@ once-aamas-dark:
 	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{dark}\input{$(AAMAS_INAME).tex}"
 once-aamas-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{light}\input{$(AAMAS_INAME).tex}"
+aamas-bib:
+	bibtex $(AAMAS_ONAME).aux
 arxiv:
 	mkdir -p arxiv
 	cp -r figs dags arxiv
