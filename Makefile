@@ -77,3 +77,5 @@ camred:
 	# https://github.com/sharmaeklavya2/tex-flatten
 	tex-flatten.py $(AAMAS_INAME).tex --bbl-to-read $(AAMAS_ONAME).bbl -o camred/$(AAMAS_ONAME)-final.tex
 	@echo "Now cd to camred and run 'pdflatex $(AAMAS_ONAME)-final.tex' thrice."
+camred.zip: camred
+	cd camred && zip -r ../camred.zip . -x '.*' -x '*.db' -x '__MACOSX'
