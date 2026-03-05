@@ -61,6 +61,8 @@ once-aamas-light:
 	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{light}\input{$(AAMAS_INAME).tex}"
 aamas-bib:
 	bibtex $(AAMAS_ONAME).aux
+	mv $(AAMAS_ONAME).bbl $(AAMAS_ONAME)-orig.bbl
+	perl -pe 's/(\\bibitem\[\\protect\\citeauthoryear\{Conitzer)/\\balance\n$$1/' $(AAMAS_ONAME)-orig.bbl > $(AAMAS_ONAME).bbl
 arxiv:
 	mkdir -p arxiv
 	cp -r figs dags arxiv
