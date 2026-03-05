@@ -54,6 +54,9 @@
 \let\bigTableSize\footnotesize
 \let\tableHeadSize\tiny
 
+\input{extref.tex}
+\extRefOff
+
 \title{Exploring Relations among Fairness Notions\texorpdfstring{\\}{ }in Discrete Fair Division}
 
 % The \author macro works with any number of authors. There are two commands
@@ -91,6 +94,8 @@ Eklavya Sharma
 \input{sec/conclusion.tex}
 
 \clearpage
+\phantomsection
+\addcontentsline{toc}{section}{References}
 \bibliographystyle{plainurl}
 \bibliography{bibdb}
 \clearpage

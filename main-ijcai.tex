@@ -33,6 +33,9 @@
 \let\bigTableSize\footnotesize
 \let\tableHeadSize\tiny
 
+\input{extref.tex}
+\extRefOff
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
 \newtheorem{example}[theorem]{Example}
@@ -82,6 +85,8 @@ $^1$Department of Industrial \& Enterprise Engineering, University of Illinois a
 \input{sec/conclusion.tex}
 
 \clearpage
+\phantomsection
+\addcontentsline{toc}{section}{References}
 \bibliographystyle{named}
 \bibliography{bibdb}
 \clearpage
