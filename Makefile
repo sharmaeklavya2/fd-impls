@@ -1,11 +1,5 @@
 INAME = main
 ONAME = fimp
-IJ_INAME = main-ijcai
-IJ_ONAME = fimp-ijcai
-NEUR_INAME = main-neurips
-NEUR_ONAME = fimp-neurips
-AAMAS_INAME = main-aamas
-AAMAS_ONAME = fimp-aamas
 TEX_OPTIONS = -cnf-line "max_print_line = 10000" -halt-on-error
 default:
 	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME) $(INAME).tex
@@ -23,46 +17,46 @@ once-light:
 bib:
 	bibtex $(ONAME).aux
 ijcai:
-	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) $(IJ_INAME).tex
-	bibtex $(IJ_ONAME).aux
-	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) $(IJ_INAME).tex
-	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) $(IJ_INAME).tex
-once-ijcai-sepia:
-	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{sepia}\input{$(IJ_INAME).tex}"
-once-ijcai-dark:
-	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{dark}\input{$(IJ_INAME).tex}"
-once-ijcai-light:
-	pdflatex $(TEX_OPTIONS) -jobname=$(IJ_ONAME) "\def\colorscheme{light}\input{$(IJ_INAME).tex}"
-ijcai-bib:
-	bibtex $(IJ_ONAME).aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-ijcai $(INAME)-ijcai.tex
+	bibtex $(ONAME)-ijcai.aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-ijcai $(INAME)-ijcai.tex
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-ijcai $(INAME)-ijcai.tex
+once-sepia-ijcai:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-ijcai "\def\colorscheme{sepia}\input{$(INAME)-ijcai.tex}"
+once-dark-ijcai:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-ijcai "\def\colorscheme{dark}\input{$(INAME)-ijcai.tex}"
+once-light-ijcai:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-ijcai "\def\colorscheme{light}\input{$(INAME)-ijcai.tex}"
+bib-ijcai:
+	bibtex $(ONAME)-ijcai.aux
 neurips:
-	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
-	bibtex $(NEUR_ONAME).aux
-	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
-	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) $(NEUR_INAME).tex
-once-neurips-sepia:
-	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{sepia}\input{$(NEUR_INAME).tex}"
-once-neurips-dark:
-	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{dark}\input{$(NEUR_INAME).tex}"
-once-neurips-light:
-	pdflatex $(TEX_OPTIONS) -jobname=$(NEUR_ONAME) "\def\colorscheme{light}\input{$(NEUR_INAME).tex}"
-neurips-bib:
-	bibtex $(NEUR_ONAME).aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-neurips $(INAME)-neurips.tex
+	bibtex $(ONAME)-neurips.aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-neurips $(INAME)-neurips.tex
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-neurips $(INAME)-neurips.tex
+once-sepia-neurips:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-neurips "\def\colorscheme{sepia}\input{$(INAME)-neurips.tex}"
+once-dark-neurips:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-neurips "\def\colorscheme{dark}\input{$(INAME)-neurips.tex}"
+once-light-neurips:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-neurips "\def\colorscheme{light}\input{$(INAME)-neurips.tex}"
+bib-neurips:
+	bibtex $(ONAME)-neurips.aux
 aamas:
-	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
-	bibtex $(AAMAS_ONAME).aux
-	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
-	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) $(AAMAS_INAME).tex
-once-aamas-sepia:
-	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{sepia}\input{$(AAMAS_INAME).tex}"
-once-aamas-dark:
-	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{dark}\input{$(AAMAS_INAME).tex}"
-once-aamas-light:
-	pdflatex $(TEX_OPTIONS) -jobname=$(AAMAS_ONAME) "\def\colorscheme{light}\input{$(AAMAS_INAME).tex}"
-aamas-bib:
-	bibtex $(AAMAS_ONAME).aux
-	mv $(AAMAS_ONAME).bbl $(AAMAS_ONAME)-orig.bbl
-	perl -pe 's/(\\bibitem\[\\protect\\citeauthoryear\{Conitzer)/\\balance\n$$1/' $(AAMAS_ONAME)-orig.bbl > $(AAMAS_ONAME).bbl
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-aamas $(INAME)-aamas.tex
+	bibtex $(ONAME)-aamas.aux
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-aamas $(INAME)-aamas.tex
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-aamas $(INAME)-aamas.tex
+once-sepia-aamas:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-aamas "\def\colorscheme{sepia}\input{$(INAME)-aamas.tex}"
+once-dark-aamas:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-aamas "\def\colorscheme{dark}\input{$(INAME)-aamas.tex}"
+once-light-aamas:
+	pdflatex $(TEX_OPTIONS) -jobname=$(ONAME)-aamas "\def\colorscheme{light}\input{$(INAME)-aamas.tex}"
+bib-aamas:
+	bibtex $(ONAME)-aamas.aux
+	mv $(ONAME)-aamas.bbl $(ONAME)-aamas-orig.bbl
+	perl -pe 's/(\\bibitem\[\\protect\\citeauthoryear\{Conitzer)/\\balance\n$$1/' $(ONAME)-aamas-orig.bbl > $(ONAME)-aamas.bbl
 arxiv:
 	mkdir -p arxiv
 	cp -r figs dags arxiv
@@ -77,7 +71,7 @@ camred:
 	cp -r figs dags camred
 	cp aamas.cls by.pdf camred
 	# https://github.com/sharmaeklavya2/tex-flatten
-	tex-flatten.py $(AAMAS_INAME).tex --bbl-to-read $(AAMAS_ONAME).bbl -o camred/$(AAMAS_ONAME)-final.tex
-	@echo "Now cd to camred and run 'pdflatex $(AAMAS_ONAME)-final.tex' thrice."
+	tex-flatten.py $(INAME)-aamas.tex --bbl-to-read $(ONAME)-aamas.bbl -o camred/$(ONAME)-aamas-final.tex
+	@echo "Now cd to camred and run 'pdflatex $(ONAME)-aamas-final.tex' thrice."
 camred.zip: camred
 	cd camred && zip -r ../camred.zip . -x '.*' -x '*.db' -x '__MACOSX'
