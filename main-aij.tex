@@ -1,0 +1,151 @@
+\documentclass[a4paper,fleqn]{cas-sc}
+
+% If the frontmatter runs over more than one page
+% use the longmktitle option.
+
+%\documentclass[a4paper,fleqn,longmktitle]{cas-sc}
+
+%\usepackage[numbers]{natbib}
+%\usepackage[authoryear]{natbib}
+\usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage{amsmath,amsthm}
+\usepackage{xcolor}
+%\usepackage{url}
+%\usepackage{float}
+\usepackage{array}
+\usepackage{comment}
+\usepackage{centernot}
+\usepackage{graphicx}
+\usepackage{makecell}
+%\usepackage{longtable}
+\usepackage{booktabs}
+%\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{tikz}
+%\usetikzlibrary{decorations.pathreplacing,arrows.meta,calc,patterns}
+\usepackage{enumitem}
+%\usepackage{thm-restate}
+\usepackage{hyperref}
+\usepackage{algorithm,algpseudocode}
+\usepackage[capitalize,sort]{cleveref}
+
+\input{colorscheme.tex}
+%\hypersetup{colorlinks,linkcolor=textRed,citecolor=textRed,urlcolor=textBlue}
+\input{macros.tex}
+
+\VersionDefaulttrue
+\ColsOnetrue
+%\Anonymoustrue
+\let\bigTableSize\footnotesize
+\let\tableHeadSize\tiny
+
+\input{extref.tex}
+\extRefOff
+
+%\newproof{pf}{Proof}
+\newtheorem{theorem}{Theorem}
+\newdefinition{definition}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newdefinition{remark}[theorem]{Remark}
+
+\newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
+
+\begin{document}
+%\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+\shorttitle{Exploring Relations among Fairness Notions}
+\shortauthors{J.~Garg and E.~Sharma}
+\title[mode=title]{Exploring Relations among Fairness Notions\texorpdfstring{\\}{ }in Discrete Fair Division}
+
+% title note
+\tnotemark[1]
+\tnotetext[1]{This work was supported by NSF Grant CCF-2334461.}
+
+\author[1]{Jugal Garg}[orcid=0000-0001-6439-7308]
+\ead{jugal@illinois.edu}
+% \ead[url]{}  % website
+% \credit{}  % Credit authorship
+
+% Address/affiliation
+\affiliation[1]{organization={Department of Industrial and Enterprise Systems Engineering},
+            addressline={104 S. Mathews Ave.},
+            city={Urbana},
+%          citysep={}, % Uncomment if no comma needed between city and postcode
+            state={Illinois},
+            postcode={61801},
+            country={USA}}
+
+\author[1]{Eklavya Sharma}[orcid=0000-0003-1147-1476]
+\cormark[2]
+\cortext[2]{Corresponding author}
+\ead{eklavya2@illinois.edu}
+% \ead[url]{}  % website
+% \credit{}  % Contribution to this paper
+
+% For a title note without a number/mark
+%\nonumnote{}
+
+\input{abstract.tex}
+
+% Use if graphical abstract is present
+%\begin{graphicalabstract}
+%\includegraphics{}
+%\end{graphicalabstract}
+
+% Research highlights
+% \begin{highlights}
+% \item
+% \end{highlights}
+
+% Keywords
+\begin{keywords}
+Fair Allocation\sep Fair Division
+\end{keywords}
+
+\maketitle
+
+\input{sec/intro.tex}
+\input{sec/prelims.tex}
+\input{sec/notions.tex}
+\input{sec/resultsSummary.tex}
+\input{sec/cpig.tex}
+    \input{sec/impls.tex}
+    \input{sec/cex-add.tex}
+    %\input{sec/feas.tex}
+\input{sec/conclusion.tex}
+
+\appendix
+
+\input{sec/settings-extra.tex}
+\input{sec/notions-extra.tex}
+\input{sec/impls-extra.tex}
+\input{sec/cex-add-extra.tex}
+\input{sec/cex-nonadd-extra.tex}
+\input{sec/feas-extra.tex}
+\input{sec/fd-set-family.tex}
+\input{sec/dags.tex}
+
+% To print the credit authorship contribution details
+% \printcredits
+
+%% Loading bibliography style file
+\bibliographystyle{cas-model2-names}
+
+% Loading bibliography database
+\bibliography{bibdb}
+
+% Biography
+%\bio{}
+% Here goes the biography details.
+%\endbio
+
+%\bio{pic1}
+% Here goes the biography details.
+%\endbio
+
+\end{document}
