@@ -1,8 +1,8 @@
 # This file must be run with GNU make
 # Example invocations:
 # make
-# make VENUE=aamas COLOR=dark once
-# make VENUE=ijcai bib
+# make VENUE=aij COLOR=dark once
+# make VENUE=aij bib
 
 INAME = main
 ONAME = fimp
@@ -10,7 +10,7 @@ OUT_DIR = build
 TEX_OPTIONS = -cnf-line "max_print_line = 10000" -halt-on-error
 ZIP_EXCLUDES = -x '.*' -x '*.db' -x '__MACOSX'
 
-camred: VENUE = aamas
+# VENUE ?= aij
 
 VENUE_SUFFIX = $(if $(VENUE),-$(VENUE))
 BUILD_PREFIX = $(if $(OUT_DIR),$(OUT_DIR)/)
@@ -22,18 +22,15 @@ BIB_RUN = bibtex $(AUX_BASE).aux
 default:
 	$(if $(OUT_DIR),mkdir -p $(OUT_DIR))
 	$(TEX_RUN)
-	@$(MAKE) bib
+	$(BIB_RUN)
 	$(TEX_RUN)
 	$(TEX_RUN)
 	$(TEX_RUN)
 once:
+	$(if $(OUT_DIR),mkdir -p $(OUT_DIR))
 	$(TEX_RUN)
 bib:
 	$(BIB_RUN)
-ifeq ($(VENUE),aamas)
-	cp $(AUX_BASE).bbl $(AUX_BASE)-orig.bbl
-	perl -pe 's/(\\bibitem\[\\protect\\citeauthoryear\{Conitzer)/\\balance\n$$1/' $(AUX_BASE)-orig.bbl > $(AUX_BASE).bbl
-endif
 
 clean:
 	rm -f $(BUILD_PREFIX)*.{aux,bbl,blg,log,out,toc,vtc,cut}
@@ -44,15 +41,6 @@ test:
 	@printf '%s\n' 'TEX_RUN: $(TEX_RUN)'
 	@printf '%s\n' 'BIB_RUN: $(BIB_RUN)'
 
-arxiv:
-	mkdir -p arxiv
-	cp -r figs dags arxiv
-	cp $(AUX_BASE).bbl arxiv/$(ONAME)-final.bbl
-	# https://github.com/sharmaeklavya2/tex-flatten
-	tex-flatten.py $(INAME).tex --bbl-to-link $(ONAME)-final.bbl -o arxiv/$(ONAME)-final.tex
-	@echo "Now cd to arxiv and run 'pdflatex $(ONAME)-final.tex' thrice."
-arxiv.zip: arxiv
-	cd arxiv && zip -r ../arxiv.zip . $(ZIP_EXCLUDES)
 camred:
 	mkdir -p camred
 	cp -r figs dags camred
