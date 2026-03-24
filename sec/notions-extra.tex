@@ -26,14 +26,14 @@ See \cref{defn:efx0-goods} for a formal definition,
 and \cref{defn:efx0-chores} for the chores analogue.
 
 \begin{definition}[\EFXZero{} for goods]
-\label{defn:efx0-goods}
+\label[definition]{defn:efx0-goods}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ over goods,
 an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, and every $g \in A_j$,
 \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
 \end{definition}
 
 \begin{definition}[\EFXZero{} for chores]
-\label{defn:efx0-chores}
+\label[definition]{defn:efx0-chores}
 For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ over chores,
 an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, and every $c \in A_i$,
 \[ \frac{-v_i(A_i \setminus \{c\})}{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
@@ -44,7 +44,7 @@ based on the following simple example,
 whereas it is not known whether EFX is compatible with PO.
 
 \begin{example}
-\label{ex:efx-po}
+\label[example]{ex:efx-po}
 Consider the fair division instance $([2], \{g_1, g_2, g_3\}, (v_i)_{i=1}^2, (1/2, 1/2))$,
 where $v_1$ and $v_2$ are additive, and
 \begin{align*}
@@ -80,7 +80,7 @@ or after removing the most valuable negatively-valued item from $i$.
 However, we argue that this is not sufficient.
 
 \begin{example}
-\label{ex:efx-mixed-manna}
+\label[example]{ex:efx-mixed-manna}
 Consider a fair division instance $\Ical$ having 2 agents with equal entitlements,
 identical additive valuations, two goods of values $10$ each,
 and two chores of values $-9$ each.
@@ -116,7 +116,7 @@ transferring $S$ from $j$ to $i$ leads to an increase in $i$'s valuation,
 otherwise we lose compatibility with PO, as the following example demonstrates.
 
 \begin{example}
-\label{ex:efx-two-colors}
+\label[example]{ex:efx-two-colors}
 Consider a fair division instance with two equally-entitled agents having identical valuations.
 There are 2 red goods and 4 blue goods. The value of any bundle is $\max(k_r, k_b)$,
 where $k_r$ and $k_b$ are the numbers of red and blue goods in the bundle, respectively.
@@ -137,7 +137,7 @@ We now identify special cases where our definition of EFX (\cref{defn:efx})
 is equivalent to well-known definitions of EFX under those special cases.
 
 \begin{lemma}
-\label{thm:efx-equiv-positive}
+\label[lemma]{thm:efx-equiv-positive}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if all marginals are positive for agent $i$
 (i.e., $v_i(g \mid R) > 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
@@ -151,7 +151,7 @@ Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
 \end{proof}
 
 \begin{lemma}
-\label{thm:efx-equiv-negative}
+\label[lemma]{thm:efx-equiv-negative}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if all marginals are negative for agent $i$
 (i.e., $v_i(c \mid R) < 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
@@ -165,7 +165,7 @@ Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
 \end{proof}
 
 \begin{lemma}
-\label{thm:submod-positive-elem}
+\label[lemma]{thm:submod-positive-elem}
 Let $f: 2^M \to \mathbb{R}$ be a submodular function and $S, T \subseteq M$ be disjoint sets.
 Then $f(S \mid T) > 0$ implies $f(g \mid T) > 0$ for some $g \in S$.
 \end{lemma}
@@ -177,7 +177,7 @@ Hence, $\sum_{g \in S} f(g \mid T) \ge f(S \mid T) > 0$, so $f(g \mid T) > 0$ fo
 \end{proof}
 
 \begin{lemma}
-\label{thm:efx-equiv-submod-goods}
+\label[lemma]{thm:efx-equiv-submod-goods}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is submodular and all marginals are non-negative for agent $i$
 (i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
@@ -193,7 +193,7 @@ such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
-\label{thm:submod-negative-elem}
+\label[lemma]{thm:submod-negative-elem}
 Let $f: 2^M \to \mathbb{R}$ be a submodular function and let $S \subseteq T \subseteq M$.
 Then $f(S \mid T \setminus S) < 0$ implies $f(c \mid T \setminus \{c\}) < 0$ for some $c \in S$.
 \end{lemma}
@@ -211,7 +211,7 @@ so $f(c \mid T \setminus \{c\}) < 0$ for some $c \in S$.
 \end{proof}
 
 \begin{lemma}
-\label{thm:efx-equiv-submod-chores}
+\label[lemma]{thm:efx-equiv-submod-chores}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is submodular and all marginals are non-positive for agent $i$
 (i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
@@ -230,7 +230,7 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \label{sec:notions:mms}
 
 \begin{definition}[MMS \cite{budish2011combinatorial}]
-\label{defn:mms}
+\label[definition]{defn:mms}
 For a finite set $M$, let $\Pi_n(M)$ be the set of all $n$-partitions of $M$.
 For a function $f: 2^M \to \mathbb{R}$, define
 \[ \MMS_f^n(M) \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n f(P_j). \]
@@ -244,7 +244,7 @@ is called agent $i$'s \emph{MMS partition}.
 \end{definition}
 
 \begin{definition}[WMMS \cite{farhadi2019fair}]
-\label{defn:wmms}
+\label[definition]{defn:wmms}
 Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance.
 Let $\Acal$ be the set of all allocations for $\Ical$.
 Then agent $i$'s \emph{weighted maximin share} (WMMS) is
@@ -257,7 +257,7 @@ is called agent $i$'s \emph{WMMS partition}.
 For equal entitlements, it's trivial to show that $\WMMS_i = \MMS_i$.
 
 \begin{definition}[pessShare \cite{babaioff2023fair}]
-\label{defn:pessShare}
+\label[definition]{defn:pessShare}
 Let $1 \le \ell \le d$. Let $\Pi_d(M)$ be the set of all $d$-partitions of $M$.
 Then agent $i$'s $\ell$-out-of-$d$ share is defined as
 \[ \loodM_i := \max_{\substack{X \in \Pi_d(M):\\v_i(X_j) \le v_i(X_{j+1}) \forall j \in [d-1]}} \sum_{j=1}^{\ell} v_i(X_j). \]
@@ -267,7 +267,7 @@ Allocation $A$ is pessShare-fair to agent $i$ if $v_i(A_i) \ge \pessShare_i$.
 \end{definition}
 
 \begin{lemma}
-\label{thm:pess-is-mms}
+\label[lemma]{thm:pess-is-mms}
 For any fair division instance with equal entitlements,
 the pessShare of any agent is the same as her maximin share.
 \end{lemma}
@@ -300,7 +300,7 @@ $\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
 For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=1}^m x_j$.
 
 \begin{definition}[APS \cite{babaioff2023fair}]
-\label{defn:aps}
+\label[definition]{defn:aps}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 agent $i$'s AnyPrice Share (APS) is defined as
 \[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
@@ -314,7 +314,7 @@ However, they assume that all items are goods, and for that special case,
 we prove that their definition is equivalent to \cref{defn:aps}.
 
 \begin{lemma}
-\label{thm:aps-optimal-price}
+\label[lemma]{thm:aps-optimal-price}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
 For agent $i$, let $G$ be the set of goods and $C$ be the set of chores,
 i.e., $G \defeq \{g \in [m]: v_i(g \mid R) \ge 0 \; \forall R \subseteq [m] \setminus \{g\}\}$
@@ -360,7 +360,7 @@ $p$ is non-positive and $p([m]) = -1$. Hence,
 called the \emph{dual} definition.
 
 \begin{definition}[APS (dual)]
-\label{defn:aps-dual}
+\label[definition]{defn:aps-dual}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
 For an agent $i$ and any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
 Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ such that
@@ -376,7 +376,7 @@ $nx_S \in \mathbb{Z}_{\ge 0}$ for all $S \in \Scal_z$ gives us an alternate defi
 They prove this only for goods, but their proof can be easily adapted to the case of mixed manna.
 
 \begin{lemma}
-\label{thm:aps-primal-dual-equiv}
+\label[lemma]{thm:aps-primal-dual-equiv}
 \Cref{defn:aps,defn:aps-dual} are equivalent.
 \end{lemma}
 \begin{proof}
@@ -435,7 +435,7 @@ We alter PROPx, PROPm, and PROPavg to also use strict inequalities.
 \label{sec:notions:propx}
 
 \begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
-\label{defn:propx}
+\label[definition]{defn:propx}
 For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 an allocation $A$ is said to be PROPx-fair to agent $i$ iff
 either $v_i(A_i) \ge w_i \cdot v_i([m])$ or both of these conditions hold:
@@ -451,7 +451,7 @@ We identify special cases where our definition of PROPx (\cref{defn:propx})
 is equivalent to well-known definitions of PROPx under those special cases.
 
 \begin{lemma}
-\label{thm:propx-equiv-positive}
+\label[lemma]{thm:propx-equiv-positive}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if all marginals are positive for agent $i$
 (i.e., $v_i(g \mid R) > 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
@@ -466,7 +466,7 @@ Hence, in \cref{defn:propx}, we assume $|S| = 1$ \wLoG{}.
 \end{proof}
 
 \begin{lemma}
-\label{thm:propx-equiv-negative}
+\label[lemma]{thm:propx-equiv-negative}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if all marginals are negative for agent $i$
 (i.e., $v_i(c \mid R) < 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
@@ -481,7 +481,7 @@ Hence, in \cref{defn:propx}, we assume $|S| = 1$ \wLoG{}.
 \end{proof}
 
 \begin{lemma}
-\label{thm:propx-equiv-submod-goods}
+\label[lemma]{thm:propx-equiv-submod-goods}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is submodular and all marginals are non-negative for agent $i$
 (i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
@@ -496,7 +496,7 @@ such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
-\label{thm:propx-equiv-submod-chores}
+\label[lemma]{thm:propx-equiv-submod-chores}
 In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
 if $v_i$ is submodular and all marginals are non-positive for agent $i$
 (i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
@@ -515,7 +515,7 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \label{sec:notions:propm-propavg}
 
 \begin{definition}[PROPm \cite{baklanov2021achieving} and PROPavg \cite{kobayashi2025proportional}]
-\label{defn:propm}
+\label[definition]{defn:propm}
 \label{defn:propavg}
 Let $A$ be an allocation for the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$.
 Fix an agent $i$. For every $j \in [n] \setminus \{i\}$,
