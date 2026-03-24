@@ -39,8 +39,10 @@
 \let\bigTableSize\footnotesize
 \let\tableHeadSize\tiny
 
-\input{extref.tex}
-\extRefOff
+\let\extRef\ref
+\let\extCref\cref
+\let\extCrefCof\cref
+\let\extCrefCin\cref
 
 %\newproof{pf}{Proof}
 \newtheorem{theorem}{Theorem}
