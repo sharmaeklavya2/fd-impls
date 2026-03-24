@@ -4,7 +4,8 @@
 Implications among fairness notions.
 For conciseness, we write ep-$F$ instead of epistemic-$F$,
 min-$F$-sh instead of minimum-$F$-share,
-g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.}
+g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.
+For known results, citations can be found in the corresponding lemma statements.}
 \label{table:impls1}
 \bigTableSize
 \begin{tabular}{cccccccc}
@@ -56,9 +57,9 @@ g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.}
     & -- & $> 0$, $< 0$ & -- & -- & -- & \extCref{thm:impl:propm-to-prop1} & folklore
 %
 \\ \midrule MEFS $\fimplies$ PROP
-    & subadditive & -- & -- & -- & -- & \extCref{thm:impl:mefs-to-prop} & \cite{bouveret2016characterizing}
+    & subadditive & -- & -- & -- & -- & \extCref{thm:impl:mefs-to-prop} & known
 \\[\defaultaddspace] EF $\fimplies$ GPROP
-    & subadditive & -- & -- & -- & -- & \extCref{thm:impl:ef-to-gprop} & \cite{bouveret2016characterizing}
+    & subadditive & -- & -- & -- & -- & \extCref{thm:impl:ef-to-gprop} & known
 \\[\defaultaddspace] PROP $\fimplies$ EF
     & superadditive & -- & yes & -- & -- & \extCref{thm:impl:prop-to-ef-superadd-id} & folklore
 \\[\defaultaddspace] PPROP $\fimplies$ EF
@@ -76,33 +77,33 @@ g-$F$ instead of groupwise-$F$, and p-$F$ instead of pairwise-$F$.}
 \\[\defaultaddspace] EF1 $\fimplies$ PROP1
     & subadditive & $> 0$, $< 0$ & -- & $n=2$ & -- & \extCref{thm:impl:ef1-to-prop1-n2} & \textbf{new}
 \\[\defaultaddspace] EEFX $\fimplies$ PROPx
-    & subadditive & chores & -- & -- & -- & \extCref{thm:impl:eefx-to-propx} & \cite{li2022almost}
+    & subadditive & chores & -- & -- & -- & \extCref{thm:impl:eefx-to-propx} & known
 \\[\defaultaddspace] EFX $\fimplies$ PROPavg
     & submodular & goods & -- & -- & equal & \extCref{thm:impl:efx-to-propavg} & \textbf{new}
 \\[\defaultaddspace] EFX $\fimplies$ PROPx
     & subadditive & -- & -- & $n=2$ & -- & \extCref{thm:impl:efx-to-propx-n2} & \textbf{new}
 \\[\defaultaddspace] MXS $\fimplies$ PROP1
-    & additive & goods & -- & -- & equal & \extCref{thm:impl:mxs-to-prop1} & \cite{caragiannis2023new}
+    & additive & goods & -- & -- & equal & \extCref{thm:impl:mxs-to-prop1} & known
 %
 \\\midrule PMMS $\fimplies$ EFX
     & additive & -- & -- & -- & equal & \extCref{thm:impl:mms-to-efx-n2} & folklore
 \\[\defaultaddspace] PWMMS $\fimplies$ EFX
     & -- & goods & -- & -- & -- & \extCref{thm:impl:mms-to-efx-n2} & folklore
 \\[\defaultaddspace] WMMS $\fimplies$ EEFX
-    & -- & goods & -- & -- & -- & \extCref{thm:impl:mms-to-eefx} & \cite{caragiannis2023new}
+    & -- & goods & -- & -- & -- & \extCref{thm:impl:mms-to-eefx} & known
 \\[\defaultaddspace] MMS $\fimplies$ MXS
     & additive & -- & -- & -- & equal & \extCref{thm:impl:mms-to-mxs} & \textbf{new}
 \\[\defaultaddspace] MMS $\fimplies$ MXS+M1S
     & -- & goods & -- & -- & equal & \extCref{thm:impl:mms-to-mxs0} & \textbf{new}
 %
 \\\midrule PROP $\fimplies$ APS\textsuperscript{\ref{foot:pg}}
-    & additive & -- & -- & -- & -- & \extCref{thm:impl:prop-to-aps} & \cite{babaioff2023fair}
+    & additive & -- & -- & -- & -- & \extCref{thm:impl:prop-to-aps} & known
 \\[\defaultaddspace] PROP $\fimplies$ WMMS\textsuperscript{\ref{foot:pg}}
     & superadditive & -- & -- & -- & -- & \extCref{thm:impl:prop-to-wmms} & folklore
 \\[\defaultaddspace] APS $\fimplies$ MMS\textsuperscript{\ref{foot:pg}}
-    & -- & -- & -- & -- & equal & \extCref{thm:impl:aps-to-pess} & \cite{babaioff2023fair}
+    & -- & -- & -- & -- & equal & \extCref{thm:impl:aps-to-pess} & known
 \\[\defaultaddspace] PWMMS $\fimplies$ PAPS
-    & additive & -- & -- & -- & -- & \extCref{thm:impl:mms-to-aps-n2} & \cite{babaioff2023fair}
+    & additive & -- & -- & -- & -- & \extCref{thm:impl:mms-to-aps-n2} & known
 \\ \bottomrule
 \end{tabular}
 
