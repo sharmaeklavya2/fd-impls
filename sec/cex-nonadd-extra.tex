@@ -8,6 +8,10 @@
 
 \begin{lemma}[EF+GAPS $\nfimplies$ PROP1]
 \label[lemma]{cex:ef-not-prop-supmod}
+\label[lemma]{cex:ef-not-prop-supmod:n2-positive-bival}
+\label[lemma]{cex:ef-not-prop-supmod:n2-binary}
+\label[lemma]{cex:ef-not-prop-supmod:n3-positive-bival}
+\label[lemma]{cex:ef-not-prop-supmod:n3-binary}
 Let $0 \le \eps < 1/27$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
 \[ f(x) \defeq x\eps + \max(0, x-k). \]
 Consider a fair division instance with $n$ equally-entitled agents
@@ -85,6 +89,8 @@ Hence, if $m \le 3$ and $u$ is cancelable, then $\uhat$ is also cancelable.
 
 \begin{lemma}[PROP $\nfimplies$ M1S]
 \label[lemma]{cex:prop-not-m1s-unit-demand}
+\label[lemma]{cex:prop-not-m1s-unit-demand:nonneg}
+\label[lemma]{cex:prop-not-m1s-unit-demand:positive}
 Consider a unit-demand function $v$ over 3 goods such that $v(1) = v(2) = 4$ and $v(3) = 3$.
 Let $0 \le \eps < 1/6$ and $\vhat(X) \defeq v(X) + 2|X|\eps$ for all $X \subseteq [3]$.
 Consider a fair division instance with 3 goods and
@@ -103,6 +109,8 @@ is agent 2's M1S certificate for $A$. Hence, $A$ is not M1S.
 
 \begin{example}[PROP1 $\nfimplies$ PROPm]
 \label[example]{cex:ud:prop1-not-propm}
+\label[example]{cex:ud:prop1-not-propm:nonneg}
+\label[example]{cex:ud:prop1-not-propm:positive}
 Consider a unit-demand function $v$ over 2 goods such that $v(1) = 30$ and $v(2) = 10$.
 Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [2]$.
 Consider a fair division instance with 2 goods and
@@ -112,6 +120,8 @@ Then the allocation $A \defeq (\{1, 2\}, \emptyset)$ is PROP1 but not PROPm.
 
 \begin{example}[PROP $\nfimplies$ PPROP]
 \label[example]{cex:ud:prop-not-pprop}
+\label[example]{cex:ud:prop-not-pprop:positive}
+\label[example]{cex:ud:prop-not-pprop:nonneg}
 Consider a unit-demand function $v$ over 3 goods such that $v(1) = 30$ and $v(2) = v(3) = 11$.
 Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [3]$.
 Consider a fair division instance with 3 goods and
@@ -121,6 +131,8 @@ Then the allocation $A \defeq (\{1\}, \{2\}, \{3\})$ is PROP but no alloction is
 
 \begin{example}[MMS $\nfimplies$ EF1, PROPm]
 \label[example]{cex:ud:mms-not-ef1-propm}
+\label[example]{cex:ud:mms-not-ef1-propm:nonneg}
+\label[example]{cex:ud:mms-not-ef1-propm:positive}
 Consider a unit-demand function $v$ over 5 goods such that
 $v(1) = 200$ and $v(2) = 30$ and $v(3) = v(4) = v(5) = 10$.
 Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [5]$.
@@ -133,6 +145,8 @@ is MMS but not EF1 and not PROPm.
 
 \begin{example}[PROPm $\nfimplies$ PROPavg]
 \label[example]{cex:ud:propm-not-propavg}
+\label[example]{cex:ud:propm-not-propavg:positive}
+\label[example]{cex:ud:propm-not-propavg:nonneg}
 Consider a unit-demand function $v$ over 3 goods such that
 $v(1) = 75$, $v(2) = 30$, and $v(3) = 10$.
 Let $0 \le \eps < 1$ and $\vhat(X) \defeq v(X) + |X|\eps$ for all $X \subseteq [3]$.
@@ -169,6 +183,8 @@ The submodularity of $f$ follows from \cref{thm:ud-perturb}.
 
 \begin{example}[EF $\nfimplies$ MMS]
 \label[example]{cex:ef-not-mms-pmrf}
+\label[example]{cex:ef-not-mms-pmrf:binary}
+\label[example]{cex:ef-not-mms-pmrf:positive-bival}
 Let $P \defeq (\{r_1, r_2\}, \{g_1, g_2\})$, $\eps \in \mathbb{R}_{\ge 0}$,
 and $v \defeq \PMRF_{+\eps}(P)$.
 Consider a fair division instance with 2 equally-entitled agents
@@ -190,6 +206,8 @@ but agent 1 is not MXS-satisfied by $A$.
 
 \begin{example}[MEFS $\nfimplies$ EF1]
 \label[example]{cex:mefs-not-ef1-pmrf}
+\label[example]{cex:mefs-not-ef1-pmrf:binary}
+\label[example]{cex:mefs-not-ef1-pmrf:positive-bival}
 Let $P \defeq (\{a\}, \{b\}, \{c\}, \{d\}, \{e_1, e_2\}, \{f_1, f_2\}, \{g_1, g_2\})$.
 Let $v \defeq \PMRF_{+\eps}(P)$ for $0 \le \eps \le 1/2$.
 Consider a fair division instance with 2 equally-entitled agents
@@ -204,6 +222,8 @@ since $v(B_1) = v(A_1) = 4 + 4\eps$ and $v(B_2) = 3 + 6\eps$.
 
 \begin{example}
 \label[example]{cex:eef-not-ef1-pprop-pmrf}
+\label[example]{cex:eef-not-ef1-pprop-pmrf:binary}
+\label[example]{cex:eef-not-ef1-pprop-pmrf:positive-bival}
 Let $M \defeq \{a_j\}_{j=1}^6 \cup \{b_j\}_{j=1}^6 \cup \{c_j\}_{j=1}^4$.
 Let $P$ be a partition of $M$ where $X \in P$ iff $X = \{a_j, b_j\}$ for some $j \in [6]$
 or $X = \{c_j\}$ for some $j \in [4]$.
@@ -223,6 +243,8 @@ Then $v(B_3) = 4(1+\eps)$ and $v(B_1) = v(B_2) = 3 + 6\eps < 4$.
 
 \begin{example}[PROP $\nfimplies$ M1S]
 \label[example]{cex:prop-not-m1s-uniform-matroid}
+\label[example]{cex:prop-not-m1s-uniform-matroid:binary}
+\label[example]{cex:prop-not-m1s-uniform-matroid:positive-bival}
 Let $v: 2^{[10]} \to \mathbb{R}_{\ge 0}$ be a function defined as $v(X) \defeq \min(6, |X|)$.
 Then $v$ is submodular (since $v$ is the rank function of a uniform matroid)
 and $v$ has binary marginals (i.e., $v(g \mid X) \in \{0, 1\}$
@@ -236,6 +258,8 @@ Then $A \defeq ([4], [10] \setminus [4])$ is PROP but agent 1 is not M1S-satisfi
 
 \begin{lemma}[MMS $\nfimplies$ APS for $n=2$, Remark 2 of \cite{babaioff2023fair}]
 \label[lemma]{cex:mms-not-aps-n2-submod}
+\label[lemma]{cex:mms-not-aps-n2-submod:nonneg}
+\label[lemma]{cex:mms-not-aps-n2-submod:positive}
 Let $C \defeq \{\{1, 2, 3\}, \{1, 5, 6\}, \{2, 4, 6\}, \{3, 4, 5\}\}$.
 Let $v: 2^{[6]} \to \mathbb{R}_{\ge 0}$ be a function defined as
 \[ v(X) \defeq \begin{cases}
@@ -334,6 +358,8 @@ so $\optBP_s(X \cup Y) \le k_X + k_Y$.
 
 \begin{example}
 \label[example]{cex:gaps-not-prop1-subadd}
+\label[example]{cex:gaps-not-prop1-subadd:binary}
+\label[example]{cex:gaps-not-prop1-subadd:positive-bival}
 Let $s = (1/5, 1/5, 3/5, 3/5, 3/5, 3/5)$. Let $0 \le \eps < 1/3$.
 Consider a fair division instance with 3 equally-entitled agents
 having an identical valuation function $v$ over 6 goods.

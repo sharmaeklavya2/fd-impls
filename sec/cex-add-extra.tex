@@ -6,6 +6,8 @@
 
 \begin{example}[single item]
 \label[example]{cex:single-item}
+\label[example]{cex:single-item:goods}
+\label[example]{cex:single-item:chores}
 Consider a fair division instance with $n$ agents and one item
 (which is either a good to everyone or a chore to everyone).
 Then every allocation is EFX, EF1, APS, MMS, PROPx, GAPS, GMMS, PAPS, PMMS,
@@ -61,6 +63,10 @@ $A$ is not EF1 because agents 1 and 2 EF1-envy agent $n$.
 
 \begin{lemma}[EEF $\nfimplies$ EF1]
 \label[lemma]{cex:eef-not-ef1}
+\label[lemma]{cex:eef-not-ef1:positive-bival}
+\label[lemma]{cex:eef-not-ef1:binary}
+\label[lemma]{cex:eef-not-ef1:negative-bival}
+\label[lemma]{cex:eef-not-ef1:neg-binary}
 Let $0 \le 2a < b$. Let $f_1, f_2, f_3: 2^{[12]} \to \mathbb{R}_{>0}$ be additive sets functions:
 
 \begin{tabular}{c|cccc|cccc|cccc}
@@ -187,6 +193,8 @@ and agent 1 would EF1-envy $j$.
 
 \begin{example}[EFX $\nfimplies$ MMS]
 \label[example]{cex:efx-not-mms}
+\label[example]{cex:efx-not-mms:goods}
+\label[example]{cex:efx-not-mms:chores}
 Let $t \in \{-1, 1\}$.
 Consider a fair division instance with 2 equally-entitled agents having
 an identical additive valuation function $v$ over 5 items.
@@ -198,6 +206,8 @@ But in $A$, some agent doesn't get her MMS.
 
 \begin{example}[EF1 $\nfimplies$ PROPX or MXS]
 \label[example]{cex:ef1-not-propx-mxs}
+\label[example]{cex:ef1-not-propx-mxs:goods}
+\label[example]{cex:ef1-not-propx-mxs:chores}
 Let $t \in \{-1, 1\}$.
 Consider a fair division instance with 2 equally-entitled agents
 having an identical additive valuation function $v$ over 5 items,
@@ -207,6 +217,8 @@ Then allocation $A \defeq (\{1\}, [5] \setminus \{1\})$ is EF1 but not PROPx and
 
 \begin{lemma}[PROPx $\nfimplies$ M1S]
 \label[lemma]{cex:propx-not-m1s}
+\label[lemma]{cex:propx-not-m1s:goods}
+\label[lemma]{cex:propx-not-m1s:chores}
 Let $t \in \{-1, 1\}$ and $0 < \eps < 1/2$.
 Consider a fair division instance with 2 equally-entitled agents having
 an identical additive valuation function $v$ over 4 items.
@@ -225,6 +237,8 @@ But $v(A_2) = -3$, so agent 1 doesn't have an M1S-certificate for $A$. Hence, $A
 
 \begin{example}[MXS $\nfimplies$ PROPx for $n=2$, \cite{caragiannis2022existence}]
 \label[example]{cex:mxs-not-propx-n2}
+\label[example]{cex:mxs-not-propx-n2:goods}
+\label[example]{cex:mxs-not-propx-n2:chores}
 Let $t \in \{-1, 1\}$.
 Consider a fair division instance with 2 equally-entitled agents
 having identical additive valuations over 7 items:
@@ -236,6 +250,8 @@ and $([2], [7] \setminus [2])$ as their MXS-certificates for $A$.
 
 \begin{lemma}[M1S $\nfimplies$ PROP1]
 \label[lemma]{cex:m1s-not-prop1}
+\label[lemma]{cex:m1s-not-prop1:goods}
+\label[lemma]{cex:m1s-not-prop1:chores}
 Consider a fair division instance with 2 equally-entitled agents
 having an identical additive valuation function $v$ over 9 items.
 Let $t \in \{-1, 1\}$ and $v(9) = 4t$ and $v(j) = t$ for $j \in [8]$.
@@ -256,6 +272,8 @@ but agent 2 is not PROP1-satisfied by $A$.
 
 \begin{example}[GAPS $\nfimplies$ PROPx]
 \label[example]{cex:gaps-not-propx}
+\label[example]{cex:gaps-not-propx:additive}
+\label[example]{cex:gaps-not-propx:unit-demand}
 Consider a fair division instance with 3 equally-entitled agents
 having identical additive or unit-demand valuations. There are 2 goods of values 50 and 10.
 In every allocation, some agent doesn't get any good, and that agent is not PROPx-satisfied.
@@ -266,6 +284,8 @@ and the second agent gets the good of value 10 is a groupwise APS allocation
 
 \begin{lemma}[APS $>$ MMS]
 \label[lemma]{thm:aps-gt-mms}
+\label[lemma]{thm:aps-gt-mms:goods}
+\label[lemma]{thm:aps-gt-mms:chores}
 Let $t \in \{-1, 1\}$.
 Consider a fair division instance with 3 equally-entitled agents
 having identical additive valuations over 15 items. The items' values are
@@ -284,6 +304,8 @@ Hence, for $t = -1$, the maximin share is less than $-97$.
 
 \begin{example}[GMMS $\nfimplies$ APS, \cite{babaioff2023fair}]
 \label[example]{cex:gmms-not-aps}
+\label[example]{cex:gmms-not-aps:goods}
+\label[example]{cex:gmms-not-aps:chores}
 For the fair division instance in \cref{thm:aps-gt-mms},
 the leximin allocation is GMMS (since on restricting to any subset of agents,
 the resulting allocation is still leximin, and is therefore MMS).
@@ -293,6 +315,8 @@ and the minimum value across all bundles is at most the MMS.
 
 \begin{example}[PMMS $\nfimplies$ MMS, Example 4.4 of \cite{caragiannis2019unreasonable}]
 \label[example]{cex:pmms-not-mms}
+\label[example]{cex:pmms-not-mms:goods}
+\label[example]{cex:pmms-not-mms:chores}
 Let $t \in \{-1, 1\}$.
 Consider a fair division instance with 3 equally-entitled agents
 having an identical valuation function $v$ over 7 items where
@@ -303,6 +327,8 @@ Allocation $(\{1\}, \{3, 4, 5\}, \{2, 6, 7\})$ is PMMS but not MMS.
 
 \begin{example}[APS $\nfimplies$ PROPm]
 \label[example]{cex:aps-not-propm}
+\label[example]{cex:aps-not-propm:goods}
+\label[example]{cex:aps-not-propm:chores}
 Consider a fair division instance with 3 equally-entitled agents
 having an identical additive valuation function $v$ over 6 goods:
 $v(1) = 60$, $v(2) = 30$, and $v(3) = v(4) = v(5) = v(6) = 10$.
@@ -366,6 +392,8 @@ but agent 3 is not PROPavg-satisfied by $A$.
 
 \begin{example}[PROP1 $\nfimplies$ M1S]
 \label[example]{cex:prop1-not-m1s-n2}
+\label[example]{cex:prop1-not-m1s-n2:goods}
+\label[example]{cex:prop1-not-m1s-n2:chores}
 Consider a fair division instance with 2 agents having identical additive valuations.
 Let $t \in \{-1, 1\}$. Let there be 2 items, each of value $t$.
 Let the entitlement vector be $(2/3, 1/3)$.
@@ -375,6 +403,8 @@ Then $A$ is PROP1 but not M1S.
 
 \begin{lemma}[GAPS $\nfimplies$ PROPx for $n=2$]
 \label[lemma]{cex:gaps-not-propx-n2}
+\label[lemma]{cex:gaps-not-propx-n2:goods}
+\label[lemma]{cex:gaps-not-propx-n2:chores}
 Let $t \in \{-1, 1\}$. Consider a fair division instance $([2], [12], (v, v), (0.4, 0.6))$,
 where $v(1) = v(2) = 10t$ and $v(j) = t$ for all $j \in [12] \setminus [2]$.
 Then allocation $A = (\{1\}, [12] \setminus \{1\})$ is APS but not PROPx.
@@ -613,6 +643,8 @@ Hence, $X$ is EFX iff $X$ is M1S.
 
 \begin{lemma}[PROP $\nfimplies$ M1S for chores]
 \label[lemma]{cex:prop-not-m1s-chores}
+\label[lemma]{cex:prop-not-m1s-chores:neg-binary}
+\label[lemma]{cex:prop-not-m1s-chores:negative-bival}
 Let $0 \le \eps \le 2/7$.
 Let $([3], [7], (v_i)_{i=1}^3, w)$ be a fair division instance,
 where $w = (4/7, 3/14, 3/14)$ and $v$ is given by the following table:
