@@ -9,10 +9,7 @@
 \begin{lemma}[EF+GAPS $\nfimplies$ PROP1]
 \label[lemma]{cex:ef-not-prop-supmod}
 Let $0 \le \eps < 1/27$ and $k \in \mathbb{N}$. For any $x \ge 0$, let
-\[ f(x) \defeq x\eps + \begin{cases}
-0 & \textrm{ if } x \le k
-\\ x-k & \textrm{ if } x > k
-\end{cases}. \]
+\[ f(x) \defeq x\eps + \max(0, x-k). \]
 Consider a fair division instance with $n$ equally-entitled agents
 having an identical valuation function $v$ over $4n$ goods,
 where $v(X) = f(|X|)$ for all $X \subseteq [4n]$. Then $v$ is supermodular.
