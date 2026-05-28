@@ -1,7 +1,7 @@
 # This file must be run with GNU make
 # Example invocations:
 # make
-# make VENUE=aij PART=2 COLOR=dark once
+# make VENUE=aij COLOR=dark once
 # make VENUE=aij bib
 
 INAME = main
@@ -10,10 +10,9 @@ OUT_DIR = build
 TEX_OPTIONS = -cnf-line "max_print_line = 10000" -halt-on-error
 ZIP_EXCLUDES = -x '.*' -x '*.db' -x '__MACOSX'
 
-PART ?= 1
 VENUE ?= aij
 
-VENUE_SUFFIX = $(if $(VENUE),$(PART)-$(VENUE),$(PART))
+VENUE_SUFFIX = $(if $(VENUE),-$(VENUE),)
 BUILD_PREFIX = $(if $(OUT_DIR),$(OUT_DIR)/)
 AUX_BASE = $(BUILD_PREFIX)$(ONAME)$(VENUE_SUFFIX)
 ISPEC = $(if $(COLOR),"\def\colorscheme{$(COLOR)}\input{$(INAME)$(VENUE_SUFFIX).tex}",$(INAME)$(VENUE_SUFFIX).tex)
