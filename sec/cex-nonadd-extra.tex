@@ -325,19 +325,6 @@ Note that $A$ is not \EFXZero{} (c.f.~\cref{defn:efx0-goods});
 the difference between EFX and \EFXZero{} is crucial here.
 \end{example}
 
-\begin{example}
-\label[example]{cex:ef1-not-prop1-subadd}
-Let $([2], [7], (v_i)_{i=1}^2, \eqEnt)$ be a fair division instance where
-$v_i(S) \defeq \ceil{|S|/4}$ for all $i \in [2]$ and $S \subseteq [7]$.
-Then $v_i$ is subaditive for $i \in [2]$ by \cref{thm:floor-ceil-value}.
-Let $A$ be an allocation where agent 1 has 2 goods and agent 2 has 5 goods.
-Then $A$ is GAPS+EF1 but not PROP1.
-(Note that in our definition of PROP1 (c.f.~\cref{defn:prop1}), we require
-$v_i(A_i \cup \{g\}) > v_i([m])/2$ for some $g \in [m] \setminus A_i$,
-not just $v_i(A_i \cup \{g\}) \ge v_i([m])/2$.
-This nuance is crucial to this counterexample.)
-\end{example}
-
 \begin{lemma}[optimal bin packing is subadditive]
 \label[lemma]{thm:bin-packing}
 Let $(s_j)_{j=1}^m$ be a sequence where $0 \le s_j \le 1$ for all $j \in [m]$
@@ -373,9 +360,6 @@ Then allocation $A = (\{1, 2\}, \{3, 4\}, \{5, 6\})$ is EFX, pairwise PROP, and 
 (set the price of the first two goods to $1/2$ and the last four goods to 1).
 However, agent 1 is not PROP1-satisfied in $A$, since $v([6]) = 4 + 6\eps$,
 and $v(A_1 \cup \{g\}) = 1 + 3\eps$ for all $g \in [6] \setminus A_1$
-
-(Note that unlike \cref{cex:ef1-not-prop1-subadd}, this example
-works even for the weaker definition of PROP1.)
 \end{example}
 
 \begin{lemma}[PAPS+PPROP $\nfimplies$ PROPm or M1S for binary subadd]
