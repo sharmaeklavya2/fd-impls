@@ -1,0 +1,39 @@
+name: deploy-to-github-pages
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      # install dependencies
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - uses: zauguin/install-texlive@v4
+        with:
+          package_file: texlive-packages.txt
+      # build paper.pdf
+      - run: SILENT=1 make
+      - run: mkdir -p output
+      - run: cp build/fimp.pdf output/paper.pdf
+      # build texRefs.json
+      - run: "curl https://raw.githubusercontent.com/sharmaeklavya2/extractTexRefs/refs/heads/main/extractTexRefs.py -o extractTexRefs.py"
+      - run: python3 extractTexRefs.py build/fimp.aux -o output/texRefs.json
+      # create a github-pages artifact
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: output
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: '${{ steps.deployment.outputs.page_url }}'
+    steps:
+      - uses: actions/deploy-pages@v5
+        id: deployment
