@@ -7,7 +7,7 @@
 INAME = main
 ONAME = fimp
 OUT_DIR = build
-TEX_OPTIONS = -cnf-line "max_print_line = 10000" -interaction=nonstopmode -halt-on-error
+TEX_OPTIONS = -cnf-line "max_print_line = 10000" -interaction=batchmode -halt-on-error
 ZIP_EXCLUDES = -x '.*' -x '*.db' -x '__MACOSX'
 
 VENUE_SUFFIX = $(if $(VENUE),-$(VENUE),)
