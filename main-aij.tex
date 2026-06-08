@@ -57,10 +57,12 @@
 
 \newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
 
+\makeatletter
+\pretocmd{\@float}{\def\fps@figure{tb}}{}{}
+\makeatother
+
 \begin{document}
 %\let\WriteBookmarks\relax
-\def\floatpagepagefraction{1}
-\def\textpagefraction{.001}
 
 \shorttitle{Exploring Relations among Fairness Notions}
 \shortauthors{J.~Garg and E.~Sharma}
