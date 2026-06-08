@@ -12,16 +12,16 @@ Here we show how we arrived at these extensions and why they make sense.
 Defining EFX in the fully general setting (non-additive valuations, mixed manna) is tricky.
 So, we start with the definition of EFX for additive goods,
 and gradually build up to the general definition of EFX from there.
-Some of these ideas also appear in \cite{caragiannis2022existence}.
+Some of these ideas also appear in \citet{caragiannis2022existence}.
 
 There are actually two competing definitions of EFX for additive goods.
-According to the original definition by \cite{caragiannis2019unreasonable},
+According to the original definition by \citet{caragiannis2019unreasonable},
 an allocation $A$ is EFX-fair to agent $i$ if for every other agent $j$,
 removing any positively-valued good from $j$'s bundle eliminates $i$'s envy. Formally,
 \[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j: v_i(g) > 0} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
 
 A different definition, often called \EFXZero{},
-doesn't require the good $j$ to have a positive value to $i$ \cite{plaut2020almost}.
+doesn't require the good $j$ to have a positive value to $i$ \citep{plaut2020almost}.
 See \cref{defn:efx0-goods} for a formal definition,
 and \cref{defn:efx0-chores} for the chores analogue.
 
@@ -39,13 +39,12 @@ an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, an
 \[ \frac{-v_i(A_i \setminus \{c\})}{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
 \end{definition}
 
-\EFXZero{} is known to be incompatible with PO
-based on the following simple example,
-whereas it is not known whether EFX is compatible with PO.
+\EFXZero{} is known to be incompatible with PO based on the following simple example \citep{plaut2020almost},
+whereas it is not known whether EFX is compatible with PO for additive valuations over goods.
 
 \begin{example}
 \label[example]{ex:efx-po}
-Consider the fair division instance $([2], \{g_1, g_2, g_3\}, (v_i)_{i=1}^2, (1/2, 1/2))$,
+Consider the fair division instance $([2], \{g_1, g_2, g_3\}, (v_i)_{i=1}^2, \eqEnt)$,
 where $v_1$ and $v_2$ are additive, and
 \begin{align*}
    v_1(g_1) &= 1, & v_1(g_2) &= 0, & v_1(g_3) &= 10,
@@ -53,24 +52,24 @@ where $v_1$ and $v_2$ are additive, and
 \end{align*}
 \end{example}
 
-For \cref{ex:efx-po}, for any Pareto-optimal allocation $A$, we have $g_1 \in A_1$ and $g_2 \in A_2$
+In \cref{ex:efx-po}, for any Pareto-optimal allocation $A$, we have $g_1 \in A_1$ and $g_2 \in A_2$
 (otherwise we can transfer $g_1$ to agent 1 or $g_2$ to agent 2 to obtain a Pareto-dominator of $A$).
 Then the agent who did not get $g_3$ in $A$ is not \EFXZero-satisfied, although she is EFX-satisfied.
 
 \begin{comment}
 For two agents having additive valuations, when the items are goods,
-every MMS-fair allocation is EFX (Theorem 4.6 in \cite{caragiannis2019unreasonable}).
-(For more than two agents, PMMS implies EFX \cite{caragiannis2019unreasonable}
-and MMS implies EEFX \cite{caragiannis2023new}.)
+every MMS-fair allocation is EFX (Theorem 4.6 in \citet{caragiannis2019unreasonable}).
+(For more than two agents, PMMS implies EFX \citep{caragiannis2019unreasonable}
+and MMS implies EEFX \citep{caragiannis2023new}.)
 However, this is not true for \EFXZero.
 For \cref{ex:efx-po}, each agent's maximin share is 1, so allocation $(\{1\}, \{2, 3\})$
 is MMS, but we have already seen that it is not \EFXZero-fair.
 \end{comment}
 
 While \EFXZero{} is trivial to extend to non-additive valuations, EFX is not.
-This is because every good in $j$'s bundle can have zero value to agent $i$.
+This is because there exist examples where every good in $j$'s bundle has zero value to agent $i$.
 (Additionally, the good's marginal value over $A_j$ and $A_i$ may also be zero.)
-Before we try to address this issue, let's instead jump to the setting of additive mixed manna.
+Before we try to address this issue, let us instead jump to the setting of additive mixed manna.
 
 One way to define EFX for mixed manna is this:
 agent $i$ is EFX-satisfied by allocation $A$ if for every other agent $j$,
@@ -86,7 +85,7 @@ identical additive valuations, two goods of values $10$ each,
 and two chores of values $-9$ each.
 Consider an allocation $A$ where all the 4 items are allocated to agent 2.
 Then agent 1 would be EFX-satisfied by $A$, even though allocation $B$,
-where each agent gets one good and one chore, is fairer.
+where each agent gets one good and one chore, is intuitively fairer.
 \end{example}
 
 For goods, EFX is considered one of the strongest notions of fairness,
@@ -99,7 +98,7 @@ or a single chore from $i$ in the definition of EFX,
 we should remove a positively-valued subset of $A_j$
 or a negatively-valued subset of $A_i$.
 
-Hence, for additive mixed manna, an allocation $A$ is EFX-fair to agent $i$
+Hence, for additive mixed manna, we say that an allocation $A$ is EFX-fair to agent $i$
 if for every other agent $j$, $i$ doesn't envy $j$, or both of the following hold:
 \begin{enumerate}
 \item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j
@@ -113,7 +112,7 @@ Even if every good in $j$'s bundle has (marginal) value zero to agent $i$,
 some subset of $j$'s bundle must have positive (marginal) value.
 We replace $v(S) > 0$ by $v_i(S \mid A_i) > 0$ to ensure that
 transferring $S$ from $j$ to $i$ leads to an increase in $i$'s valuation,
-otherwise we lose compatibility with PO, as the following example demonstrates.
+otherwise we lose compatibility with PO, even with identical valuations, as the following example demonstrates.
 
 \begin{example}
 \label[example]{ex:efx-two-colors}
@@ -127,9 +126,7 @@ and that agent's value for her own bundle can be at most 2.
 Also, the maximum value that any bundle can have is 4.
 Hence, an allocation is PO iff one agent gets all the blue goods
 and the other agent gets all the red goods.
-If we want EFX and PO to be compatible for this instance,
-we must define EFX such that the allocation obtained by giving
-all blue goods to one agent and all red goods to the other agent must be EFX.
+To ensure the compatibility of EFX and PO, we must define EFX such that this allocation is EFX.
 
 Hence, the definition of EFX we converge on is \cref{defn:efx}.
 
