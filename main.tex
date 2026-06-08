@@ -30,7 +30,20 @@
 \hypersetup{colorlinks,linkcolor=textRed,citecolor=textRed,urlcolor=textBlue}
 \input{macros.tex}
 
+\let\shortcite\cite
+\newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
+
+\let\extRef\ref
+\let\extCref\cref
+\let\extCrefCof\cref
+\let\extCrefCin\cref
+
+\let\bigTableSize\footnotesize
+\let\tableHeadSize\tiny
+
 \ColsOnetrue
+\ColsTwofalse
+%\Anonymoustrue
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
@@ -39,17 +52,6 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{observation}[theorem]{Observation}
 \newtheorem{remark}[theorem]{Remark}
-
-\newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
-
-\let\bigTableSize\footnotesize
-\let\tableHeadSize\tiny
-
-\let\extRef\ref
-\let\extCref\cref
-\let\extCrefCof\cref
-\let\extCrefCin\cref
-\let\shortcite\cite
 
 %=[ customization ]=============================================================
 

@@ -37,19 +37,20 @@
 \input{macros.tex}
 
 \newcommand*{\shortcite}[1]{\shortcites{#1}\cite{#1}}
-
-\ColsOnetrue
-\ColsTwofalse
-%\Anonymoustrue
-\let\bigTableSize\footnotesize
-\let\tableHeadSize\tiny
+\newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
 
 \let\extRef\ref
 \let\extCref\cref
 \let\extCrefCof\cref
 \let\extCrefCin\cref
 
-%\newproof{pf}{Proof}
+\let\bigTableSize\footnotesize
+\let\tableHeadSize\tiny
+
+\ColsOnetrue
+\ColsTwofalse
+%\Anonymoustrue
+
 \newtheorem{theorem}{Theorem}
 \newdefinition{definition}{Definition}
 \newtheorem{example}[theorem]{Example}
@@ -57,8 +58,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{observation}[theorem]{Observation}
 \newdefinition{remark}[theorem]{Remark}
-
-\newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
+%\newproof{pf}{Proof}
 
 %=[ customization ]=============================================================
 
