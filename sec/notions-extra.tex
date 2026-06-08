@@ -412,7 +412,7 @@ Hence, $\dAPS_i \ge z \iff \pAPS_i \ge z$.
 \subsection{PROP1}
 \label{sec:notions:prop1}
 
-We use the definition of PROP1 from \cite{feige2025low}.
+We use the definition of PROP1 from \citet{feige2025low}.
 This definition (c.f.~\cref{defn:prop1}) uses strict inequalities, i.e.,
 $v_i(A_i \cup \{g\}) > w_iv_i([m])$ instead of $v_i(A_i \cup \{g\}) \ge w_iv_i([m])$,
 and $v_i(A_i \setminus \{c\}) > w_iv_i([m])$ instead of $v_i(A_i \setminus \{c\}) \ge w_iv_i([m])$.
@@ -431,21 +431,8 @@ We alter PROPx, PROPm, and PROPavg to also use strict inequalities.
 \subsection{PROPx}
 \label{sec:notions:propx}
 
-\begin{definition}[PROPx \cite{aziz2020polynomial,li2022almost}]
-\label[definition]{defn:propx}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
-an allocation $A$ is said to be PROPx-fair to agent $i$ iff
-either $v_i(A_i) \ge w_i \cdot v_i([m])$ or both of these conditions hold:
-\begin{tightenum}
-\item $v_i(A_i \cup S) > w_i \cdot v_i([m])$ for every $S \subseteq [m] \setminus A_i$
-    such that $v_i(S \mid A_i) > 0$.
-\item $v_i(A_i \setminus S) > w_i \cdot v_i([m])$ for every $S \subseteq A_i$
-    such that $v_i(S \mid A_i \setminus S) < 0$.
-\end{tightenum}
-\end{definition}
-
-We identify special cases where our definition of PROPx (\cref{defn:propx})
-is equivalent to well-known definitions of PROPx under those special cases.
+We identify special cases where our definition of PROPx (\cref{defn:propx}) is equivalent to
+well-known definitions of PROPx \citep{aziz2020polynomial,li2022almost}.
 
 \begin{lemma}
 \label[lemma]{thm:propx-equiv-positive}
@@ -459,7 +446,7 @@ $v_i(A_i \cup \{g\}) > w_iv_i([m])$ for some $g \in [m] \setminus A_i$.
 In \cref{defn:propx}, $v_i(A_i \cup S)$ is minimized by picking
 some minimal $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
 Since marginals are positive, $v_i(S \mid A_i) > 0$ for any $|S| \ge 1$.
-Hence, in \cref{defn:propx}, we assume $|S| = 1$ \wLoG{}.
+Hence, in \cref{defn:propx}, we can assume $|S| = 1$ \wLoG{}.
 \end{proof}
 
 \begin{lemma}
@@ -474,7 +461,7 @@ $|v_i(A_i \setminus \{c\})| < w_i|v_i([m])|$ for some $c \in A_i$.
 In \cref{defn:propx}, $|v_i(A_i \setminus S)|$ is maximized by picking
 some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
 Since marginals are negative, $v_i(S \mid A_i \setminus S) < 0$ for any $|S| \ge 1$.
-Hence, in \cref{defn:propx}, we assume $|S| = 1$ \wLoG{}.
+Hence, in \cref{defn:propx}, we can assume $|S| = 1$ \wLoG{}.
 \end{proof}
 
 \begin{lemma}
@@ -511,7 +498,7 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \subsection{PROPm and PROPavg}
 \label{sec:notions:propm-propavg}
 
-\begin{definition}[PROPm \cite{baklanov2021achieving} and PROPavg \cite{kobayashi2025proportional}]
+\begin{definition}[PROPm \citep{baklanov2021achieving} and PROPavg \citep{kobayashi2025proportional}]
 \label[definition]{defn:propm}
 \label{defn:propavg}
 Let $A$ be an allocation for the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$.
@@ -534,8 +521,8 @@ $A$ is PROPm-fair to $i$ if either C1 holds or both C2 and C3 hold.
 $A$ is PROPavg-fair to $i$ if either C1 holds or both C2 and C4 hold.
 \end{definition}
 
-PROPm was originally defined in \cite{baklanov2021achieving},
-and PROPavg was originally defined in \cite{kobayashi2025proportional},
+PROPm was originally defined by \citet{baklanov2021achieving},
+and PROPavg was originally defined in \citet{kobayashi2025proportional},
 both for the additive goods setting.
 Note that PROPm, PROPavg, and PROPx are all equivalent to each other for chores.
 
@@ -549,15 +536,15 @@ We now explain these errors and motivate why we decided to define them the way h
 \subsubsection{Defining PROPm}
 \label{sec:notions:propm}
 
-PROPm was first defined in \cite{baklanov2021achieving}
+PROPm was first defined in \citet{baklanov2021achieving}
 for equal entitlements and goods with additive valuations.
-%For this case, \cite{baklanov2021propm} shows that PROPm allocations always exist.
+%For this case, \citet{baklanov2021propm} shows that PROPm allocations always exist.
 Moreover, they claimed that PROPx implies PROPm and PROPm implies PROP1.
 
-According to \cite{baklanov2021achieving}, when dividing a set $[m]$ of goods among $n$ agents,
+According to \citet{baklanov2021achieving}, when dividing a set $[m]$ of goods among $n$ agents,
 $A$ is PROPm-fair to agent $i$ if $v_i(A_i) + \max_{j \neq i} m_i(A_j) \ge v_i([m])/n$,
 where $m_i(S) \defeq \min_{g \in S} v_i(g)$.
-However, \cite{baklanov2021achieving} doesn't explicitly state what $m_i(\emptyset)$ is.
+However, \citet{baklanov2021achieving} do not explicitly state what $m_i(\emptyset)$ is.
 The well-known convention of $\min(\emptyset) = \infty$ leads to the strange phenomenon
 where every agent is PROPm-satisfied if two agents receive no goods
 (whereas PROP1 is not guaranteed).
@@ -585,17 +572,17 @@ guided our definition of PROPm.
     satisfying this condition is not enough. We also need to look at the goods.
 \end{enumerate}
 
-For mixed manna, \cite{livanos2022almost} defines a notion called PropMX,
+For mixed manna, \citet{livanos2022almost} define a notion called PropMX,
 but that definition is too weak: when all items are goods, every allocation is trivially PropMX.
 
-\cite{baklanov2021propm} showed that for equal entitlements and goods with additive valuations,
+\citet{baklanov2021propm} showed that for equal entitlements and goods with additive valuations,
 a PROPm allocation always exists and can be computed in polynomial time.
 It can be verified that their result also works for our definition of PROPm (\cref{defn:propm}).
 
 \subsubsection{Defining PROPavg}
 \label{sec:notions:propavg}
 
-PROPavg was first defined in \cite{kobayashi2025proportional} for additive goods,
+PROPavg was first defined by \citet{kobayashi2025proportional} for additive goods,
 Moreover, they claimed that PROPx implies PROPavg and PROPavg implies PROPm.
 However, their former claim is incorrect for their definition.
 
@@ -603,9 +590,9 @@ Their definition of PROPavg is equivalent to ours for equal entitlements and add
 except that in condition C4, they use $\Sum(T)/(n-1)$ instead of $\Sum(T)/|T|$.
 Consider a fair division instance with three equally-entitled agents and two identical goods.
 Let $A$ be an allocation where agent 1 gets all goods and the other agents get nothing.
-This allocation is PROPx and PROPm, but is not PROPavg by \cite{kobayashi2025proportional}'s definition.
+This allocation is PROPx and PROPm, but is not PROPavg by \citet{kobayashi2025proportional}'s definition.
 
 We believe that finding a feasible fairness notion in between PROPx and PROPm is well-motivated,
-so we slightly change \cite{kobayashi2025proportional}'s definition to ensure that PROPx implies PROPavg.
+so we slightly change \citet{kobayashi2025proportional}'s definition to ensure that PROPx implies PROPavg.
 Also, for additive goods, when no agent gets an empty bundle in an allocation,
 then $|T| = n-1$, so both definitions are the same.

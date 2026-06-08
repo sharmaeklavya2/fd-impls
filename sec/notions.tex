@@ -79,9 +79,10 @@ Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_i \cdot v_i([m])
 
 A popular relaxation of PROP is PROP1 (proportional up to one item),
 where each agent believes her bundle is better than the proportional share
-after taking some good or giving away some chore. See \cref{defn:prop1} for a formal definition.
+after taking some good or giving away some chore.
+% See \cref{defn:prop1} for a formal definition.
 
-\begin{definition}[PROP1 \cite{conitzer2017fair}]
+\begin{definition}[PROP1, \citet{conitzer2017fair}]
 \label{defn:prop1}
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
 In $\Ical$, an allocation $A$ is PROP1-fair to agent $i$ if
@@ -91,18 +92,44 @@ or $v_i(A_i \setminus \{c\}) > w_i \cdot v_i([m])$ for some $c \in A_i$.
 \end{definition}
 
 Note that \cref{defn:prop1} uses strict inequalities, whereas most papers do not.
-This definition is from \cite{feige2025low}, and we use it to make PROP1
+This definition is from \citet{feige2025low}, and we use it to make PROP1
 a slightly stronger notion without altering its fundamental properties.
 See \extCref{sec:notions:prop1} for details.
 
-PROPx (PROP up to any item) \cite{aziz2020polynomial,li2022almost},
-PROPavg (PROP up to the min-avg good) \cite{kobayashi2025proportional},
-and PROPm (PROP up to the minimax item) \cite{baklanov2021achieving}
-are strengthenings of PROP1. Due to space limitations, we formally describe them in
-Appendices \extRef{sec:notions:propx} and \extRef{sec:notions:propm-propavg}.
-Our definitions are a little different from the original definitions because they also work for mixed manna,
-and the original definitions of PROPavg and PROPm have minor errors.
-%See \cref{sec:notions:propx,sec:notions:propm-propavg} for details.
+PROPx (PROP up to any item) \citep{aziz2020polynomial,li2022almost} is another relaxation of PROP.
+It was originally defined for additive valuations over goods \citep{aziz2020polynomial}:
+an agent $i$ is PROPx-satisfied if transferring any good to her bundle makes her proportionally-satisfied.
+We extend this definition to non-additive valuations over mixed manna.
+
+\begin{definition}[PROPx]
+\label[definition]{defn:propx}
+For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+an allocation $A$ is said to be PROPx-fair to agent $i$ iff
+either $v_i(A_i) \ge w_i \cdot v_i([m])$ or both of these conditions hold:
+\begin{tightenum}
+\item $v_i(A_i \cup S) > w_i \cdot v_i([m])$ for every $S \subseteq [m] \setminus A_i$
+    such that $v_i(S \mid A_i) > 0$.
+\item $v_i(A_i \setminus S) > w_i \cdot v_i([m])$ for every $S \subseteq A_i$
+    such that $v_i(S \mid A_i \setminus S) < 0$.
+\end{tightenum}
+\end{definition}
+
+\Cref{defn:propx} differs from known definitions of PROPx \citep{aziz2020polynomial,li2022almost} in two ways:
+\begin{enumerate}
+\item We use strict inequalities in \cref{defn:propx}, similar to our definition of PROP1.
+\item We replaced `transferring a good' by `transferring a positive-valued subset',
+    and `transferring out a chore' by `transferring out a negative-valued subset',
+    similar to our definition of EFX. We prove in \extCref{sec:notions:propx} that,
+    just like with EFX, the definition of PROPx simplifies for submodular valuations over goods,
+    for submodular valuations over chores, and for (strictly) positive or negative marginals.
+\end{enumerate}
+
+PROPavg (PROP up to the min-avg item) \citep{kobayashi2025proportional},
+and PROPm (PROP up to the minimax item) \citep{baklanov2021achieving}
+are strengthenings of PROP1 and relaxations of PROPx.
+We formally describe them in Appendices \extRef{sec:notions:propx} and \extRef{sec:notions:propm-propavg}.
+Just like PROPx, our formal definitions for PROPm and PROPavg differ from the original definitions,
+and our definitions simplify for special cases. See \extCref{sec:notions:propx,sec:notions:propm-propavg} for details.
 
 \subsection{Maximin Share and AnyPrice Share}
 
