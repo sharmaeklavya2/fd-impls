@@ -1,5 +1,7 @@
 \documentclass[11pt,fleqn]{article}
 
+%=[ packages ]==================================================================
+
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=1in]{geometry}
 \usepackage{xcolor}
@@ -21,6 +23,8 @@
 \usepackage[hypertexnames=false,bookmarksnumbered=true,final]{hyperref}
 \usepackage{algorithm,algpseudocode}
 \usepackage[capitalize,sort]{cleveref}
+
+%=[ macros ]====================================================================
 
 \input{colorscheme.tex}
 \hypersetup{colorlinks,linkcolor=textRed,citecolor=textRed,urlcolor=textBlue}
@@ -47,6 +51,13 @@
 \let\extCrefCin\cref
 \let\shortcite\cite
 
+%=[ customization ]=============================================================
+
+\pdfsuppresswarningpagegroup=1
+\hfuzz=4pt
+
+%=[ title and author info ]=====================================================
+
 \title{Exploring Relations among Fairness Notions\texorpdfstring{\\}{ }in Discrete Fair Division%
 \thanks{The work was supported by NSF Grant CCF-2334461.}}
 \ifAnonymous
@@ -68,6 +79,8 @@ Eklavya Sharma\footnotemark[2]
 \maketitle
 %\setlength{\parindent}{0pt}
 %\setlength{\parskip}{0.5em}
+
+%=[ paper's abstract and sections ]=============================================
 
 \input{abstract.tex}
 

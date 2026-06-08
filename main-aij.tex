@@ -1,13 +1,14 @@
 \documentclass[a4paper,fleqn]{cas-sc}
 
-% If the frontmatter runs over more than one page
-% use the longmktitle option.
-
+% If the frontmatter runs over more than one page use the longmktitle option.
 %\documentclass[a4paper,fleqn,longmktitle]{cas-sc}
+
+%=[ packages ]==================================================================
 
 %\usepackage[numbers]{natbib}
 %\usepackage[authoryear]{natbib}
 \usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage{silence}
 \usepackage{amsmath,amsthm}
 \usepackage{xcolor}
 %\usepackage{url}
@@ -28,6 +29,8 @@
 \usepackage{hyperref}
 \usepackage{algorithm,algpseudocode}
 \usepackage[capitalize,sort]{cleveref}
+
+%=[ macros ]====================================================================
 
 \input{colorscheme.tex}
 %\hypersetup{colorlinks,linkcolor=textRed,citecolor=textRed,urlcolor=textBlue}
@@ -57,12 +60,19 @@
 
 \newenvironment*{tightenum}{\enumerate[noitemsep]}{\endenumerate}
 
+%=[ customization ]=============================================================
+
 \makeatletter
 \pretocmd{\@float}{\def\fps@figure{tb}}{}{}
 \makeatother
 
+\WarningFilter{hyperref}{Ignoring empty anchor}
+\pdfsuppresswarningpagegroup=1
+\hfuzz=4pt
+
+%=[ title and author info ]=====================================================
+
 \begin{document}
-%\let\WriteBookmarks\relax
 
 \shorttitle{Exploring Relations among Fairness Notions}
 \shortauthors{J.~Garg and E.~Sharma}
@@ -79,12 +89,9 @@
 
 % Address/affiliation
 \affiliation[1]{organization={Department of Industrial and Enterprise Systems Engineering},
-            addressline={104 S. Mathews Ave.},
-            city={Urbana},
-%          citysep={}, % Uncomment if no comma needed between city and postcode
-            state={Illinois},
-            postcode={61801},
-            country={USA}}
+    addressline={104 S. Mathews Ave.}, city={Urbana},
+%   citysep={}, % Uncomment if no comma needed between city and postcode
+    state={Illinois}, postcode={61801}, country={USA}}
 
 \author[1]{Eklavya Sharma}[orcid=0000-0003-1147-1476]
 \cormark[2]
@@ -95,6 +102,8 @@
 
 % For a title note without a number/mark
 %\nonumnote{}
+
+%=[ abstract and keywords ]=====================================================
 
 \input{abstract.tex}
 
@@ -113,7 +122,10 @@
 Fair Allocation\sep Fair Division
 \end{keywords}
 
-\maketitle
+{\hfuzz=120pt%
+\maketitle}
+
+%=[ paper's sections ]==========================================================
 
 \input{sec/intro.tex}
 \input{sec/prelims.tex}

@@ -83,7 +83,10 @@ and marginal values.
 %
 We define a partial order for each of these 5 features.
 The first three features are represented by the \emph{boolean} partial order:
-$(\{\mathrm{true}, \mathrm{unknown}\}, \{\mathrm{true} \preceq \mathrm{unknown}, \mathrm{true} \preceq \mathrm{true}, \mathrm{unknown} \preceq \mathrm{unknown}\})$.
+$(\{\mathrm{true},\allowbreak \mathrm{unknown}\},
+\{\mathrm{true} \preceq \mathrm{unknown},\allowbreak
+\mathrm{true} \preceq \mathrm{true},\allowbreak
+\mathrm{unknown} \preceq \mathrm{unknown}\})$.
 The partial order for each of the last two features is
 represented as a DAG in \cref{fig:dag-posets} in \cref{sec:settings-extra}.
 (Formally, for a DAG $G = (V, E)$, the corresponding partial order is $(V, \preceq)$,
@@ -98,8 +101,8 @@ It is easy to check that $f$ is order-preserving and surjective.
 This completes our description of how to map fair division settings to subsets of $\Omega$.
 
 Note that $f$ is not injective. The settings
-$s_1 \defeq (\mathrm{unknown}, \mathrm{unknown}, \mathrm{true}, \mathrm{additive}, \{1\})$
-and $s_2 \defeq (\mathrm{unknown}, \mathrm{unknown}, \mathrm{unknown}, \mathrm{general}, \{1\})$
+$s_1 \defeq (\mathrm{unknown},\allowbreak \mathrm{unknown},\allowbreak \mathrm{true},\allowbreak \mathrm{additive},\allowbreak \{1\})$
+and $s_2 \defeq (\mathrm{unknown},\allowbreak \mathrm{unknown},\allowbreak \mathrm{unknown},\allowbreak \mathrm{general},\allowbreak \{1\})$
 map to the same set in $\Fcal$, because if
 each item's marginal value is 1, then valuations are identical and additive.
 Querying the inference engine with $s_2$

@@ -28,8 +28,8 @@ where $\Ical$ is a fair division instance and $A$ is an allocation for $\Ical$.
 For any two fairness notions $F_1$ and $F_2$, let $\phi(F_1, F_2)$ be the proposition
 ``\,$\forall (\Ical, A) \in \Omega$, for every agent $i$ in $\Ical$,
 $A$ is $F_2$-fair to $i$ whenever $A$ is $F_1$-fair to $i$". Then
-$\phi(F_1, F_2) \implies \phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)
-\textrm{ and } \phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$.
+$\phi(F_1, F_2)$ implies $\phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)$
+and $\phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$.
 \end{lemma}
 \begin{proof}
 Suppose $\phi(F_1, F_2)$.
@@ -37,7 +37,7 @@ Pick any $(\Ical, A) \in \Omega$.
 Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$.
 Pick any $i \in [n]$.
 
-Suppose $A$ is epistemic-$F_1$-fair to $i$.
+Let $A$ be epistemic-$F_1$-fair to $i$.
 Let $B$ be $i$'s epistemic-$F_1$-certificate for $A$.
 Then $B$ is $F_1$-fair to $i$ and $A_i = B_i$.
 By $\phi(F_1, F_2)$, $B$ is also $F_2$-fair to $i$.
