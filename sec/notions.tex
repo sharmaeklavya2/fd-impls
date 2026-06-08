@@ -17,14 +17,14 @@ Agent $i$ is \emph{envy-free} in $A$ (or $A$ is EF-fair to $i$) if
 she doesn't envy any other agent in $A$.
 \end{definition}
 
-For unequal entitlements, most papers use the term WEF instead of EF.
+For unequal entitlements, most papers use the term WEF (weighted EF) instead of EF.
 But we use the term EF in this paper to emphasize that unequal entitlements
 is a property of the fair division setting, not the fairness notion.
 %
 It is easy to see that EF allocations may not exist, so several relaxations have been studied.
 Two of the most popular relaxations of EF are
-EF1 (envy-free up to one item) \cite{budish2011combinatorial,lipton2004approximately},
-and EFX (envy-free up to any item) \cite{caragiannis2019unreasonable}.
+EF1 (envy-free up to one item) \citep{budish2011combinatorial,lipton2004approximately},
+and EFX (envy-free up to any item) \citep{caragiannis2019unreasonable}.
 
 \begin{definition}[EF1]
 \label{defn:ef1}
@@ -38,6 +38,12 @@ Equivalently, $A$ is EF1-fair to $i$ if for every other agent $j$
 and some $S \subseteq A_i \cup A_j$ such that $|S| \le 1$, we have
 $v_i(A_i \setminus S)/w_i \ge v_i(A_j \setminus S)/w_j$.
 \end{definition}
+
+EFX was originally defined by \citet{caragiannis2019unreasonable} for additive valuations over goods:
+an agent $i$ \emph{strongly envies} an agent $j$ if,
+even after removing a good of non-zero value from $j$'s bundle, agent $i$ still envies $j$.
+An allocation is EFX-fair to agent $i$ if she does not strongly envy anyone.
+We extend this definition to non-additive valuations over mixed manna.
 
 %\begin{restatable}[EFX]{definition}{rDefnEfx}
 \begin{definition}[EFX]
@@ -53,14 +59,14 @@ either $i$ doesn't envy $j$, or both of the following hold:
 \end{enumerate}
 \end{definition}
 
-\Cref{defn:efx} looks different from the original definition of EFX given by \cite{caragiannis2019unreasonable},
+\Cref{defn:efx} looks different from the original definition by \citet{caragiannis2019unreasonable},
 and also differs from \EFXZero, an alternative definition of EFX studied by many papers
-\cite{plaut2020almost,chaudhury2021little,chaudhury2024efx}.
-However, we show that \cref{defn:efx} is equivalent to the original definition of EFX when
-valuations are submodular, and equivalent to \EFXZero{}
-when marginals are (strictly) positive or negative.
-Moreover, in \extCref{sec:notions:efx}, we explain why \cref{defn:efx} makes sense
-and why it is better than \EFXZero{} and the original definition of EFX.
+\citep{plaut2020almost,chaudhury2021little,chaudhury2024efx}.
+However, we show in \extCref{sec:notions:efx} that \cref{defn:efx} is equivalent to the original definition of EFX
+for submodular valuations over goods and submodular valuations over chores,
+and equivalent to \EFXZero{} when marginals are (strictly) positive or negative.
+Thus, \cref{defn:efx} is a generalization of known definitions.
+In \extCref{sec:notions:efx}, we explain our motivation for defining EFX this way.
 
 \subsection{Proportionality-Based Notions}
 
