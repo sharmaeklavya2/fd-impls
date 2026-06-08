@@ -152,6 +152,14 @@ On the other hand, most implications we prove were previously established,
 but only for the specific case of additive valuations and equal entitlements.
 We extend these results to more general settings.
 
+We also wrote a Python program to automate the verification of counterexamples \citep{fd-cex-checker}.
+It contains functions to check whether an allocation satisfies a fairness notion,
+and a representation of this paper's counterexamples as python objects.
+Thus, to verify the correctness of our counterexamples,
+instead of manually verifying each counterexample,
+one can just verify the correctness of the fairness-checking functions.
+Our program can be used as a harness for AI-assisted discovery of counterexamples.
+
 Some fairness notions were originally defined for very specific settings;
 for example, EFX was introduced in \citet{caragiannis2019unreasonable} only for additive goods.
 %(Although EFX was also defined for mixed manna by many subsequent works,
