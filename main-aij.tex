@@ -62,8 +62,9 @@
 
 %=[ customization ]=============================================================
 
+\newcommand{\defaultFloatPlacement}{htb}
 \makeatletter
-\pretocmd{\@float}{\def\fps@figure{tb}}{}{}
+\pretocmd{\@float}{\def\fps@figure{\defaultFloatPlacement}}{}{}
 \makeatother
 
 \WarningFilter{hyperref}{Ignoring empty anchor}

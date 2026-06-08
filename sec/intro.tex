@@ -56,7 +56,9 @@ and the counterexamples highlight the strengths and weaknesses of each notion.
 See \cref{fig:additive-nny} for the implications in the context of additive goods and chores,
 and \extCrefCin{sec:dags} for similar figures in other fair division settings.
 
-\begin{figure*}[!htb]
+\let\oldFp\defaultFloatPlacement
+\renewcommand{\defaultFloatPlacement}{tb}
+\begin{figure*}[tb]
 \centering
 \begin{subfigure}{0.45\textwidth}
     \centering
@@ -84,6 +86,7 @@ for goods, PROP $\fimplies$ MMS $\fimplies$ EEF1 $\fimplies$ PROP1,
 but for chores, MMS $\nfimplies$ PROP1, and PROP $\nfimplies$ EEF1.}
 \label{fig:additive-nny}
 \end{figure*}
+\let\defaultFloatPlacement\oldFp
 
 The literature on fair division covers a wide range of settings, including distinctions between goods, chores, and mixed manna, as well as varying entitlements (equal vs. unequal) and different classes of valuation functions.
 Special cases, such as identical valuations or fair division among only two agents, have also been explored.
