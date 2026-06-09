@@ -1128,10 +1128,10 @@ Since this holds for every $j$, $A$ is EFX-fair to agent $i$.
 Suppose $v_i$'s marginals are negative binary.
 Since $i$ is EF1-satisfied, for any other agent $j$, either $v_i(A_i)/w_i \ge v_i(A_j)/w_j$,
 or for some $c \in A_i$, we have $v_i(A_i \setminus \{c\})/w_i \ge v_i(A_j)/w_j$,
-which implies $(v_i(A_i) - 1)/w_i \ge v_i(A_j)/w_j$.
+which implies $(v_i(A_i) + 1)/w_i \ge v_i(A_j)/w_j$.
 For any $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$, we have
 \[ \frac{v_i(A_i \setminus S)}{w_i} = \frac{v_i(A_i) - v_i(S)}{w_i}
-\ge \frac{v_i(A_i) - 1}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
+\ge \frac{v_i(A_i) + 1}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
 Hence, $i$ doesn't EFX-envy agent $j$.
 Since this holds for every $j$, $A$ is EFX-fair to agent $i$.
 \end{proof}
