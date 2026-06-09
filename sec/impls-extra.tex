@@ -1054,6 +1054,10 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
     & -- & -- & equal & \cref{thm:impl:tribool:aps,thm:impl:tribool:m1s} & \textbf{new}
 \\[\defaultaddspace] MMS $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
     & -- & -- & equal & \cref{thm:impl:tribool:mms-to-eefx} & \textbf{new}
+\\[\defaultaddspace] EF1 $\fimplies$ GWMMS & additive & $\{0, 1\}$
+    & -- & -- & -- & \cref{thm:impl:binary:ef1-to-gwmms} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ WMMS & additive & $\{0, 1\}$
+    & -- & -- & -- & \cref{thm:impl:binary:m1s-to-wmms} & \textbf{new}
 %
 \\\midrule EF1 $\fimplies$ GAPS & additive & $\{-1, 0, 1\}$
     & -- & -- & equal & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
@@ -1330,6 +1334,34 @@ then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
 Otherwise, removing a good from $B_j$ or removing a chore from $B_i$
 eliminates $i$'s envy towards $j$.
 Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+\end{proof}
+
+\begin{lemma}[EF1 $\fimplies$ GWMMS]
+\label[lemma]{thm:impl:binary:ef1-to-gwmms}
+\label[lemma]{thm:impl:binary:m1s-to-wmms}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where for some agent $i$,
+$v_i$ is additive and $v_i(g) \in \{0, 1\}$ for all $g \in [m]$.
+If an allocation $A$ is EF1-fair to $i$, then it is also GWMMS-fair to $i$.
+If an allocation $B$ is M1S-fair to $i$, then it is also WMMS-fair to $i$.
+\end{lemma}
+\begin{proof}
+Suppose $A$ is not WMMS-fair to $i$. By the definition of WMMS, we get
+\[ \frac{\WMMS_i}{w_i} = \min_{k=1}^n \frac{v_i(X^*_k)}{w_k},
+\quad\text{where}\quad X^* \in \argmax_X \min_{k=1}^n \frac{v_i(X_k)}{w_k}. \]
+Then $v_i(X^*_i) \ge \WMMS_i > v_i(A_i)$.
+%
+Now pick any $j \in [n] \setminus \{i\}$. Since $A$ is EF1-fair to $i$, we get
+\[ \frac{v_i(X^*_j)}{w_j} \ge \frac{\WMMS_i}{w_i} > \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j)-1}{w_j}. \]
+Since bundle values are integers, we get $v_i(X^*_j) \ge v_i(A_j)$. Thus,
+\[ v_i([m]) = \sum_{k=1}^n v_i(X^*_k) > \sum_{k=1}^n v_i(A_k) = v_i([m]), \]
+which is a contradiction. Thus, $A$ is WMMS-fair to $i$.
+
+Restricting an EF1 allocation to a subset of agents (see \cref{defn:restricting})
+gives us another EF1 allocation, so $A$ is also groupwise WMMS.
+
+Since allocation $B$ is M1S-fair to $i$, there is an allocation $C$ such that
+$C$ is EF1-fair to $i$ and $v_i(C_i) \le v_i(B_i)$.
+Thus, $C$ is also WMMS-fair to $i$, which means that $B$ is WMMS-fair to $i$.
 \end{proof}
 
 \begin{lemma}[MMS = APS, \cite{kulkarni2024approximating}]
