@@ -1040,9 +1040,7 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
 \\\midrule EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
     & additive & $\{-1, 0, 1\}$ & -- & -- & equal & \cref{thm:impl:tribool:ef1-to-efx} & trivial
 \\[\defaultaddspace] EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
-    & additive & $\{0, 1\}$ & -- & -- & -- & \cref{thm:impl:tribool:ef1-to-efx} & trivial
-\\[\defaultaddspace] EF1 $\fimplies$ EFX\textsuperscript{\ref{foot:epistemic-also}}
-    & additive & $\{-1, 0\}$ & -- & -- & -- & \cref{thm:impl:tribool:ef1-to-efx} & trivial
+    & additive & $\{0, \pm 1\}$ & -- & -- & -- & \cref{thm:impl:tribool:ef1-to-efx} & trivial
 \\[\defaultaddspace] PROP1 $\fimplies$ PROPx & -- & $\{-1, 0, 1\}$
     & -- & -- & -- & \cref{thm:impl:prop1-to-propx-tribool} & trivial
 %
@@ -1329,7 +1327,7 @@ Then for any other agent $j \in [n] \setminus \{i\}$, we get
     \le v_i(B_i) + 1. \]
 If $B_j$ contains no goods and $B_i$ contains no chores,
 then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
-Otherwise, transferring a good from $j$ to $i$ or a chore from $i$ to $j$ in $B$
+Otherwise, removing a good from $B_j$ or removing a chore from $B_i$
 eliminates $i$'s envy towards $j$.
 Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
 \end{proof}
