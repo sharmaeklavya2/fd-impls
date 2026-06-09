@@ -1028,6 +1028,9 @@ by \cref{thm:impl:aps-to-pess}.
 \subsection{Binary and Negative-Binary Valuations}
 \label{sec:impls-extra:tribool}
 
+In this section, we study implications between fairness notions when agents' marginals are \emph{triboolean},
+i.e., for all $R \subseteq [m]$ and $t \in [m] \setminus R$, we have $v_i(t \mid R) \in \{-1, 0, 1\}$.
+
 \begin{table*}[htb]
 \centering
 \caption[Tribool implications]{Implications among fairness notions when
@@ -1054,10 +1057,6 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
     & -- & -- & equal & \cref{thm:impl:tribool:aps,thm:impl:tribool:m1s} & \textbf{new}
 \\[\defaultaddspace] MMS $\fimplies$ EEFX & additive & $\{-1, 0, 1\}$
     & -- & -- & equal & \cref{thm:impl:tribool:mms-to-eefx} & \textbf{new}
-\\[\defaultaddspace] EF1 $\fimplies$ GWMMS & additive & $\{0, 1\}$
-    & -- & -- & -- & \cref{thm:impl:binary:ef1-to-gwmms} & \textbf{new}
-\\[\defaultaddspace] M1S $\fimplies$ WMMS & additive & $\{0, 1\}$
-    & -- & -- & -- & \cref{thm:impl:binary:m1s-to-wmms} & \textbf{new}
 %
 \\\midrule EF1 $\fimplies$ GAPS & additive & $\{-1, 0, 1\}$
     & -- & -- & equal & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
@@ -1065,6 +1064,10 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
     & -- & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
 \\[\defaultaddspace] EF1 $\fimplies$ GAPS & additive & $\{-1, 0\}$
     & -- & -- & -- & \cref{thm:impl:tribool:ef1-gaps} & \textbf{new}
+\\[\defaultaddspace] EF1 $\fimplies$ GWMMS & additive & $\{0, 1\}$
+    & -- & -- & -- & \cref{thm:impl:binary:ef1-to-gwmms} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ WMMS & additive & $\{0, 1\}$
+    & -- & -- & -- & \cref{thm:impl:binary:m1s-to-wmms} & \textbf{new}
 %
 \\\midrule MMS $\fimplies$ APS\textsuperscript{\ref{foot:pg2}}
     & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & known
@@ -1089,6 +1092,9 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
     also hold for the same conditions.
 \end{tightenum}
 \end{table*}
+
+We begin by proving that EF1 implies EFX (\cref{thm:impl:tribool:ef1-to-efx})
+and PROP1 implies PROPx (\cref{thm:impl:prop1-to-propx-tribool}) for additive valuations.
 
 \begin{lemma}[EF1 $\fimplies$ EFX]
 \label[lemma]{thm:impl:tribool:ef1-to-efx}
@@ -1153,6 +1159,18 @@ Removing any positive-disutility subset from $A_i$
 or adding any positive-utility subset to $A_i$ will increase its value by at least 1.
 Hence, $A$ is PROPx.
 \end{proof}
+
+We now characterize different fairness notions.
+In a fair division instance $\Ical$ and allocation $A$, if agent $i$ having entitlement $w_i$
+has an additive valuation function $v_i$ with triboolean marginals, then
+\begin{enumerate}
+\item for equal entitlements, $A$ is PROP-fair to $i$ $\iff$ $A$ is EEF-fair to $i$
+    $\iff$ $v_i(A_i) \ge \ceil{w_i \cdot v_i([m])}$ (\cref{thm:impl:tribool:prop}).
+\item $A$ is PROP1-fair to $i$ $\iff$ $A$ is PROPx-fair to $i$ $\iff$ $A$ is APS-fair to $i$
+    $\iff$ $v_i(A_i) \ge \floor{w_i \cdot v_i([m])}$ (\cref{thm:impl:tribool:prop1,thm:impl:tribool:aps}).
+\item for equal entitlements, $A$ is MMS-fair to $i$ $\iff$ $A$ is M1S-fair to $i$ $\iff$ $A$ is EEFX-fair to $i$
+    $\iff$ $v_i(A_i) \ge \floor{v_i([m])/n}$ (\cref{thm:impl:tribool:m1s,thm:impl:tribool:mms-to-eefx}).
+\end{enumerate}
 
 \begin{lemma}
 \label[lemma]{thm:tribool-rr}
@@ -1285,7 +1303,49 @@ Hence, the smallest value $v_i(X_i)$ can have is $\floor{m'/n}$.
 Hence, $\mathrm{M1S}_i \ge \floor{m'/n}$.
 \end{proof}
 
+\begin{remark}
+\label[remark]{thm:ceil-floor}
+For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
+\[ \bigfloor{\frac{m}{n}} = \bigceil{\frac{m+1}{n}} - 1. \]
+\end{remark}
+
 \begin{lemma}
+\label[lemma]{thm:impl:tribool:mms-to-eefx}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
+where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
+Then an alloation $A$ is epistemic-EFX-fair to $i$ iff $v_i(A_i) \ge \floor{v_i([m])/n}$.
+\end{lemma}
+\begin{proof}
+Suppose $v_i(A_i) \ge \floor{v_i([m])/n}$.
+Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
+are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
+We will show that $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+
+Let $k \defeq v_i([m])$.
+Suppose $v_i(A_i) \ge \floor{k/n} = \ceil{(k+1)/n} - 1$ (c.f.~\cref{thm:ceil-floor}).
+Then for any other agent $j \in [n] \setminus \{i\}$, we get
+\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+    \le \bigceil{\frac{k - (k+1)/n + 1}{n-1}} = \bigceil{\frac{k+1}{n}}
+    \le v_i(B_i) + 1. \]
+If $B_j$ contains no goods and $B_i$ contains no chores,
+then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
+Otherwise, removing a good from $B_j$ or removing a chore from $B_i$
+eliminates $i$'s envy towards $j$.
+Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$, so $A$ is EEFX-fair to $i$.
+
+Now suppose $v_i(A_i) < \floor{v_i([m])/n}$. Let $B$ be any allocation where $B_i = A_i$.
+Then $\exists j \in [n] \setminus \{i\}$ such that $v_i(B_i) > v_i([m])/n$.
+If $v_i([m])/n$ is an integer, then $v_i(B_j) > v_i([m])/n > v_i(B_i)$, so $v_i(B_j) \ge v_i(B_i) + 2$.
+Otherwise, $v_i(B_j) \ge \ceil{v_i([m])/n} > \floor{v_i([m])/n} > v_i(B_i)$, so $v_i(B_j) \ge v_i(B_i) + 2$.
+Thus, $B_j$ has a good or $B_i$ has a chore.
+Even after removing a good from $B_j$ or removing a chore from $B_i$,
+agent $i$ will still envy agent $j$, so $B$ is not EFX-fair to agent $i$.
+Thus, $A$ is not EEFX-fair to $i$.
+\end{proof}
+
+We now prove more implications between fairness notions for additive valuations.
+
+\begin{lemma}[EF1 $\fimplies$ GAPS]
 \label[lemma]{thm:impl:tribool:ef1-gaps}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where
 $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
@@ -1305,38 +1365,7 @@ and APS-fair to $i$ by \cref{thm:impl:tribool:prop1,thm:impl:tribool:aps}.
 Hence, $A$ is groupwise-APS-fair to $i$.
 \end{proof}
 
-\begin{remark}
-\label[remark]{thm:ceil-floor}
-For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
-\[ \bigfloor{\frac{m}{n}} = \bigceil{\frac{m+1}{n}} - 1. \]
-\end{remark}
-
-\begin{lemma}
-\label[lemma]{thm:impl:tribool:mms-to-eefx}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
-where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
-If $v_i(A_i) \ge \floor{v_i([m])/n}$ for some allocation $A$,
-then $A$ is epistemic-EFX-fair to $i$.
-\end{lemma}
-\begin{proof}
-Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
-are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
-We will show that $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
-
-Let $k \defeq v_i([m])$.
-Suppose $v_i(A_i) \ge \floor{k/n} = \ceil{(k+1)/n} - 1$ (c.f.~\cref{thm:ceil-floor}).
-Then for any other agent $j \in [n] \setminus \{i\}$, we get
-\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
-    \le \bigceil{\frac{k - (k+1)/n + 1}{n-1}} = \bigceil{\frac{k+1}{n}}
-    \le v_i(B_i) + 1. \]
-If $B_j$ contains no goods and $B_i$ contains no chores,
-then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
-Otherwise, removing a good from $B_j$ or removing a chore from $B_i$
-eliminates $i$'s envy towards $j$.
-Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
-\end{proof}
-
-\begin{lemma}[EF1 $\fimplies$ GWMMS]
+\begin{lemma}[EF1 $\fimplies$ GWMMS, M1S $\fimplies$ WMMS]
 \label[lemma]{thm:impl:binary:ef1-to-gwmms}
 \label[lemma]{thm:impl:binary:m1s-to-wmms}
 Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where for some agent $i$,
@@ -1363,6 +1392,8 @@ Since allocation $B$ is M1S-fair to $i$, there is an allocation $C$ such that
 $C$ is EF1-fair to $i$ and $v_i(C_i) \le v_i(B_i)$.
 Thus, $C$ is also WMMS-fair to $i$, which means that $B$ is WMMS-fair to $i$.
 \end{proof}
+
+We now look at non-additive valuations with triboolean marginals.
 
 \begin{lemma}[MMS = APS, \cite{kulkarni2024approximating}]
 \label[lemma]{thm:impl:mms-to-aps-matroid}
