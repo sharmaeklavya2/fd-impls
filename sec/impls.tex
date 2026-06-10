@@ -1,4 +1,6 @@
-\begin{table*}[!htb]
+\let\oldFp\defaultFloatPlacement
+\renewcommand{\defaultFloatPlacement}{p}
+\begin{table*}[p]
 \centering
 \caption[Implications among fairness notions.]{%
 Implications among fairness notions.
@@ -120,3 +122,4 @@ For known results, citations can be found in the corresponding lemma statements.
 \item[\P] \label{foot:ef1-to-prop1-n2}Recently, \cite{andersen2026computing} proved this independently.
 \end{tightenum}
 \end{table*}
+\let\defaultFloatPlacement\oldFp

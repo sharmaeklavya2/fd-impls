@@ -1,4 +1,6 @@
-\begin{table*}[!htb]
+\let\oldFp\defaultFloatPlacement
+\renewcommand{\defaultFloatPlacement}{p}
+\begin{table*}[p]
 \centering
 \caption{Non-implications among fairness notions (non-additive valuations).}
 \label{table:cex-nonadd}
@@ -70,3 +72,4 @@
     $\{0, 1\}$ marginals and positive bivalued marginals.
 \end{tightenum}
 \end{table*}
+\let\defaultFloatPlacement\oldFp

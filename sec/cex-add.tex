@@ -1,4 +1,6 @@
-\begin{table*}[!htb]
+\let\oldFp\defaultFloatPlacement
+\renewcommand{\defaultFloatPlacement}{p}
+\begin{table*}[p]
 \centering
 \caption{Non-implications among fairness notions (additive valuations).}
 \label{table:cex-add}
@@ -82,3 +84,4 @@
     positive bivalued marginals and negative bivalued marginals.
 \end{tightenum}
 \end{table*}
+\let\defaultFloatPlacement\oldFp
