@@ -1069,6 +1069,13 @@ i.e, they belong to the set $\{-1, 0, 1\}$.}
 \\[\defaultaddspace] M1S $\fimplies$ WMMS & additive & $\{0, 1\}$
     & -- & -- & -- & \cref{thm:impl:binary:m1s-to-wmms} & \textbf{new}
 %
+\\\midrule MEFS $\fimplies$ EEF & additive & $\{-1, 0, 1\}$
+    & -- & -- & -- & \cref{thm:impl:tribool:minfs-to-epistemic} & \textbf{new}
+\\[\defaultaddspace] MXS $\fimplies$ EEFX & additive & $\{0, \pm 1\}$
+    & -- & -- & -- & \cref{thm:impl:tribool:minfs-to-epistemic} & \textbf{new}
+\\[\defaultaddspace] M1S $\fimplies$ EEF1 & additive & $\{0, \pm 1\}$
+    & -- & -- & -- & \cref{thm:impl:tribool:minfs-to-epistemic} & \textbf{new}
+%
 \\\midrule MMS $\fimplies$ APS\textsuperscript{\ref{foot:pg2}}
     & submodular & $\{0, 1\}$ & -- & -- & equal & \cref{thm:impl:mms-to-aps-matroid} & known
 \\[\defaultaddspace] PROPm $\fimplies$ PROPavg
@@ -1391,6 +1398,87 @@ gives us another EF1 allocation, so $A$ is also groupwise WMMS.
 Since allocation $B$ is M1S-fair to $i$, there is an allocation $C$ such that
 $C$ is EF1-fair to $i$ and $v_i(C_i) \le v_i(B_i)$.
 Thus, $C$ is also WMMS-fair to $i$, which means that $B$ is WMMS-fair to $i$.
+\end{proof}
+
+\begin{lemma}[monotonicity of envy-freeness]
+\label[lemma]{thm:tribool:ef-monotonicity}
+Let $Q \subseteq \{-1, 0, 1\}$.
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where for some agent $i$,
+$v_i$ is additive and $v_i(t) \in Q$ for all $t \in [m]$.
+Let $F \in \{\mathrm{EF},\allowbreak \mathrm{EF1},\allowbreak \mathrm{EFX}\}$.
+Let allocation $A$ be $F$-fair to agent $i$.
+Let $B$ be an allocation such that $B_i = A_i$ and $v_i(B_j) \le v_i(A_j)$ for some agent $j$.
+Then $i$ does not $F$-envy $j$ in $B$ if $F$ = EF, $Q = \{0, 1\}$, or $Q = \{-1, 0\}$.
+\end{lemma}
+\begin{proof}
+This holds trivially if $F$ = EF, or if $i$ does not envy $j$ in $A$ or $B$
+So now assume $F$ is EF1 or EFX and $i$ envies $j$ in $A$ and $B$.
+
+First, let us consider $F$ = EFX.
+The chores condition of EFX continues to be satisfied in $B$. We need to verify the goods condition.
+The goods condition holds trivially if $B_j$ has no goods, so we are done for EFX if $Q = \{-1, 0\}$.
+Now assume $B_j$ has at least one good. We need to prove that $v_i(B_i)/w_i \ge (v_i(B_j)-1)/w_j$.
+If $Q = \{0, 1\}$, then $A_j$ always contains a good since $v_i(A_j)/w_j > v_i(A_i)/w_i \ge 0$.
+Since $i$ does not $F$-envy $j$ in $A$, we get
+\[ \frac{v_i(B_i)}{w_i} = \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j)-1}{w_j} \ge \frac{v_i(B_j)-1}{w_j}. \]
+Hence, $i$ does not EFX-envy $j$ if $Q = \{-1, 0\}$ or $Q = \{0, 1\}$.
+
+Now let us consider $F$ = EF1. We have two cases, depending on the value of $Q$.
+\begin{tightenum}
+\item If $Q = \{-1, 0\}$, then $A_i$ contains a chore since $i$ envies $j$ in $A$.
+    Since $i$ does not EF1-envy $j$ in $A$, we get $(v_i(A_i) + 1)/w_i \ge v_i(A_j)/w_j \ge v_i(B_j)/w_j$.
+\item If $Q = \{0, 1\}$, then $A_j$ contains a good and $B_j$ contains a good since $i$ envies $j$ in $A$ and $B$.
+    Since $i$ does not EF1-envy $j$ in $A$, we get $v_i(A_i)/w_i \ge (v_i(A_j) - 1)/w_j \ge (v_i(B_j) - 1)/w_j$.
+\end{tightenum}
+In both cases, $i$ does not EF1-envy $j$ in $B$.
+\end{proof}
+
+\begin{lemma}
+\label[lemma]{thm:tribool:equalizing-shift}
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where for some agent $i$,
+$v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$.
+Let $F \in \{\mathrm{EF},\allowbreak \mathrm{EF1},\allowbreak \mathrm{EFX}\}$.
+Let allocation $A$ be $F$-fair to agent $i$.
+
+Let $j, k \in [n] \setminus \{i\}$ be agents such that $v_i(A_j) > 0$ and $v_i(A_k) < 0$.
+Let $B$ be the allocation obtained by transferring a good from $A_j$ to $A_k$, i.e.,
+for some $g \in A_j$ such that $v_i(g) > 0$, let $B_j \defeq A_j \setminus \{g\}$,
+$B_k \defeq A_k \cup \{g\}$, and $B_{\ell} \defeq A_{\ell}$ for all $\ell \in [n] \setminus \{j, k\}$.
+Then $B$ is also $F$-fair to agent $i$.
+\end{lemma}
+\begin{proof}
+Since the bundles of agents $[n] \setminus \{j, k\}$ didn't change, agent $i$ doesn't $F$-envy them.
+Since $A$ is $F$-fair to $i$, and $v_i(A_j) > 0$, we get $v_i(A_i) \ge 0$.
+Then $i$ doesn't envy $k$ because $v_i(B_k)/w_k \le 0 \le v_i(A_i)/w_i = v_i(B_i)/w_i$.
+Since $v_i(B_j) = v_i(A_j) - 1$, one can verify that $i$ doesn't $F$-envy agent $j$.
+Thus, $B$ is $F$-fair to agent $i$.
+\end{proof}
+
+\begin{lemma}[min-$F$-share $\fimplies$ epistemic-$F$]
+\label[lemma]{thm:impl:tribool:minfs-to-epistemic}
+\label[lemma]{thm:impl:tribool:minfs-to-epistemic:ef}
+\label[lemma]{thm:impl:tribool:minfs-to-epistemic:ef1-goods}
+\label[lemma]{thm:impl:tribool:minfs-to-epistemic:ef1-chores}
+\label[lemma]{thm:impl:tribool:minfs-to-epistemic:efx-goods}
+\label[lemma]{thm:impl:tribool:minfs-to-epistemic:efx-chores}
+Let $Q \subseteq \{-1, 0, 1\}$.
+Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ where for some agent $i$,
+$v_i$ is additive and $v_i(t) \in Q$ for all $t \in [m]$.
+Let $F \in \{\mathrm{EF},\allowbreak \mathrm{EF1},\allowbreak \mathrm{EFX}\}$.
+If allocation $A$ is min-$F$-share-fair to agent $i$, then it is also epistemic-$F$-fair to $i$
+if $F$ = EF, $Q = \{-1, 0\}$, or $Q = \{0, 1\}$.
+\end{lemma}
+\begin{proof}
+Since $A$ is min-$F$-share-fair to $i$, there exists an allocation $B$ such that
+$v_i(B_i) \le v_i(A_i)$ and $B$ is $F$-fair to $i$.
+By repeatedly applying the transformation of \cref{thm:tribool:equalizing-shift},
+we can assume \wLoG{} that either $v_i(B_j) \ge 0$ for all $j$ or $v_i(B_j) \le 0$ for all $j$.
+
+Since $v_i([m] \setminus A_i) \le v_i([m] \setminus B_i)$, we can redistribute $[m] \setminus A_i$
+to get an allocation $C$ such that $C_i = A_i$ and $v_i(C_i) \le v_i(B_i)$.
+This is because we can fuse items in $[m] \setminus A_i$ such that we either get rid of goods or get rid of chores.
+By \cref{thm:tribool:ef-monotonicity}, we get that $C$ is $F$-fair to agent $i$.
+Thus, $C$ is agent $i$'s epistemic-$F$-certificate for $A$, so $A$ is epistemic-$F$-fair to $i$.
 \end{proof}
 
 We now look at non-additive valuations with triboolean marginals.
