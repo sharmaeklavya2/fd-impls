@@ -24,50 +24,23 @@ After proving implications and counterexamples manually,
 we feed them into our inference engine, which uses them to infer many more results.
 These results give us a near-complete picture of implications,
 similar to \cref{fig:additive-nny}, for many different fair division settings.
-We summarize these results in \cref{table:dag-summary}.
 
-\begin{table}[htb]
-\centering
-\caption[Summary of implication diagrams]{%
-Fair division settings for which we have near-complete pictures of implications.
-For each of these settings, we also have near-complete pictures for
-the special case of only two agents and the special case of identical valuations.
-The last column states the number of unresolved (non-)implications for each setting.
-We only list settings with at most 3 unresolved implications,
-whereas there are $\binom{22}{2} = 110$ pairs of fairness notions.
-The figures referenced in this table can be found in \extCref{sec:dags}.}
-\label{table:dag-summary}
-\begin{tabular}{HccHHccc}
-\toprule & \scriptsize valuation & \scriptsize marginals & \scriptsize identical & \scriptsize $n$ & \scriptsize entitlements & \scriptsize figures & \scriptsize open problems
-\\ \midrule          & additive & goods  & -- & -- & equal
-    & Figs. \ref{fig:additive-nny:goods} and \extRef{fig:additive-general-nyy} & 1
-\\[\defaultaddspace] & additive & chores & -- & -- & equal
-    & Figs. \ref{fig:additive-nny:chores} and \extRef{fig:additive-general-nyy} & 0
-\\[\defaultaddspace] & additive & mixed  & -- & -- & equal
-    & Figs. \extRef{fig:additive-general-nny} and \extRef{fig:additive-general-nyy} & 0
-\\[\defaultaddspace] & submodular & goods & -- & -- & equal
-    & Figs. \extRef{fig:submod-nonneg-nny} and \extRef{fig:submod-nonneg-nyy} & 1
-\\[\defaultaddspace] & subadditive & goods & -- & -- & equal
-    & \extCref{fig:subadd-nonneg-nny} & 1
-\\[\defaultaddspace] & general & goods & -- & -- & equal
-    & Figs. \extRef{fig:general-nonneg-nny} and \extRef{fig:general-positive-nny} & 0
+In particular, for each of the following 76 settings, we get at most 3 unresolved implications
+(whereas there are $\binom{22}{2} = 110$ pairs of fairness notions):
 %
-\\\midrule           & additive & goods  & -- & -- & unequal
-    & \extCref{fig:additive-nonneg-nnn} & 3
-\\[\defaultaddspace] & additive & chores & -- & -- & unequal
-    & \extCref{fig:additive-nonpos-nnn} & 3
-\\[\defaultaddspace] & additive & mixed  & -- & -- & unequal
-    & -- & 3
-\\[\defaultaddspace] & subadditive & goods & -- & -- & unequal
-    & -- & 2
-\\[\defaultaddspace] & general & goods & -- & -- & unequal
-    & -- & 2
-%
-\\\midrule           & additive & $\{-1, 0\}$ & -- & -- & equal & \extCref{fig:additive-tribool-nny} & 0
-\\[\defaultaddspace] & additive & $\{0, 1\}$ & -- & -- & equal & \extCref{fig:additive-tribool-nny} & 0
-\\[\defaultaddspace] & submodular & $\{0, 1\}$ & -- & -- & equal & \extCref{fig:submod-binary-nny} & 2
-\\[\defaultaddspace] & subadditive & $\{0, 1\}$ & -- & -- & equal & -- & 2
-\\[\defaultaddspace] & general & $\{0, 1\}$ & -- & -- & equal & -- & 2
-\\ \bottomrule
-\end{tabular}
-\end{table}
+\begin{itemize}
+\ifColsOne\raggedright\fi
+\item $\overset{\text{\textcolor{gray}{entitlements}}}{\{\text{equal}, \text{unequal}\}}
+    \times \overset{\text{\textcolor{gray}{no.\ of agents}}}{\{n \ge 2, n = 2\}}
+    \times \overset{\text{\textcolor{gray}{identical valuations}}}{\{\text{ident}, \text{non-ident}\}}
+    \times \overset{\text{\textcolor{gray}{valuation type}}}{\{\text{additive}\}}
+    \times \overset{\text{\textcolor{gray}{marginal values}}}{\{\text{goods}, \text{chores}, \text{mixed}, \{0, 1\}, \{-1, 0\}\}}$
+\item $\overset{\text{\textcolor{gray}{entitlements}}}{\{\text{equal}\}}
+    \times \overset{\text{\textcolor{gray}{no.\ of agents}}}{\{n \ge 2, n = 2\}}
+    \times \overset{\text{\textcolor{gray}{identical valuations}}}{\{\text{ident}, \text{non-ident}\}}
+    \times \overset{\text{\textcolor{gray}{valuation type}}}{\{\text{submod}, \text{subadditive}, \text{general}\}}
+    \times \overset{\text{\textcolor{gray}{marginal values}}}{\{\text{goods}, \mathbb{R}_{>0}, \{0, 1\}\}}$
+\end{itemize}
+
+We include implication diagrams for some important settings in \cref{sec:dags}.
+Implication diagrams for other settings can be viewed in the inference engine web app \citep{cpigjsEku}.
