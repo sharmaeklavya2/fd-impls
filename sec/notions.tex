@@ -52,25 +52,27 @@ Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instan
 In $\Ical$, an allocation $A$ is EFX-fair to agent $i$ if for each $j \in [n] \setminus \{i\}$,
 either $i$ does not envy $j$, or both of the following hold:
 \begin{enumerate}
+\item Removing any positively-valued subset from $j$'s bundle eliminates $i$'s envy towards $j$:
 \ifColsTwo
-\item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max\left(\left\{
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{\max\left(\left\{
     \begin{array}{l}
     v_i(A_j \setminus S): S \subseteq A_j
     \\\quad \textrm{ and } v_i(S \mid A_i) > 0
-    \end{array}\right\}\right)}{w_j}$.
+    \end{array}\right\}\right)}{w_j}. \]
 \else
-\item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j
-    \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}$.
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j
+    \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}. \]
 \fi
+\item Removing any negatively-valued subset from $i$'s bundle eliminates $i$'s envy towards $j$:
 \ifColsTwo
-\item $\displaystyle \frac{\min\left(\left\{
+\[ \frac{\min\left(\left\{
     \begin{array}{r}
     v_i(A_i \setminus S): S \subseteq A_i \textrm{ and }
     \\ v_i(S \mid A_i \setminus S) < 0
-    \end{array}\right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+    \end{array}\right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
 \else
-\item $\displaystyle \frac{\min\left(\left\{v_i(A_i \setminus S): S \subseteq A_i
-    \textrm{ and } v_i(S \mid A_i \setminus S) < 0 \right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\[ \frac{\min\left(\left\{v_i(A_i \setminus S): S \subseteq A_i
+    \textrm{ and } v_i(S \mid A_i \setminus S) < 0 \right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
 \fi
 \end{enumerate}
 \end{definition}
@@ -82,7 +84,7 @@ However, we show in \extCref{sec:notions:efx} that \cref{defn:efx} is equivalent
 for submodular valuations over goods and submodular valuations over chores,
 and equivalent to \EFXZero{} when marginals are (strictly) positive or negative.
 Thus, \cref{defn:efx} is a generalization of known definitions.
-In \extCref{sec:notions:efx}, we explain our motivation for defining EFX this way.
+In \extCref{sec:notions:efx}, we give more details on our motivation for defining EFX this way.
 
 \subsection{Proportionality-Based Notions}
 
