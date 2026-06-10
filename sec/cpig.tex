@@ -4,7 +4,7 @@
 We wrote a computer program, called the \emph{inference engine}.
 We initialize it with a list of implications and counterexamples (\cref{sec:summary:manual}),
 and then we repeatedly query it with a fair division setting. For each query, it infers additional implications and counterexamples using a method similar to transitive closure.
-
+%
 Although the inference procedure is simple, the engine can still make non-trivial inferences.
 We present two such examples:
 \begin{enumerate}
@@ -29,11 +29,7 @@ See \cref{fig:additive-nny} and \extCref{sec:dags} for examples of the program's
 for various important fair division settings.
 The program is implemented as a web application;
 see \cref{fig:cpigjs} for the program's screenshot.
-\ifAnonymous
-Its source code is included as supplementary material.
-\else
-Its source is available on Github \cite{cpigjsEku}.
-\fi
+Its source is available on Github \citep{cpigjsEku}.
 
 \begin{figure}[htb]
 \centering
@@ -57,7 +53,7 @@ if $\phi_1(x) \fimplies \phi_2(x)$ for all $x \in S$.
 In fair division, $\Omega$ is the set of all pairs $(\Ical, A)$,
 where $\Ical$ is a fair division instance and $A$ is an allocation for $\Ical$.
 A fair division setting is a subset of $\Omega$,
-and fairness notions are predicates over $\Omega$.
+and fairness notions are predicates.
 
 The inference engine's input is a tuple $(\Fcal, \Phi, I, C)$.
 $\Fcal$ is a set family over a ground set $\Omega$.
@@ -72,8 +68,8 @@ $C$ is a set of \emph{conditional counterexamples}, i.e., a set of triples
     $(\phi_1, \phi_2, S) \in \Phi \times \Phi \times \Fcal$,
     where $\phi_1(x) \nfimplies \phi_2(x)$ for some $x \in S$.
 
-We repeatedly query the inference engine with a set $S \in \Fcal$,
-and it outputs all possible implications and counterexamples conditioned on $S$,
+We repeatedly query the engine with a set $S \in \Fcal$,
+and it outputs all implications and counterexamples conditioned on $S$,
 even those not explicitly present in $I$ and $C$.
 
 The inference engine works in two steps.
@@ -89,10 +85,9 @@ by transitivity, we get $\phi_1 \fimplies_T \phi_2$.
 Using this technique, we expand the set of all counterexamples.
 Then we select counterexamples conditioned on subsets of $S$.
 
-We can further extend the inference engine to also make inferences about
-feasibility and infeasibility of fairness notions using data from
-Tables \extRef{table:feas} and \extRef{table:infeas} in \extCref{sec:feas}.
+We can extend the inference engine to also make inferences about
+feasibility and infeasibility of fairness notions using data from the tables in \cref{sec:summary:manual}.
 Specifically, if $F_1 \fimplies_S F_2$ and $F_1$ is feasible for setting $S$,
-then $F_2$ is also feasible for setting $S$.
+then $F_2$ is also feasible for $S$.
 Contrapositively, if $F_1 \fimplies_S F_2$ and $F_2$ is infeasible for setting $S$,
 then $F_1$ is infeasible for setting $S$.

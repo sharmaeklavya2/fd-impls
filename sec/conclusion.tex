@@ -12,17 +12,16 @@ Our framework can easily accommodate new fairness notions.
 One just needs to prove a few key implications and counterexamples, and the rest can be inferred.
 In fact, we originally started with only 18 fairness notions, and gradually expanded the list
 to 22 notions as we found out about them.
-When we added PROPavg \cite{kobayashi2025proportional}, for example, we only had to add the following 5 results:
+When we added PROPavg \citep{kobayashi2025proportional}, for example, we only had to add the following 5 results:
 PROPx $\fimplies$ PROPavg, PROPavg $\fimplies$ PROPm, EFX $\fimplies$ PROPavg,
 PROPavg $\nfimplies$ PROPx, and PROPm $\nfimplies$ PROPavg.
 The inference engine inferred PROPavg's relationship to the remaining notions.
 
-\Cref{fig:additive-nny} shows us that the only notions whose feasibility is unknown are EFX and PMMS,
-and resolving their feasibility is one of fair division's most important problems.
+In \cref{fig:additive-nny}, the only notions having unresolved feasibility are EFX and PMMS.
 For mixed manna, even the existence of MXS allocations is open.
 %
 For equally-entitled agents having additive valuations over goods or over chores,
-EF1+PO allocations are known to exist \cite{caragiannis2019unreasonable,barman2018finding,mahara2025existence},
+EF1+PO allocations are known to exist \citep{caragiannis2019unreasonable,barman2018finding,mahara2025existence},
 but their efficient computation remains open.
 Relaxing the problem to EEF1+PO can be a helpful first step.
 
@@ -50,12 +49,12 @@ where every allocation is trivially PO.
 
 We omitted some fairness notions from our work because
 they are fundamentally different from the notions we consider.
-Equitability (EQ) \cite{brams1996fair}, and its relaxations like EQ1 and EQX
-\cite{amanatidis2023fair,gourves2014near}, compare different utility functions with each other.
-Notions like CEEI \cite{varian1974equity} and maximum Nash welfare \cite{caragiannis2019unreasonable}
+Equitability (EQ) \citep{brams1996fair}, and its relaxations like EQ1 and EQX
+\citep{amanatidis2023fair,gourves2014near}, compare different utility functions with each other.
+Notions like CEEI \citep{varian1974equity} and maximum Nash welfare \citep{caragiannis2019unreasonable}
 include an aspect of efficiency in addition to fairness.
-We also didn't study fair division of divisible items \cite{steinhaus1940sur,stromquist1980how,varian1974equity},
-or a mix of divisible and indivisible items \cite{liu2024mixed}.
+We also didn't study fair division of divisible items \citep{steinhaus1940sur,stromquist1980how,varian1974equity},
+or a mix of divisible and indivisible items \citep{liu2024mixed}.
 %Another reason to not study these notions and settings was to limit the scope of our work,
 %since our results are already quite extensive,
 %(see \cref{table:impls1,table:cex-add,table:cex-nonadd,table:impls-tribool,table:impls-unit-demand}).
@@ -66,15 +65,15 @@ Some fairness notions and settings don't fit our model (\cref{sec:prelims}),
 so it is unclear how to systematically represent results about them
 and extend the inference engine (\cref{sec:cpig}) for them.
 Examples of such settings include constrained fair division
-\cite{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
-notions based on social graphs \cite{aziz2018knowledge},
-parametrized notions like $\mathrm{WEF}(x, y)$ \cite{chakraborty2024weighted},
-and multiplicative approximations of fairness notions \cite{amanatidis2018comparing}.
+\citep{gourves2014near,bouveret2017fair,biswas2018fair,equbal2024fair},
+notions based on social graphs \citep{aziz2018knowledge},
+parametrized notions like $\mathrm{WEF}(x, y)$ \citep{chakraborty2024weighted},
+and multiplicative approximations of fairness notions \citep{amanatidis2018comparing}.
 Specifically, studying multiplicative approximations presents the following challenges:
 \begin{tightenum}
 \item For all $\alpha \in (0,1]$, $\alpha$-EF1 implies $\alpha/(1+\alpha)$-PMMS,
     and $\alpha$-PMMS implies $\alpha/(2-\alpha)$-EF1
-    (Propositions 3.8 and 4.6 in \cite{amanatidis2018comparing}).
+    (Propositions 3.8 and 4.6 in \citet{amanatidis2018comparing}).
     It's unclear how to properly visually depict such results, since we can have
     infinite chains like EF1 $\fimplies$ $1/2$-PMMS $\fimplies$ $1/3$-EF1 $\fimplies$ $1/4$-PMMS \ldots.
 \item To infer new implications using existing ones, we need to be able to
@@ -82,6 +81,6 @@ Specifically, studying multiplicative approximations presents the following chal
     For some results, such representation is non-trivial.
     For example, MMS $\fimplies$ EEFX (\extCref{thm:impl:mms-to-eefx} in \extCref{sec:impls-extra:mms-vs-efx}),
     but $(1-\eps)$-MMS does not imply $\eps$-EEFX for $n=2$ and any $\eps > 0$
-    (Proposition 4.8 in \cite{amanatidis2018comparing}).
+    (Proposition 4.8 in \citet{amanatidis2018comparing}).
 \end{tightenum}
 Extending our techniques to these settings and notions would be an interesting line of research.
