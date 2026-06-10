@@ -52,10 +52,26 @@ Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
 In $\Ical$, an allocation $A$ is EFX-fair to agent $i$ if for each $j \in [n] \setminus \{i\}$,
 either $i$ does not envy $j$, or both of the following hold:
 \begin{enumerate}
+\ifColsTwo
+\item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max\left(\left\{
+    \begin{array}{l}
+    v_i(A_j \setminus S): S \subseteq A_j
+    \\\quad \textrm{ and } v_i(S \mid A_i) > 0
+    \end{array}\right\}\right)}{w_j}$.
+\else
 \item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j
     \textrm{ and } v_i(S \mid A_i) > 0\})}{w_j}$.
+\fi
+\ifColsTwo
+\item $\displaystyle \frac{\min\left(\left\{
+    \begin{array}{r}
+    v_i(A_i \setminus S): S \subseteq A_i \textrm{ and }
+    \\ v_i(S \mid A_i \setminus S) < 0
+    \end{array}\right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\else
 \item $\displaystyle \frac{\min\left(\left\{v_i(A_i \setminus S): S \subseteq A_i
     \textrm{ and } v_i(S \mid A_i \setminus S) < 0 \right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\fi
 \end{enumerate}
 \end{definition}
 
@@ -137,7 +153,7 @@ An allocation is MMS-fair to her if her bundle's value is at least her maximin s
 
 \begin{definition}[MMS, \citet{budish2011combinatorial}]
 \label[definition]{defn:mms-simple}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
+Let $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
 Let $\Pi_n([m])$ be the set of all $n$-partitions of $[m]$.
 Define agent $i$'s \emph{maximin share} to be
 \[ \MMS_i \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n v_i(P_j). \]
@@ -194,7 +210,7 @@ $v_i(A_i)$ is at least her minimum-$F$-share, defined as
 We now describe pairwise \citep{caragiannis2019unreasonable}
 and groupwise \citep{barman2018groupwise} fairness.
 
-\begin{definition}[restricting, pairwise fairness, and groupwise fairness]
+\begin{definition}[restricting, pairwise and groupwise fairness]
 \label{defn:restricting}
 \label{defn:pairwise}
 \label{defn:groupwise}
