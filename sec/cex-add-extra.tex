@@ -17,7 +17,7 @@ but not EF or PROP or GPROP or PPROP or EEF or MEFS.
 
 \begin{lemma}
 \label[example]{cex:share-vs-envy-goods}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, \eqEnt)$
+Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{\eqEnt}$
 with $n \ge 3$, $m = 2n-1$, and identical additive valuations,
 where each item has value 1 to each agent.
 Let $A$ be an allocation where agent $n$ gets $n$ goods,
@@ -38,7 +38,7 @@ $A$ is not EF1 because the first $n-1$ agents EF1-envy agent $n$.
 
 \begin{lemma}
 \label[lemma]{cex:share-vs-envy-chores}
-Consider a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$
+Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$
 with $n \ge 3$, equal entitlements, identical additive disutilities,
 and $m = n+1$ chores, each of disutility 1.
 Let $A$ be an allocation where agents 1 and 2 get 2 chores each,
@@ -76,7 +76,7 @@ Let $0 \le 2a < b$. Let $f_1, f_2, f_3: 2^{[12]} \to \mathbb{R}_{>0}$ be additiv
 \\ $f_3$ & $b$ & $b$ & $b$ & $b$ & $a$ & $a$ & $a$ & $a$ & $a$ & $a$ & $b$ & $b$
 \end{tabular}
 
-Let $t \in \{-1, 1\}$ and let $\Ical \defeq ([3], [12], (v_i)_{i=1}^3, \eqEnt)$
+Let $t \in \{-1, 1\}$ and let $\Ical \defeq \fdInst{[3]}{[12]}{(v_i)_{i=1}^3}{\eqEnt}$
 be a fair division instance where $v_i \defeq tf_i$ for all $i \in [3]$.
 Then allocation
 $A \defeq ([4], [8] \setminus [4], [12] \setminus [8])$ is EEF+PROP but not EF1.
@@ -352,7 +352,7 @@ someone will always have no chores.
 
 \begin{lemma}[PROPm doesn't exist for mixed manna]
 \label[lemma]{cex:propm-mixed-manna}
-Consider a fair division instance $([3], [6], (v_i)_{i=1}^3, \eqEnt)$
+Consider a fair division instance $\fdInst{[3]}{[6]}{(v_i)_{i=1}^3}{\eqEnt}$
 where agents have identical additive valuations, and the items have values
 $(-3, -3, -3, -3, -3, 3\eps)$, where $0 < \eps < 1/2$.
 Then there exists an EFX+GMMS+GAPS allocation but no PROPm allocation.
@@ -405,7 +405,7 @@ Then $A$ is PROP1 but not M1S.
 \label[lemma]{cex:gaps-not-propx-n2}
 \label[lemma]{cex:gaps-not-propx-n2:goods}
 \label[lemma]{cex:gaps-not-propx-n2:chores}
-Let $t \in \{-1, 1\}$. Consider a fair division instance $([2], [12], (v, v), (0.4, 0.6))$,
+Let $t \in \{-1, 1\}$. Consider a fair division instance $\fdInst{[2]}{[12]}{(v, v)}{(0.4, 0.6)}$,
 where $v(1) = v(2) = 10t$ and $v(j) = t$ for all $j \in [12] \setminus [2]$.
 Then allocation $A = (\{1\}, [12] \setminus \{1\})$ is APS but not PROPx.
 \end{lemma}
@@ -444,7 +444,7 @@ On the other hand, $X$ is M1S iff $|X_1| = |X_2| = 1$ iff $X$ is EFX.
 
 \begin{lemma}[PROP1+M1S is infeasible for goods]
 \label[lemma]{cex:prop1-plus-m1s-ue}
-Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
+Consider a fair division instance $\Ical \defeq \fdInst{[3]}{[7]}{(v_i)_{i=1}^3}{w}$,
 where the entitlement vector is $w \defeq (7/12, 5/24, 5/24)$,
 the agents have identical additive valuations, and each good has value 1. Then
 \begin{tightenum}
@@ -560,7 +560,7 @@ which allows us to also prove other non-implications.
 
 \begin{lemma}
 \label[lemma]{cex:gwmms-nimpl-prop1-m1s-ue-chores}
-Consider a fair division instance $\Ical \defeq ([3], [7], (v_i)_{i=1}^3, w)$,
+Consider a fair division instance $\Ical \defeq \fdInst{[3]}{[7]}{(v_i)_{i=1}^3}{w}$,
 where the entitlement vector is $w \defeq (9/16, 7/32, 7/32)$,
 the agents have identical additive valuations, and each chore has disutility 1.
 Let $X$ be an allocation. Then
@@ -648,7 +648,7 @@ Hence, $X$ is EFX iff $X$ is M1S.
 \label[lemma]{cex:prop-not-m1s-chores:neg-binary}
 \label[lemma]{cex:prop-not-m1s-chores:negative-bival}
 Let $0 \le \eps \le 2/7$.
-Let $([3], [7], (v_i)_{i=1}^3, w)$ be a fair division instance,
+Let $\fdInst{[3]}{[7]}{(v_i)_{i=1}^3}{w}$ be a fair division instance,
 where $w = (4/7, 3/14, 3/14)$ and $v$ is given by the following table:
 
 \begin{tabular}{cccccccc}
@@ -675,7 +675,7 @@ Hence, $A$ is not M1S-fair to agent 1.
 
 \begin{example}[PROP $\nfimplies$ MEFS for binary valuations]
 \label[example]{cex:prop-not-mefs:binary-goods}
-Let $([3], [6], (v_i)_{i=1}^3, w)$ be a fair division instance,
+Let $\fdInst{[3]}{[6]}{(v_i)_{i=1}^3}{w}$ be a fair division instance,
 where $w = (1/2, 1/4, 1/4)$ and $v$ is given by the following table:
 
 \begin{tabular}{cccccccc}

@@ -10,7 +10,7 @@ or in the survey papers cited in \cref{sec:intro:related-work}.
 
 \begin{definition}[EF]
 \label{defn:ef}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 In an allocation $A$, an agent $i \in [n]$ \emph{envies} another agent
 $j \in [n] \setminus \{i\}$ if $v_i(A_i)/w_i < v_i(A_j)/w_j$.
 Agent $i$ is \emph{envy-free} in $A$ (or $A$ is EF-fair to $i$) if
@@ -28,7 +28,7 @@ and EFX (envy-free up to any item) \citep{caragiannis2019unreasonable}.
 
 \begin{definition}[EF1]
 \label{defn:ef1}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 In $\Ical$, an allocation $A$ is EF1-fair to agent $i$ if for every other agent $j$,
 either $i$ does not envy $j$,
 or $v_i(A_i)/w_i \ge v_i(A_j \setminus \{g\})/w_j$ for some $g \in A_j$,
@@ -48,7 +48,7 @@ We extend this definition to non-additive valuations over mixed manna.
 %\begin{restatable}[EFX]{definition}{rDefnEfx}
 \begin{definition}[EFX]
 \label{defn:efx}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 In $\Ical$, an allocation $A$ is EFX-fair to agent $i$ if for each $j \in [n] \setminus \{i\}$,
 either $i$ does not envy $j$, or both of the following hold:
 \begin{enumerate}
@@ -88,7 +88,7 @@ In \extCref{sec:notions:efx}, we explain our motivation for defining EFX this wa
 
 \begin{definition}[PROP]
 \label{defn:prop}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 For $\Ical$, agent $i$'s \emph{proportional share} is $w_i \cdot v_i([m])$.
 Allocation $A$ is \emph{proportional} (PROP) if $v_i(A_i) \ge w_i \cdot v_i([m])$.
 \end{definition}
@@ -100,7 +100,7 @@ after taking some good or giving away some chore.
 
 \begin{definition}[PROP1, \citet{conitzer2017fair}]
 \label{defn:prop1}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 In $\Ical$, an allocation $A$ is PROP1-fair to agent $i$ if
 either $v_i(A_i) \ge w_i \cdot v_i([m])$,
 or $v_i(A_i \cup \{g\}) > w_i \cdot v_i([m])$ for some $g \in [m] \setminus A_i$,
@@ -119,7 +119,7 @@ We extend this definition to non-additive valuations over mixed manna.
 
 \begin{definition}[PROPx]
 \label[definition]{defn:propx}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+For a fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 an allocation $A$ is said to be PROPx-fair to agent $i$ iff
 either $v_i(A_i) \ge w_i \cdot v_i([m])$ or both of these conditions hold:
 \begin{tightenum}
@@ -153,7 +153,7 @@ An allocation is MMS-fair to her if her bundle's value is at least her maximin s
 
 \begin{definition}[MMS, \citet{budish2011combinatorial}]
 \label[definition]{defn:mms-simple}
-Let $([n], [m], (v_i)_{i=1}^n, \eqEnt)$ be a fair division instance.
+Let $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{\eqEnt}$ be a fair division instance.
 Let $\Pi_n([m])$ be the set of all $n$-partitions of $[m]$.
 Define agent $i$'s \emph{maximin share} to be
 \[ \MMS_i \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n v_i(P_j). \]
@@ -168,7 +168,7 @@ AnyPrice Share (APS) \citep{babaioff2023fair} is another fairness notion that is
 
 \begin{definition}[APS, \citet{babaioff2023fair}]
 \label[definition]{defn:aps-simple}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+For a fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 agent $i$'s AnyPrice Share (APS) is defined as
 \[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_i \cdot p([m])} v_i(S). \]
 Here $p$ is called the \emph{price vector}.
@@ -194,7 +194,7 @@ $B$ is called agent $i$'s \emph{epistemic-$F$-certificate} for $A$.
 
 \begin{definition}[minimum fair share]
 \label{defn:minfs}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$
+For a fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$
 and fairness notion $F$, let $\Acal(\Ical, F, i)$ be the set of allocations
 that are $F$-fair to agent $i$.
 %
@@ -214,11 +214,11 @@ and groupwise \citep{barman2018groupwise} fairness.
 \label{defn:restricting}
 \label{defn:pairwise}
 \label{defn:groupwise}
-Let $\Ical \defeq (N, M, (v_i)_{i \in N}, w)$ be a fair division instance and $A$ be an allocation.
+Let $\Ical \defeq \fdInst{N}{M}{(v_i)_{i \in N}}{w}$ be a fair division instance and $A$ be an allocation.
 For a subset $S \subseteq N$ of agents, where $|S| \ge 2$,
 let $\restrict(\Ical, A, S)$ be the pair $(\Ical^{(S)}, A^{(S)})$, where
 allocation $A^{(S)} \defeq (A_j)_{j \in S}$,
-instance $\Ical^{(S)} \defeq (S, \bigcup_{j \in S} A_j, (v_j)_{j \in S}, \what)$,
+instance $\Ical^{(S)} \defeq \fdInst{S}{\bigcup_{j \in S} A_j}{(v_j)_{j \in S}}{\what}$,
 and weights $\what_j \defeq w_j / \sum_{k \in S} w_k$.
 
 $A$ is \emph{pairwise-$F$-fair} to agent $i$ if for all $j \in N \setminus \{i\}$,

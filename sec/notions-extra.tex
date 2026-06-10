@@ -27,14 +27,14 @@ and \cref{defn:efx0-chores} for the chores analogue.
 
 \begin{definition}[\EFXZero{} for goods]
 \label[definition]{defn:efx0-goods}
-For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ over goods,
+For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ over goods,
 an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, and every $g \in A_j$,
 \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
 \end{definition}
 
 \begin{definition}[\EFXZero{} for chores]
 \label[definition]{defn:efx0-chores}
-For a fair division instance $([n], [m], (v_i)_{i=1}^n, w)$ over chores,
+For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ over chores,
 an allocation $A$ is \EFXZero-fair to agent $i$ if for every other agent $j$, and every $c \in A_i$,
 \[ \frac{-v_i(A_i \setminus \{c\})}{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
 \end{definition}
@@ -44,7 +44,7 @@ whereas it is not known whether EFX is compatible with PO for additive valuation
 
 \begin{example}
 \label[example]{ex:efx-po}
-Consider the fair division instance $([2], \{g_1, g_2, g_3\}, (v_i)_{i=1}^2, \eqEnt)$,
+Consider the fair division instance $\fdInst{[2]}{\{g_1, g_2, g_3\}}{(v_i)_{i=1}^2}{\eqEnt}$,
 where $v_1$ and $v_2$ are additive, and
 \begin{align*}
    v_1(g_1) &= 1, & v_1(g_2) &= 0, & v_1(g_3) &= 10,
@@ -135,7 +135,7 @@ is equivalent to well-known definitions of EFX under those special cases.
 
 \begin{lemma}
 \label[lemma]{thm:efx-equiv-positive}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if all marginals are positive for agent $i$
 (i.e., $v_i(g \mid R) > 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff $A$ is \EFXZero-fair to $i$.
@@ -149,7 +149,7 @@ Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
 
 \begin{lemma}
 \label[lemma]{thm:efx-equiv-negative}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if all marginals are negative for agent $i$
 (i.e., $v_i(c \mid R) < 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff $A$ is \EFXZero-fair to agent $i$.
@@ -175,7 +175,7 @@ Hence, $\sum_{g \in S} f(g \mid T) \ge f(S \mid T) > 0$, so $f(g \mid T) > 0$ fo
 
 \begin{lemma}
 \label[lemma]{thm:efx-equiv-submod-goods}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if $v_i$ is submodular and all marginals are non-negative for agent $i$
 (i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff for all $j \in [n] \setminus \{i\}$, we have
@@ -209,7 +209,7 @@ so $f(c \mid T \setminus \{c\}) < 0$ for some $c \in S$.
 
 \begin{lemma}
 \label[lemma]{thm:efx-equiv-submod-chores}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if $v_i$ is submodular and all marginals are non-positive for agent $i$
 (i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff for all $j \in [n] \setminus \{i\}$, we have
@@ -232,7 +232,7 @@ For a finite set $M$, let $\Pi_n(M)$ be the set of all $n$-partitions of $M$.
 For a function $f: 2^M \to \mathbb{R}$, define
 \[ \MMS_f^n(M) \defeq \max_{P \in \Pi_n(M)} \min_{j=1}^n f(P_j). \]
 %
-For a fair division instance $\Ical \defeq (N, M, (v_i)_{i \in N}, \eqEnt)$,
+For a fair division instance $\Ical \defeq \fdInst{N}{M}{(v_i)_{i \in N}}{\eqEnt}$,
 agent $i$'s \emph{maximin share} (MMS) is given by $\MMS_{v_i}^{|N|}(M)$.
 When the instance $\Ical$ is clear from context, we write $\MMS_i$ instead of $\MMS_{v_i}^{|N|}(M)$.
 An allocation $A$ is MMS-fair to agent $i$ if $v_i(A_i) \ge \MMS_{v_i}^{|N|}(M)$.
@@ -272,7 +272,7 @@ For any fair division instance with equal entitlements,
 the pessShare of any agent is the same as her maximin share.
 \end{lemma}
 \begin{proof}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance,
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance,
 where $w_i = 1/n$ for all $i \in [n]$.
 Any agent $i$'s $1$-out-of-$n$ share is the same as $\MMS_i$, so $\pessShare_i \ge \MMS_i$.
 
@@ -301,7 +301,7 @@ For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=
 
 \begin{definition}[APS, \citet{babaioff2023fair}]
 \label[definition]{defn:aps}
-For a fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+For a fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 agent $i$'s AnyPrice Share (APS) is defined as
 \[ \APS_i \defeq \min_{p \in \mathbb{R}^m}\;\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S). \]
 Here $p$ is called the \emph{price vector}.
@@ -315,7 +315,7 @@ we prove that their definition is equivalent to \cref{defn:aps}.
 
 \begin{lemma}
 \label[lemma]{thm:aps-optimal-price}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 For agent $i$, let $G$ be the set of goods and $C$ be the set of chores,
 i.e., $G \defeq \{g \in [m]: v_i(g \mid R) \ge 0 \; \forall R \subseteq [m] \setminus \{g\}\}$
 and $C \defeq \{c \in [m]: v_i(c \mid R) \le 0 \; \forall R \subseteq [m] \setminus \{c\}\}$
@@ -361,7 +361,7 @@ called the \emph{dual} definition.
 
 \begin{definition}[APS (dual)]
 \label[definition]{defn:aps-dual}
-Let $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$ be a fair division instance.
+Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 For an agent $i$ and any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
 Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ such that
 \[ \exists x \in \mathbb{R}_{\ge 0}^{\Scal_z}, \sum_{S \in \Scal_z} x_S = 1
@@ -439,7 +439,7 @@ well-known definitions of PROPx \citep{aziz2020polynomial,li2022almost}.
 
 \begin{lemma}
 \label[lemma]{thm:propx-equiv-positive}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if all marginals are positive for agent $i$
 (i.e., $v_i(g \mid R) > 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
 then $A$ is PROPx-fair to agent $i$ iff $v_i(A_i) \ge w_iv_i([m])$ or
@@ -454,7 +454,7 @@ Hence, in \cref{defn:propx}, we can assume $|S| = 1$ \wLoG{}.
 
 \begin{lemma}
 \label[lemma]{thm:propx-equiv-negative}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if all marginals are negative for agent $i$
 (i.e., $v_i(c \mid R) < 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
 then $A$ is PROPx-fair to agent $i$ iff $|v_i(A_i)| \le w_i|v_i([m])|$ or
@@ -469,7 +469,7 @@ Hence, in \cref{defn:propx}, we can assume $|S| = 1$ \wLoG{}.
 
 \begin{lemma}
 \label[lemma]{thm:propx-equiv-submod-goods}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if $v_i$ is submodular and all marginals are non-negative for agent $i$
 (i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
 then $A$ is PROPx-fair to agent $i$ iff $v_i(A_i) \ge w_iv_i([m])$ or
@@ -484,7 +484,7 @@ such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
 
 \begin{lemma}
 \label[lemma]{thm:propx-equiv-submod-chores}
-In the fair division instance $\Ical \defeq ([n], [m], (v_i)_{i=1}^n, w)$,
+In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if $v_i$ is submodular and all marginals are non-positive for agent $i$
 (i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
 then $A$ is PROPx-fair to agent $i$ iff $|v_i(A_i)| \le w_i|v_i([m])|$ or
@@ -504,7 +504,7 @@ such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $
 \begin{definition}[PROPm \citep{baklanov2021achieving} and PROPavg \citep{kobayashi2025proportional}]
 \label[definition]{defn:propm}
 \label{defn:propavg}
-Let $A$ be an allocation for the fair division instance $([n], [m], (v_i)_{i=1}^n, w)$.
+Let $A$ be an allocation for the fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$.
 Fix an agent $i$. For every $j \in [n] \setminus \{i\}$,
 let $K_j \defeq \{v_i(S \mid A_i): S \subseteq A_j \text{ and } v_i(S \mid A_i) > 0\}$.
 Let $\tau_j \defeq 0$ if $K_j = \emptyset$ and $\tau_j \defeq \min(K_j)$ otherwise.
