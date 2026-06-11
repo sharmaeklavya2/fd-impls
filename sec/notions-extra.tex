@@ -283,7 +283,8 @@ For equal entitlements, it's trivial to show that $\WMMS_i = \MMS_i$.
 \label[definition]{defn:pessShare}
 Let $1 \le \ell \le d$. Let $\Pi_d(M)$ be the set of all $d$-partitions of $M$.
 Then agent $i$'s $\ell$-out-of-$d$ share is defined as
-\[ \loodM_i := \max_{\substack{X \in \Pi_d(M):\\v_i(X_j) \le v_i(X_{j+1}) \forall j \in [d-1]}} \sum_{j=1}^{\ell} v_i(X_j). \]
+\[ \loodM_i := \!\!\!\!\!\!\max_{\substack{X \in \Pi_d(M):\\v_i(X_j) \le v_i(X_{j+1}) \forall j \in [d-1]}}
+    \sum_{j=1}^{\ell} v_i(X_j). \]
 Then agent $i$'s pessimistic share is defined as
 \[ \pessShare_i := \sup_{1 \le \ell \le d:\;\ell / d \le w_i} \loodM_i. \]
 Allocation $A$ is pessShare-fair to agent $i$ if $v_i(A_i) \ge \pessShare_i$.
@@ -318,8 +319,6 @@ Hence, $\pessShare \le \MMS_i$.
 \subsection{APS}
 \label{sec:notions:aps}
 
-For any positive integer $m$, define
-$\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
 For any $x \in \mathbb{R}^m$ and $S \subseteq [m]$, define $x(S) \defeq \sum_{j=1}^m x_j$.
 
 \begin{definition}[APS, \citet{babaioff2023fair}]
@@ -334,7 +333,9 @@ A vector $p^* \in \mathbb{R}^m$ is called an \emph{optimal} price vector for age
 
 \Cref{defn:aps} is slightly different from the original definition given in \citet{babaioff2023fair}.
 However, they assume that all items are goods, and for that special case,
-we prove that their definition is equivalent to \cref{defn:aps}.
+we can prove that their definition is equivalent to \cref{defn:aps}.
+We begin by proving that, \wLoG, we can assume that goods have a non-negative price
+and chores have a non-positive price.
 
 \begin{lemma}
 \label[lemma]{thm:aps-optimal-price}
@@ -354,27 +355,33 @@ we get potentially better prices.
 %
 Define $\phat \in \mathbb{R}^m$ as
 \[ \phat_j \defeq \begin{cases}
-0 & \textrm{ if } j \in \Ghat \cup \Chat
-\\ p^*_j & \textrm{ otherwise}
-\end{cases}, \]
+    0 & \textrm{ if } j \in \Ghat \cup \Chat
+    \\ p^*_j & \textrm{ otherwise}
+    \end{cases}, \]
 and let
 \[ \Shat \in \argmax_{S \subseteq [m]: \phat(S) \le w_i\phat([m])} v_i(S) .\]
 Since $\phat(\Shat \cup \Ghat \setminus \Chat) = \phat(\Shat)$
 and $v_i(\Shat \cup \Ghat \setminus \Chat) \ge v_i(\Shat)$,
 we can assume without loss of generality that
 $\Ghat \subseteq \Shat$ and $\Chat \cap \Shat = \emptyset$.
-\[ p^*(\Shat) - w_ip^*([m])
-= (\phat(\Shat) - w_i\phat([m])) - (1-w_i)(-p^*(\Ghat)) - w_ip^*(\Chat) \le 0. \]
+\begin{align*}
+& p^*(\Shat) - w_ip^*([m])
+\wrapIfTwoCols= (\phat(\Shat) - w_i\phat([m])) - (1-w_i)(-p^*(\Ghat)) - w_ip^*(\Chat)
+\wrapIfTwoCols\le 0.
+\end{align*}
 Hence,
-\[ \max_{S \subseteq [m]: p^*(S) \le w_ip^*([m])} v_i(S)
-\ge v_i(\Shat) = \max_{S \subseteq [m]: \phat(S) \le w_i\phat([m])} v_i(S), \]
+\[ \max_{\substack{S \subseteq [m]:\\p^*(S) \le w_ip^*([m])}} \!\!\!\!v_i(S)
+    \,\ge\, v_i(\Shat)
+    \,= \!\!\!\!\max_{\substack{S \subseteq [m]:\\\phat(S) \le w_i\phat([m])}} \!\!\!\!v_i(S), \]
 so $\phat$ is also an optimal price vector.
 \end{proof}
 
+For any positive integer $m$, define
+$\Delta_m \defeq \{x \in \mathbb{R}^m_{\ge 0}: \sum_{j=1}^m x_j = 1\}$.
 When all items are goods, by \cref{thm:aps-optimal-price}, we can assume \wLoG{} that
 $p$ is non-negative and $p([m]) = 1$. Hence,
 \[ \APS_i = \min_{p \in \Delta_m}\;\max_{S \subseteq [m]: p(S) \le w_i} v_i(S). \]
-
+%
 When all items are chores, by \cref{thm:aps-optimal-price}, we can assume \wLoG{} that
 $p$ is non-positive and $p([m]) = -1$. Hence,
 \[ -\APS_i = \max_{q \in \Delta_m}\;\min_{S \subseteq [m]: q(S) \ge w_i} (-v_i(S)). \]
@@ -387,8 +394,8 @@ called the \emph{dual} definition.
 Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ be a fair division instance.
 For an agent $i$ and any $z \in \mathbb{R}$, let $\Scal_z \defeq \{S \subseteq [m]: v_i(S) \ge z\}$.
 Then agent $i$'s AnyPrice share, denoted by $\APS_i$, is the largest value $z$ such that
-\[ \exists x \in \mathbb{R}_{\ge 0}^{\Scal_z}, \sum_{S \in \Scal_z} x_S = 1
-    \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
+\[ \exists x \in \mathbb{R}_{\ge 0}^{\Scal_z}, \sum_{S \in \Scal_z} \!x_S = 1
+    \textrm{ and } \bigg(\forall j \in [m], \!\!\!\!\sum_{S \in \Scal_z: j \in S} \!\!\!\!x_S = w_i\bigg). \]
 \end{definition}
 
 \Cref{defn:aps-dual} can be interpreted as a linear programming relaxation of MMS.
@@ -408,10 +415,10 @@ the primal and dual definitions, respectively.
 We will show that for any $z \in \mathbb{R}$, $\pAPS_i \ge z$ iff $\dAPS_i \ge z$.
 This would prove that $\pAPS_i = \dAPS_i$.
 
-$\dAPS_i \ge z$ iff the following linear program has a feasible solution:
+$\dAPS_i \ge z$ iff the following LP has a feasible solution:
 \[ \min_{x \in \mathbb{R}_{\ge 0}^{\Scal_z}} 0
-\textrm{ where } \sum_{S \in \Scal_z} x_S = 1
-    \textrm{ and } \left(\forall j \in [m], \sum_{S \in \Scal_z: j \in S} x_S = w_i\right). \]
+\textrm{ where} \!\sum_{S \in \Scal_z} \!x_S = 1
+    \textrm{ and } \bigg(\forall j \in [m], \!\!\!\!\sum_{S \in \Scal_z: j \in S} \!\!\!\!x_S = w_i\bigg). \]
 Its dual is
 \[ \max_{p \in \mathbb{R}^m, r \in \mathbb{R}} r - w_ip([m])
 \textrm{ where } p(S) \ge r \textrm{ for all } S \in \Scal_z. \]
@@ -425,11 +432,12 @@ For a given $p$, the optimal $r$ is $\min_{S \in \Scal_z} p(S)$.
 Hence, the dual LP is bounded iff for all $p \in \mathbb{R}^m$,
 \[ \min_{S \in \Scal_z} p(S) \le w_ip([m]). \]
 Furthermore,
+\ifColsTwo\providecommand{\tempWrap}{\\ &\qquad\qquad}\else\let\tempWrap\relax\fi
 \begin{align*}
 & \forall p \in \mathbb{R}^m, \min_{S \in \Scal_z} p(S) \le w_ip([m])
 \\ &\iff \forall p \in \mathbb{R}^m, \exists S \subseteq [m] \textrm{ such that }
-    p(S) \le w_ip([m]) \textrm{ and } v_i(S) \ge z
-\\ &\iff \left(\min_{p \in \mathbb{R}^m} \max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S)\right) \ge z
+    \tempWrap p(S) \le w_ip([m]) \textrm{ and } v_i(S) \ge z
+\\ &\iff \left(\min_{p \in \mathbb{R}^m} \,\max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S)\right) \ge z
 \\ &\iff \pAPS_i \ge z.
 \end{align*}
 Hence, $\dAPS_i \ge z \iff \pAPS_i \ge z$.
