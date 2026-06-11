@@ -398,7 +398,7 @@ Hence, it cannot happen that $i$ is PROPm-satisfied by $A$ but not PROP1-satisfi
 
 Here we look at implications between EF (and its epistemic variants) and PROP.
 
-\begin{lemma}[MEFS $\fimplies$ PROP, \cite{bouveret2016characterizing}]
+\begin{lemma}[MEFS $\fimplies$ PROP, \citet{bouveret2016characterizing}]
 \label[lemma]{thm:impl:mefs-to-prop}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if $v_i$ is subadditive and an allocation $A$ is MEFS-fair to $i$, then $A$ is also PROP-fair to $i$.
@@ -413,7 +413,7 @@ Hence,
 \[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(B_i)}{w_i} \ge \sum_{j=1}^n v_i(B_j) \ge v_i([m]). \]
 \end{proof}
 
-\begin{lemma}[EF $\fimplies$ GPROP, \cite{bouveret2016characterizing}]
+\begin{lemma}[EF $\fimplies$ GPROP, \citet{bouveret2016characterizing}]
 \label[lemma]{thm:impl:ef-to-gprop}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if $v_i$ is subadditive and agent $i$ is envy-free in $A$,
@@ -487,7 +487,7 @@ so $i$ is also GPROP-satisfied by $A$.
 \subsection{EFX, EF1 vs PROPx, PROPm, PROP1}
 \label{sec:impls-extra:efx-ef1-vs-propx-propm-prop1}
 
-\begin{lemma}[MXS $\fimplies$ PROP1, Theorem 3 of \cite{caragiannis2023new}]
+\begin{lemma}[MXS $\fimplies$ PROP1, Theorem 3 of \citet{caragiannis2023new}]
 \label[lemma]{thm:impl:mxs-to-prop1}
 In a fair division instance with equal entitlements,
 if $v_i$ is additive for some agent $i$, $v_i(g) \ge 0$ for every item $g$,
@@ -600,7 +600,7 @@ v_1([m]) &\le v_1(A_1 \cup \{\ghat\}) + v_1(A_2 \setminus \{\ghat\})
 so $A$ is PROP1-fair to agent 1.
 \end{proof}
 
-\begin{lemma}[EEFX $\fimplies$ PROPx, Lemma 2.1 of \cite{li2022almost}]
+\begin{lemma}[EEFX $\fimplies$ PROPx, Lemma 2.1 of \citet{li2022almost}]
 \label[lemma]{thm:impl:eefx-to-propx}
 Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ where
 the items are chores to agent $i$ and $v_i$ is subadditive.
@@ -704,7 +704,7 @@ Hence, $A$ is PROPx-fair to $i$.
 \label{sec:impls-extra:mms-vs-efx}
 
 We prove some results connecting MMS, EFX, and related notions,
-using techniques from \cite{plaut2020almost,caragiannis2023new}.
+using techniques from \citet{plaut2020almost,caragiannis2023new}.
 
 \begin{lemma}
 \label[lemma]{thm:mms-and-all-envy}
@@ -774,12 +774,12 @@ If agent 1 doesn't envy agent 2, she is EFX-satisfied.
 Otherwise, she is EFX-satisfied because of \cref{thm:mms-and-all-envy}.
 \end{proof}
 
-Theorem 2 in \cite{caragiannis2023new} states that an MMS allocation is also an EEFX allocation
+Theorem 2 in \citet{caragiannis2023new} states that an MMS allocation is also an EEFX allocation
 (for additive valuations over goods and equal entitlements).
 The proof can be easily adapted to non-additive valuations over goods and unequal entitlements.
 For the sake of completeness, we give a proof below.
 
-\begin{lemma}[MMS $\fimplies$ EEFX, \cite{caragiannis2023new}]
+\begin{lemma}[MMS $\fimplies$ EEFX, \citet{caragiannis2023new}]
 \label[lemma]{thm:impl:mms-to-eefx}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if all items are goods to agent $i$ and allocation $A$ is WMMS-fair to agent $i$,
@@ -882,7 +882,7 @@ Let $\vhat(X) \defeq (v_1(X), |X|)$.
 Then $\vhat$'s co-domain is totally-ordered, assuming pairs are compared lexicographically.
 Let $P$ be a leximin $n$-partition of $\vhat$ (c.f.~\cref{defn:leximin})
 such that $\vhat(P_1) \le \vhat(P_2) \le \ldots \le \vhat(P_n)$.
-($P$ is also called the leximin++ partition of $v_1$ \cite{plaut2020almost}).
+($P$ is also called the leximin++ partition of $v_1$ \citep{plaut2020almost}).
 Then $v_1(P_1) = \min_{j=1}^n v_1(P_j)$.
 Hence, $v_1(P_1) = \MMS_{v_1}^n([m]) \le v_1(A_1)$.
 
@@ -905,7 +905,7 @@ Hence, $P$ is agent 1's \MXSZero{}-certificate for $A$.
 
 We prove implications among share-based notions like PROP, APS, and MMS.
 
-\begin{lemma}[PROP $\fimplies$ APS, Proposition 4 of \cite{babaioff2023fair}]
+\begin{lemma}[PROP $\fimplies$ APS, Proposition 4 of \citet{babaioff2023fair}]
 \label[lemma]{thm:impl:prop-to-aps}
 For any fair division instance
 \\ $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
@@ -957,13 +957,13 @@ Hence,
     \qedhere \]
 \end{proof}
 
-\begin{lemma}[APS $\fimplies$ pessShare, \cite{babaioff2023fair}]
+\begin{lemma}[APS $\fimplies$ pessShare, \citet{babaioff2023fair}]
 \label[lemma]{thm:impl:aps-to-pess}
 For any fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 $\APS_i \ge \pessShare_i$ for every agent $i$.
 \end{lemma}
 \begin{proof}
-Proposition 2 in \cite{babaioff2023fair} proves this for goods,
+Proposition 2 in \citet{babaioff2023fair} proves this for goods,
 but their proof works for mixed manna too.
 \end{proof}
 
@@ -1007,7 +1007,7 @@ Therefore,
 Hence, $\WMMS_i/w_i \ge \beta_i$.
 \end{proof}
 
-\begin{lemma}[WMMS $\fimplies$ APS for $n=2$, \cite{babaioff2023fair}]
+\begin{lemma}[WMMS $\fimplies$ APS for $n=2$, \citet{babaioff2023fair}]
 \label[lemma]{thm:impl:mms-to-aps-n2}
 For a fair division instance $\fdInst{[2]}{[m]}{(v_i)_{i=1}^2}{w}$,
 if $v_i$ is additive for some $i$, then $\APS_i \le \WMMS_i$.
@@ -1414,7 +1414,7 @@ Thus, $C$ is agent $i$'s epistemic-$F$-certificate for $A$, so $A$ is epistemic-
 
 We now look at non-additive valuations with triboolean marginals.
 
-\begin{lemma}[MMS = APS, \cite{kulkarni2024approximating}]
+\begin{lemma}[MMS = APS, \citet{kulkarni2024approximating}]
 \label[lemma]{thm:impl:mms-to-aps-matroid}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{\eqEnt}$,
 if $v_i$ is submodular for some agent $i$, and $v_i$ has binary marginals
