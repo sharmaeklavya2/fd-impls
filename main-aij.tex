@@ -62,6 +62,11 @@
 \newdefinition{remark}[theorem]{Remark}
 %\newproof{pf}{Proof}
 
+\newcommand*{\dagsRef}{Figs.~\ref{fig:additive-general-nay}--\ref{fig:general-any-nny}
+(pages \pageref{fig:additive-general-nay}--\pageref{fig:general-any-nny})}
+\newcommand*{\dagsRefP}{Figs.~\ref{fig:additive-general-nay}--\ref{fig:general-any-nny},
+pages \pageref{fig:additive-general-nay}--\pageref{fig:general-any-nny}}
+
 %=[ customization ]=============================================================
 
 \newcommand{\defaultFloatPlacement}{htb}
@@ -137,12 +142,16 @@ Fair Allocation\sep Fair Division
 \input{sec/resultsSummary.tex}
 \input{sec/cpig.tex}
 \input{sec/conclusion.tex}
-    \input{sec/impls.tex}
-    \input{sec/cex-add.tex}
-    \input{sec/impls-tribool.tex}
-    \input{sec/cex-nonadd.tex}
-    \clearpage
-    %\input{sec/feas.tex}
+
+\renewcommand{\dbltopfraction}{0.3}
+\input{sec/impls.tex}
+\input{sec/cex-add.tex}
+\input{sec/impls-tribool.tex}
+\clearpage
+\input{sec/cex-nonadd.tex}
+\input{sec/dags.tex}
+\clearpage
+\renewcommand{\dbltopfraction}{0.8}
 
 \appendix
 \crefalias{section}{appendix}
@@ -157,8 +166,6 @@ Fair Allocation\sep Fair Division
 \input{sec/cex-nonadd-extra.tex}
 \input{sec/feas-extra.tex}
 \input{sec/fd-set-family.tex}
-\renewcommand{\dbltopfraction}{0.3}
-\input{sec/dags.tex}
 
 % To print the credit authorship contribution details
 % \printcredits
