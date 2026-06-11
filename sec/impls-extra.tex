@@ -863,14 +863,13 @@ We prove implications among share-based notions like PROP, APS, and MMS.
 
 \begin{lemma}[PROP $\fimplies$ APS, Proposition 4 of \citet{babaioff2023fair}]
 \label[lemma]{thm:impl:prop-to-aps}
-For any fair division instance
-\\ $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
+For any fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 $\APS_i \le w_iv_i([m])$ for agent $i$ if $v_i$ is additive.
 \end{lemma}
 \begin{proof}
 Set the price $p(g)$ of each item $g$ to $v_i(g)$. Then
-\[ \APS_i \le \max_{S \subseteq [m]: p(S) \le w_ip([m])} v_i(S)
-= \max_{S \subseteq [m]: v_i(S) \le w_iv_i([m])} v_i(S) \le w_iv_i([m]).
+\[ \APS_i \le \!\!\!\!\!\!\max_{\substack{S \subseteq [m]:\\p(S) \le w_ip([m])}} \!\!\!\!\!\!v_i(S)
+= \!\!\!\!\!\!\max_{\substack{S \subseteq [m]:\\v_i(S) \le w_iv_i([m])}} \!\!\!\!\!\!v_i(S) \le w_iv_i([m]).
 \qedhere \]
 \end{proof}
 
@@ -881,8 +880,11 @@ if $v_i$ is superadditive, then $\WMMS_i \le w_iv_i([m])$.
 \end{lemma}
 \begin{proof}
 Let $P$ be agent $i$'s WMMS partition. Then
-\[ v_i([m]) \ge \sum_{j=1}^n v_i(P_j) = \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right)
-    \ge \sum_{j=1}^n w_j\frac{\WMMS_i}{w_i} = \frac{\WMMS_i}{w_i}. \qedhere \]
+\begin{align*}
+v_i([m]) &\ge \sum_{j=1}^n v_i(P_j) = \sum_{j=1}^n w_j\left(\frac{v_i(P_j)}{w_j}\right)
+    \wrapIfTwoCols\ge \sum_{j=1}^n w_j\frac{\WMMS_i}{w_i} = \frac{\WMMS_i}{w_i}.
+\qedhere
+\end{align*}
 \end{proof}
 
 \begin{lemma}
@@ -892,8 +894,8 @@ Let $s_k \defeq \sum_{i=1}^k a_i$ for any $0 \le k \le n$.
 Then $s_k \le (k/n)s_n$.
 \end{lemma}
 \begin{proof}
-$\displaystyle s_n = s_k + \sum_{i=k+1}^n a_i \ge s_k + (n-k)a_k \ge s_k + (n-k)\frac{s_k}{k}
-= \frac{n}{k}s_k$.
+\[ s_n = s_k + \!\!\sum_{i=k+1}^n \!\!a_i \ge s_k + (n-k)a_k \ge s_k + (n-k)\frac{s_k}{k}
+= \frac{n}{k}s_k. \qedhere \]
 \end{proof}
 
 \begin{lemma}[PROP $\fimplies$ pessShare]
@@ -908,9 +910,12 @@ Then by \cref{thm:prefix-sum-bound} and superadditivity of $v_i$, we get
 \[ \loodM_i = \sum_{j=1}^{\ell} v_i(P_j)
     \le \frac{\ell}{d}\sum_{j=1}^d v_i(P_j) \le \frac{\ell}{d}v_i([m]). \]
 Hence,
-\[ \pessShare_i \defeq \sup_{1 \le \ell \le d: \ell/d \le w_i} \loodM_i
-    \le \sup_{1 \le \ell \le d: \ell/d \le w_i} (\ell/d)v_i([m]) \le w_iv_i([m]).
-    \qedhere \]
+\begin{align*}
+\pessShare_i &\defeq \sup_{1 \le \ell \le d: \ell/d \le w_i} \loodM_i
+    \wrapIfTwoCols\le \sup_{1 \le \ell \le d: \ell/d \le w_i} (\ell/d)v_i([m])
+    \wrapIfTwoCols\le w_iv_i([m]).
+\qedhere
+\end{align*}
 \end{proof}
 
 \begin{lemma}[APS $\fimplies$ pessShare, \citet{babaioff2023fair}]
@@ -950,7 +955,10 @@ Now let $v_i$ be additive and $n = 2$.
 For any $j \in [2]$, let $Q^{(j)}$ be an allocation where $Q^{(j)}_j \defeq S_j$
 and $Q^{(j)}_{3-j} \defeq [m] \setminus S_j$.
 Then $v_i(Q^{(j)}_j) = v_i(S_j) \le w_jv_i([m])$ and
-\[ v_i(Q^{(j)}_{3-j}) = v_i([m]) - v_i(S_j) \ge v_i([m]) - w_jv_i([m]) = w_{3-j}v_i([m]). \]
+\begin{align*}
+v_i(Q^{(j)}_{3-j}) &= v_i([m]) - v_i(S_j)
+    \wrapIfTwoCols\ge v_i([m]) - w_jv_i([m]) = w_{3-j}v_i([m]).
+\end{align*}
 Hence,
 \[ \frac{v_i(Q^{(j)}_j)}{w_j} \le v_i([m]) \le \frac{v_i(Q^{(j)}_{3-j})}{w_{3-j}}. \]
 Therefore,
@@ -971,11 +979,12 @@ Moreover, when entitlements are equal, we get $\APS_i = \MMS_i$.
 \end{lemma}
 \begin{proof}
 By \cref{thm:wmms-vs-knapsack}, we get
-\[ \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^2 \frac{v_i(S_j)}{w_j},
-\quad\textrm{where}\quad
-S_j \defeq \argmax_{\substack{S \subseteq [m]:\\ v_i(S) \le w_jv_i([m])}} v_i(S). \]
+\begin{align*}
+& \frac{\WMMS_i}{w_i} = \beta_i \defeq \max_{j=1}^2 \frac{v_i(S_j)}{w_j},
+    \wrapIfTwoCols\quad\textrm{where}\quad S_j \defeq \argmax_{\substack{S \subseteq [m]:\\ v_i(S) \le w_jv_i([m])}} v_i(S).
+\end{align*}
 On setting $p = v_i$ in the primal definition of APS (\cref{defn:aps}), we get
-\[ \APS_i \le \max_{\substack{S \subseteq [m]:\\ p(S) \le w_ip([m])}} v_i(S)
+\[ \APS_i \le \!\!\!\!\max_{\substack{S \subseteq [m]:\\ p(S) \le w_ip([m])}} \!\!\!\!v_i(S)
     = v_i(S_i) \le w_i\beta_i = \WMMS_i. \]
 When entitlements are equal, $\APS_i \ge \pessShare_i \ge \MMS_i$
 by \cref{thm:impl:aps-to-pess}.
@@ -1101,9 +1110,11 @@ are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} wit
 We will show that $B$ is agent $i$'s EEF-certificate for $A$.
 
 In $B$, for each agent $j \in [n] \setminus \{i\}$, we have
-\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+\begin{align*}
+v_i(B_j) &\le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
     \le \bigceil{\frac{v_i([m]) - v_i([m])/n}{n-1}}
-    \le \bigceil{\frac{v_i([m])}{n}} \le v_i(A_i). \]
+    \wrapIfTwoCols\le \bigceil{\frac{v_i([m])}{n}} \le v_i(A_i).
+\end{align*}
 Hence, $i$ doesn't envy anyone in $B$.
 Hence, $B$ is agent $i$'s EEF-certificate for $A$.
 \end{proof}
@@ -1218,9 +1229,11 @@ We will show that $B$ is agent $i$'s EEFX-certificate for $A$.
 Let $k \defeq v_i([m])$.
 Suppose $v_i(A_i) \ge \floor{k/n} = \ceil{(k+1)/n} - 1$ (c.f.~\cref{thm:ceil-floor}).
 Then for any other agent $j \in [n] \setminus \{i\}$, we get
-\[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
-    \le \bigceil{\frac{k - (k+1)/n + 1}{n-1}} = \bigceil{\frac{k+1}{n}}
-    \le v_i(B_i) + 1. \]
+\begin{align*}
+v_i(B_j) &\le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
+    \le \bigceil{\frac{k - (k+1)/n + 1}{n-1}}
+    \wrapIfTwoCols= \bigceil{\frac{k+1}{n}} \le v_i(B_i) + 1.
+\end{align*}
 If $B_j$ contains no goods and $B_i$ contains no chores,
 then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
 Otherwise, removing a good from $B_j$ or removing a chore from $B_i$
@@ -1269,8 +1282,10 @@ If an allocation $B$ is M1S-fair to $i$, then it is also WMMS-fair to $i$.
 \end{lemma}
 \begin{proof}
 Suppose $A$ is not WMMS-fair to $i$. By the definition of WMMS, we get
-\[ \frac{\WMMS_i}{w_i} = \min_{k=1}^n \frac{v_i(X^*_k)}{w_k},
-\quad\text{where}\quad X^* \in \argmax_X \min_{k=1}^n \frac{v_i(X_k)}{w_k}. \]
+\begin{align*}
+& \frac{\WMMS_i}{w_i} = \min_{k=1}^n \frac{v_i(X^*_k)}{w_k},
+\wrapIfTwoCols\quad\text{where}\quad X^* \in \argmax_X \min_{k=1}^n \frac{v_i(X_k)}{w_k}.
+\end{align*}
 Then $v_i(X^*_i) \ge \WMMS_i > v_i(A_i)$.
 %
 Now pick any $j \in [n] \setminus \{i\}$. Since $A$ is EF1-fair to $i$, we get
@@ -1415,7 +1430,10 @@ We have two cases:
 \textbf{Case 1}: $\tau_j = 0$ for all $j \neq i$.
 \\ Then $A$ is PROPavg by definition. Let $v_i$ be subadditive.
 Then for all $j \in [n] \setminus \{i\}$, we have
-\[ \tau_j = 0 \iff v_i(A_j \mid A_i) = 0 \implies v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i). \]
+\begin{align*}
+\tau_j = 0 &\iff v_i(A_j \mid A_i) = 0
+    \wrapIfTwoCols\implies v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i).
+\end{align*}
 Hence,
 \[ v_i([m]) \le \sum_{j=1}^n v_i(A_i) \le nv_i(A_i). \]
 Therefore, if $w_i = 1/n$, then $A$ is PROP-fair to $i$.
@@ -1449,12 +1467,13 @@ If $v_i(A_i) \ge w_iv_i([m])$, then $A$ is PROP-fair to $i$, and we are done.
 Now let $k \le v_i(A_i) < w_iv_i([m])$.
 
 Define sets $J_0$, $J_G$, and $J_C$ as follows:
+\ifColsTwo\providecommand{\tempWrap}{\\ &\qquad\qquad}\else\let\tempWrap\relax\fi
 \begin{align*}
-J_0 &\defeq \left\{j \in [n] \setminus \{i\}: \frac{v_i(B_i)}{w_i} \ge \frac{v_i(B_j)}{w_j} \right\},
-\\ J_G &\defeq \left\{j \in [n] \setminus \{i\}: \frac{v_i(B_j \setminus \{g\})}{w_j}
-    \le \frac{v_i(B_i)}{w_i} < \frac{v_i(B_j)}{w_j} \text{ for some } g \in B_j \right\},
-\\ J_C &\defeq \left\{j \in [n] \setminus \{i\}: \frac{v_i(B_i)}{w_i}
-    < \frac{v_i(B_j)}{w_j} \le \frac{v_i(B_i \setminus \{c\})}{w_i} \text{ for some } c \in B_i \right\}.
+J_0 &\defeq \bigg\{j \in [n] \setminus \{i\}: \frac{v_i(B_i)}{w_i} \ge \frac{v_i(B_j)}{w_j} \bigg\},
+\\ J_G &\defeq \bigg\{j \in [n] \setminus \{i\}: \frac{v_i(B_j \setminus \{g\})}{w_j}
+    \tempWrap\le \frac{v_i(B_i)}{w_i} < \frac{v_i(B_j)}{w_j} \text{ for some } g \in B_j \bigg\},
+\\ J_C &\defeq \bigg\{j \in [n] \setminus \{i\}: \frac{v_i(B_i)}{w_i} < \frac{v_i(B_j)}{w_j}
+    \tempWrap\le \frac{v_i(B_i \setminus \{c\})}{w_i} \text{ for some } c \in B_i \bigg\}.
 \end{align*}
 Since $B$ is EF1-fair to $i$, we have $J_0 \cup J_G \cup J_C = [n] \setminus \{i\}$.
 Also, $J_0$ and $J_G \cup J_C$ are disjoint.
