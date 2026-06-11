@@ -51,6 +51,7 @@
 \ColsOnefalse
 \ColsTwotrue
 %\Anonymoustrue
+\ifColsTwo\newcommand{\wrapIfTwoCols}{\\ &}\else\let\wrapIfTwoCols\relax\fi
 
 \newtheorem{theorem}{Theorem}
 \newdefinition{definition}{Definition}
@@ -150,6 +151,7 @@ Fair Allocation\sep Fair Division
 \crefalias{subsubsection}{appendix}
 
 \input{sec/settings-extra.tex}
+\input{sec/submod-funcs.tex}
 \input{sec/notions-extra.tex}
 \input{sec/impls-extra.tex}
 \input{sec/cex-add-extra.tex}

@@ -46,6 +46,7 @@
 \ColsOnetrue
 \ColsTwofalse
 %\Anonymoustrue
+\ifColsTwo\newcommand{\wrapIfTwoCols}{\\ &}\else\let\wrapIfTwoCols\relax\fi
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
@@ -115,6 +116,7 @@ Eklavya Sharma\footnotemark[2]
 \crefalias{subsubsection}{appendix}
 
 \input{sec/settings-extra.tex}
+\input{sec/submod-funcs.tex}
 \input{sec/notions-extra.tex}
 \input{sec/impls-extra.tex}
 \input{sec/cex-add-extra.tex}

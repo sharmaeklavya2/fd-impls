@@ -1,0 +1,76 @@
+\section{Properties of Submodular Functions}
+\label{sec:submod-funcs}
+
+In this section, we describe some properties of submodular functions that would be
+useful to understand results in subsequent sections.
+
+%A function $u$ is supermodular iff $-u$ is submodular.
+%Thus, all properties of submodularity we describe here can be easily adapted to supermodularity.
+
+We begin by recalling the definition of submodularity.
+A function $u: 2^M \to \mathbb{R}$ is said to be submodular if for any $S, T \subseteq M$,
+we have $u(S \cup T) + u(S \cap T) \le u(S) + u(T)$ \citep{schrijver2003submodular}.
+
+Next, we state two alternative characterizations of submodularity.
+Recall that $u(X \mid Y) \defeq u(X \cup Y) - u(Y)$ is called
+the \emph{marginal} value of $X$ given $Y$.
+
+\begin{lemma}[diminishing marginals, \cite{schrijver2003submodular}]
+\label[lemma]{thm:submod-dm}
+A function $u: 2^M \to \mathbb{R}$ is submodular iff
+for any $S \subseteq T \subseteq M$ and $g \in M \setminus T$,
+we have $u(g \mid S) \ge u(g \mid T)$.
+\end{lemma}
+
+\begin{lemma}
+A function $u: 2^M \to \mathbb{R}$ is submodular iff
+for any $S \subseteq T \subseteq M$ and $X \subseteq M \setminus T$,
+we have $u(X \mid S) \ge u(X \mid T)$.
+\end{lemma}
+\begin{proof}[Proof sketch]
+Let $u$ be submodular. Let $X \defeq \{g_1, \ldots, g_n\}$.
+For $0 \le i \le n$, let $Y_i \defeq \{g_1, \ldots, g_i\}$.
+Then by \cref{thm:submod-dm},
+\begin{align*}
+& u(X \mid S) - u(X \mid T)
+\wrapIfTwoCols= \sum_{i=1}^n (u(g_i \mid S \cup Y_{i-1}) - u(g_i \mid T \cup Y_{i-1}))
+    \ge 0.
+\qedhere
+\end{align*}
+\end{proof}
+
+Next, we analyze properties of functions defined using marginal values of submodular functions.
+
+\begin{lemma}[marginal gains are subadditive]
+\label[lemma]{thm:submod-mg-subadd}
+Let $u: 2^M \to \mathbb{R}$ be a submodular function and let $T \subseteq M$.
+For any $X \subseteq M \setminus T$, define $f(X) \defeq u(X \mid T)$.
+Then $f$ is subadditive, i.e., for any disjoint sets $X, Y \subseteq M \setminus T$,
+we have $f(X \cup Y) \le f(X) + f(Y)$.
+\end{lemma}
+\begin{proof}
+\begin{align*}
+f(X \cup Y) &= u(X \cup Y \mid T)
+\wrapIfTwoCols= u(X \mid T) + u(Y \mid X \cup T)
+\\ &\le u(X \mid T) + u(Y \mid T)
+\wrapIfTwoCols= f(X) + f(Y).
+\qedhere
+\end{align*}
+\end{proof}
+
+\begin{lemma}[marginal losses are superadditive]
+\label[lemma]{thm:submod-ml-superadd}
+Let $u: 2^M \to \mathbb{R}$ be a submodular function and let $T \subseteq M$.
+For any $X \subseteq T$, define $f(X) \defeq u(X \mid T \setminus X)$.
+Then $f$ is superadditive, i.e., for any disjoint sets $X, Y \subseteq T$,
+we have $f(X \cup Y) \ge f(X) + f(Y)$.
+\end{lemma}
+\begin{proof}
+\begin{align*}
+f(X \cup Y) &= u(X \cup Y \mid T \setminus (X \cup Y))
+\wrapIfTwoCols= u(X \mid T \setminus (X \cup Y)) + u(Y \mid T \setminus Y)
+\\ &\ge u(X \mid T \setminus X) + u(Y \mid T \setminus Y)
+\wrapIfTwoCols= f(X) + f(Y).
+\qedhere
+\end{align*}
+\end{proof}
