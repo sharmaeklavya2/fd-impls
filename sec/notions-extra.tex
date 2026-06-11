@@ -21,7 +21,7 @@ removing any positively-valued good from $j$'s bundle eliminates $i$'s envy. For
 \[ \frac{v_i(A_i)}{w_i} \ge \max_{g \in A_j: v_i(g) > 0} \frac{v_i(A_j \setminus \{g\})}{w_j}. \]
 
 A different definition, often called \EFXZero{},
-doesn't require the good $j$ to have a positive value to $i$ \citep{plaut2020almost}.
+does not require the good $g$ to have a positive value to $i$ \citep{plaut2020almost}.
 See \cref{defn:efx0-goods} for a formal definition,
 and \cref{defn:efx0-chores} for the chores analogue.
 
@@ -73,7 +73,7 @@ Before we try to address this issue, let us instead jump to the setting of addit
 
 One way to define EFX for mixed manna is this:
 agent $i$ is EFX-satisfied by allocation $A$ if for every other agent $j$,
-either agent $i$ doesn't envy $j$, or $i$'s envy towards $j$ vanishes after
+either agent $i$ does not envy $j$, or $i$'s envy towards $j$ vanishes after
 either removing the least valuable positively-valued item from $j$
 or after removing the most valuable negatively-valued item from $i$.
 However, we argue that this is not sufficient.
@@ -99,12 +99,30 @@ we should remove a positively-valued subset of $A_j$
 or a negatively-valued subset of $A_i$.
 
 Hence, for additive mixed manna, we say that an allocation $A$ is EFX-fair to agent $i$
-if for every other agent $j$, $i$ doesn't envy $j$, or both of the following hold:
+if for every other agent $j$, $i$ does not envy $j$, or both of the following hold:
 \begin{enumerate}
+\ifColsTwo
+\item $\displaystyle
+\frac{v_i(A_i)}{w_i} \ge \frac{\max\left(\left\{
+    \begin{array}{r}
+    v_i(A_j \setminus S): S \subseteq A_j
+    \\\quad \textrm{ and } v_i(S) > 0
+    \end{array}\right\}\right)}{w_j}$.
+\else
 \item $\displaystyle \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus S): S \subseteq A_j
     \textrm{ and } v_i(S) > 0\})}{w_j}$.
-\item $\displaystyle \frac{\min(\{v_i(A_i \setminus S): S \subseteq A_i
-    \textrm{ and } v_i(S) < 0 \})}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\fi
+\ifColsTwo
+\item $\displaystyle
+\frac{\min\left(\left\{
+    \begin{array}{r}
+    v_i(A_i \setminus S): S \subseteq A_i
+    \\ \textrm{ and } v_i(S) < 0
+    \end{array}\right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\else
+\item $\displaystyle \frac{\min\left(\left\{v_i(A_i \setminus S): S \subseteq A_i
+    \textrm{ and } v_i(S) < 0 \right\}\right)}{w_i} \ge \frac{v_i(A_j)}{w_j}$.
+\fi
 \end{enumerate}
 
 This definition also hints towards how to handle goods with non-additive valuations.
@@ -141,10 +159,10 @@ if all marginals are positive for agent $i$
 then $A$ is EFX-fair to agent $i$ iff $A$ is \EFXZero-fair to $i$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
-some minimal $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
-Since marginals are positive, $v_i(S \mid A_i) > 0$ for any $|S| \ge 1$.
-Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
+$v_i(A_j \setminus S) = v_i(A_j) - v_i(S \mid A_j \setminus S)$.
+Thus, in \cref{defn:efx}, we need to find $S \subseteq A_j$ such that
+$v_i(S \mid A_i) > 0$ and $v_i(S \mid A_j \setminus S)$ is minimized.
+Since marginals are positive, we require $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
@@ -155,22 +173,10 @@ if all marginals are negative for agent $i$
 then $A$ is EFX-fair to agent $i$ iff $A$ is \EFXZero-fair to agent $i$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:efx}, $-v_i(A_i \setminus S)$ is maximized by picking
-some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
-Since marginals are negative, $v_i(S \mid A_i \setminus S) < 0$ for any $|S| \ge 1$.
-Hence, in \cref{defn:efx}, we assume $|S| = 1$ \wLoG{}.
-\end{proof}
-
-\begin{lemma}
-\label[lemma]{thm:submod-positive-elem}
-Let $f: 2^M \to \mathbb{R}$ be a submodular function and $S, T \subseteq M$ be disjoint sets.
-Then $f(S \mid T) > 0$ implies $f(g \mid T) > 0$ for some $g \in S$.
-\end{lemma}
-\begin{proof}
-Let $S \defeq \{g_1, \ldots, g_k\}$. Then
-\[ f(S \mid T) = \sum_{t=1}^k f(g_t \mid T \cup \{g_1, \ldots, g_{t-1}\})
-    \le \sum_{t=1}^k f(g_t \mid T). \]
-Hence, $\sum_{g \in S} f(g \mid T) \ge f(S \mid T) > 0$, so $f(g \mid T) > 0$ for some $g \in S$.
+$v_i(A_i \setminus S) = v_i(A_i) - v_i(S \mid A_i \setminus S)$.
+Thus, in \cref{defn:efx}, we need to find $S \subseteq A_i$ such that
+$-v_i(S \mid A_i \setminus S) > 0$ and $-v_i(S \mid A_i \setminus S)$ is minimized.
+Since marginals are negative, we require $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
@@ -179,32 +185,31 @@ In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$
 if $v_i$ is submodular and all marginals are non-negative for agent $i$
 (i.e., $v_i(g \mid R) \ge 0$ for all $R \subseteq [m]$ and $g \in [m] \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff for all $j \in [n] \setminus \{i\}$, we have
-\[ \frac{v_i(A_i)}{w_i} \ge \frac{\max(\{v_i(A_j \setminus \{g\}):
-    g \in A_j \textrm{ and } v_i(g \mid A_i) > 0\})}{w_j}. \]
+\[ \frac{v_i(A_i)}{w_i} \ge \frac{\max
+    \ifColsTwo
+    \left(\left\{\begin{array}{r}
+        v_i(A_j \setminus \{g\}): g \in A_j
+        \\ \textrm{ and } v_i(g \mid A_i) > 0
+    \end{array}\right\}\right)
+    \else
+    (\{v_i(A_j \setminus \{g\}): g \in A_j \textrm{ and } v_i(g \mid A_i) > 0\})
+    \fi
+    }{w_j}. \]
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:efx}, $v_i(A_j \setminus S)$ is maximized by picking
-some minimal $S \subseteq A_j$ such that $v_i(S \mid A_i) > 0$.
-By \cref{thm:submod-positive-elem}, $v_i(S \mid A_i) > 0$ implies $\exists g \in S$
-such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
-\end{proof}
-
-\begin{lemma}
-\label[lemma]{thm:submod-negative-elem}
-Let $f: 2^M \to \mathbb{R}$ be a submodular function and let $S \subseteq T \subseteq M$.
-Then $f(S \mid T \setminus S) < 0$ implies $f(c \mid T \setminus \{c\}) < 0$ for some $c \in S$.
-\end{lemma}
-\begin{proof}
-Let $S \defeq \{c_1, \ldots, c_k\}$.
-For any $t \in \{0\} \cup [k]$, let $S_t \defeq \{c_1, \ldots, c_t\}$. Then
+In \cref{defn:efx}, we need to find $S \subseteq A_j$ such that
+$v_i(S \mid A_i) > 0$ and $v_i(S \mid A_j \setminus S)$ is minimized.
+By the subadditivity of $v_i$'s marginal gains (\cref{thm:submod-mg-subadd}), we get
+\[ v_i(S \mid A_i) \le \sum_{g \in S} v_i(g \mid A_i). \]
+Since $v_i(S \mid A_i) > 0$, there exists $\ghat \in S$ such that $v_i(\ghat \mid A_i) > 0$.
+Moreover, since marginals are non-negative, we get
 \begin{align*}
-f(S \mid T \setminus S) &= f(T \setminus S_0) - f(T \setminus S_k)
-\\ &= \sum_{t=1}^k (f(T \setminus S_{t-1}) - f(T \setminus S_t))
-\\ &= \sum_{t=1}^k f(c_t \mid T \setminus S_t)
-\\ &\ge \sum_{t=1}^k f(c_t \mid T \setminus \{c_t\}).
+& v_i(S \mid A_j \setminus S)
+\wrapIfTwoCols= v_i(S \setminus \{\ghat\} \mid A_j \setminus S) + v_i(\ghat \mid A_j \setminus \{\ghat\})
+\wrapIfTwoCols\ge v_i(\ghat \mid A_j \setminus \{\ghat\}).
 \end{align*}
-Hence, $\sum_{c \in S} f(c \mid T \setminus \{c\}) \le f(S \mid T \setminus S) < 0$,
-so $f(c \mid T \setminus \{c\}) < 0$ for some $c \in S$.
+Thus, we can replace $S$ by $\{\ghat\}$.
+Hence, we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
@@ -213,14 +218,32 @@ In the fair division instance $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$
 if $v_i$ is submodular and all marginals are non-positive for agent $i$
 (i.e., $v_i(c \mid R) \le 0$ for all $R \subseteq [m]$ and $c \in [m] \setminus R$),
 then $A$ is EFX-fair to agent $i$ iff for all $j \in [n] \setminus \{i\}$, we have
-\[ \frac{\max(\{-v_i(A_i \setminus \{c\}): c \in A_i
-    \textrm{ and } v_i(c \mid A_i \setminus \{c\}) < 0\})}{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
+\[ \frac{\max
+    \ifColsTwo
+    \left(\left\{\begin{array}{r}
+        -v_i(A_i \setminus \{c\}): c \in A_i \textrm{ and }
+        \\ v_i(c \mid A_i \setminus \{c\}) < 0
+    \end{array}\right\}\right)
+    \else
+    (\{-v_i(A_i \setminus \{c\}): c \in A_i \textrm{ and } v_i(c \mid A_i \setminus \{c\}) < 0\})
+    \fi
+    }{w_i} \le \frac{-v_i(A_j)}{w_j}. \]
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:efx}, $-v_i(A_i \setminus S)$ is maximized by picking
-some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
-By \cref{thm:submod-negative-elem}, $v_i(S \mid A_i \setminus S) < 0$ implies $\exists c \in S$
-such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
+In \cref{defn:efx}, we need to find $S \subseteq A_i$ such that
+$-v_i(S \mid A_i \setminus S) > 0$ and $-v_i(S \mid A_i \setminus S)$ is minimized.
+By the superadditivity of $v_i$'s marginal losses (\cref{thm:submod-ml-superadd}), we get
+\[ -v_i(S \mid A_i \setminus S) \le \sum_{c \in S} -v_i(c \mid A_i \setminus \{c\}). \]
+Since $-v_i(S \mid A_i \setminus S) > 0$, there exists $\chat \in A_i$
+such that $-v_i(\chat \mid A_i \setminus \{\chat\}) > 0$.
+Moreover, since marginals are non-positive, we get
+\begin{align*}
+& -v_i(S \mid A_i \setminus S)
+\wrapIfTwoCols= -v_i(S \setminus \{\chat\} \mid A_i \setminus S) - v_i(\chat \mid A_i \setminus \{\chat\})
+\wrapIfTwoCols\ge -v_i(\chat \mid A_i \setminus \{\chat\}).
+\end{align*}
+Thus, we can replace $S$ by $\{\chat\}$.
+Hence, we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
 \subsection{MMS}
@@ -424,11 +447,11 @@ This is different from the convention followed by most fair division papers.
 We define it this way to make it a slightly stronger notion.
 In particular, when the items are identical, the stricter notion aligns with the the intuitive idea
 that each agent must get at least $\floor{m/n}$ goods or at most $\ceil{m/n}$ chores.
-However, outside of the identical items case, this nuance doesn't affect our results much.
+However, outside of the identical items case, this nuance does not affect our results much.
 Almost all implications, counterexamples, and (in)feasibility results
 hold for both the stronger and weaker definitions,
 and we explicitly mention when they don't.
-
+%
 We alter PROPx, PROPm, and PROPavg to also use strict inequalities.
 
 \subsection{PROPx}
@@ -446,10 +469,9 @@ then $A$ is PROPx-fair to agent $i$ iff $v_i(A_i) \ge w_iv_i([m])$ or
 $v_i(A_i \cup \{g\}) > w_iv_i([m])$ for some $g \in [m] \setminus A_i$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:propx}, $v_i(A_i \cup S)$ is minimized by picking
-some minimal $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
-Since marginals are positive, $v_i(S \mid A_i) > 0$ for any $|S| \ge 1$.
-Hence, in \cref{defn:propx}, we can assume $|S| = 1$ \wLoG{}.
+In \cref{defn:propx}, we need to find $S \subseteq [m] \setminus A_i$ such that
+$v_i(S \mid A_i) > 0$ and $v_i(S \mid A_i)$ is minimized.
+Since marginals are positive, we require $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
@@ -461,10 +483,9 @@ then $A$ is PROPx-fair to agent $i$ iff $-v_i(A_i) \le w_i\cdot(-v_i([m]))$ or
 $-v_i(A_i \setminus \{c\}) < w_i \cdot (-v_i([m]))$ for some $c \in A_i$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:propx}, $-v_i(A_i \setminus S)$ is maximized by picking
-some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
-Since marginals are negative, $v_i(S \mid A_i \setminus S) < 0$ for any $|S| \ge 1$.
-Hence, in \cref{defn:propx}, we can assume $|S| = 1$ \wLoG{}.
+In \cref{defn:propx}, we need to find $S \subseteq A_i$ such that
+$-v_i(S \mid A_i \setminus S) > 0$ and $-v_i(S \mid A_i \setminus S)$ is minimized.
+Since marginals are negative, we require $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
@@ -476,10 +497,12 @@ then $A$ is PROPx-fair to agent $i$ iff $v_i(A_i) \ge w_iv_i([m])$ or
 $v_i(A_i \cup \{g\}) > w_iv_i([m])$ for some $g \in [m] \setminus A_i$ such that $v_i(g \mid A_i) > 0$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:propx}, $v_i(A_i \cup S)$ is minimized by picking
-some minimal $S \subseteq [m] \setminus A_i$ such that $v_i(S \mid A_i) > 0$.
-By \cref{thm:submod-positive-elem}, $v_i(S \mid A_i) > 0$ implies $\exists g \in S$
-such that $v_i(g \mid A_i) > 0$, so we can assume \wLoG{} that $|S| = 1$.
+In \cref{defn:propx}, we need to find $S \subseteq [m] \setminus A_i$ such that
+$v_i(S \mid A_i) > 0$ and $v_i(S \mid A_i)$ is minimized.
+By the subadditivity of $v_i$'s marginal gains (\cref{thm:submod-mg-subadd}),
+$v_i(S \mid A_i) > 0$ tells us that $\exists \ghat \in S$ such that $v_i(\ghat \mid A_i) > 0$.
+Since $v_i(S \mid A_i) \ge v_i(\ghat \mid A_i)$, we can replace $S$ by $\{\ghat\}$,
+so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
 \begin{lemma}
@@ -492,18 +515,22 @@ $-v_i(A_i \setminus \{c\}) < w_i \cdot (-v_i([m]))$ for some $c \in A_i$
 such that $v_i(c \mid A_i \setminus \{c\}) < 0$.
 \end{lemma}
 \begin{proof}[Proof sketch]
-In \cref{defn:propx}, $-v_i(A_i \setminus S)$ is maximized by picking
-some minimal $S \subseteq A_i$ such that $v_i(S \mid A_i \setminus S) < 0$.
-By \cref{thm:submod-negative-elem}, $v_i(S \mid A_i \setminus S) < 0$ implies $\exists c \in S$
-such that $v_i(c \mid A_i \setminus \{c\}) < 0$, so we can assume \wLoG{} that $|S| = 1$.
+In \cref{defn:propx}, we need to find $S \subseteq [m] \setminus A_i$ such that
+$-v_i(S \mid A_i \setminus S) > 0$ and $-v_i(S \mid A_i \setminus S)$ is minimized.
+By the superadditivity of $v_i$'s marginal losses (\cref{thm:submod-ml-superadd}),
+$-v_i(S \mid A_i \setminus S) > 0$ tells us that $\exists \chat \in S$ such that
+$-v_i(\chat \mid A_i \setminus \{\chat\}) > 0$.
+Since $-v_i(S \mid A_i \setminus S) \ge -v_i(\chat \mid A_i \setminus \{\chat\})$,
+we can replace $S$ by $\{\chat\}$, so we can assume \wLoG{} that $|S| = 1$.
 \end{proof}
 
 \subsection{PROPm and PROPavg}
 \label{sec:notions:propm-propavg}
 
-\begin{definition}[PROPm \citep{baklanov2021achieving} and PROPavg \citep{kobayashi2025proportional}]
+%\begin{definition}[PROPm \citep{baklanov2021achieving} and PROPavg \citep{kobayashi2025proportional}]
+\begin{definition}[PROPm and PROPavg]
 \label[definition]{defn:propm}
-\label{defn:propavg}
+\label[definition]{defn:propavg}
 Let $A$ be an allocation for the fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$.
 Fix an agent $i$. For every $j \in [n] \setminus \{i\}$,
 let $K_j \defeq \{v_i(S \mid A_i): S \subseteq A_j \text{ and } v_i(S \mid A_i) > 0\}$.
@@ -531,7 +558,7 @@ Note that PROPm, PROPavg, and PROPx are all equivalent to each other for chores.
 
 The definitions of PROPm and PROPavg simplify under submodular valuations over goods and over chores.
 The proof is similar to that of PROPx (\cref{thm:propx-equiv-submod-goods,thm:propx-equiv-submod-chores})
-and is based on \cref{thm:submod-positive-elem,thm:submod-negative-elem}, so we omit the details here.
+and is based on \cref{thm:submod-mg-subadd,thm:submod-ml-superadd}, so we omit the details here.
 
 The original definitions of PROPm and PROPavg have minor errors, which our definitions fix.
 We now explain these errors and motivate why we decided to define them the way have done.
@@ -554,7 +581,7 @@ where every agent is PROPm-satisfied if two agents receive no goods
 One way to fix this is to only consider agents with non-empty bundles,
 i.e., we say that $i$ is PROPm-satisfied by $A$ if
 $v_i(A_i) + \max_{j \in [n] \setminus \{i\}: A_j \neq \emptyset} m_i(A_j) \ge v_i([m])/n$.
-This doesn't give a satisfactory definition when $A_j = \emptyset$
+This does not give a satisfactory definition when $A_j = \emptyset$
 for all $j \in N \setminus \{i\}$ (assuming $\max(\emptyset) = -\infty$),
 so we define $A$ to be PROPm-fair to $i$ for that edge case.
 
@@ -568,9 +595,9 @@ guided our definition of PROPm.
 \begin{enumerate}
 \item Consider three goods of values 100, 10, and 1.
     Intuitively, each agent should get 1 good each, and that should be considered fair.
-\item Consider 5 items of values $-1000$, $-1000$, $-1000$, $10$, $1$.
-    Intuitively, allocation ($\{-1000, 10, 1\}$, $\{-1000\}$, $\{-1000\}$) should not be fair,
-    and allocation ($\{-1000, 10\}$, $\{-1000, 1\}$, $\{-1000\}$) should be fair.
+\item Consider 5 items of values $-100$, $-100$, $-100$, $10$, $1$.
+    Intuitively, allocation ($\{-100, 10, 1\}$, $\{-100\}$, $\{-100\}$) should not be fair,
+    and allocation ($\{-100, 10\}$, $\{-100, 1\}$, $\{-100\}$) should be fair.
     In both allocations, removing a chore makes an agent PROP-satisfied, so just
     satisfying this condition is not enough. We also need to look at the goods.
 \end{enumerate}
