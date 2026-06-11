@@ -69,12 +69,15 @@ $A$ is not EF1 because agents 1 and 2 EF1-envy agent $n$.
 \label[lemma]{cex:eef-not-ef1:neg-binary}
 Let $0 \le 2a < b$. Let $f_1, f_2, f_3: 2^{[12]} \to \mathbb{R}_{>0}$ be additive sets functions:
 
+\noindent
+{\renewcommand{\tabcolsep}{4pt}
 \begin{tabular}{c|cccc|cccc|cccc}
 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12
 \\ \hline $f_1$ & $a$ & $a$ & $b$ & $b$ & $b$ & $b$ & $b$ & $b$ & $a$ & $a$ & $a$ & $a$
 \\ $f_2$ & $a$ & $a$ & $a$ & $a$ & $a$ & $a$ & $b$ & $b$ & $b$ & $b$ & $b$ & $b$
 \\ $f_3$ & $b$ & $b$ & $b$ & $b$ & $a$ & $a$ & $a$ & $a$ & $a$ & $a$ & $b$ & $b$
 \end{tabular}
+}
 
 Let $t \in \{-1, 1\}$ and let $\Ical \defeq \fdInst{[3]}{[12]}{(v_i)_{i=1}^3}{\eqEnt}$
 be a fair division instance where $v_i \defeq tf_i$ for all $i \in [3]$.
@@ -667,8 +670,10 @@ $-v_1(A_1) = 4 = 7w_1$, so $A$ is PROP-fair to agent 1.
 Suppose $A$ is M1S-fair to agent 1.
 Let $X$ be agent 1's M1S certificate for $A$.
 Then $|X_1| \ge 4$, so $|X_2| \le 1$ or $|X_3| \le 1$. Hence,
-\[ \frac{|X_1|-1}{w_1} \ge \frac{3}{w_1} = 5 + \frac{1}{4} > 5 - \frac{1}{3}
-= \frac{1}{w_2} \ge \min\left(\frac{|X_2|}{w_2}, \frac{|X_3|}{w_3}\right). \]
+\begin{align*}
+\frac{|X_1|-1}{w_1} &\ge \frac{3}{w_1} = 5 + \frac{1}{4} > 5 - \frac{1}{3} = \frac{1}{w_2}
+    \wrapIfTwoCols\ge \min\left(\frac{|X_2|}{w_2}, \frac{|X_3|}{w_3}\right).
+\end{align*}
 Hence, $X$ is not EF1-fair to agent 1, which is a contradiction.
 Hence, $A$ is not M1S-fair to agent 1.
 \end{proof}
