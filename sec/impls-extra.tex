@@ -282,25 +282,6 @@ which implies that $A$ is PROPavg-satisfied, which is a contradiction.
 Hence, if $i$ is PROPx-satisfied by $A$, then she is also PROPavg-satisfied by $A$.
 \end{proof}
 
-\begin{lemma}
-\label[lemma]{thm:submod-marginal-is-submod}
-For any $X \subseteq \Omega$ and any submodular function $f: 2^{\Omega} \to \mathbb{R}$,
-$f(\cdot \mid X)$ is submodular.
-\end{lemma}
-\begin{proof}
-Let $P, Q \subseteq \Omega \setminus X$. Let $g(Y) \defeq f(Y \mid X)$. Then
-\begin{align*}
-& g(P) + g(Q)
-\\ &= f(P \cup X) + f(Q \cup X) - 2f(X)
-\\ &\ge f((P \cup X) \cup (Q \cup X)) + f((P \cup X) \cap (Q \cap X)) - 2f(X)
-    \tag{by $f$'s submodularity}
-\\ &= f((P \cup Q) \cup X) + f((P \cap Q) \cup X) - 2f(X)
-    \tag{by De Morgan's law}
-\\ &= g(P \cup Q) + g(P \cap Q).
-\end{align*}
-Hence, $g$ is submodular.
-\end{proof}
-
 \begin{lemma}[PROPm $\fimplies$ PROP1]
 \label[lemma]{thm:impl:propm-to-prop1}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
@@ -328,17 +309,15 @@ Suppose allocation $A$ is PROPm-fair to $i$ but not PROP1-fair to $i$. Then
 
 By \ref{item:impl:propm-to-prop1:unprop1-chores} and \ref{item:impl:propm-to-prop1:propm-chores},
 we get $v_i(c \mid A_i \setminus \{c\}) \ge 0$ for all $c \in A_i$.
-We now show that $v_i(A_i) \ge 0$.
 If $v_i$ is doubly strictly monotone, then $A_i$ only contains goods, so $v_i(A_i) \ge 0$.
-Now suppose $v_i$ is submodular. Let $A_i = \{g_1, \ldots, g_k\}$. Then
-\[ v_i(A_i) = \sum_{j=1}^k v_i(g_j \mid \{g_1, \ldots, g_{j-1}\})
-    \ge v_i(g_j \mid A_i \setminus \{g_j\}) \ge 0. \]
+If $v_i$ is submodular, then by superadditivity of $v_i$'s marginal loss (\cref{thm:submod-ml-superadd}), we get
+\[ v_i(A_i) \ge \sum_{c \in A_i} v_i(c \mid A_i \setminus \{c\}) \ge 0. \]
 
 Suppose $T = \emptyset$. Then $\tau_j = 0$ for all $j \in [n] \setminus \{i\}$.
 Hence, for all $j \in [n] \setminus \{i\}$, we have $v_i(A_j \mid A_i) \le 0$.
 If $v_i$ is doubly strictly monotone, then $[m] \setminus A_i$ contains only chores,
 so $v_i([m] \setminus A_i \mid A_i) \le 0$. If $v_i$ is submodular, then
-$v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-marginal-is-submod}, so
+$v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-mg-subadd}, so
 \[ v_i([m] \setminus A_i \mid A_i)
     \le \sum_{j \in [n] \setminus \{i\}} v_i(A_j \mid A_i) \le 0. \]
 Hence, $v_i(A_i) \ge v_i([m])$.
@@ -357,7 +336,7 @@ Let $\max(T) = \tau_{\jhat} > 0$. By definition of $\tau_{\jhat}$, we get
 and so $v_i(S \mid A_i) \le 0$ for all $S \subseteq A_{\jhat}$.
 This contradicts the fact that $\tau_{\jhat} > 0$.
 Now let $v_i$ be submodular.
-Since $v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-marginal-is-submod},
+Since $v_i(\cdot \mid A_i)$ is subadditive by \cref{thm:submod-mg-subadd},
 for any $S \subseteq A_{\jhat}$, we get
 $v_i(S \mid A_i) \le \sum_{c \in S} v_i(c \mid A_i) \le 0$.
 This contradicts the fact that $\tau_{\jhat} > 0$.
@@ -451,10 +430,11 @@ Since $A$ is PPROP-fair to $i$, for all $j \in [n] \setminus \{i\}$, we get
 \end{align*}
 Sum these inequalities over all $j \in [n] \setminus \{i\}$ to get
 \[ (1-w_i) v_i(A_i) \ge w_i \sum_{j \neq i} v_i(A_j \mid A_i). \]
-By \cref{thm:submod-marginal-is-submod}, $v_i(\cdot \mid A_i)$ is subadditive. Hence,
+By \cref{thm:submod-mg-subadd}, $v_i(\cdot \mid A_i)$ is subadditive. Hence,
+\ifColsTwo\providecommand{\tempWrap}{\\ &\qquad}\else\let\tempWrap\relax\fi
 \begin{align*}
 & (1-w_i) v_i(A_i) \ge w_i \sum_{j \neq i} v_i(A_j \mid A_i)
-    \ge w_i v_i([m] \setminus A_i \mid A_i)
+    \tempWrap\ge w_i v_i([m] \setminus A_i \mid A_i)
 \\ &\implies v_i(A_i) \ge w_i v_i([m]).
 \end{align*}
 Hence, agent $i$ is PROP-satisfied by $A$.
@@ -476,7 +456,7 @@ and an allocation $A$ is MXS-fair to agent $i$, then $A$ is also PROP1-fair to a
 \label[lemma]{thm:impl:eef1-to-prop1-chores}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$
 where all items are chores to agent $i$ and $v_i$ is subaditive,
-if an allocation $X$ is epistemic-EF1-fair to agent $i$,
+if an allocation $X$ is EEF1-fair to agent $i$,
 then $X$ is also PROP1-fair to $i$.
 \end{lemma}
 \begin{proof}
@@ -504,7 +484,7 @@ Hence, $A$ is PROP1-fair to $i$, and so, $X$ is PROP1-fair to agent $i$.
 Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$
 where $v_i$ is submodular for some agent $i$
 and $w_i \le w_j$ for all $j \in [n] \setminus \{i\}$.
-If an allocation $X$ is epistemic-EF1-fair to agent $i$,
+If an allocation $X$ is EEF1-fair to agent $i$,
 then $X$ is also PROP1-fair to $i$.
 \end{lemma}
 \begin{proof}
@@ -516,7 +496,7 @@ We will show that $A$ is PROP1-fair to $i$
 This is trivial if $A$ is PROP-fair to $i$,
 so assume $A$ is not PROP-fair to $i$, i.e., $v_i(A_i) < w_iv_i([m])$.
 
-By \cref{thm:submod-marginal-is-submod}, we get that
+By \cref{thm:submod-mg-subadd}, we get that
 $v_i(\cdot \mid A_i)$ is subadditive. Hence,
 \[ v_i([m]) = v_i(A_i) + v_i([m] \setminus A_i \mid A_i)
     \le v_i(A_i) + \sum_{j \neq i} v_i(A_j \mid A_i). \]
@@ -571,8 +551,8 @@ Since $A$ is EF1-fair to agent 1, there are two cases:
 By subadditivity of $v_1$ and PROP-unfairness of $A$, we get
 \begin{align*}
 v_1([m]) &\le v_1(A_1 \cup \{\ghat\}) + v_1(A_2 \setminus \{\ghat\})
-    \le v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1)
-    < v_1(A_1 \cup \{\ghat\}) + w_2v_1([m])
+    \wrapIfTwoCols\le v_1(A_1 \cup \{\ghat\}) + \frac{w_2}{w_1}v_1(A_1)
+    \wrapIfTwoCols< v_1(A_1 \cup \{\ghat\}) + w_2v_1([m])
 \\ &\implies w_1 v_1([m]) < v_1(A_1 \cup \{\ghat\}),
 \end{align*}
 so $A$ is PROP1-fair to agent 1.
@@ -582,22 +562,20 @@ so $A$ is PROP1-fair to agent 1.
 \label[lemma]{thm:impl:eefx-to-propx}
 Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$ where
 the items are chores to agent $i$ and $v_i$ is subadditive.
-If an allocation $A$ is epistemic-EFX-fair to agent $i$,
+If an allocation $A$ is EEFX-fair to agent $i$,
 then it is also PROPx-fair to agent $i$.
 \end{lemma}
 \begin{proof}
-Suppose $A$ is epistemic-EFX-fair to agent $i$ but not PROPx-fair to $i$.
-Let $B$ be agent $i$'s epistemic-EFX-certificate for $A$.
-Then $B$ is also PROPx-unfair to $i$.
+Suppose $A$ is EEFX-fair to agent $i$.
+Let $B$ be agent $i$'s EEFX-certificate for $A$.
 
-Since $i$ is EFX-satisfied with $B$, we get that for all $j \in [n] \setminus \{i\}$,
+Since $i$ is EFX-satisfied with $B$, for all $j \in [n] \setminus \{i\}$,
 \[ \min_{S \in \Scal} \frac{v_i(B_i \setminus S)}{w_i} \ge \frac{v_i(B_j)}{w_j}, \]
 where $\Scal \defeq \{S \subseteq B_i: v_i(S \mid B_i \setminus S) < 0\}$.
 Add these inequalities for all $j$, weighting each by $w_j$, to get
 \[ \min_{S \in \Scal} \frac{v_i(B_i \setminus \{c\})}{w_i} > \sum_{j=1}^n v_i(B_j) \ge v_i([m]), \]
-which implies that $B$ is PROPx-fair, a contradiction.
-Hence, there can't be an allocation $A$ that is epistemic-EFX-fair to $i$
-but not PROPx-fair to $i$.
+which implies that $B$ is PROPx-fair,
+and so, $A$ is also PROPx-fair to $i$.
 \end{proof}
 
 \begin{lemma}[EFX $\fimplies$ PROPavg]
@@ -609,7 +587,7 @@ then it is also PROPavg-fair to agent $i$.
 \end{lemma}
 \begin{proof}
 If $A$ is PROP-fair to agent $i$, we are done, so assume $A$ is not PROP-fair to $i$.
-By \cref{thm:submod-marginal-is-submod}, we get that $v_i(\cdot \mid A_i)$ is subadditive.
+By \cref{thm:submod-mg-subadd}, we get that $v_i(\cdot \mid A_i)$ is subadditive.
 Hence, $v_i([m]) = v_i(A_i) + v_i([m] \mid A_i) \le v_i(A_i) + \sum_{j \neq i} v_i(A_j \mid A_i)$.
 Then for some agent $\jhat \in [n] \setminus \{i\}$, we have
 \[ v_i(A_i) < \frac{v_i([m])}{n} < v_i(A_{\jhat} \mid A_i) \le v_i(A_{\jhat}). \]
@@ -639,7 +617,7 @@ On adding the above inequalities for all $j \in [n] \setminus \{i\}$,
 and using the subadditivity of $v_i(\cdot \mid A_i)$, we get
 \begin{align*}
 & (n-1)v_i(A_i) + \sum_{j \neq i}\tau_j
-    \ge \sum_{j \neq i} v_i(A_j \mid A_i)
+    \wrapIfTwoCols\ge \sum_{j \neq i} v_i(A_j \mid A_i)
     \ge v_i([m] \setminus A_i \mid A_i)
 \\ &\implies nv_i(A_i) + \Sum(T) \ge v_i([m]).
 \end{align*}
@@ -761,7 +739,7 @@ For the sake of completeness, we give a proof below.
 \label[lemma]{thm:impl:mms-to-eefx}
 For a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$,
 if all items are goods to agent $i$ and allocation $A$ is WMMS-fair to agent $i$,
-then $A$ is also epistemic-EFX-fair to $i$.
+then $A$ is also EEFX-fair to $i$.
 \end{lemma}
 \begin{proof}
 In any allocation $X$, let
@@ -1112,7 +1090,7 @@ any two bundles differ by at most one item.
 \label[lemma]{thm:impl:tribool:prop}
 Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{\eqEnt}$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
-If an allocation $A$ is PROP-fair to $i$, then it is also epistemic-EF-fair to $i$.
+If an allocation $A$ is PROP-fair to $i$, then it is also EEF-fair to $i$.
 \end{lemma}
 \begin{proof}
 Since $A$ is PROP-fair to $i$, and $v_i(S) \in \mathbb{Z}$ for all $S \subseteq [m]$,
@@ -1120,14 +1098,14 @@ we get $v_i(A_i) \ge \ceil{v_i([m])/n}$.
 
 Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
 are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
-We will show that $B$ is agent $i$'s epistemic-EF-certificate for $A$.
+We will show that $B$ is agent $i$'s EEF-certificate for $A$.
 
 In $B$, for each agent $j \in [n] \setminus \{i\}$, we have
 \[ v_i(B_j) \le \bigceil{\frac{v_i([m] \setminus A_i)}{n-1}}
     \le \bigceil{\frac{v_i([m]) - v_i([m])/n}{n-1}}
     \le \bigceil{\frac{v_i([m])}{n}} \le v_i(A_i). \]
 Hence, $i$ doesn't envy anyone in $B$.
-Hence, $B$ is agent $i$'s epistemic-EF-certificate for $A$.
+Hence, $B$ is agent $i$'s EEF-certificate for $A$.
 \end{proof}
 
 \begin{lemma}
@@ -1229,13 +1207,13 @@ For any $m \in \mathbb{Z}$ and $n \in \mathbb{Z}_{\ge 1}$, we get
 \label[lemma]{thm:impl:tribool:mms-to-eefx}
 Consider a fair division instance $\fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{\eqEnt}$
 where $v_i$ is additive and $v_i(t) \in \{-1, 0, 1\}$ for all $t \in [m]$ for some agent $i$.
-Then an alloation $A$ is epistemic-EFX-fair to $i$ iff $v_i(A_i) \ge \floor{v_i([m])/n}$.
+Then an alloation $A$ is EEFX-fair to $i$ iff $v_i(A_i) \ge \floor{v_i([m])/n}$.
 \end{lemma}
 \begin{proof}
 Suppose $v_i(A_i) \ge \floor{v_i([m])/n}$.
 Construct an allocation $B$ where $B_i = A_i$, and items $[m] \setminus A_i$
 are allocated among agents $[n] \setminus \{i\}$ using \cref{thm:tribool-rr} with $f = v_i$.
-We will show that $B$ is agent $i$'s epistemic-EFX-certificate for $A$.
+We will show that $B$ is agent $i$'s EEFX-certificate for $A$.
 
 Let $k \defeq v_i([m])$.
 Suppose $v_i(A_i) \ge \floor{k/n} = \ceil{(k+1)/n} - 1$ (c.f.~\cref{thm:ceil-floor}).
@@ -1247,7 +1225,7 @@ If $B_j$ contains no goods and $B_i$ contains no chores,
 then $v_i(B_i) \ge 0 \ge v_i(B_j)$, so $i$ doesn't envy $j$ in $B$.
 Otherwise, removing a good from $B_j$ or removing a chore from $B_i$
 eliminates $i$'s envy towards $j$.
-Hence, $B$ is agent $i$'s epistemic-EFX-certificate for $A$, so $A$ is EEFX-fair to $i$.
+Hence, $B$ is agent $i$'s EEFX-certificate for $A$, so $A$ is EEFX-fair to $i$.
 
 Now suppose $v_i(A_i) < \floor{v_i([m])/n}$. Let $B$ be any allocation where $B_i = A_i$.
 Then $\exists j \in [n] \setminus \{i\}$ such that $v_i(B_i) > v_i([m])/n$.
