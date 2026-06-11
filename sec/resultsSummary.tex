@@ -12,8 +12,11 @@ and defer the proofs to \extCref{sec:impls-extra}.
 We state several counterexamples in \cref{table:cex-add,table:cex-nonadd}
 (pages \pageref{table:cex-add} and \pageref{table:cex-nonadd}),
 and defer the proofs to Appendices \extRef{sec:cex-add-extra} and \extRef{sec:cex-nonadd-extra}, respectively.
-The counterexamples can also be found in the checker program \citep{fd-cex-checker},
-where they are written as Python objects.
+All of these counterexamples, except \cref{cex:paps-pprop-not-propm-binary-subadd,cex:gmms-not-aps-binary-subadd},
+can also be found in the checker program \citep{fd-cex-checker}, where they are written as Python objects.
+(\cref{cex:paps-pprop-not-propm-binary-subadd,cex:gmms-not-aps-binary-subadd}
+are very large instances where agents have subadditive valuations,
+so standard fairness-checking algorithms are computationally intractable for them.)
 
 In \extCref{sec:impls-extra:unit-demand}, we prove additional implications for unit-demand valuations.
 We list results regarding the feasibility and infeasibility of fairness notions in \extCref{sec:feas}.
