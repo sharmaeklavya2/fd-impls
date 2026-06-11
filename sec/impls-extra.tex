@@ -31,25 +31,9 @@ $A$ is $F_2$-fair to $i$ whenever $A$ is $F_1$-fair to $i$". Then
 $\phi(F_1, F_2)$ implies $\phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)$
 and $\phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$.
 \end{lemma}
-\begin{proof}
-Suppose $\phi(F_1, F_2)$.
-Pick any $(\Ical, A) \in \Omega$.
-Let $\Ical \defeq \fdInst{[n]}{[m]}{(v_i)_{i=1}^n}{w}$.
-Pick any $i \in [n]$.
-
-Let $A$ be epistemic-$F_1$-fair to $i$.
-Let $B$ be $i$'s epistemic-$F_1$-certificate for $A$.
-Then $B$ is $F_1$-fair to $i$ and $A_i = B_i$.
-By $\phi(F_1, F_2)$, $B$ is also $F_2$-fair to $i$.
-Hence, $B$ is $i$'s epistemic-$F_2$-certificate for $A$.
-Therefore, $\phi(\textrm{epistemic-}F_1, \textrm{epistemic-}F_2)$ holds.
-
-Suppose $A$ is min-$F_1$-share-fair to $i$.
-Let $B$ be $i$'s min-$F_1$-share-certificate for $A$.
-Then $B$ is $F_1$-fair to $i$ and $v_i(A_i) \ge v_i(B_i)$.
-By $\phi(F_1, F_2)$, $B$ is also $F_2$-fair to $i$.
-Hence, $B$ is $i$'s min-$F_2$-share-certificate for $A$.
-Therefore, $\phi(\textrm{min-}F_1\textrm{-share}, \textrm{min-}F_2\textrm{-share})$ holds.
+\begin{proof}[Proof sketch]
+If $\phi(F_1, F_2)$, then an epistemic-$F_1$-certificate is also an epistemic-$F_2$-certificate,
+and a min-$F_1$-share-certificate is also a min-$F_2$-share-certificate.
 \end{proof}
 
 \subsection{Among EF, EFX, EF1}
@@ -59,12 +43,12 @@ Here we look at implications among EF, EFX, EF1, and their epistemic variants.
 
 \begin{remark}[EF $\fimplies$ EFX+EF1]
 \label[remark]{thm:impl:ef-to-efx+ef1}
-If an allocation is EF-fair to agent $i$, then it is also EFX-fair to $i$ and EF1-fair to $i$.
+If an allocation is EF-fair to agent $i$, then it is also EFX-fair and EF1-fair to $i$.
 \end{remark}
 
-Because of how we define EFX (\cref{defn:efx}),
-it's not always true that EFX implies EF1.
-However, it's true for many common settings, as the following lemma shows.
+Because of how we define EFX (\cref{defn:efx}), it is not always true that EFX implies EF1
+(see \cref{cex:gaps-not-ef1-prop1-subadd} for a counterexample with subadditive valuations).
+However, it is true for many common settings, as the following lemma shows.
 
 \begin{lemma}[EFX $\fimplies$ EF1]
 \label[lemma]{thm:impl:efx-to-ef1}
@@ -80,22 +64,17 @@ Then agent $i$ is EF1-satisfied in these scenarios:
 \end{tightenum}
 \end{lemma}
 \begin{proof}
-Suppose $i$ is EFX-satisfied but not EF1-satisfied.
-Suppose $i$ EF1-envies $j$.
+Suppose $i$ is EFX-satisfied but EF1-envies agent $j$.
 
-Since $i$ EF1-envies $j$, we get that for all $t \in A_j$, we have
+Since $i$ EF1-envies $j$, for all $t \in A_j$, we have
 \[ \frac{v_i(A_i)}{w_i} < \frac{v_i(A_j \setminus \{t\})}{w_j}. \]
-Since $i$ is EFX-satisfied, we get that
-for all $t \in A_j$ such that $v_i(t \mid A_i) > 0$, we have
-\[ \frac{v_i(A_i)}{w_i} \ge \frac{v_i(A_j \setminus \{t\})}{w_j}. \]
-Hence, for all $t \in A_j$, we get $v_i(t \mid A_i) \le 0$.
+If $v_i(t \mid A_i) > 0$ for some $t \in A_j$, then $i$ would EFX-envy $j$,
+so we get $v_i(t \mid A_i) \le 0$ for all $t \in A_j$.
 
-Since $i$ EF1-envies $j$, we get that for all $t \in A_i$, we have
+Since $i$ EF1-envies $j$, for all $t \in A_i$, we have
 \[ \frac{v_i(A_i \setminus \{t\})}{w_i} < \frac{v_i(A_j)}{w_j}. \]
-Since $i$ is EFX-satisfied, we get that
-for all $t \in A_i$ such that $v_i(t \mid A_i \setminus \{t\}) < 0$, we have
-\[ \frac{v_i(A_i \setminus \{t\})}{w_i} \ge \frac{v_i(A_j)}{w_j}. \]
-Hence, for all $t \in A_i$, we get $v_i(t \mid A_i \setminus \{t\}) \ge 0$.
+If $v_i(t \mid A_i \setminus \{t\}) < 0$ for some $t \in A_i$, then $i$ would EFX-envy $j$,
+so we get $v_i(t \mid A_i \setminus \{i\}) \ge 0$ for all $t \in A_i$.
 
 If $v_i$ is additive, we get $v_i(A_i) \ge 0 \ge v_i(A_j)$, which is a contradiction.
 %
@@ -103,20 +82,18 @@ If $v_i$ is doubly strictly monotone, then
 all items in $A_j$ are chores and all items in $A_i$ are goods.
 Hence, $v_i(A_i) \ge 0 \ge v_i(A_j)$, which is a contradiction.
 
-Suppose all agents have equal entitlements, all items are goods for $i$, and $v_i$ is submodular.
-Let $A_j \defeq \{g_1, \ldots, g_k\}$. Then
-\[ v_i(A_j \mid A_i) = \sum_{t=1}^k v_i(g_t \mid A_i \cup \{g_1, \ldots, g_{t-1}\})
-\le \sum_{t=1}^k v_i(g_t \mid A_i) \le 0. \]
-Hence, $v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i) + v_i(A_j \mid A_i) \le v_i(A_i)$.
-This is a contradiction.
+Suppose agents have equal entitlements, all items are goods for $i$, and $v_i$ is submodular.
+By the subadditivity of marginal gains (\cref{thm:submod-mg-subadd}), we get
+\[ v_i(A_j \mid A_i) \le \sum_{g \in A_j} v_i(g \mid A_i) \le 0. \]
+Hence, $v_i(A_j) \le v_i(A_i \cup A_j) = v_i(A_i) + v_i(A_j \mid A_i) \le v_i(A_i)$,
+which is a contradiction.
 
 Suppose all items are chores for $i$ and $v_i$ is submodular.
-Let $A_i = \{c_1, \ldots, c_k\}$. Then
-\[ v_i(A_i) = \sum_{t=1}^k v_i(c_t \mid \{c_1, \ldots, c_{t-1}\})
-\ge \sum_{t=1}^k v_i(c_t \mid A_i \setminus \{c_t\}) \ge 0. \]
+By the superadditivity of marginal losses (\cref{thm:submod-ml-superadd}), we get
+\[ v_i(A_i) \ge \sum_{c \in A_i} v_i(c \mid A_i \setminus \{c\}) \ge 0. \]
 Hence, $v_i(A_i) \ge 0 \ge v_i(A_j)$, which is a contradiction.
 
-A contradiction implies that it's impossible for agent $i$ to be
+A contradiction implies that it is impossible for agent $i$ to be
 EFX-satisfied but not EF1-satisfied.
 \end{proof}
 
@@ -245,7 +222,8 @@ where $g \in G \cap X_j$ such that $v_1(g \mid X_1) = 0$.
 Since $G \neq \emptyset$, we have $n = 2$ and $j = 2$.
 Pick any $S \subseteq Y_2$ such that $v_1(S \mid Y_1) > 0$. Then
 \begin{align*}
-v_1(S \cup \{g\} \mid X_1) &= v_1(S \cup \{g\} \cup X_1) - v_1(X_1)
+& v_1(S \cup \{g\} \mid X_1)
+\\ &= v_1(S \cup \{g\} \cup X_1) - v_1(X_1)
 \\ &= (v_1(S \cup Y_1) - v_1(Y_1)) + (v_1(Y_1) - v_1(X_1))
 \\ &= v_1(S \mid Y_1) > 0.
 \end{align*}
@@ -259,8 +237,8 @@ Suppose $Y_1 = X_1 \setminus \{c\}$ and $Y_j = X_j \cup \{c\}$,
 where $c \in X_1 \cap C$ such that $v_1(c \mid X_1 \setminus \{c\}) = 0$.
 Pick any $S \subseteq Y_1$ such that $v_1(S \mid Y_1 \setminus S) < 0$. Then
 \begin{align*}
-v_1(S \cup \{c\} \mid X_1 \setminus (S \cup \{c\}))
-    &= v(X_1) - v_1(X_1 \setminus (S \cup \{c\}))
+& v_1(S \cup \{c\} \mid X_1 \setminus (S \cup \{c\}))
+\\ &= v(X_1) - v_1(X_1 \setminus (S \cup \{c\}))
 \\ &= (v(X_1) - v_1(Y_1)) + (v_1(Y_1) - v_1(Y_1 \setminus S))
 \\ &= v_1(S \mid Y_1 \setminus S) < 0.
 \end{align*}
